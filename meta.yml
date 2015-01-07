@@ -1,0 +1,23 @@
+elems:
+
+  - src: cabal/config
+    dst: ~/.cabal/config
+
+  - src: cmus/(.+)
+    dst: ~/.cmus/<1>
+
+  - src: parcellite/(.+)
+    dst: ~/.config/parcellite/<1>
+
+  - src: zim/(.+)
+    dst: ~/.config/zim/<1>
+    notes:
+      the enabled plugins have the following dependencies:
+        diagram_editor     -> graphviz
+        equation_editor    -> latex, dvipng
+        gnu_r_ploteditor   -> gnu r
+        gnuplot_ploteditor -> gnuplot
+        screenshot         -> scrot
+        linkmap            -> graphviz
+        sourceview         -> gtksourceview2
+        versioncontrol     -> (optional) bzr, hg, git

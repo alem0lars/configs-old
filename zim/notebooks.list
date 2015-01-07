@@ -1,0 +1,9 @@
+[NotebookList]
+Default=
+1=file:///shared/notes/notebook
+
+[Notebook 1]
+uri=file:///shared/notes/notebook
+name=notebook
+interwiki=None
+icon=None
