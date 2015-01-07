@@ -35,7 +35,7 @@ recursive_indentlist=True
 recursive_checklist=False
 auto_reformat=False
 copy_format=Text
-file_templates_folder=/shared/notes/templates
+file_templates_folder=<%= var.notes_templates_dir %>
 
 [AttachmentBrowserPlugin]
 pane=bottom_pane
