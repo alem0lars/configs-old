@@ -84,7 +84,7 @@ haddock
   -- contents-location:
 
 install-dirs user
-  -- prefix: /home/alem0lars/.cabal
+  -- prefix: <%= ENV['HOME'] %>/.cabal
   -- bindir: $prefix/bin
   -- libdir: $prefix/lib
   -- libsubdir: $arch-$os-$compiler/$pkgid
