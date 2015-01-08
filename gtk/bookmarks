@@ -1,0 +1,27 @@
+<% if vars.bkp_dir %>
+file://<%= vars.bkp_dir %>
+<% end %>
+<% if vars.tmp_dir %>
+file://<%= vars.tmp_dir %>
+<% end %>
+<% if vars.notes_dir %>
+file://<%= vars.notes_dir %>
+<% end %>
+<% if vars.docs_dir %>
+file://<%= vars.docs_dir %>
+<% end %>
+<% if vars.graphics_dir %>
+file://<%= vars.graphics_dir %>
+<% end %>
+<% if vars.audio_dir %>
+file://<%= vars.audio_dir %>
+<% end %>
+<% if vars.video_dir %>
+file://<%= vars.video_dir %>
+<% end %>
+<% if vars.develop_dir %>
+file://<%= vars.develop_dir %>
+<% end %>
+<% if vars.downloads_dir %>
+file://<%= vars.downloads_dir %>
+<% end %>

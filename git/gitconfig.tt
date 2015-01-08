@@ -1,0 +1,15 @@
+<% if vars.github_username %>
+[github]
+  user = <%= vars.github_username %>
+<% end %>
+
+[user]
+  <% if vars.email %>
+  email = <%= vars.email %>
+  <% end %>
+  <% if vars.fullname %>
+  name = <%= vars.fullname %>
+  <% end %>
+
+[push]
+  default = simple

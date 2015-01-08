@@ -1,16 +1,31 @@
 elems:
 
-  - src: cabal/config
-    dst: ~/.cabal/config
+  - src: 'git/gitconfig'
+    dst: '~/.gitconfig'
 
-  - src: cmus/(.+)
-    dst: ~/.cmus/<1>
+  - src:  'cabal/config'
+    dst:  '~/.cabal/config'
+    only: ['haskell']
 
-  - src: parcellite/(.+)
-    dst: ~/.config/parcellite/<1>
+  - src: 'cmus/(.+)'
+    dst: '~/.cmus/<1>'
+    only: ['cli_centric']
 
-  - src: zim/(.+)
-    dst: ~/.config/zim/<1>
+  - src: 'parcellite/(.+)'
+    dst: '~/.config/parcellite/<1>'
+    only: ['minimal_de']
+
+  - src:  'feh/fehbg'
+    dst:  '~/.fehbg'
+    only: ['minimal_de']
+
+  - src:  'gtk/bookmarks'
+    dst:  '~/.gtk-bookmarks'
+    only: ['gtk']
+
+  - src: 'zim/(.+)'
+    dst: '~/.config/zim/<1>'
+    only: ['zim']
     notes:
       the enabled plugins have the following dependencies:
         diagram_editor     -> graphviz

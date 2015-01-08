@@ -1,9 +1,9 @@
 [NotebookList]
 Default=
-1=file:///shared/notes/notebook
+1=file://<%= vars.notes_def_notebook_dir %>
 
 [Notebook 1]
-uri=file:///shared/notes/notebook
+uri=file://<%= vars.notes_def_notebook_dir %>
 name=notebook
 interwiki=None
 icon=None
