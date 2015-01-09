@@ -1,8 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    alem0lars_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based hacking systems    #
+# - Name:    mutt/user_muttrc.tt                                               #
+# - Summary: The main configuration file for mutt.                             #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -30,44 +30,40 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: nmlabs_linux                                                   <=#
-#                                                                              #
-################################################################################
 
 
-email:    'molari.alessandro@gmail.com'
-fullname: 'Alessandro Molari'
+# personality {{{
 
-github_username: 'alem0lars'
+set realname = "<%= vars.fullname %>"
+set from     = "<%= vars.email %>"
 
-taskwarrior:
-  taskd:
-    server:      'freecinc.com:53589'
-    key_file:    'freecinc_e2cca0ca.key.pem'
-    cert_file:   'freecinc_e2cca0ca.cert.pem'
-    ca_file:     'freecinc_e2cca0ca.ca.pem'
-    credentials: '`lpass show --password "freecinc_credentials"`'
+# }}}
 
-email_pass:  '`lpass show --password "kitty@mutt google app password"`'
-email_host:  'gmail.com'
-imap_server: 'imap.gmail.com'
-smtp_server: 'smtp.gmail.com'
-email_signature: |
-  +------------------------------------------+
-  |            Alessandro Molari             |
-  |                                          |
-  |-> email:   molari.alessandro@gmail.com   |
-  |-> twitter: @alem0lars                    |
-  |-> github:  https://github.com/alem0lars  |
-  |-> website: https://molarialessandro.info |
-  +------------------------------------------+
 
-features:
-  - 'haskell'
-  - 'ruby'
-  - 'tmux'
-  - 'minimal_de'
-  - 'cli_centric'
-  - 'gtk'
-  - 'zim'
+# imap accounts {{{
+
+set imap_user = <%= vars.email %>
+set imap_pass = <%= vars.email_pass %>
+set folder    = imaps://<%= vars.imap_server %>/
+set spoolfile = +INBOX
+
+# }}}
+
+
+# smtp {{{
+
+set smtp_url  = smtps://<%= vars.email %>:<%= vars.email_pass %>@<%= vars.smtp_server %>
+set realname  = <%= vars.fullname %>
+set from      = <%= vars.email %>
+set hostname  = "<%= vars.email_host %>"
+set signature = "<%= vars.email_signature %>"
+
+# }}}
+
+
+# connection {{{
+
+set ssl_force_tls = yes
+unset ssl_starttls
+
+# }}}

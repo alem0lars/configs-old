@@ -1,8 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    muttrc                                                            #
-# - Summary: the main configuration file for mutt.                             #
+# - Name:    svn/config                                                        #
+# - Summary: The subversion client-side configuration.                         #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -32,27 +32,46 @@
 ################################################################################
 
 
-# Show spam score (from SpamAssassin only) when reading a message.
-spam "X-Spam-Score: ([0-9\\.]+).*" "SA: %1"
-set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
+[auth]
 
-# Personality settings.
-set realname = "Alessandro Molari"
-set from = "molari.alessandro@gmail.com"
+# Set password stores used by Subversion.
+# They should be delimited by spaces or commas.
+# The order of values determines the order in which password stores are used.
+<% if RUBY_PLATFORM =~ /-linux$/ %>
+password-stores = gpg-agent
+<% elsif RUBY_PLATFORM =~ /darwin$/ %>
+password-stores = keychain
+<% end %>
 
-# IMAP account settings.
-set imap_user=molari.alessandro@gmail.com
-set imap_pass=`lpass show --password "kitty@mutt google app password"`
-set folder=imaps://imap.gmail.com/
-set spoolfile=+INBOX
-set imap_check_subscribed
 
-# SMTP settings.
-set smtp_url=smtps://molari.alessandro@gmail.com:`lpass show --password "kitty@mutt google app password"`@smtp.gmail.com
-set realname='Alessandro Molari'
-set from=molari.alessandro@gmail.com
-set hostname="gmail.com"
-set signature="Alessandro Molari"
-# Connection options.
-set ssl_force_tls = yes
-unset ssl_starttls
+[helpers]
+
+
+[tunnels]
+
+
+[miscellany]
+
+# Set global-ignores to a set of whitespace-delimited globs which Subversion
+# will ignore in its 'status' output, and while importing or adding files and
+# directories ('*' matches leading dots).
+global-ignores = *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo __pycache__ *.rej *~ #*# .#* .*.swp .DS_Store
+
+# Set use-commit-times to make 'checkout', 'update', 'switch', 'revert'
+# put last-committed timestamps on every file touched.
+use-commit-times = yes
+
+# Enable automatic properties for 'svn add' and 'svn import'.
+# Automatic properties are defined in the section 'auto-props'.
+enable-auto-props = yes
+
+# Set memory-cache-size to define the size of the memory cache used by the
+# client when accessing a FSFS repository via ra_local (the file:// scheme).
+# The value represents the number of MB used by the cache.
+memory-cache-size = 32
+
+
+[auto-props]
+
+
+[working-copy]

@@ -1,0 +1,142 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    mutt/global_muttrc.tt                                             #
+# - Summary: Global configuration for mutt, shared among every user of the     #
+#            system.                                                           #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Getting started: see README.md in the project root folder                  #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# encoding {{{
+
+# Character set on messages that we send.
+set send_charset = "utf-8"
+
+# If there isn't character set given on incoming messages, it's probably
+# windows.
+set assumed_charset = "iso-8859-1"
+
+# }}}
+
+
+# appearance {{{
+
+# Threading preferences, sort by threads.
+set sort           = threads
+set strict_threads = yes
+
+# Just scroll one line instead of full page.
+set menu_scroll = yes
+
+# Show help line.
+set help
+
+# Load the theme.
+source /etc/mutt/theme
+
+# Which headers to display.
+ignore *                                         # Ignore all, except unignores.
+unignore from: date: subject: to: cc: reply-to:  # The most important ones.
+unignore sender:
+unignore priority: importance:                   # Outlook calls it importance.
+unignore organization organisation               # Because I'm curious.
+unignore user-agent: x-agent: x-posting-agent:   # Mail client..
+unignore x-mailer: x-newsreader: x-mailing-list:
+unignore Message-Id:
+unignore x-info
+unignore x-editor                                # Text editor used.
+unignore x-operating-system:
+unignore x-message-flag
+unignore resent- x-resent                        # Was msg resent.
+unignore x-spam-flag
+unignore x-spam-level
+unignore x-spam-score
+unignore x-spam-status
+unignore x-spam-rule
+unignore x-spam-probe
+unignore x-virus-scanned
+unignore x-virus-status
+unignore followup-to: mail-followup-to:
+unignore auto-submitted                          # ?
+unignore X-Fnord
+unignore x-pgp-key
+
+# }}}
+
+
+# opening {{{
+
+# Don't ask for command after editing.
+set noprompt_after
+
+# Set the editor for opening the emails.
+set editor = <%= ENV['EDITOR'] %>
+set pager  = <%= ENV['PAGER'] %>
+
+# Automatically view the following message types using '.mailcap' entries.
+auto_view text/html text/enriched application/pdf
+auto_view text/calendar
+
+# }}}
+
+
+# sending {{{
+
+# If an email has a 'Mail-Followup-To' header then use it when replying.
+set honor_followup_to = yes
+
+# }}}
+
+
+# caching {{{
+
+# The default mailbox type used when creating new folders.
+set mbox_type = Maildir
+
+# Store message headers locally to speed things up.
+set header_cache = "~/.cache/mutt"
+
+# Store messages locally to speed things up, like searching message bodies.
+set message_cachedir = "~/.cache/mutt"
+
+# }}}
+
+
+# connection {{{
+
+# Check mailboxes for new mail every X secs.
+set mail_check = 64
+
+# Keepalive time.
+set imap_keepalive = 384
+
+# Check for all subscribed IMAP folders.
+set imap_check_subscribed
+
+# }}}

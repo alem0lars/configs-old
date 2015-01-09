@@ -2,7 +2,7 @@
 #                                                                              #
 # File informations:                                                           #
 # - Name:    meta.yml                                                          #
-# - Summary: the configuration metadata, describing the contents and how they  #
+# - Summary: The configuration metadata, describing the contents and how they  #
 #            should be handled.                                                #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
@@ -38,6 +38,9 @@ elems:
   - src: 'git/gitconfig'
     dst: '~/.gitconfig'
 
+  - src: 'svn/config'
+    dst: '~/.subversion/config'
+
   - src:  'cabal/config'
     dst:  '~/.cabal/config'
     only: ['haskell']
@@ -46,17 +49,41 @@ elems:
     dst:  '~/.irbrc'
     only: ['ruby']
     notes: |
-      the following features will be enabled if their requirements are met:
+      The following features will be enabled if their requirements are met:
         irb extensions    -> gem 'irbtools' & 'irbtools-more'
         clipboard support -> xclip
+
+  - src:  'tmux/tmux.conf'
+    dst:  '/etc/tmux.conf'
+    only: ['tmux']
+    notes: |
+      The program 'xclip' should be installed in order to provide clipboard
+      support to tmux.
+  - src:  'tmux/tmuxline.conf'
+    dst:  '/etc/tmux/tmuxline.conf'
+    only: ['tmux']
+
+  - src:  'taskwarrior/taskrc'
+    dst:  '~/.taskrc'
+    only: ['cli_centric']
 
   - src: 'cmus/(.+)'
     dst: '~/.cmus/<1>'
     only: ['cli_centric']
 
-  - src:  'mutt/muttrc'
+  - src:  'mutt/global_muttrc'
+    dst:  '/etc/mutt/Muttrc'
+    only: ['cli_centric']
+  - src:  'mutt/theme'
+    dst:  '/etc/mutt/theme'
+    only: ['cli_centric']
+  - src:  'mutt/user_muttrc'
     dst:  '~/.muttrc'
     only: ['cli_centric']
+    notes: |
+      Depending on user's configuration, additional programs maybe required.
+      For example, if passwords are retrieved using 'lpass', then the
+      lastpass command-line interface is required.
 
   - src: 'parcellite/(.+)'
     dst: '~/.config/parcellite/<1>'
@@ -74,7 +101,7 @@ elems:
     dst: '~/.config/zim/<1>'
     only: ['zim']
     notes: |
-      the enabled plugins have the following dependencies:
+      The enabled plugins have the following dependencies:
         diagram_editor     -> graphviz
         equation_editor    -> latex, dvipng
         gnu_r_ploteditor   -> gnu r

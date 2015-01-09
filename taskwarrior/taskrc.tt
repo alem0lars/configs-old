@@ -1,8 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    alem0lars_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based hacking systems    #
+# - Name:    taskwarrior/taskrc                                                #
+# - Summary: The taskwarrior configuration.                                    #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -30,44 +30,48 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: nmlabs_linux                                                   <=#
-#                                                                              #
-################################################################################
 
 
-email:    'molari.alessandro@gmail.com'
-fullname: 'Alessandro Molari'
+# appearance {{{
 
-github_username: 'alem0lars'
+# Set the color theme (if available).
+<% if File.file?('/usr/share/task/rc/dark-256.theme') %>
+include /usr/share/task/rc/dark-256.theme
+<% end %>
 
-taskwarrior:
-  taskd:
-    server:      'freecinc.com:53589'
-    key_file:    'freecinc_e2cca0ca.key.pem'
-    cert_file:   'freecinc_e2cca0ca.cert.pem'
-    ca_file:     'freecinc_e2cca0ca.ca.pem'
-    credentials: '`lpass show --password "freecinc_credentials"`'
+# Enable colors.
+color = on
 
-email_pass:  '`lpass show --password "kitty@mutt google app password"`'
-email_host:  'gmail.com'
-imap_server: 'imap.gmail.com'
-smtp_server: 'smtp.gmail.com'
-email_signature: |
-  +------------------------------------------+
-  |            Alessandro Molari             |
-  |                                          |
-  |-> email:   molari.alessandro@gmail.com   |
-  |-> twitter: @alem0lars                    |
-  |-> github:  https://github.com/alem0lars  |
-  |-> website: https://molarialessandro.info |
-  +------------------------------------------+
+# }}}
 
-features:
-  - 'haskell'
-  - 'ruby'
-  - 'tmux'
-  - 'minimal_de'
-  - 'cli_centric'
-  - 'gtk'
-  - 'zim'
+
+# find {{{
+
+# Enable regex.
+regex = on
+
+# }}}
+
+
+# editing {{{
+
+editor       = <%= ENV['EDITOR'] %>
+edit.verbose = on
+
+# }}}
+
+
+# data {{{
+
+<% if vars.taskwarrior['taskd'] %>
+# Sync settings.
+taskd.server=<%= vars.taskwarrior['taskd']['server'] %>
+taskd.key=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['key_file']).gsub('/', '\/') %>
+taskd.certificate=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['cert_file']).gsub('/', '\/') %>
+taskd.ca=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['ca_file']).gsub('/', '\/') %>
+taskd.credentials=<%= eval(vars.taskwarrior['taskd']['credentials']) %>
+<% end %>
+
+data.location = ~/.task
+
+# }}}

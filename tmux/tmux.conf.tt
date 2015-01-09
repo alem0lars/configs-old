@@ -1,0 +1,228 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    tmux/tmux.conf                                                    #
+# - Summary: The tmux configuration.                                           #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Getting started: see README.md in the project root folder                  #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# options {{{
+
+# Unicode support.
+setw -g utf8        on
+set  -g status-utf8 on
+
+# Use vi mode.
+set  -wg mode-keys   vi
+set  -g  status-keys vi
+setw -g  xterm-keys  on
+
+# Set terminal type.
+set -g default-terminal "screen-256color"
+
+# Set maximum history size.
+set -g history-limit 10240
+
+set -sg escape-time 0
+
+# Start indexes from 1 instead of 0, for typing accessibility.
+set -g base-index      1
+set -g pane-base-index 1
+
+# Directly expose pane titles.
+set -g set-titles on
+
+# Allows for faster key repetition.
+set -g repeat-time 1
+
+# Monitor for activity in the window.
+# Windows with activity are highlighted in the status line.
+setw -g monitor-activity on
+set  -g visual-activity  on
+
+# Urgency hints.
+set-option -g bell-action   any
+set-option -g bell-on-alert on
+
+# Only resize shared windows.
+setw -g aggressive-resize on
+
+# Mice infestation.
+set -g mode-mouse          on
+set -g mouse-utf8          off
+set -g mouse-resize-pane   on
+set -g mouse-select-pane   on
+set -g mouse-select-window on
+
+# Load the theme (tmuxline).
+theme="/etc/tmux/tmuxline.conf"
+if-shell "test -f $theme" "source $theme"
+
+# }}}
+
+
+# misc hotkeys {{{
+
+# <Prefix><S-r>: force a reload of the config file.
+bind r source /etc/tmux.conf\; display "tmux configuration reloaded"
+
+# <Prefix><S-u>: next layout (since I stole space).
+bind U next-layout
+
+# <Prefix><S-d>: detach from the current session.
+bind D detach
+
+# }}}
+
+
+# history hotkeys {{{
+
+bind -n C-k clear-history
+
+# }}}
+
+
+# prefix hotkeys {{{
+
+# Change prefix from <C-b> to <C-a>.
+unbind C-b
+set -g prefix C-a
+
+# Nested prefix.
+bind C-a send-prefix
+bind a send-prefix
+
+# }}}
+
+
+# sessions hotkeys {{{
+
+# <Prefix><s>: choose a window from the windows tree.
+bind s choose-tree
+
+# <Prefix><S-s>: create a new session.
+bind S command-prompt -p "new session:" "new-session -A -s %%"
+
+# <Prefix><M-s>: kill the session (asking confirmation).
+bind M-s confirm kill-session
+
+# <Prefix><M-S-s>: kill the session (withou asking confirmation).
+bind M-S kill-session
+
+# }}}
+
+
+# panes hotkeys {{{
+
+bind b \
+  bind -n j split-window -v -c "#{pane_current_path}" \\; \
+    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k \; \
+  bind -n k split-window -v -c "#{pane_current_path}"\\; swap-pane -U \\; \
+    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k \; \
+  bind -n h split-window -h -c "#{pane_current_path}"\\; swap-pane -U \\; \
+    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k \; \
+  bind -n l split-window -h -c "#{pane_current_path}" \\; \
+    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k
+
+# }}}
+
+
+# splitting hotkeys {{{
+
+bind j split-window -v -c "#{pane_current_path}"
+bind k split-window -v -c "#{pane_current_path}"\; swap-pane -U
+bind h split-window -h -c "#{pane_current_path}"\; swap-pane -U
+bind l split-window -h -c "#{pane_current_path}"
+
+# }}}
+
+
+# swapping hotkeys {{{
+
+bind -r J swap-pane -D
+bind -r K swap-pane -U
+bind -r H swap-pane -U
+bind -r L swap-pane -D
+
+# }}}
+
+
+# resizing hotkeys {{{
+
+bind -r C-j resize-pane -D 10
+bind -r C-k resize-pane -U 10
+bind -r C-h resize-pane -L 10
+bind -r C-l resize-pane -R 10
+
+# }}}
+
+
+# navigating hotkeys {{{
+
+# smart pane switching with awareness of vim splits
+bind -n C-j run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-h run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\ run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys 'C-\\') || tmux select-pane -l"
+
+# fallback for weird situations
+bind -r Up select-pane -U
+bind -r Down select-pane -D
+bind -r Left select-pane -L
+bind -r Right select-pane -R
+
+# }}}
+
+
+# windows hotkeys {{{
+
+bind w choose-window
+bind W new-window -a
+bind M-w confirm kill-window
+bind M-W kill-window
+
+# match <prefix-n> (`next-window`)
+bind -r n next-window
+bind -r p previous-window
+bind -r d next-window
+bind -r u previous-window
+
+# }}}
+
+
+# copy&paste hotkeys {{{
+
+bind v copy-mode
+bind c copy-mode
+bind-key -t vi-copy y copy-pipe "xclip -i -selection clipboard"
+bind-key -t vi-copy enter copy-pipe "xclip -i -selection clipboard"
+bind-key -t vi-copy v begin-selection
+
+# }}}
