@@ -89,6 +89,13 @@ elems:
     dst:  '~/.turses/<1>'
     only: ['cli_centric']
 
+  - src:  'vimperator/vimperatorrc'
+    dst:  '~/.vimperatorrc'
+    only: ['firefox']
+  - src:  'vimperator/colors/amdarkness'
+    dst:  '~/.vimperator/colors/amdarkness.vimp'
+    only: ['firefox']
+
   - src: 'parcellite/(.+)'
     dst: '~/.config/parcellite/<1>'
     only: ['minimal_de']

@@ -1,0 +1,82 @@
+"###############################################################################
+"                                                                              #
+" File informations:                                                           #
+" - Name:    vimperator/colors/amdarkness.vimp                                 #
+" - Summary: The dark colorscheme for vimperator.                              #
+" - Authors:                                                                   #
+"   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+"                                                                              #
+" Project informations:                                                        #
+" - Homepage:        https://github.com/alem0lars/cfg                          #
+" - Getting started: see README.md in the project root folder                  #
+"                                                                              #
+" License: Apache v2.0 (see below)                                             #
+"                                                                              #
+"###############################################################################
+"                                                                              #
+" Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+" license agreements.  See the NOTICE file distributed with this work for      #
+" additional information regarding copyright ownership. The ASF licenses this  #
+" file to you under the Apache License, Version 2.0 (the "License"); you may   #
+" not use this file except in compliance with the License.                     #
+" You may obtain a copy of the License at                                      #
+"                                                                              #
+"   http://www.apache.org/licenses/LICENSE-2.0                                 #
+"                                                                              #
+" Unless required by applicable law or agreed to in writing, software          #
+" distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+" WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+" See the License for the specific language governing permissions and          #
+" limitations under the License.                                               #
+"                                                                              #
+"###############################################################################
+
+
+" StatusLine.
+hi StatusLine color: #ffffff; background: #000000; "font-size: 11pt;
+
+" CmdLine settings excluding Gradient.
+hi Normal             color: #afafaf; background: #222222;
+hi CmdLine            background: #222222; color: #afafaf; font-size: 11pt;
+hi CompDesc           color: #c6c6c6; width: 50%; font-size: 11pt;
+hi CompIcon           width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+hi CompItem[selected] background: #666666; color: #afafaf; 
+hi CompMsg            font-style: italic; margin-left: 16px;
+hi CompResult         width: 45%; overflow: hidden;font-size: 11pt; font-family: DejaVu Sans Mono for Powerline; font-weight: normal;
+hi CompTitle          color: #afafaf; background: #222222; font-weight: bold;
+hi CompTitle>*        padding: 0 .5ex;
+hi Filter             font-weight: bold;color: #afafaf;
+
+" Used with ']f' and '[f'.
+hi FrameIndicator background-color: #222222; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+
+" Bell and errors.
+hi Bell     border: 0 none; background-color: #222222;
+hi ErrorMsg color: #ffffff; background: red; font-weight: bold;
+
+" Hints.
+hi Hint        font-family: DejaVu Sans Mono for Powerline; font-size: 11px; font-weight: bold; color: white; background-color: rgba(0, 0, 0, 0.5); border: solid 1px LightGray;
+hi Hint::after content: attr(number);
+hi HintActive  background: blue; color: #f6e9e9;
+hi HintElem    background-color: #222222; color: #f6e9e9;
+hi HintImage   opacity: .5;
+
+" Other important stuff.
+hi InfoMsg    color: #afafaf; background: #222222;
+hi Message    white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;
+hi WarningMsg color: red; background: #222222;
+hi ModeMsg    color: #afafaf; background: #222222; "CmdLine when Not in Use
+hi MoreMsg    color: #afafaf; background: #222222;
+hi NonText    color: lightblue; min-height: 16px; padding-left: 2px;
+hi Question   color: #ffffff; background: #222222; font-weight: bold;
+hi Function   color: lightgreen; background: #222222;
+hi Number     color: tan; background: #222222
+hi String     color: #222222; background: #afafaf;
+hi Tag        color: #222222; background: #afafaf;
+hi Title      color: #222222; background: #afafaf; font-weight: bold;
+hi URL        text-decoration: none; color: lightblue; background: inherit;
+hi URL:hover  text-decoration: underline; cursor: pointer;
+hi LineNr     color: #afafaf; background: #222222;
+
+
+" vim: ft=vim :

@@ -71,3 +71,4 @@ features:
   - 'cli_centric'
   - 'gtk'
   - 'zim'
+  - 'firefox'
