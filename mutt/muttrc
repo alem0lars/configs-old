@@ -1,15 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
-# - Summary: The most common variables that you can find in a system,          #
-#            compliant with the underlying configuration.                      #
+# - Name:    muttrc                                                            #
+# - Summary: the main configuration file for mutt.                             #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -31,10 +30,29 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: nothing                                                        <=#
-#                                                                              #
-################################################################################
 
 
-features: []
+# Show spam score (from SpamAssassin only) when reading a message.
+spam "X-Spam-Score: ([0-9\\.]+).*" "SA: %1"
+set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
+
+# Personality settings.
+set realname = "Alessandro Molari"
+set from = "molari.alessandro@gmail.com"
+
+# IMAP account settings.
+set imap_user=molari.alessandro@gmail.com
+set imap_pass=`lpass show --password "kitty@mutt google app password"`
+set folder=imaps://imap.gmail.com/
+set spoolfile=+INBOX
+set imap_check_subscribed
+
+# SMTP settings.
+set smtp_url=smtps://molari.alessandro@gmail.com:`lpass show --password "kitty@mutt google app password"`@smtp.gmail.com
+set realname='Alessandro Molari'
+set from=molari.alessandro@gmail.com
+set hostname="gmail.com"
+set signature="Alessandro Molari"
+# Connection options.
+set ssl_force_tls = yes
+unset ssl_starttls

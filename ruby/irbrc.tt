@@ -1,0 +1,143 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    ruby/irbrc.tt                                                     #
+# - Summary: The IRB configuration.                                            #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Getting started: see README.md in the project root folder                  #
+#                                                                              #
+# License: Apache v2.0 (see below), except:                                    #
+# - Debundle class and module, taken from                                      #
+#   https://github.com/janlelis/debundle.rb code and released with:            #
+#   - Copyright (c) Conrad Irwin <conrad.irwin@gmail.com>                      #
+#   - MIT License                                                              #
+#   and modified by alem0lars
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# debundle {{{
+
+module Debundle
+  VERSION = '0.8.d'
+end
+
+class << Debundle
+
+  # Break out of the Bundler jail.
+  #
+  # This can be used to load files in development that are not in your Gemfile
+  # (for example if you want to test something with a tool that you've locally).
+  #
+  # @example
+  # Debundle.debundle!
+  # require 'all_the_things'
+  #
+  # Normally you don't need to cal this directly though, as it is called for
+  # you when Pry starts.
+  #
+  # See https://github.com/carlhuda/bundler/issues/183 for some background.
+  #
+  def debundle!
+    return unless defined?(Bundler)
+    if rubygems_18_or_better?
+      if Gem.post_reset_hooks.reject!{ |hook|
+          hook.source_location.first =~ %r{/bundler/}
+        }
+        Bundler.preserve_gem_path
+        Gem.clear_paths
+        Gem::Specification.reset
+        remove_bundler_monkeypatches
+      end
+    elsif Gem.source_index && Gem.send(:class_variable_get, :@@source_index)
+      Gem.source_index.refresh!
+      remove_bundler_monkeypatches
+    else
+      raise "No hacks found :("
+    end
+  rescue => e
+    puts "Debundling failed: #{e.message}, when reporting bugs to"
+    puts "https://github.com/ConradIrwin/pry-debundle, please include:"
+    puts "* gem version: #{Gem::VERSION rescue 'undefined'}"
+    puts "* bundler version: #{Bundler::VERSION rescue 'undefined'}"
+    puts "* ruby version: #{RUBY_VERSION rescue 'undefined'}"
+    puts "* ruby engine: #{RUBY_ENGINE rescue 'undefined'}"
+  end
+
+  private
+
+  def rubygems_18_or_better?
+    defined?(Gem.post_reset_hooks)
+  end
+
+  def rubygems_20_or_better?
+    Gem::VERSION.to_i >= 2
+  end
+
+  # Ugh, this stuff is quite vile.
+  def remove_bundler_monkeypatches
+    if rubygems_20_or_better?
+      load 'rubygems/core_ext/kernel_require.rb'
+    else
+      load 'rubygems/custom_require.rb'
+    end
+    if rubygems_18_or_better?
+      Kernel.module_eval do
+        def gem(gem_name, *requirements) # :doc:
+          skip_list = (ENV['GEM_SKIP'] || "").split(/:/)
+          if skip_list.include? gem_name
+            raise Gem::LoadError, "skipping #{gem_name}"
+          end
+          spec = Gem::Dependency.new(gem_name, *requirements).to_spec
+          spec.activate if spec
+        end
+      end
+    else
+      Kernel.module_eval do
+        def gem(gem_name, *requirements) # :doc:
+          skip_list = (ENV['GEM_SKIP'] || "").split(/:/)
+          if skip_list.include? gem_name
+            raise Gem::LoadError, "skipping #{gem_name}"
+          end
+          Gem.activate(gem_name, *requirements)
+        end
+      end
+    end
+  end
+
+end
+
+Debundle.debundle!
+
+# }}}
+
+
+# irbtools {{{
+
+require 'irbtools/more'
+
+# }}}
+
+
+# vim: set filetype=ruby :

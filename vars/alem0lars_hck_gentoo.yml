@@ -1,15 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
-# - Summary: The most common variables that you can find in a system,          #
-#            compliant with the underlying configuration.                      #
+# - Name:    alem0lars_gentoo.yml                                              #
+# - Summary: Holds the variables for alem0lars gentoo-based hacking systems    #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -32,9 +31,20 @@
 #                                                                              #
 ################################################################################
 #                                                                              #
-#=> INHERITS: nothing                                                        <=#
+#=> INHERITS: nmlabs_linux                                                   <=#
 #                                                                              #
 ################################################################################
 
 
-features: []
+email:    'molari.alessandro@gmail.com'
+fullname: 'Alessandro Molari'
+
+github_username: 'alem0lars'
+
+features:
+  - 'haskell'
+  - 'ruby'
+  - 'minimal_de'
+  - 'cli_centric'
+  - 'gtk'
+  - 'zim'
