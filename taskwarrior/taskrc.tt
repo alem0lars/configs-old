@@ -63,7 +63,7 @@ edit.verbose = on
 
 # data {{{
 
-<% if vars.taskwarrior['taskd'] %>
+<% if vars.taskwarrior && vars.taskwarrior['taskd'] %>
 # Sync settings.
 taskd.server=<%= vars.taskwarrior['taskd']['server'] %>
 taskd.key=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['key_file']).gsub('/', '\/') %>
