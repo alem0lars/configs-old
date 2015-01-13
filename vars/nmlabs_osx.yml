@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    taskwarrior/taskrc                                                #
-# - Summary: The taskwarrior configuration.                                    #
+# - Name:    vars/nmlabs_osx.yml                                               #
+# - Summary: Common variables for all OSX nextreamlabs systems                 #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,48 +30,32 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
+#                                                                              #
+#=> INHERITS: generic                                                        <=#
+#                                                                              #
+################################################################################
 
 
-# appearance {{{
+features:
 
-# Set the color theme (if available).
-<% if File.file?('/usr/share/task/rc/dark-256.theme') %>
-include /usr/share/task/rc/dark-256.theme
-<% end %>
+  - osx
+  - homebrew
 
-# Enable colors.
-color = on
+  - tmux
+  - vim
 
-# }}}
+  - ruby
+  - rbenv
 
+  - python
+  - pyenv
 
-# find {{{
+  - java
 
-# Enable regex.
-regex = on
+  - groovy
 
-# }}}
+  - erlang
 
+  - sbt
 
-# editing {{{
-
-editor       = <%= ENV['EDITOR'] %>
-edit.verbose = on
-
-# }}}
-
-
-# data {{{
-
-<% if vars.taskwarrior && vars.taskwarrior['taskd'] %>
-# Sync settings.
-taskd.server=<%= vars.taskwarrior['taskd']['server'] %>
-taskd.key=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['key_file']).gsub('/', '\/') %>
-taskd.certificate=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['cert_file']).gsub('/', '\/') %>
-taskd.ca=<%= File.join(ENV['HOME'], '.task', vars.taskwarrior['taskd']['ca_file']).gsub('/', '\/') %>
-taskd.credentials=<%= eval(vars.taskwarrior['taskd']['credentials']) %>
-<% end %>
-
-data.location = ~/.task
-
-# }}}
+  - haskell
