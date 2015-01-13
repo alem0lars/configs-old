@@ -66,7 +66,6 @@ email_signature: |
 features:
   - 'haskell'
   - 'ruby'
-  - 'tmux'
   - 'minimal_de'
   - 'cli_centric'
   - 'gtk'

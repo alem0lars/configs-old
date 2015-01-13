@@ -58,3 +58,10 @@ notes_templates_dir:    '/shared/notes/templates'
 notes_def_notebook_dir: 'shared/notes/notebook'
 
 # }}}
+
+tmux:
+  - config_path: '/etc/tmux'
+
+features:
+  - tmux
+
