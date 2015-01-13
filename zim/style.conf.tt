@@ -1,64 +1,127 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zim/style.conf.tt                                                 #
+# - Summary: Styles for the ZIM UI.                                            #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
 [TextView]
+
 indent=30
 tabs=None
 linespacing=3
 font=
 justify=
 
+
 [Tag strong]
+
 weight=PANGO_WEIGHT_BOLD
 
+
 [Tag emphasis]
+
 style=PANGO_STYLE_ITALIC
 
+
 [Tag mark]
+
 background=yellow
 
+
 [Tag strike]
+
 foreground=grey
 strikethrough=True
 
+
 [Tag code]
+
 foreground=#2e3436
 family=monospace
 
+
 [Tag pre]
+
 foreground=#2e3436
 indent=20
 wrap-mode=GTK_WRAP_NONE
 family=monospace
 
+
 [Tag link]
+
 foreground=blue
 
+
 [Tag tag]
+
 foreground=#ce5c00
 
+
 [Tag h1]
+
 foreground=#4e9a06
 scale=1.75
 underline=PANGO_UNDERLINE_SINGLE
 weight=PANGO_WEIGHT_BOLD
 
+
 [Tag h2]
+
 foreground=#4e9a06
 scale=1.52
 weight=PANGO_WEIGHT_BOLD
 
+
 [Tag h3]
+
 foreground=#4e9a06
 style=PANGO_STYLE_ITALIC
 scale=1.32
 weight=PANGO_WEIGHT_BOLD
 
+
 [Tag h4]
+
 foreground=#4e9a06
 scale=1.15
 weight=PANGO_WEIGHT_BOLD
 
+
 [Tag h5]
+
 foreground=#4e9a06
 weight=PANGO_WEIGHT_BOLD
 
+
 [Tag h6]
+
 foreground=#4e9a06

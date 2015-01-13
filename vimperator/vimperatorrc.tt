@@ -1,7 +1,7 @@
 "###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    meta.yml                                                          #
+" - Name:    vimperator/vimperatorrc.tt                                        #
 " - Summary: The main vimperator configuration file.                           #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #

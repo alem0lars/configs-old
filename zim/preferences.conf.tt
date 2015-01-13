@@ -1,16 +1,57 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zim/preferences.conf.tt                                           #
+# - Summary: The ZIM preferences.                                              #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
 [General]
+
 plugins=["calendar","insertsymbol","printtobrowser","versioncontrol","arithmetic","attachmentbrowser","backlinkpane","gnuplot_ploteditor","diagrameditor","equationeditor","gnu_r_ploteditor","screenshot","linesorter","linkmap","sourceview","quicknote","tableofcontents","tags","tasklist"]
 
+
 [CalendarPlugin]
+
 embedded=False
 pane=('left_pane', 'top')
 granularity=Day
 namespace=Journal
 
+
 [VersionControlPlugin]
+
 autosave=True
 
+
 [GtkInterface]
+
 tearoff_menus=False
 toggle_on_ctrlspace=False
 remove_links_on_delete=True
@@ -23,7 +64,9 @@ autosave_timeout=10
 toolbar_style=text_only
 toolbar_size=small
 
+
 [PageView]
+
 follow_on_enter=True
 read_only_cursor=False
 autolink_camelcase=True
@@ -35,18 +78,26 @@ recursive_indentlist=True
 recursive_checklist=False
 auto_reformat=False
 copy_format=Text
-file_templates_folder=<%= vars.notes_templates_dir %>
+file_templates_folder=<%= get_var! 'notes_templates_dir' %>
+
 
 [AttachmentBrowserPlugin]
+
 pane=bottom_pane
 
+
 [BackLinksPanePlugin]
+
 pane=right_pane
 
+
 [InsertScreenshotPlugin]
+
 screenshot_command=scrot
 
+
 [SourceViewPlugin]
+
 auto_indent=True
 smart_home_end=True
 highlight_current_line=True
@@ -54,15 +105,21 @@ show_right_margin=True
 right_margin_position=80
 tab_width=2
 
+
 [ToCPlugin]
+
 pane=left_pane
 floating=True
 show_h1=False
 
+
 [TagsPlugin]
+
 pane=left_pane
 
+
 [TaskListPlugin]
+
 all_checkboxes=True
 tag_by_page=False
 deadline_by_page=False
