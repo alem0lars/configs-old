@@ -44,7 +44,6 @@ github_username: 'LMolr'
 features:
   - 'haskell'
   - 'ruby'
-  - 'tmux'
   - 'minimal_de'
   - 'gtk'
   - 'firefox'
