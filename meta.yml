@@ -54,32 +54,32 @@ elems:
         clipboard support -> xclip
 
   - src:  'tmux/tmux.conf'
-    dst:  '/etc/tmux.conf'
+    dst:  '<%= get_var! 'tmux.config_file_path' %>'
     only: ['tmux']
     notes: |
       The program 'xclip' should be installed in order to provide clipboard
       support to tmux.
   - src:  'tmux/tmuxline.conf'
-    dst:  '/etc/tmux/tmuxline.conf'
+    dst:  '<%= get_var! 'tmux.theme_path' %>'
     only: ['tmux']
 
   - src:  'taskwarrior/taskrc'
     dst:  '~/.taskrc'
-    only: ['cli_centric']
+    only: ['cli_centric', 'taskwarrior']
 
   - src: 'cmus/(.+)'
     dst: '~/.cmus/<1>'
-    only: ['cli_centric']
+    only: ['cli_centric', 'cmus']
 
   - src:  'mutt/global_muttrc'
     dst:  '/etc/mutt/Muttrc'
-    only: ['cli_centric']
+    only: ['cli_centric', 'mutt']
   - src:  'mutt/theme'
     dst:  '/etc/mutt/theme'
-    only: ['cli_centric']
+    only: ['cli_centric', 'mutt']
   - src:  'mutt/user_muttrc'
     dst:  '~/.muttrc'
-    only: ['cli_centric']
+    only: ['cli_centric', 'mutt']
     notes: |
       Depending on user's configuration, additional programs maybe required.
       For example, if passwords are retrieved using 'lpass', then the
@@ -87,7 +87,7 @@ elems:
 
   - src:  'turses/(.+)'
     dst:  '~/.turses/<1>'
-    only: ['cli_centric']
+    only: ['cli_centric', 'turses']
 
   - src:  'vimperator/vimperatorrc'
     dst:  '~/.vimperatorrc'
@@ -98,11 +98,11 @@ elems:
 
   - src: 'parcellite/(.+)'
     dst: '~/.config/parcellite/<1>'
-    only: ['minimal_de']
+    only: ['minimal_de', 'parcellite']
 
-  - src:  'feh/fehbg'
-    dst:  '~/.fehbg'
-    only: ['minimal_de']
+  - src:  'feh/(fehbg)'
+    dst:  '~/.<1>'
+    only: ['minimal_de', 'feh']
 
   - src:  'gtk/bookmarks'
     dst:  '~/.gtk-bookmarks'

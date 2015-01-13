@@ -49,6 +49,8 @@ taskwarrior:
     ca_file:     'freecinc_e2cca0ca.ca.pem'
     credentials: '`lpass show --password "freecinc_credentials"`'
 
+mutt:
+  theme: '/etc/mutt/theme'
 email_pass:  '`lpass show --password "kitty@mutt google app password"`'
 email_host:  'gmail.com'
 imap_server: 'imap.gmail.com'

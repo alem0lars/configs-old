@@ -58,7 +58,7 @@ set menu_scroll = yes
 set help
 
 # Load the theme.
-source /etc/mutt/theme
+source <%= get_var! 'mutt.theme' %>
 
 # Which headers to display.
 ignore *                                         # Ignore all, except unignores.
@@ -96,8 +96,8 @@ unignore x-pgp-key
 set noprompt_after
 
 # Set the editor for opening the emails.
-set editor = <%= ENV['EDITOR'] %>
-set pager  = <%= ENV['PAGER'] %>
+set editor = <%= get_env! :EDITOR %>
+set pager  = <%= get_env! :PAGER  %>
 
 # Automatically view the following message types using '.mailcap' entries.
 auto_view text/html text/enriched application/pdf

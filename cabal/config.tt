@@ -1,7 +1,7 @@
 --##############################################################################
 --                                                                             #
 -- File informations:                                                          #
--- - Name:    cabal/config                                                     #
+-- - Name:    cabal/config.tt                                                  #
 -- - Summary: The configuration file for the 'cabal' command line tool.        #
 -- - Authors:                                                                  #
 --   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)             #
@@ -35,10 +35,10 @@
 -- require-sandbox: False
 -- ignore-sandbox: False
 remote-repo: hackage.haskell.org:http://hackage.haskell.org/packages/archive
-remote-repo-cache: <%= ENV['HOME'] %>/.cabal/packages
+remote-repo-cache: <%= get_env! :HOME %>/.cabal/packages
 -- local-repo:
 -- logs-dir:
-world-file: <%= ENV['HOME'] %>/.cabal/world
+world-file: <%= get_env! :HOME %>/.cabal/world
 -- verbose: 1
 -- compiler: ghc
 -- with-compiler:
@@ -61,7 +61,7 @@ world-file: <%= ENV['HOME'] %>/.cabal/world
 -- flags:
 -- extra-include-dirs:
 -- extra-lib-dirs:
-extra-prog-path: <%= ENV['HOME'] %>/.cabal/bin
+extra-prog-path: <%= get_env! :HOME %>/.cabal/bin
 -- tests: False
 -- library-coverage: False
 -- exact-configuration: False
@@ -83,7 +83,7 @@ extra-prog-path: <%= ENV['HOME'] %>/.cabal/bin
 -- upgrade-dependencies: False
 -- root-cmd:
 -- symlink-bindir:
-build-summary: <%= ENV['HOME'] %>/.cabal/logs/build.log
+build-summary: <%= get_env! :HOME %>/.cabal/logs/build.log
 -- build-log:
 remote-build-reporting: anonymous
 -- one-shot: False
@@ -108,7 +108,7 @@ haddock
   -- contents-location:
 
 install-dirs user
-  -- prefix: <%= ENV['HOME'] %>/.cabal
+  -- prefix: <%= get_env! :HOME %>/.cabal
   -- bindir: $prefix/bin
   -- libdir: $prefix/lib
   -- libsubdir: $arch-$os-$compiler/$pkgid

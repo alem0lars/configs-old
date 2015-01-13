@@ -1,7 +1,7 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    git/gitconfig                                                     #
+# - Name:    git/gitconfig.tt                                                  #
 # - Summary: The global git configuration.                                     #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
@@ -39,7 +39,7 @@
 
 [user]
   <% if get_var :email %>
-  email = <%= vars.email %>
+  email = <%= get_var :email %>
   <% end %>
   <% if get_var :fullname %>
   name = <%= get_var :fullname %>
