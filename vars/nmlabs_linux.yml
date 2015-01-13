@@ -60,8 +60,9 @@ notes_def_notebook_dir: '/shared/notes/notebook'
 # }}}
 
 tmux:
-  - config_file_path: '/etc/tmux.conf'
-  - theme_path:       '/etc/tmux/tmuxline.conf'
+  config_file_path: '/etc/tmux.conf'
+  theme_path:       '/etc/tmux/tmuxline.conf'
 
 features:
   - tmux
+
