@@ -39,9 +39,9 @@
 features:
 
   - osx
-
   - homebrew
 
+  - tmux
   - vim
 
   - ruby
@@ -57,3 +57,5 @@ features:
   - erlang
 
   - sbt
+
+  - haskell
