@@ -2,7 +2,7 @@
 #                                                                              #
 # File informations:                                                           #
 # - Name:    mutt/user_muttrc.tt                                               #
-# - Summary: The main configuration file for mutt.                             #
+# - Summary: The user-specific configuration file for mutt.                    #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
