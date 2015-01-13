@@ -1,7 +1,7 @@
 --##############################################################################
 --                                                                             #
 -- File informations:                                                          #
--- - Name:    cabal/config.tt                                                  #
+-- - Name:    cabal/config                                                     #
 -- - Summary: The configuration file for the 'cabal' command line tool.        #
 -- - Authors:                                                                  #
 --   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)             #
