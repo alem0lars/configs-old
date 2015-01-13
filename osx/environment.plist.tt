@@ -1,8 +1,11 @@
-################################################################################
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!--############################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_osx.yml                                               #
-# - Summary: Common variables for all OSX nextreamlabs systems                 #
+# - Name:    osx/environment.plist                                             #
+# - Summary: System-wide environments variables definition                     #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -29,31 +32,64 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
+#############################################################################-->
 
 
-features:
+<plist version="1.0">
 
-  - osx
+  <dict>
 
-  - homebrew
+    <key>LIBRARY_PATH</key>
+    <string>/usr/local/lib:${LIBRARY_PATH}</string>
 
-  - vim
+    <% if has_feature? :vim %>
+    <key>EDITOR</key>
+    <string>vim</string>
+    <% end %>
 
-  - ruby
-  - rbenv
+    <% if has_feature? :homebrew %>
+    <key>HOMEBREW_CASK_OPTS</key>
+    <string>--appdir=/Applications</string>
+    <% end %>
 
-  - python
-  - pyenv
+    <% if has_feature? :rbenv %>
+    <key>RBENV_ROOT</key>
+    <string>/usr/local/opt/rbenv</string>
+    <% end %>
 
-  - java
+    <% if has_feature? :python %>
+    <key>PYTHONIOENCODING</key>
+    <string>utf-8</string>
+    <% end %>
 
-  - groovy
+    <% if has_feature? :pyenv %>
+    <key>PYENV_ROOT</key>
+    <string>/usr/local/opt/pyenv</string>
+    <% end %>
 
-  - erlang
+    <% if has_feature? :java %>
+    <key>JAVA_HOME</key>
+    <string>/Library/Java/Home</string>
+    <% end %>
 
-  - sbt
+    <% if has_feature? :groovy %>
+    <key>GROOVY_HOME</key>
+    <string>/usr/local/opt/groovy/libexec</string>
+    <% end %>
+
+    <% if has_feature? :erlang %>
+    <key>MANPATH</key>
+    <string>/usr/local/opt/erlang/lib/erlang/man:${MANPATH}</string>
+    <% end %>
+
+    <% if has_feature? :sbt %>
+    <key>SBT_OPTS</key>
+    <string>"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}</string>
+    <% end %>
+
+  </dict>
+
+</plist>
+
+
+<!-- vim: set filetype=xml : -->
