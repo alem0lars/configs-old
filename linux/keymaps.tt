@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    kitty_hck_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based systems            #
+# - Name:    linux/keymaps.tt                                                  #
+# - Summary: The keymaps configuration.                                        #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,19 +30,28 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: alem0lars_hck_gentoo                                           <=#
-#                                                                              #
-################################################################################
 
 
-hostname: 'kitty'
+# Use keymap to specify the default console keymap.  There is a complete tree
+# of keymaps in /usr/share/keymaps to choose from.
+keymap="us"
 
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/AC'
-  wifi_dev: &conky_wifi_dev 'wlp2s0'
-  eth_dev:  &conky_eth_dev  'eno1'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
+# Should we first load the 'windowkeys' console keymap?  Most x86 users will
+# say "yes" here.  Note that non-x86 users should leave it as "no".
+# Loading this keymap will enable VT switching (like ALT+Left/Right)
+# using the special windows keys on the linux console.
+windowkeys="YES"
+
+# The maps to load for extended keyboards.  Most users will leave this as is.
+extended_keymaps=""
+#extended_keymaps="backspace keypad euro2"
+
+# Tell dumpkeys(1) to interpret character action codes to be
+# from the specified character set.
+# This only matters if you set unicode="yes" in /etc/rc.conf.
+# For a list of valid sets, run `dumpkeys --help`
+dumpkeys_charset=""
+
+# Some fonts map AltGr-E to the currency symbol ¤ instead of the Euro €
+# To fix this, set to "yes".
+fix_euro="YES"

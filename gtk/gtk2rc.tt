@@ -1,0 +1,17 @@
+gtk-theme-name="<%= get_var! 'gtk.theme' %>"
+gtk-icon-theme-name="gnome"
+gtk-font-name="<%= get_var! 'fonts.main.name' %> <%= get_var! 'fonts.main.size' %>"
+gtk-cursor-theme-size=0
+gtk-toolbar-style=GTK_TOOLBAR_TEXT
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
+gtk-button-images=1
+gtk-menu-images=1
+gtk-enable-event-sounds=0
+gtk-enable-input-feedback-sounds=0
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle="hintfull"
+gtk-xft-rgba="rgb"
+<% if get_var 'gtk.key_theme' %>
+gtk-key-theme="<%= get_var! 'gtk.key_theme' %>"
+<% end %>

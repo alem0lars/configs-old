@@ -61,19 +61,31 @@ notes_def_notebook_dir: '/shared/notes/notebook'
 
 distro_name: 'gentoo'
 
+locale: 'en_US.UTF-8'
+
 fonts:
   main:
     name: 'DejaVu Sans Mono for Powerline'
     size: 11
+
+gtk:
+  theme: 'FlatStudioDark'
 
 tmux:
   config_file_path: '/etc/tmux.conf'
   theme_path:       '/etc/tmux/tmuxline.conf'
 
 features:
-  - linux
-  - btrfs
-  - grub
-  - alsa
-  - pulseaudio
-  - tmux
+  - 'linux'
+  - 'gentoo'
+  - 'g-sorcery'
+  - 'btrfs'
+  - 'grub'
+  - 'slim'
+  - 'gtk'
+  - 'alsa'
+  - 'pulseaudio'
+  - 'tmux'
+  - 'haskell'
+  - 'ruby'
+  - 'python'

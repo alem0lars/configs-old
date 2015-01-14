@@ -59,6 +59,10 @@ elems:
         irb extensions    -> gem 'irbtools' & 'irbtools-more'
         clipboard support -> xclip
 
+  - src:  'python/(ipython.+)'
+    dst:  '~/.ipython/profile_default/<1>'
+    only: ['python']
+
   # }}}
 
   # cli centric {{{
@@ -148,17 +152,49 @@ elems:
         sourceview         -> gtksourceview2
         versioncontrol     -> (optional) bzr, hg, git
 
-  - src:  'gtk/bookmarks'
-    dst:  '~/.gtk-bookmarks'
-    only: ['gtk']
-
   - src:  'alsa/alsasound'
     dst:  '/etc/conf.d/alsasound'
     only: ['alsa']
 
+  - src:  'dracut/dracut.conf'
+    dst:  '/etc/dracut.conf'
+    only: ['dracut']
+
+  - src:  'slim/slim.conf'
+    dst:  '/etc/slim.conf'
+    only: ['slim']
+
+  - src:  'virtualbox/systemd_kernel_modules.conf'
+    dst:  '/etc/modules-load.d/virtualbox.conf'
+    only: ['virtualbox_systemd']
+
+  - src:  'mplayer/(.+)'
+    dst:  '/etc/mplayer/<1>'
+    only: ['mplayer']
+
   # }}}
 
-  # os based {{{
+  # gtk {{{
+
+  - src:  'gtk/bookmarks'
+    dst:  '~/.gtk-bookmarks'
+    only: ['gtk']
+
+  - src:  'gtk/gtk2rc'
+    dst:  '/etc/gtk-2.0/gtkrc'
+    only: ['gtk']
+
+  - src:  'gtk/gtk3settings.ini'
+    dst:  '/etc/gtk-3.0/settings.ini'
+    only: ['gtk']
+
+  - src:  'gtk/vim_theme/(.+)'
+    dst:  '/usr/share/themes/Vi/<1>'
+    only: ['gtk_vim']
+
+  # }}}
+
+  # linux (& distros) {{{
 
   - src:  'linux/bootmisc'
     dst:  '/etc/conf.d/bootmisc'
@@ -167,6 +203,37 @@ elems:
   - src:  'linux/hostname'
     dst:  '/etc/conf.d/hostname'
     only: ['linux']
+  - src:  'linux/systemd_hostname'
+    dst:  '/etc/hostname'
+    only: ['systemd']
+
+  - src:  'linux/hwclock'
+    dst:  '/etc/conf.d/hwclock'
+    only: ['linux']
+
+  - src:  'linux/keymaps'
+    dst:  '/etc/conf.d/keymaps'
+    only: ['linux']
+
+  - src:  'linux/locale.conf'
+    dst:  '/etc/locale.conf'
+    only: ['linux']
+
+  - src:  'eix/(.+)'
+    dst:  '/etc/eixrc/<1>'
+    only: ['gentoo']
+
+  - src:  'layman/(.+)'
+    dst:  '/etc/layman/<1>'
+    only: ['gentoo']
+
+  - src:  'g-sorcery/(.+)'
+    dst:  '/etc/eixrc/<1>'
+    only: ['g-sorcery']
+
+  # }}}
+
+  # osx {{{
 
   - src:  'osx/(environment.plist)'
     dst:  '~/.MacOSX/<1>'

@@ -41,6 +41,12 @@ fullname: 'Alessandro Molari'
 
 github_username: 'alem0lars'
 
+dracut:
+  root: 'LABEL=main'
+
+gtk:
+  key_theme: 'Vi'
+
 taskwarrior:
   taskd:
     server:      'freecinc.com:53589'
@@ -65,15 +71,6 @@ email_signature: |
   |-> website: https://molarialessandro.info |
   +------------------------------------------+
 
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/AC'
-  wifi_dev: &conky_wifi_dev 'wlp2s0'
-  eth_dev:  &conky_eth_dev  'eno1'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
-
 irc:
   nickname: 'alem0lars'
   servers:
@@ -81,11 +78,12 @@ irc:
       password: '`lpass show --password "alem0lars_firrre"`'
 
 features:
+  - 'dracut'
   - 'systemd'
   - 'minimal_de'
   - 'cli_centric'
-  - 'gtk'
+  - 'gtk_vim'
   - 'zim'
+  - 'virtualbox_systemd'
   - 'firefox'
-  - 'haskell'
-  - 'ruby'
+  - 'mplayer'

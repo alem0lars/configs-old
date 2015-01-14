@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    kitty_hck_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based systems            #
+# - Name:    dracut/dracut.conf.tt                                             #
+# - Summary: The dracut configuration.                                         #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,19 +30,51 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: alem0lars_hck_gentoo                                           <=#
-#                                                                              #
-################################################################################
 
 
-hostname: 'kitty'
+#logfile=/var/log/dracut.log
+#fileloglvl=6
 
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/AC'
-  wifi_dev: &conky_wifi_dev 'wlp2s0'
-  eth_dev:  &conky_eth_dev  'eno1'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
+# Exact list of dracut modules to use.  Modules not listed here are not going
+# to be included.  If you only want to add some optional modules use
+# add_dracutmodules option instead.
+#dracutmodules+=""
+
+# dracut modules to omit
+#omit_dracutmodules+=""
+
+# dracut modules to add to the default
+add_dracutmodules+="img-lib<%= has_feature? :btrfs ? ' ' + 'btrfs' : '' %>"
+
+# additional kernel modules to the default
+#add_drivers+=""
+
+# list of kernel filesystem modules to be included in the generic initramfs
+#filesystems+=""
+
+# build initrd only to boot current hardware
+hostonly="yes"
+
+# install local /etc/mdadm.conf
+#mdadmconf="no"
+
+# install local /etc/lvm/lvm.conf
+#lvmconf="no"
+
+# A list of fsck tools to install. If it's not specified, module's hardcoded
+# default is used, currently: "umount mount /sbin/fsck* xfs_db xfs_check
+# xfs_repair e2fsck jfs_fsck reiserfsck btrfsck". The installation is
+# opportunistic, so non-existing tools are just ignored.
+#fscks=""
+
+# inhibit installation of any fsck tools
+#nofscks="yes"
+
+# mount / and /usr read-only by default
+#ro_mnt="no"
+
+# set the directory for temporary files
+# default: /var/tmp
+#tmpdir=/tmp
+
+root=<%= get_var! 'dracut.root' %>

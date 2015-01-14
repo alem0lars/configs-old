@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    kitty_hck_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based systems            #
+# - Name:    linux/hwclock.tt                                                  #
+# - Summary: The hardware clock configuration.                                 #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,19 +30,25 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: alem0lars_hck_gentoo                                           <=#
-#                                                                              #
-################################################################################
 
 
-hostname: 'kitty'
+# Set CLOCK to "UTC" if your Hardware Clock is set to UTC (also known as
+# Greenwich Mean Time).  If that clock is set to the local time, then
+# set CLOCK to "local".  Note that if you dual boot with Windows, then
+# you should set it to "local".
+clock="UTC"
 
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/AC'
-  wifi_dev: &conky_wifi_dev 'wlp2s0'
-  eth_dev:  &conky_eth_dev  'eno1'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
+# If you want the hwclock script to set the system time (software clock)
+# to match the current hardware clock during bootup, leave this
+# commented out.
+# However, you can set this to "NO" ifyou are running a modern kernel
+# with CONFIG_RTC_HCTOSYS set to y and your hardware clock set to UTC.
+clock_hctosys="YES"
+
+# If you do not want to set the hardware clock to the current system
+# time (software clock) during shutdown, set this to no.
+clock_systohc="YES"
+
+# If you wish to pass any other arguments to hwclock during bootup,
+# you may do so here. Alpha users may wish to use --arc or --srm here.
+clock_args=""

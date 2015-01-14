@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    kitty_hck_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based systems            #
+# - Name:    eix/99-eixlimit.tt                                                #
+# - Summary: Set some limits (i.e. bounds) for eix.                            #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,19 +30,6 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: alem0lars_hck_gentoo                                           <=#
-#                                                                              #
-################################################################################
 
 
-hostname: 'kitty'
-
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/AC'
-  wifi_dev: &conky_wifi_dev 'wlp2s0'
-  eth_dev:  &conky_eth_dev  'eno1'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
+EIX_LIMIT=8192
