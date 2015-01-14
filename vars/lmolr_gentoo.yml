@@ -43,6 +43,15 @@ github_username: 'LMolr'
 
 hostname: 'terzon'
 
+conky:
+  battery_name: 'BAT0'
+  ac_path:      '/sys/class/power_supply/ADP0'
+  wifi_dev: &conky_wifi_dev 'wlp3s0'
+  eth_dev:  &conky_eth_dev  'enp6s0'
+  net_devs:
+    - *conky_wifi_dev
+    - *conky_eth_dev
+
 features:
   - 'haskell'
   - 'ruby'
