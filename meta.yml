@@ -127,6 +127,15 @@ elems:
     dst:  '<%= get_var! 'tmux.theme_path' %>'
     only: ['tmux']
 
+  <% if get_var 'vim.entry_point' %>
+  - src:  'vim/vimrc'
+    dst:  '<%= get_var! 'vim.entry_point' %>'
+    only: ['vim']
+  <% end %>
+  - src:  '^vim/((?!.*vimrc).*)$'
+    dst:  '<%= get_var! 'vim.custom_dir' %>/<1>'
+    only: ['vim']
+
   - src:  'grub/default_config'
     dst:  '/etc/default/grub'
     only: ['grub']

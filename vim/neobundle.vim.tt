@@ -1,0 +1,162 @@
+"###############################################################################
+"                                                                              #
+" File informations:                                                           #
+" - Name:    vim/neobundle.vim.tt                                              #
+" - Summary: The bundles specification for VIM.                                #
+" - Authors:                                                                   #
+"   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+"                                                                              #
+" Project informations:                                                        #
+"   - Homepage:        https://github.com/alem0lars/configs                    #
+"   - Getting started: see README.md in the project root folder                #
+"                                                                              #
+" License: Apache v2.0 (see below)                                             #
+"                                                                              #
+"###############################################################################
+"                                                                              #
+" Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+" license agreements.  See the NOTICE file distributed with this work for      #
+" additional information regarding copyright ownership. The ASF licenses this  #
+" file to you under the Apache License, Version 2.0 (the "License"); you may   #
+" not use this file except in compliance with the License.                     #
+" You may obtain a copy of the License at                                      #
+"                                                                              #
+"   http://www.apache.org/licenses/LICENSE-2.0                                 #
+"                                                                              #
+" Unless required by applicable law or agreed to in writing, software          #
+" distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+" WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+" See the License for the specific language governing permissions and          #
+" limitations under the License.                                               #
+"                                                                              #
+"###############################################################################
+
+
+" Add neobundle to runtime path.
+if has('vim_starting')
+  set runtimepath+=<%= get_var! 'vim.custom_dir' %>/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('<%= get_var! "vim.custom_dir" %>/bundle/'))
+
+" Let neobundle manage neobundle.
+NeoBundle 'Shougo/neobundle.vim'
+
+
+" plugins {{{
+
+NeoBundle 'Shougo/unite.vim'
+
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'mac' :   'make -f make_mac.mak',
+      \     'linux' : 'make'
+      \   }
+      \ }
+
+" shell {{{
+NeoBundle 'Shougo/neossh.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'ujihisa/vimshell-ssh'
+" }}}
+
+" editing capabilities extensions {{{
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'moll/vim-bbye'
+" }}}
+
+" ui additions {{{
+NeoBundle 'luochen1990/rainbow'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 't9md/vim-choosewin'
+" }}}
+
+" autocomplete and snippets {{{
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+" }}}
+
+" files management {{{
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'chrisbra/SudoEdit.vim'
+" }}}
+
+" vcs {{{
+NeoBundle 'tpope/vim-fugitive'
+" }}}
+
+" syntax checking {{{
+NeoBundle 'scrooloose/syntastic'
+" }}}
+
+" languages support {{{
+
+" c,c++,objc,objcpp
+NeoBundle 'Rip-Rip/clang_complete', {
+      \   'build': {
+      \     'mac':   'make install',
+      \     'linux': 'make install'
+      \   }
+      \ }
+
+" python
+NeoBundle 'davidhalter/jedi-vim'
+
+" ruby
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'skalnik/vim-vroom'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-rake'
+
+" haskell
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
+
+" hex
+NeoBundle 'Shougo/vinarise'
+
+" latex
+NeoBundle 'vim-latex/vim-latex'
+
+" html, css
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'pangloss/vim-javascript'
+
+" }}}
+
+" airline and derivatives {{{
+NeoBundle 'bling/vim-airline'
+NeoBundle 'edkolev/promptline.vim'
+NeoBundle 'edkolev/tmuxline.vim'
+" }}}
+
+" }}}
+
+
+" theme {{{
+NeoBundle 'wombat256.vim'
+" }}}
+
+
+call neobundle#end()
+
+" if there are uninstalled bundles found, this'll prompt you to install them
+NeoBundleCheck
+
+
+" vim: set filetype=vim :

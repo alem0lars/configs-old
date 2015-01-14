@@ -47,6 +47,9 @@ dracut:
 gtk:
   key_theme: 'Vi'
 
+vim:
+  custom_dir:  '/etc/vim'
+
 taskwarrior:
   taskd:
     server:      'freecinc.com:53589'
@@ -85,5 +88,6 @@ features:
   - 'gtk_vim'
   - 'zim'
   - 'virtualbox_systemd'
+  - 'vim'
   - 'firefox'
   - 'mplayer'

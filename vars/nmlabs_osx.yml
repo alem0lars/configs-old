@@ -36,26 +36,21 @@
 ################################################################################
 
 
-features:
+vim:
+  entry_point: '~/.vimrc'
+  custom_dir:  '~/.vim'
 
+features:
   - osx
   - homebrew
-
   - tmux
   - vim
-
   - ruby
   - rbenv
-
   - python
   - pyenv
-
   - java
-
   - groovy
-
   - erlang
-
   - sbt
-
   - haskell
