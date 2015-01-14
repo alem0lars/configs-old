@@ -1,0 +1,167 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    conky/conky_2.conf.tt                                             #
+# - Summary: The configuration showing the informations of particular          #
+#            applications.                                                     #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#   - Luca Molari <molari.luca@gmail.com> (LMolr)                              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# run, updates {{{
+
+# fork to background
+background yes
+
+# update interval in seconds
+update_interval 4
+update_interval_on_battery 8
+
+# number of updates before quitting (0 = forever)
+total_run_times 0
+
+# }}}
+
+
+# buffer {{{
+
+text_buffer_size 2048
+
+# use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# }}}
+
+
+# font {{{
+
+use_xft yes
+xftfont <%= get_var! 'fonts.main.name' %>:size=<%= get_var! 'fonts.main.size' %>
+xftalpha 1
+override_utf8_locale yes # requires xft
+
+# }}}
+
+
+# window settings {{{
+
+own_window yes
+own_window_transparent yes
+own_window_argb_visual no
+own_window_argb_value 128
+own_window_type override
+own_window_class conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# }}}
+
+
+# size, position {{{
+
+minimum_size 180 0
+alignment top_left
+gap_x 28
+gap_y 48
+
+# }}}
+
+
+# shades, outline, borders {{{
+
+draw_shades yes
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_inner_margin 8
+border_width 2
+
+# }}}
+
+
+# colors {{{
+
+default_shade_color 000000
+default_outline_color 000000
+own_window_colour 1A1A1A
+default_color F1F1F1
+color1 F1F1F1
+color2 B9B9B9
+color3 FF92E4
+
+# }}}
+
+
+# settings {{{
+
+# subtract file system buffers from used memory
+no_buffers yes
+# add spaces to keep things from moving about (only affects certain objects)
+use_spacer none
+
+# not all uppercase
+uppercase no
+
+# number of cpu samples to average (set to 1 to disable averaging)
+cpu_avg_samples 2
+# number of net samples to average. (set to 1 to disable averaging)
+net_avg_samples 2
+
+temperature_unit celsius
+# applies to size unit suffixes
+format_human_readable yes
+
+# }}}
+
+
+# external scripts {{{
+
+lua_load /etc/conky/utils.lua
+
+# }}}
+
+
+TEXT # {{{
+
+<% if get_var('pulseaudio') %>
+# pulseaudio {{{
+${color1}PULSEAUDIO ${hr 2}${voffset 6}
+  ${color2}VOLUME
+${color1}${alignr}${execi 4 pactl list sinks | grep "Volume:" | head -n 1 | sed "s/Volume://" | tr "," "\n" | sed "s/\\s*//" | awk '{print "    " $0}' }
+# }}}
+<% end %>
+
+<% if get_var('distro_name') == 'gentoo' %>
+# portage {{{
+${color1}PORTAGE ${hr 2}${voffset 6}
+  ${color2}LATEST MERGES
+${color1}${execi 64 genlop -lnu | sed -e 's/.*\([><]\+\)/    \1/' | tail -n 3}
+# }}}
+<% end %>
+
+# }}}

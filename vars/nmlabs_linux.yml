@@ -59,9 +59,20 @@ notes_def_notebook_dir: '/shared/notes/notebook'
 
 # }}}
 
+distro_name: 'gentoo'
+
+fonts:
+  main:
+    name: 'DejaVu Sans Mono for Powerline'
+    size: 11
+
+btrfs: true
+pulseaudio: true
+
 tmux:
   config_file_path: '/etc/tmux.conf'
   theme_path:       '/etc/tmux/tmuxline.conf'
 
 features:
   - tmux
+  - grub

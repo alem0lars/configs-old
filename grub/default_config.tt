@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    alem0lars_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based hacking systems    #
+# - Name:    grub/default_config.tt                                            #
+# - Summary: The grub configuration.                                           #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,63 +30,45 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: nmlabs_linux                                                   <=#
-#                                                                              #
-################################################################################
 
 
-email:    'molari.alessandro@gmail.com'
-fullname: 'Alessandro Molari'
+GRUB_DISTRIBUTOR="<%= get_var!('distro_name').capitalize %>"
 
-github_username: 'alem0lars'
+<% if get_var 'btrfs' %>
+GRUB_PRELOAD_MODULES="btrfs"
+<% end %>
 
-systemd: true
+# Default menu entry
+GRUB_DEFAULT=0
 
-taskwarrior:
-  taskd:
-    server:      'freecinc.com:53589'
-    key_file:    'freecinc_e2cca0ca.key.pem'
-    cert_file:   'freecinc_e2cca0ca.cert.pem'
-    ca_file:     'freecinc_e2cca0ca.ca.pem'
-    credentials: '`lpass show --password "freecinc_credentials"`'
+# Boot the default entry this many seconds after the menu is displayed
+GRUB_TIMEOUT=4
+GRUB_TIMEOUT_STYLE=menu
 
-mutt:
-  theme: '/etc/mutt/theme'
-email_pass:  '`lpass show --password "kitty@mutt google app password"`'
-email_host:  'gmail.com'
-imap_server: 'imap.gmail.com'
-smtp_server: 'smtp.gmail.com'
-email_signature: |
-  +------------------------------------------+
-  |            Alessandro Molari             |
-  |                                          |
-  |-> email:   molari.alessandro@gmail.com   |
-  |-> twitter: @alem0lars                    |
-  |-> github:  https://github.com/alem0lars  |
-  |-> website: https://molarialessandro.info |
-  +------------------------------------------+
+# Append parameters to the linux kernel command line
+<% if get_var 'systemd' %>
+GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"
+<% end %>
 
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/AC'
-  wifi_dev: &conky_wifi_dev 'wlp2s0'
-  eth_dev:  &conky_eth_dev  'eno1'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
+# Append parameters to the linux kernel command line for non-recovery entries
+GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 
-irc:
-  nickname: 'alem0lars'
-  servers:
-    firrre:
-      password: '`lpass show --password "alem0lars_firrre"`'
+# The resolution used on graphical terminal.
+# Note that you can use only modes which your graphic card supports via VBE.
+# You can see them in real GRUB with the command `vbeinfo'.
+#GRUB_GFXMODE=640x480
 
-features:
-  - 'haskell'
-  - 'ruby'
-  - 'minimal_de'
-  - 'cli_centric'
-  - 'gtk'
-  - 'zim'
-  - 'firefox'
+# Path to theme spec txt file.
+# The starfield is by default provided with use truetype.
+# NOTE: when enabling custom theme, ensure you have required font/etc.
+#GRUB_THEME="/boot/grub/themes/starfield/theme.txt"
+
+# Background image used on graphical terminal.
+# Can be in various bitmap formats.
+#GRUB_BACKGROUND="/boot/grub/background.png"
+
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to kernel
+GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+#GRUB_DISABLE_RECOVERY=true

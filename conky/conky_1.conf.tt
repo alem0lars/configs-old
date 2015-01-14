@@ -1,0 +1,216 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    conky/conky_1.conf.tt                                             #
+# - Summary: The configuration showing the system-level informations.          #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#   - Luca Molari <molari.luca@gmail.com> (LMolr)                              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# run, updates {{{
+
+# fork to background
+background yes
+
+# update interval in seconds
+update_interval 4
+update_interval_on_battery 8
+
+# number of updates before quitting (0 = forever)
+total_run_times 0
+
+# }}}
+
+
+# buffer {{{
+
+text_buffer_size 2048
+
+# use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# }}}
+
+
+# font {{{
+
+use_xft yes
+xftfont <%= get_var! 'fonts.main.name' %>:size=<%= get_var! 'fonts.main.size' %>
+xftalpha 1
+override_utf8_locale yes # requires xft
+
+# }}}
+
+
+# window settings {{{
+
+own_window yes
+own_window_transparent yes
+own_window_argb_visual no
+own_window_argb_value 128
+own_window_type override
+own_window_class conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# }}}
+
+
+# size, position {{{
+
+minimum_size 180 0
+alignment top_right
+gap_x 28
+gap_y 48
+
+# }}}
+
+
+# shades, outline, borders {{{
+
+draw_shades yes
+draw_outline no
+draw_borders no
+stippled_borders 0
+border_inner_margin 8
+border_width 2
+
+# }}}
+
+
+# colors {{{
+
+default_shade_color 000000
+default_outline_color 000000
+own_window_colour 1A1A1A
+default_color F1F1F1
+color1 F1F1F1
+color2 B9B9B9
+color3 FF92E4
+
+# }}}
+
+
+# settings {{{
+
+# subtract file system buffers from used memory
+no_buffers yes
+# add spaces to keep things from moving about (only affects certain objects)
+use_spacer none
+
+# not all uppercase
+uppercase no
+
+# number of cpu samples to average (set to 1 to disable averaging)
+cpu_avg_samples 2
+# number of net samples to average. (set to 1 to disable averaging)
+net_avg_samples 2
+
+temperature_unit celsius
+# applies to size unit suffixes
+format_human_readable yes
+
+# }}}
+
+
+# external scripts {{{
+
+lua_load /etc/conky/utils.lua
+
+# }}}
+
+
+TEXT # {{{
+
+# datetime {{{
+${color1}${alignc}${time}
+# }}}
+
+# system {{{
+${color1}SYSTEM ${hr 2}${voffset 6}
+# -- hostname
+  ${color2}host: ${alignr}${color1}${execi 3600 hostname}${voffset 6}
+# -- uname
+  ${color2}kernel: ${alignr}${color1}${kernel}${voffset 6}
+# -- uptime
+  ${color2}uptime: ${alignr}${color1}${uptime}${voffset 2}
+# --------
+  ${stippled_hr 1 1}${voffset 2}
+# -- power
+  ${color2}power: ${alignr}${color1}${battery_percent <%= get_var! 'conky.battery_name' %>}% ${battery_bar 4,96 <%= get_var! 'conky.battery_name' %>}${voffset 6}
+  ${if_existing <%= get_var! 'conky.ac_path' %>}${color2}ac: ${alignr}${if_existing <%= get_var! 'conky.ac_path' %>/online 1}${color1}${else}${color3}${endif}${acpiacadapter AC}${voffset 2}${endif}
+# --------
+  ${color1}${stippled_hr 1 1}${voffset 2}
+# -- load avg
+  ${color2}load avg: ${alignr}${color1}${loadavg}${voffset 8}
+# -- cpu
+  ${color2}cpu: ${voffset 2}${alignr}${color1}${cpu cpu0}% ${cpugraph cpu0 16,96 F1F1F1 FF92E4 -t -l}${voffset 6}
+# -- ram
+  ${color2}ram: ${voffset 2}${alignr}${color1}${memperc}% ${memgraph 16,96 F1F1F1 FF92E4 -t}
+# }}}
+
+# network devices {{{
+${color1}NET ${hr 2}${voffset 6}
+  ${color2}IF ${alignr}ADDR
+${color1}${lua_parse nml_if_addrs 2}
+# }}}
+
+<% if get_var 'conky.wifi_dev' %>
+# wlan informations {{{
+${color1}WLAN INFO ${hr 2}${voffset 6}
+  up: ${upspeed <%= get_var! 'conky.wifi_dev' %>} ${alignr}${upspeedgraph <%= get_var! 'conky.wifi_dev' %> 8,60 000000 000000}
+  down: ${downspeed <%= get_var! 'conky.wifi_dev' %>} ${alignr}${downspeedgraph <%= get_var! 'conky.wifi_dev' %> 8,60 000000 000000}
+  upload: ${alignr}${totalup <%= get_var! 'conky.wifi_dev' %>}
+  download: ${alignr}${totaldown <%= get_var! 'conky.wifi_dev' %>}
+  signal: ${wireless_link_qual <%= get_var! 'conky.wifi_dev' %>}% ${alignr}${wireless_link_bar 8,60 <%= get_var! 'conky.wifi_dev' %>}
+# }}}
+<% end %>
+
+# tcp ports {{{
+${color1}TCP PORTS ${hr 2}${voffset 6}
+  ${color2}IP ${alignr}DPORT
+${lua_parse nml_tcp_portmon 8 2}
+total: ${tcp_portmon 1 65535 count} ports ${hr 1}
+# }}}
+
+# processes {{{
+${color1}PROCESSES ${hr 2}${voffset 6}
+  ${color2}PROC ${alignr}PID    CPU ${color1}
+  ${color1}${top name 1} ${alignr}${top pid 1} ${top cpu 1}%
+  ${color1}${top name 2} ${alignr}${top pid 2} ${top cpu 2}%
+  ${color1}${top name 3} ${alignr}${top pid 3} ${top cpu 3}%
+  ${color1}${top name 4} ${alignr}${top pid 4} ${top cpu 4}%
+  ${stippled_hr 1 1}${voffset 2}
+  ${color2}PROC ${alignr}PID    MEM ${color1}
+  ${color1}${top_mem name 1} ${alignr}${top_mem pid 1} ${top_mem mem 1}%
+  ${color1}${top_mem name 2} ${alignr}${top_mem pid 2} ${top_mem mem 2}%
+  ${color1}${top_mem name 3} ${alignr}${top_mem pid 3} ${top_mem mem 3}%
+  ${color1}${top_mem name 4} ${alignr}${top_mem pid 4} ${top_mem mem 4}%${voffset 6}
+# }}}
+
+# }}}

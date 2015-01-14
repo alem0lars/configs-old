@@ -1,0 +1,82 @@
+--##############################################################################
+--                                                                             #
+-- File informations:                                                          #
+-- - Name:    conky/utils.lua.tt                                               #
+-- - Summary: Lua utility functions used in conky configuration files.         #
+-- - Authors:                                                                  #
+--   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)             #
+--   - Luca Molari <molari.luca@gmail.com> (LMolr)                             #
+--                                                                             #
+-- Project informations:                                                       #
+--   - Homepage:        https://github.com/alem0lars/configs                   #
+--   - Getting started: see README.md in the project root folder               #
+--                                                                             #
+-- License: Apache v2.0 (see below)                                            #
+--                                                                             #
+--##############################################################################
+--                                                                             #
+-- Licensed to the Apache Software Foundation (ASF) under one more contributor #
+-- license agreements.  See the NOTICE file distributed with this work for     #
+-- additional information regarding copyright ownership. The ASF licenses this #
+-- file to you under the Apache License, Version 2.0 (the "License"); you may  #
+-- not use this file except in compliance with the License.                    #
+-- You may obtain a copy of the License at                                     #
+--                                                                             #
+--   http://www.apache.org/licenses/LICENSE-2.0                                #
+--                                                                             #
+-- Unless required by applicable law or agreed to in writing, software         #
+-- distributed under the License is distributed on an "AS IS" BASIS, WITHOUT   #
+-- WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.            #
+-- See the License for the specific language governing permissions and         #
+-- limitations under the License.                                              #
+--                                                                             #
+--##############################################################################
+
+
+function conky_nml_fs_used_perc_pie(fs)
+  percent = conky_parse("${fs_used_perc " .. fs .. "}")
+  return conky_percent_pie(percent)
+end
+
+
+function conky_nml_percent_pie(percent)
+  percent = tonumber(percent) % 100
+  char = math.floor(percent / 100 * 20) + 97
+  return string.char(char)
+end
+
+
+function conky_nml_tcp_portmon(count, spaces_count)
+  value = ""
+  for idx = 0, count do
+    rip   = conky_parse("${tcp_portmon 1 65535 rip   " .. idx .. "}")
+    rport = conky_parse("${tcp_portmon 1 65535 rport " .. idx .. "}")
+    if rip ~= "" and rport ~= "" then
+      value = value .. conky_parse(
+          string.rep(" ", spaces_count) .. rip .. "${alignr 1}" .. rport)
+      if idx < (count - 1) then
+        value = value .. "\n"
+      end
+    end
+  end
+  return value
+end
+
+
+function conky_nml_if_addrs(spaces_count)
+  value = ""
+  ifnames = {<%= get_var!('conky.net_devs').collect{|dev| "\"#{dev}\""}.join(',') %>}
+  count = table.getn(ifnames)
+  for idx, ifname in ipairs(ifnames) do
+    value = value .. conky_parse(
+        string.rep(" ", spaces_count) .. ifname .. "${alignr 1}${addr " ..
+        ifname .. "}")
+    if idx < count then
+      value = value .. "\n"
+    end
+  end
+  return string.lower(value)
+end
+
+
+-- vim: set filetype=lua :

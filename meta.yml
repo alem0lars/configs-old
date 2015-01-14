@@ -35,11 +35,17 @@
 
 elems:
 
+  # commons {{{
+
   - src: 'git/gitconfig'
     dst: '~/.gitconfig'
 
   - src: 'svn/config'
     dst: '~/.subversion/config'
+
+  # }}}
+
+  # language specific {{{
 
   - src:  'cabal/config'
     dst:  '~/.cabal/config'
@@ -53,15 +59,9 @@ elems:
         irb extensions    -> gem 'irbtools' & 'irbtools-more'
         clipboard support -> xclip
 
-  - src:  'tmux/tmux.conf'
-    dst:  '<%= get_var! 'tmux.config_file_path' %>'
-    only: ['tmux']
-    notes: |
-      The program 'xclip' should be installed in order to provide clipboard
-      support to tmux.
-  - src:  'tmux/tmuxline.conf'
-    dst:  '<%= get_var! 'tmux.theme_path' %>'
-    only: ['tmux']
+  # }}}
+
+  # cli centric {{{
 
   - src:  'taskwarrior/taskrc'
     dst:  '~/.taskrc'
@@ -93,12 +93,13 @@ elems:
     dst:  '~/.weechat/<1>'
     only: ['cli_centric', 'weechat']
 
-  - src:  'vimperator/vimperatorrc'
-    dst:  '~/.vimperatorrc'
-    only: ['firefox']
-  - src:  'vimperator/colors/amdarkness'
-    dst:  '~/.vimperator/colors/amdarkness.vimp'
-    only: ['firefox']
+  # }}}
+
+  # minimal de {{{
+
+  - src:  'conky/(.+)'
+    dst:  '/etc/conky/<1>'
+    only: ['minimal_de', 'conky']
 
   - src: 'parcellite/(.+)'
     dst: '~/.config/parcellite/<1>'
@@ -108,9 +109,30 @@ elems:
     dst:  '~/.<1>'
     only: ['minimal_de', 'feh']
 
-  - src:  'gtk/bookmarks'
-    dst:  '~/.gtk-bookmarks'
-    only: ['gtk']
+  # }}}
+
+  # specific {{{
+
+  - src:  'tmux/tmux.conf'
+    dst:  '<%= get_var! 'tmux.config_file_path' %>'
+    only: ['tmux']
+    notes: |
+      The program 'xclip' should be installed in order to provide clipboard
+      support to tmux.
+  - src:  'tmux/tmuxline.conf'
+    dst:  '<%= get_var! 'tmux.theme_path' %>'
+    only: ['tmux']
+
+  - src:  'grub/default_config'
+    dst:  '/etc/default/grub'
+    only: ['grub']
+
+  - src:  'vimperator/vimperatorrc'
+    dst:  '~/.vimperatorrc'
+    only: ['firefox']
+  - src:  'vimperator/colors/amdarkness'
+    dst:  '~/.vimperator/colors/amdarkness.vimp'
+    only: ['firefox']
 
   - src: 'zim/(.+)'
     dst: '~/.config/zim/<1>'
@@ -126,6 +148,16 @@ elems:
         sourceview         -> gtksourceview2
         versioncontrol     -> (optional) bzr, hg, git
 
+  - src:  'gtk/bookmarks'
+    dst:  '~/.gtk-bookmarks'
+    only: ['gtk']
+
+  # }}}
+
+  # os based {{{
+
   - src: 'osx/(environment.plist)'
     dst: '~/.MacOSX/<1>'
     only: ['osx']
+
+  # }}}
