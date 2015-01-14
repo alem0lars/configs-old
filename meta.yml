@@ -49,11 +49,13 @@ elems:
 
   - src:  'cabal/config'
     dst:  '~/.cabal/config'
-    only: ['haskell']
+    only:
+      features: ['haskell']
 
   - src:  'ruby/irbrc'
     dst:  '~/.irbrc'
-    only: ['ruby']
+    only:
+      features: ['ruby']
     notes: |
       The following features will be enabled if their requirements are met:
         irb extensions    -> gem 'irbtools' & 'irbtools-more'
@@ -61,7 +63,8 @@ elems:
 
   - src:  'python/(ipython.+)'
     dst:  '~/.ipython/profile_default/<1>'
-    only: ['python']
+    only:
+      features: ['python']
 
   # }}}
 
@@ -69,21 +72,26 @@ elems:
 
   - src:  'taskwarrior/taskrc'
     dst:  '~/.taskrc'
-    only: ['cli_centric', 'taskwarrior']
+    only:
+      features: ['cli_centric', 'taskwarrior']
 
   - src: 'cmus/(.+)'
     dst: '~/.cmus/<1>'
-    only: ['cli_centric', 'cmus']
+    only:
+      features: ['cli_centric', 'cmus']
 
   - src:  'mutt/global_muttrc'
     dst:  '/etc/mutt/Muttrc'
-    only: ['cli_centric', 'mutt']
+    only:
+      features: ['cli_centric', 'mutt']
   - src:  'mutt/theme'
     dst:  '/etc/mutt/theme'
-    only: ['cli_centric', 'mutt']
+    only:
+      features: ['cli_centric', 'mutt']
   - src:  'mutt/user_muttrc'
     dst:  '~/.muttrc'
-    only: ['cli_centric', 'mutt']
+    only:
+      features: ['cli_centric', 'mutt']
     notes: |
       Depending on user's configuration, additional programs maybe required.
       For example, if passwords are retrieved using 'lpass', then the
@@ -91,11 +99,13 @@ elems:
 
   - src:  'turses/(.+)'
     dst:  '~/.turses/<1>'
-    only: ['cli_centric', 'turses']
+    only:
+      features: ['cli_centric', 'turses']
 
   - src:  'weechat/(.+)'
     dst:  '~/.weechat/<1>'
-    only: ['cli_centric', 'weechat']
+    only:
+      features: ['cli_centric', 'weechat']
 
   # }}}
 
@@ -103,15 +113,18 @@ elems:
 
   - src:  'conky/(.+)'
     dst:  '/etc/conky/<1>'
-    only: ['minimal_de', 'conky']
+    only:
+      features: ['minimal_de', 'conky']
 
   - src: 'parcellite/(.+)'
     dst: '~/.config/parcellite/<1>'
-    only: ['minimal_de', 'parcellite']
+    only:
+      features: ['minimal_de', 'parcellite']
 
   - src:  'feh/(fehbg)'
     dst:  '~/.<1>'
-    only: ['minimal_de', 'feh']
+    only:
+      features: ['minimal_de', 'feh']
 
   # }}}
 
@@ -119,37 +132,48 @@ elems:
 
   - src:  'tmux/tmux.conf'
     dst:  '<%= get_var! 'tmux.config_file_path' %>'
-    only: ['tmux']
+    only:
+      features: ['tmux']
     notes: |
       The program 'xclip' should be installed in order to provide clipboard
       support to tmux.
   - src:  'tmux/tmuxline.conf'
     dst:  '<%= get_var! 'tmux.theme_path' %>'
-    only: ['tmux']
+    only:
+      features: ['tmux']
 
   <% if get_var 'vim.entry_point' %>
   - src:  'vim/vimrc'
     dst:  '<%= get_var! 'vim.entry_point' %>'
-    only: ['vim']
+    only:
+      features: ['vim']
+      vars: ['vim']
+
   <% end %>
   - src:  '^vim/((?!.*vimrc).*)$'
     dst:  '<%= get_var! 'vim.custom_dir' %>/<1>'
-    only: ['vim']
+    only:
+      features: ['vim']
+      vars: ['vim']
 
   - src:  'grub/default_config'
     dst:  '/etc/default/grub'
-    only: ['grub']
+    only:
+      features: ['grub']
 
   - src:  'vimperator/vimperatorrc'
     dst:  '~/.vimperatorrc'
-    only: ['firefox']
+    only:
+      features: ['firefox']
   - src:  'vimperator/colors/amdarkness'
     dst:  '~/.vimperator/colors/amdarkness.vimp'
-    only: ['firefox']
+    only:
+      features: ['firefox']
 
   - src: 'zim/(.+)'
     dst: '~/.config/zim/<1>'
-    only: ['zim']
+    only:
+      features: ['zim']
     notes: |
       The enabled plugins have the following dependencies:
         diagram_editor     -> graphviz
@@ -163,23 +187,28 @@ elems:
 
   - src:  'alsa/alsasound'
     dst:  '/etc/conf.d/alsasound'
-    only: ['alsa']
+    only:
+      features: ['alsa']
 
   - src:  'dracut/dracut.conf'
     dst:  '/etc/dracut.conf'
-    only: ['dracut']
+    only:
+      features: ['dracut']
 
   - src:  'slim/slim.conf'
     dst:  '/etc/slim.conf'
-    only: ['slim']
+    only:
+      features: ['slim']
 
   - src:  'virtualbox/systemd_kernel_modules.conf'
     dst:  '/etc/modules-load.d/virtualbox.conf'
-    only: ['virtualbox_systemd']
+    only:
+      features: ['virtualbox_systemd']
 
   - src:  'mplayer/(.+)'
     dst:  '/etc/mplayer/<1>'
-    only: ['mplayer']
+    only:
+      features: ['mplayer']
 
   # }}}
 
@@ -187,19 +216,23 @@ elems:
 
   - src:  'gtk/bookmarks'
     dst:  '~/.gtk-bookmarks'
-    only: ['gtk']
+    only:
+      features: ['gtk']
 
   - src:  'gtk/gtk2rc'
     dst:  '/etc/gtk-2.0/gtkrc'
-    only: ['gtk']
+    only:
+      features: ['gtk']
 
   - src:  'gtk/gtk3settings.ini'
     dst:  '/etc/gtk-3.0/settings.ini'
-    only: ['gtk']
+    only:
+      features: ['gtk']
 
   - src:  'gtk/vim_theme/(.+)'
     dst:  '/usr/share/themes/Vi/<1>'
-    only: ['gtk_vim']
+    only:
+      features: ['gtk_vim']
 
   # }}}
 
@@ -207,38 +240,47 @@ elems:
 
   - src:  'linux/bootmisc'
     dst:  '/etc/conf.d/bootmisc'
-    only: ['linux']
+    only:
+      features: ['linux']
 
   - src:  'linux/hostname'
     dst:  '/etc/conf.d/hostname'
-    only: ['linux']
+    only:
+      features: ['linux']
   - src:  'linux/systemd_hostname'
     dst:  '/etc/hostname'
-    only: ['systemd']
+    only:
+      features: ['systemd']
 
   - src:  'linux/hwclock'
     dst:  '/etc/conf.d/hwclock'
-    only: ['linux']
+    only:
+      features: ['linux']
 
   - src:  'linux/keymaps'
     dst:  '/etc/conf.d/keymaps'
-    only: ['linux']
+    only:
+      features: ['linux']
 
   - src:  'linux/locale.conf'
     dst:  '/etc/locale.conf'
-    only: ['linux']
+    only:
+      features: ['linux']
 
   - src:  'eix/(.+)'
     dst:  '/etc/eixrc/<1>'
-    only: ['gentoo']
+    only:
+      features: ['gentoo']
 
   - src:  'layman/(.+)'
     dst:  '/etc/layman/<1>'
-    only: ['gentoo']
+    only:
+      features: ['gentoo']
 
   - src:  'g-sorcery/(.+)'
     dst:  '/etc/eixrc/<1>'
-    only: ['g-sorcery']
+    only:
+      features: ['g-sorcery']
 
   # }}}
 
@@ -246,6 +288,7 @@ elems:
 
   - src:  'osx/(environment.plist)'
     dst:  '~/.MacOSX/<1>'
-    only: ['osx']
+    only:
+      features: ['osx']
 
   # }}}
