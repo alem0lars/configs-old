@@ -148,7 +148,7 @@ lua_load /etc/conky/utils.lua
 
 TEXT # {{{
 
-<% if get_var('pulseaudio') %>
+<% if has_feature? 'pulseaudio' %>
 # pulseaudio {{{
 ${color1}PULSEAUDIO ${hr 2}${voffset 6}
   ${color2}VOLUME

@@ -34,7 +34,7 @@
 
 GRUB_DISTRIBUTOR="<%= get_var!('distro_name').capitalize %>"
 
-<% if get_var 'btrfs' %>
+<% if has_feature? 'btrfs' %>
 GRUB_PRELOAD_MODULES="btrfs"
 <% end %>
 
@@ -46,7 +46,7 @@ GRUB_TIMEOUT=4
 GRUB_TIMEOUT_STYLE=menu
 
 # Append parameters to the linux kernel command line
-<% if get_var 'systemd' %>
+<% if has_feature? 'systemd' %>
 GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"
 <% end %>
 

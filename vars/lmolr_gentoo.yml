@@ -41,6 +41,8 @@ fullname: 'Luca Molari'
 
 github_username: 'LMolr'
 
+hostname: 'terzon'
+
 features:
   - 'haskell'
   - 'ruby'

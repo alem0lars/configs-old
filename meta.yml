@@ -152,12 +152,24 @@ elems:
     dst:  '~/.gtk-bookmarks'
     only: ['gtk']
 
+  - src:  'alsa/alsasound'
+    dst:  '/etc/conf.d/alsasound'
+    only: ['alsa']
+
   # }}}
 
   # os based {{{
 
-  - src: 'osx/(environment.plist)'
-    dst: '~/.MacOSX/<1>'
+  - src:  'linux/bootmisc'
+    dst:  '/etc/conf.d/bootmisc'
+    only: ['linux']
+
+  - src:  'linux/hostname'
+    dst:  '/etc/conf.d/hostname'
+    only: ['linux']
+
+  - src:  'osx/(environment.plist)'
+    dst:  '~/.MacOSX/<1>'
     only: ['osx']
 
   # }}}

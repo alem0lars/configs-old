@@ -41,8 +41,6 @@ fullname: 'Alessandro Molari'
 
 github_username: 'alem0lars'
 
-systemd: true
-
 taskwarrior:
   taskd:
     server:      'freecinc.com:53589'
@@ -83,10 +81,11 @@ irc:
       password: '`lpass show --password "alem0lars_firrre"`'
 
 features:
-  - 'haskell'
-  - 'ruby'
+  - 'systemd'
   - 'minimal_de'
   - 'cli_centric'
   - 'gtk'
   - 'zim'
   - 'firefox'
+  - 'haskell'
+  - 'ruby'
