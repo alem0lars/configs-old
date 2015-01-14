@@ -1,15 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs                                                      #
+# - Name:    weechat/xfer.conf.tt                                              #
+# - Summary: Configuration for the Xfer plugin of weechat.                     #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/configs                      #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -31,37 +30,55 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-# favourite directories {{{
+[look]
 
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
-
-# }}}
+auto_open_buffer  = on
+progress_bar_size = 20
+pv_tags           = "notify_private"
 
 
-# details directories {{{
+[color]
 
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
+status_aborted    = lightred
+status_active     = lightblue
+status_connecting = yellow
+status_done       = lightgreen
+status_failed     = lightred
+status_waiting    = lightcyan
+text              = default
+text_bg           = default
+text_selected     = white
 
-# }}}
 
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
+[network]
 
-features:
-  - tmux
+blocksize   = 65536
+fast_send   = on
+speed_limit = 0
+timeout     = 300
+
+own_ip     = ""
+port_range = ""
+
+
+[file]
+
+auto_accept_chats = off
+auto_accept_files = off
+auto_accept_nicks = ""
+
+auto_check_crc32 = off
+
+auto_rename = on
+auto_resume = on
+
+convert_spaces = on
+use_nick_in_filename = on
+
+download_path = "<%= get_var! :downloads_dir %>"
+upload_path   = "<%= get_var! :downloads_dir %>"
+
+
+# vim: set filetype=conf :

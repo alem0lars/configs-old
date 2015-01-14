@@ -1,15 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs                                                      #
+# - Name:    weechat/script.conf.tt                                            #
+# - Summary: General settings for weechat scripts.                             #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/configs                      #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -31,37 +30,64 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-# favourite directories {{{
+[look]
 
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
+columns = "%s %n %V %v %u | %d | %t"
 
-# }}}
+diff_color   = on
+diff_command = "auto"
+
+display_source = on
+
+quiet_actions = on
+
+sort = "p,n"
+
+translate_description = on
+
+use_keys = on
 
 
-# details directories {{{
+[color]
 
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
+status_autoloaded = cyan
+status_held       = white
+status_installed  = lightcyan
+status_obsolete   = lightmagenta
+status_popular    = yellow
+status_running    = lightgreen
+status_unknown    = lightred
 
-# }}}
+text                         = default
+text_bg                      = default
+text_bg_selected             = red
+text_date                    = default
+text_date_selected           = white
+text_delimiters              = default
+text_description             = default
+text_description_selected    = white
+text_extension               = default
+text_extension_selected      = white
+text_name                    = cyan
+text_name_selected           = lightcyan
+text_selected                = white
+text_tags                    = brown
+text_tags_selected           = yellow
+text_version                 = magenta
+text_version_loaded          = default
+text_version_loaded_selected = white
+text_version_selected        = lightmagenta
 
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
 
-features:
-  - tmux
+[scripts]
+
+autoload     = on
+cache_expire = 1440
+dir          = "%h/script"
+hold         = ""
+url          = "http://weechat.org/files/plugins.xml.gz"
+
+
+# vim: set filetype=conf :

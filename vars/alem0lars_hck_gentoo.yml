@@ -65,6 +65,12 @@ email_signature: |
   |-> website: https://molarialessandro.info |
   +------------------------------------------+
 
+irc:
+  nickname: alem0lars
+  servers:
+    firrre:
+      password: '`lpass show --password "alem0lars_firrre"`'
+
 features:
   - 'haskell'
   - 'ruby'

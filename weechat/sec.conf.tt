@@ -1,15 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs                                                      #
+# - Name:    weechat/sec.conf.tt                                               #
+# - Summary: Security settings for weechat.                                    #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/configs                      #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -31,37 +30,19 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-# favourite directories {{{
+[crypt]
 
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
+cipher    = aes256
+hash_algo = sha256
 
-# }}}
+passphrase_file = ""
+
+salt = on
 
 
-# details directories {{{
+[data]
 
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
 
-# }}}
-
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
-
-features:
-  - tmux
+# vim: set filetype=conf :

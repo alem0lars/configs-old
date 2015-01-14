@@ -1,15 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs                                                      #
+# - Name:    weechat/trigger.conf.tt                                           #
+# - Summary: Configuration for the trigger plugin of weechat.                  #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/configs                      #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -31,37 +30,62 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-# favourite directories {{{
+[look]
 
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
+enabled = on
 
-# }}}
+monitor_strip_colors = off
 
 
-# details directories {{{
+[color]
 
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
+flag_command     = lightgreen
+flag_conditions  = yellow
+flag_regex       = lightcyan
+flag_return_code = lightmagenta
 
-# }}}
+regex   = white
+replace = cyan
 
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
+trigger          = green
+trigger_disabled = red
 
-features:
-  - tmux
+
+[trigger]
+
+beep.arguments   = ""
+beep.command     = "/print -beep"
+beep.conditions  = "${tg_highlight} || ${tg_msg_pv}"
+beep.enabled     = on
+beep.hook        = print
+beep.regex       = ""
+beep.return_code = ok
+
+cmd_pass.arguments   = "5000|input_text_display;5000|history_add;5000|irc_command_auth"
+cmd_pass.command     = ""
+cmd_pass.conditions  = ""
+cmd_pass.enabled     = on
+cmd_pass.hook        = modifier
+cmd_pass.regex       = "==^((/(msg|quote) +nickserv +(id|identify|register|ghost +[^ ]+|release +[^ ]+|regain +[^ ]+) +)|/oper +[^ ]+ +|/quote +pass +|/set +[^ ]*password[^ ]* +|/secure +(passphrase|decrypt|set +[^ ]+) +)(.*)==$1$.*+"
+cmd_pass.return_code = ok
+
+msg_auth.arguments   = "5000|irc_message_auth"
+msg_auth.command     = ""
+msg_auth.conditions  = ""
+msg_auth.enabled     = on
+msg_auth.hook        = modifier
+msg_auth.regex       = "==^(.*(id|identify|register|ghost +[^ ]+|release +[^ ]+) +)(.*)==$1$.*+"
+msg_auth.return_code = ok
+
+server_pass.arguments   = "5000|input_text_display;5000|history_add"
+server_pass.command     = ""
+server_pass.conditions  = ""
+server_pass.enabled     = on
+server_pass.hook        = modifier
+server_pass.regex       = "==^(/(server|connect) .*-(sasl_)?password=)([^ ]+)(.*)==$1$.*4$5"
+server_pass.return_code = ok
+
+
+# vim: set filetype=conf :

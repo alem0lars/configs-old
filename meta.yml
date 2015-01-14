@@ -89,6 +89,10 @@ elems:
     dst:  '~/.turses/<1>'
     only: ['cli_centric', 'turses']
 
+  - src:  'weechat/(.+)'
+    dst:  '~/.weechat/<1>'
+    only: ['cli_centric', 'weechat']
+
   - src:  'vimperator/vimperatorrc'
     dst:  '~/.vimperatorrc'
     only: ['firefox']
