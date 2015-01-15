@@ -1,13 +1,13 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    alem0lars_gentoo.yml                                              #
-# - Summary: Holds the variables for alem0lars gentoo-based hacking systems    #
+# - Name:    vars/alem0lars_gentoo.yml                                         #
+# - Summary: Holds the variables for alem0lars gentoo-based hacking systems.   #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Homepage:        https://github.com/alem0lars/configs                      #
 # - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
@@ -48,7 +48,9 @@ gtk:
   key_theme: 'Vi'
 
 vim:
-  custom_dir:  '/etc/vim'
+  custom_dir:   '/etc/vim'
+  terminal_cmd: 'urxvt -e'
+  latex_viewer: 'zathura'
 
 taskwarrior:
   taskd:
