@@ -142,14 +142,12 @@ elems:
     only:
       features: ['tmux']
 
-  <% if get_var 'vim.entry_point' %>
   - src:  'vim/vimrc'
     dst:  '<%= get_var! 'vim.entry_point' %>'
     only:
       features: ['vim']
       vars: ['vim']
 
-  <% end %>
   - src:  '^vim/((?!.*vimrc).*)$'
     dst:  '<%= get_var! 'vim.custom_dir' %>/<1>'
     only:
