@@ -164,11 +164,11 @@ elems:
   - src:  'vimperator/vimperatorrc'
     dst:  '~/.vimperatorrc'
     only:
-      features: ['firefox']
+      features: ['firefox_vim']
   - src:  'vimperator/colors/amdarkness'
     dst:  '~/.vimperator/colors/amdarkness.vimp'
     only:
-      features: ['firefox']
+      features: ['firefox_vim']
 
   - src: 'zim/(.+)'
     dst: '~/.config/zim/<1>'
