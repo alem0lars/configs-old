@@ -111,24 +111,32 @@ NeoBundle 'Rip-Rip/clang_complete', {
       \   }
       \ }
 
+<% if has_feature? :python %>
 " python
 NeoBundle 'davidhalter/jedi-vim'
+<% end %>
 
+<% if has_feature? :ruby %>
 " ruby
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'skalnik/vim-vroom'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-rake'
+<% end %>
 
+<% if has_feature :haskell %>
 " haskell
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
+<% end %>
 
 " hex
 NeoBundle 'Shougo/vinarise'
 
+<% if has_feature :latex %>
 " latex
 NeoBundle 'vim-latex/vim-latex'
+<% end %>
 
 " html, css
 NeoBundle 'tpope/vim-haml'
@@ -141,8 +149,12 @@ NeoBundle 'pangloss/vim-javascript'
 
 " airline and derivatives {{{
 NeoBundle 'bling/vim-airline'
+<% if has_feature :zsh %>
 NeoBundle 'edkolev/promptline.vim'
+<% end %>
+<% if has_feature :tmux %>
 NeoBundle 'edkolev/tmuxline.vim'
+<% end %>
 " }}}
 
 " }}}

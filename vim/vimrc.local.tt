@@ -45,7 +45,7 @@ endif
 
 " load plugins {{{
 
-source <%= get_var! 'vim.custom_dir' %>/neobundle.vim
+source <%= get_var! 'vim.custom_dir' %>/plugins.vim
 
 " }}}
 
@@ -53,15 +53,54 @@ source <%= get_var! 'vim.custom_dir' %>/neobundle.vim
 " load configuration {{{
 
 " Commons configuration.
-for file_path in split(
-    glob('<%= get_var! "vim.custom_dir" %>/cfg/commons/*.vim'), '\n')
-  exe 'source' file_path
-endfor
+let commons_cfg_dir_path=expand('<%= get_var! "vim.custom_dir" %>/cfg/commons')
+exe 'source' . commons_cfg_dir_path . 'appearance.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'encoding.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'fold.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'indentation.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'minibuffer.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'misc.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'mouse.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'navigation.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'persistence.vim.tt'
+exe 'source' . commons_cfg_dir_path . 'search.vim.tt'
 
 " Plugins configuration.
-for file_path in split(
-    glob('<%= get_var! "vim.custom_dir" %>/cfg/plugins/*.vim'), '\n')
-  exe 'source' file_path
-endfor
+let plugins_cfg_dir_path=expand('<%= get_var! "vim.custom_dir" %>/cfg/plugins')
+exe 'source' . plugins_cfg_dir_path . 'airline.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'bbye.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'choosewin.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'clang_complete.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'emmet.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'indent_guides.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'multiple_cursors.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'neocomplete.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'rainbow.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'tagbar.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'undotree.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'unite.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'vim_easy_align.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'vimfiler.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'vimproc.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'vimshell.vim.tt'
+exe 'source' . plugins_cfg_dir_path . 'vinarise.vim.tt'
+<% if has_feature? :python %>
+exe 'source' . plugins_cfg_dir_path . 'jedi.vim.tt'
+<% end %>
+<% if has_feature? :latex %>
+exe 'source' . plugins_cfg_dir_path . 'latex.vim.tt'
+<% end %>
+<% if has_feature? :haskell %>
+exe 'source' . plugins_cfg_dir_path . 'necoghc.vim.tt'
+<% end %>
+<% if has_feature? :zsh %>
+exe 'source' . plugins_cfg_dir_path . 'promptline.vim.tt'
+<% end %>
+<% if has_feature? :tmux %>
+exe 'source' . plugins_cfg_dir_path . 'tmuxline.vim.tt'
+<% end %>
+<% if has_feature? :ruby %>
+exe 'source' . plugins_cfg_dir_path . 'vim_ruby.vim.tt'
+<% end %>
 
 " }}}
