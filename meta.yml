@@ -131,7 +131,7 @@ elems:
   # specific {{{
 
   - src:  'tmux/tmux.conf'
-    dst:  '<%= get_var! 'tmux.config_file_path' %>'
+    dst:  '<%= get_var! "tmux.config_file_path" %>'
     only:
       features: ['tmux']
       vars: ['tmux']
@@ -139,19 +139,19 @@ elems:
       The program 'xclip' should be installed in order to provide clipboard
       support to tmux.
   - src:  'tmux/tmuxline.conf'
-    dst:  '<%= get_var! 'tmux.theme_path' %>'
+    dst:  '<%= get_var! "tmux.theme_path" %>'
     only:
       features: ['tmux']
       vars: ['tmux']
 
   - src:  'vim/vimrc'
-    dst:  '<%= get_var! 'vim.entry_point' %>'
+    dst:  '<%= get_var! "vim.entry_point" %>'
     only:
       features: ['vim']
       vars: ['vim']
 
   - src:  '^vim/((?!.*vimrc).*)$'
-    dst:  '<%= get_var! 'vim.custom_dir' %>/<1>'
+    dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
     only:
       features: ['vim']
       vars: ['vim']
