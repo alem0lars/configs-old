@@ -73,13 +73,6 @@ nohup trayer-srg --edge top --align right \
                  --alpha 0 --transparent true --tint 0x1c1c1c > /dev/null &
 <% end %>
 
-<% if has_feature? :feh %>
-if [[ -f "~/.fehbg" ]]; then
-  echo -e "${fg[blue]}background setup${reset_color}"
-  eval "$(cat ~/.fehbg)"
-fi
-<% end %>
-
 <% if has_feature? :conky %>
 echo -e "${fg[blue]}starting conky${reset_color}"
 killall conky > /dev/null

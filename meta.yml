@@ -111,8 +111,13 @@ elems:
 
   # specific {{{
 
-  - src:  'conky/(.+)'
-    dst:  '/etc/conky/<1>'
+  - src: 'xmonad/xmonad.hs'
+    dst: '~/.xmonad/xmonad.hs'
+    only:
+      features: ['xmonad']
+
+  - src: 'conky/(.+)'
+    dst: '/etc/conky/<1>'
     only:
       features: ['conky']
 
@@ -120,11 +125,6 @@ elems:
     dst: '~/.config/parcellite/<1>'
     only:
       features: ['parcellite']
-
-  - src:  'feh/(fehbg)'
-    dst:  '~/.<1>'
-    only:
-      features: ['feh']
 
   - src:  'tmux/tmux.conf'
     dst:  '<%= get_var! "tmux.config_file_path" %>'
@@ -235,6 +235,12 @@ elems:
   # }}}
 
   # linux (& distros) {{{
+
+  - src: 'linux/kernel_configs/<%= get_var! "kernel_config" %>.config'
+    dst: '/usr/src/linux/.config'
+    only:
+      features: ['linux']
+      vars:     ['kernel_config']
 
   - src: 'xorg/xresources/main'
     dst: '/etc/X11/xinit/Xresources'

@@ -38,6 +38,9 @@
 
 hostname: 'kitty'
 
+kernel:
+  config: 'kitty_hck_gentoo'
+
 conky:
   battery_name: 'BAT0'
   ac_path:      '/sys/class/power_supply/AC'

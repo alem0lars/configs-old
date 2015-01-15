@@ -42,10 +42,14 @@ distro_name: 'gentoo'
 urxvt:
   url_launcher: '/usr/bin/firefox'
 
+xmonad:
+  terminal_cmd: 'openterm'
+
 features:
   - 'gentoo'
   - 'slim'
   - 'xorg_xmonad'
+  - 'xmonad'
   - 'trayer'
   - 'autocutsel'
   - 'urxvt'
