@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    generic.yml                                                       #
+# - Name:    vars/nmlabs_linux.yml                                             #
 # - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs                                                      #
+#            nextreamlabs.                                                     #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/cfg                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
 #   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
@@ -75,6 +75,10 @@ tmux:
   config_file_path: '/etc/tmux.conf'
   theme_path:       '/etc/tmux/tmuxline.conf'
 
+zsh:
+  history_file: '~/.zsh-history'
+  theme_path:   '/etc/zsh/mods/prompt/promptline.zsh'
+
 features:
   - 'linux'
   - 'gentoo'
@@ -85,6 +89,7 @@ features:
   - 'gtk'
   - 'alsa'
   - 'pulseaudio'
+  - 'zsh'
   - 'tmux'
   - 'haskell'
   - 'ruby'

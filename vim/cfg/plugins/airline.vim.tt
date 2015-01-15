@@ -1,0 +1,134 @@
+"###############################################################################
+"                                                                              #
+" File informations:                                                           #
+" - Name:    vim/cfg/plugins/airline.vim.tt                                    #
+" - Summary: The configuration for the airline plugin.                         #
+" - Authors:                                                                   #
+"   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+"                                                                              #
+" Project informations:                                                        #
+"   - Homepage:        https://github.com/alem0lars/configs                    #
+"   - Getting started: see README.md in the project root folder                #
+"                                                                              #
+" License: Apache v2.0 (see below)                                             #
+"                                                                              #
+"###############################################################################
+"                                                                              #
+" Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+" license agreements.  See the NOTICE file distributed with this work for      #
+" additional information regarding copyright ownership. The ASF licenses this  #
+" file to you under the Apache License, Version 2.0 (the "License"); you may   #
+" not use this file except in compliance with the License.                     #
+" You may obtain a copy of the License at                                      #
+"                                                                              #
+"   http://www.apache.org/licenses/LICENSE-2.0                                 #
+"                                                                              #
+" Unless required by applicable law or agreed to in writing, software          #
+" distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+" WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+" See the License for the specific language governing permissions and          #
+" limitations under the License.                                               #
+"                                                                              #
+"###############################################################################
+
+
+" theme {{{
+
+let g:airline_theme = 'wombat'
+
+" }}}
+
+
+" powerline {{{
+
+let g:airline_powerline_fonts = 1
+
+" }}}
+
+
+" tabline {{{
+
+" Enable tabline.
+let g:airline#extensions#tabline#enabled = 1
+
+" Show tab number, which is the index.
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" <Leader>number: Select the tab of index equal to number.
+nmap <Leader>1 <Plug>AirlineSelectTab1
+nmap <Leader>2 <Plug>AirlineSelectTab2
+nmap <Leader>3 <Plug>AirlineSelectTab3
+nmap <Leader>4 <Plug>AirlineSelectTab4
+nmap <Leader>5 <Plug>AirlineSelectTab5
+nmap <Leader>6 <Plug>AirlineSelectTab6
+nmap <Leader>7 <Plug>AirlineSelectTab7
+nmap <Leader>8 <Plug>AirlineSelectTab8
+nmap <Leader>9 <Plug>AirlineSelectTab9
+
+" }}}
+
+
+<% if has_feature? :zsh %>
+" promptline integration {{{
+
+if ((filewritable(fnamemodify('<%= get_var! "zsh.theme_path" %>', ':h')) == 2 &&
+   \ glob('<%= get_var! "zsh.theme_path" %>') == '') ||
+   \ filewritable('<%= get_var! "zsh.theme_path" %>') == 1)
+
+  " Enable autogeneration the promptline file.
+  let g:airline#extensions#promptline#enabled = 1
+
+  " The path where the promptline file will be saved.
+  let g:airline#extensions#promptline#snapshot_file = '<%= get_var! "zsh.theme_path" %>'
+
+  " The airline template to be used for promptline.
+  let g:airline#extensions#promptline#color_template = 'visual'
+
+endif
+
+" }}}
+<% end %>
+
+
+<% if has_feature? :tmux %>
+" tmuxline integration {{{
+
+if ((filewritable(fnamemodify('<%= get_var! "tmux.theme_path" %>', ':h')) == 2 &&
+   \ glob('<%=get_var! "tmux.theme_path" %>') == '') ||
+   \ filewritable('<%=get_var! "tmux.theme_path" %>') == 1)
+
+  " Enable autogeneration the tmuxline file.
+  let g:airline#extensions#tmuxline#enabled = 1
+
+  " The path where the tmuxline file will be saved.
+  let g:airline#extensions#tmuxline#snapshot_file = '<%=get_var! "tmux.theme_path" %>'
+
+  " The airline template to be used for tmuxline.
+  let g:airline#extensions#tmuxline#color_template = 'normal'
+
+endif
+
+" }}}
+<% end %>
+
+
+" tagbar integration {{{
+
+" Enable airline tagbar extension.
+let g:airline#extensions#tagbar#enabled = 1
+
+" Display complete signature.
+let g:airline#extensions#tagbar#flags = 's'
+
+" }}}
+
+
+" syntastic integration {{{
+
+let g:airline#extensions#syntastic#enabled = 1
+
+" }}}
+
+
+" vim: set filetype=vim :

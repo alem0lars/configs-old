@@ -1,0 +1,88 @@
+"###############################################################################
+"                                                                              #
+" File informations:                                                           #
+" - Name:    vim/cfg/plugins/vimshell.vim.tt                                   #
+" - Summary: The configuration for the vimshell plugin.                        #
+" - Authors:                                                                   #
+"   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+"                                                                              #
+" Project informations:                                                        #
+"   - Homepage:        https://github.com/alem0lars/configs                    #
+"   - Getting started: see README.md in the project root folder                #
+"                                                                              #
+" License: Apache v2.0 (see below)                                             #
+"                                                                              #
+"###############################################################################
+"                                                                              #
+" Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+" license agreements.  See the NOTICE file distributed with this work for      #
+" additional information regarding copyright ownership. The ASF licenses this  #
+" file to you under the Apache License, Version 2.0 (the "License"); you may   #
+" not use this file except in compliance with the License.                     #
+" You may obtain a copy of the License at                                      #
+"                                                                              #
+"   http://www.apache.org/licenses/LICENSE-2.0                                 #
+"                                                                              #
+" Unless required by applicable law or agreed to in writing, software          #
+" distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+" WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+" See the License for the specific language governing permissions and          #
+" limitations under the License.                                               #
+"                                                                              #
+"###############################################################################
+
+
+" prompt {{{
+
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt = '$ '
+
+" }}}
+
+
+<% if has_feature? :zsh %>
+" zsh integration {{{
+
+" Use zsh history.
+let g:vimshell_external_history_path = expand('<%= get_var! "zsh.history_file" %>')
+
+" }}}
+<% end %>
+
+
+" urxvt integration {{{
+
+let g:vimshell_use_terminal_command = '<%= get_var! "vim.terminal_cmd" %>'
+
+" }}}
+
+
+" history, scrollback {{{
+
+let g:vimshell_temporary_directory = expand('~/.vim_shell')
+
+" Maximum number of lines that can be scrolled back.
+let g:vimshell_scrollback_limit = 2048
+
+" Maximum number of commands to keep in history.
+let g:vimshell_max_command_history = 1024
+
+" }}}
+
+
+" completion {{{
+
+let g:vimshell_enable_smart_case = 1
+
+" }}}
+
+
+" hotkeys {{{
+
+nnoremap <Leader>sh :<C-u>VimShell<CR>
+nnoremap <F3> :<C-u>VimShellPop<CR>
+
+" }}}
+
+
+" vim: set filetype=vim :
