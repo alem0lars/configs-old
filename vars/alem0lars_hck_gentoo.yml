@@ -95,5 +95,5 @@ features:
   - 'zim'
   - 'virtualbox_systemd'
   - 'vim'
-  - 'firefox'
+  - 'firefox_vim'
   - 'mplayer'
