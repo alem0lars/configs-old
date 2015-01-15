@@ -43,14 +43,16 @@ vim:
 features:
   - osx
   - homebrew
+  - zsh
   - tmux
   - vim
-  - ruby
   - rbenv
-  - python
   - pyenv
-  - java
-  - groovy
-  - erlang
   - sbt
   - haskell
+  - ruby
+  - python
+  - latex
+  - java
+  - erlang
+  - groovy

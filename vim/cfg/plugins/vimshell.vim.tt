@@ -50,7 +50,7 @@ let g:vimshell_external_history_path = expand('<%= get_var! "zsh.history_file" %
 <% end %>
 
 
-" urxvt integration {{{
+" system terminal integration {{{
 
 let g:vimshell_use_terminal_command = '<%= get_var! "vim.terminal_cmd" %>'
 
@@ -59,7 +59,7 @@ let g:vimshell_use_terminal_command = '<%= get_var! "vim.terminal_cmd" %>'
 
 " history, scrollback {{{
 
-let g:vimshell_temporary_directory = expand('~/.vim_shell')
+let g:vimshell_temporary_directory = expand('<%= get_var! "vim.vimshell_tmp_dir" %>')
 
 " Maximum number of lines that can be scrolled back.
 let g:vimshell_scrollback_limit = 2048
