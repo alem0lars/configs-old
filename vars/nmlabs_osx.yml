@@ -46,6 +46,7 @@ features:
   - zsh
   - tmux
   - vim
+  - firefox_vim
   - rbenv
   - pyenv
   - sbt
