@@ -1,9 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_linux.yml                                             #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs.                                                     #
+# - Name:    zathura/zathurarc.tt                                              #
+# - Summary: The zathura configuration.                                        #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -31,69 +30,14 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-# favourite directories {{{
+set font "<%= get_var! 'fonts.main.name' %> <%= get_var! 'fonts.main.size' %>"
 
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
+set adjust-open width
 
-# }}}
+set window-title-basename true
 
+set incremental-search true
 
-# details directories {{{
-
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
-
-# }}}
-
-locale: 'en_US.UTF-8'
-
-fonts:
-  main:
-    name: 'DejaVu Sans Mono for Powerline'
-    size: 11
-
-xorg:
-  xresources:
-    custom_dir:  '/etc/X11/xinit/Xresources.d'
-    colors_name: 'wombat'
-
-gtk:
-  theme: 'FlatStudioDark'
-
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
-
-zsh:
-  history_file: '~/.zsh-history'
-  theme_path:   '/etc/zsh/mods/prompt/promptline.zsh'
-
-features:
-  - 'linux'
-  - 'g-sorcery'
-  - 'btrfs'
-  - 'grub'
-  - 'xorg'
-  - 'gtk'
-  - 'alsa'
-  - 'pulseaudio'
-  - 'zsh'
-  - 'tmux'
-  - 'haskell'
-  - 'ruby'
-  - 'python'
-  - 'latex'
+set synctex true

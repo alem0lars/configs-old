@@ -1,0 +1,157 @@
+!###############################################################################
+!                                                                              #
+! File informations:                                                           #
+! - Name:    xorg/xresources/main.tt                                           #
+! - Summary: The entry point for xorg configuration (formerly known as         #
+!            Xresources).                                                      #
+! - Authors:                                                                   #
+!   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+!                                                                              #
+! Project informations:                                                        #
+!   - Homepage:        https://github.com/alem0lars/configs                    #
+!   - Getting started: see README.md in the project root folder                #
+!                                                                              #
+! License: Apache v2.0 (see below)                                             #
+!                                                                              #
+!###############################################################################
+!                                                                              #
+! Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+! license agreements.  See the NOTICE file distributed with this work for      #
+! additional information regarding copyright ownership. The ASF licenses this  #
+! file to you under the Apache License, Version 2.0 (the "License"); you may   #
+! not use this file except in compliance with the License.                     #
+! You may obtain a copy of the License at                                      #
+!                                                                              #
+!   http://www.apache.org/licenses/LICENSE-2.0                                 #
+!                                                                              #
+! Unless required by applicable law or agreed to in writing, software          #
+! distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+! WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+! See the License for the specific language governing permissions and          #
+! limitations under the License.                                               #
+!                                                                              #
+!###############################################################################
+
+
+! xft {{{
+
+Xft.antialias: true
+Xft.autohint:  true
+Xft.hinting:   true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
+
+! }}}
+
+
+! colors {{{
+
+<% if get_var 'xorg.xresources.colors_name' %>
+#include "<%= get_var! 'xorg.xresources.custom_dir %>/colors_<%= get_var! 'xorg.xresources.colors_name' %>"
+<% end %>
+
+! }}}
+
+
+! cross-terminal settings {{{
+
+*saveLines:    65536
+*cursorBlink:  false
+*bellIsUrgent: true
+
+! }}}
+
+
+! xterm {{{
+
+xterm*faceName:          xft:<%= get_var!('fonts.main.name').gsub(' ', '\ ') %>:size=<%= get_var! 'fonts.main.size' %>
+xterm*utf8:              2
+xterm*colorMode:         true
+xterm*dynamicColors:     true
+xterm*scrollTtyKeypress: true
+xterm*scrollTtyOutput:   false
+xterm*rightScrollBar:    true
+xterm*jumpScroll:        true
+xterm*multiScroll:       true
+xterm*selectToClipboard: true
+xterm*toolBar:           false
+
+! }}}
+
+
+<% if has_feature? :urxvt %>
+! urxvt {{{
+
+! terminal info
+urxvt*termName:       rxvt-256color
+urxvt*iso14755_52:    false
+urxvt.matcher.button: 1
+urxvt.cutchars:       ()*,<>[]{}|`""''
+
+urxvt.underlineURLs: true
+
+! pseudo-transparency
+urxvt*shading:     50
+urxvt*transparent: false
+
+! font
+urxvt*font:           xft:<%= get_var!('fonts.main.name').gsub(' ', '\ ') %>:size=<%= get_var! 'fonts.main.size' %>
+urxvt*boldFont:       xft:<%= get_var!('fonts.main.name').gsub(' ', '\ ') %>:size=<%= get_var! 'fonts.main.size' %>
+urxvt*italicFont:     xft:<%= get_var!('fonts.main.name').gsub(' ', '\ ') %>:size=<%= get_var! 'fonts.main.size' %>
+urxvt*boldItalicFont: xft:<%= get_var!('fonts.main.name').gsub(' ', '\ ') %>:size=<%= get_var! 'fonts.main.size' %>
+
+! scrollbar
+urxvt.scrollBar: false
+
+! extensions
+urxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,url-select
+
+! keys mapping
+urxvt.keysym.Home:        \033[H
+urxvt.keysym.End:         \033[F
+urxvt.keysym.S-Up:        \033[1;2A
+urxvt.keysym.S-Down:      \033[1;2B
+urxvt.keysym.S-Right:     \033[1;2C
+urxvt.keysym.S-Left:      \033[1;2D
+urxvt.keysym.S-Home:      \033[1;2H
+urxvt.keysym.S-End:       \033[1;2F
+urxvt.keysym.M-Up:        \033[1;3A
+urxvt.keysym.M-Down:      \033[1;3B
+urxvt.keysym.M-Right:     \033[1;3C
+urxvt.keysym.M-Left:      \033[1;3D
+urxvt.keysym.M-Page_Up:   \033[5;3~
+urxvt.keysym.M-Page_Down: \033[6;3~
+urxvt.keysym.M-Home:      \033[1;3H
+urxvt.keysym.M-End:       \033[1;3F
+urxvt.keysym.M-S-Up:      \033[1;4A
+urxvt.keysym.M-S-Down:    \033[1;4B
+urxvt.keysym.M-S-Right:   \033[1;4C
+urxvt.keysym.M-S-Left:    \033[1;4D
+urxvt.keysym.M-S-Home:    \033[1;4H
+urxvt.keysym.M-S-End:     \033[1;4F
+urxvt.keysym.C-Up:        \033[1;5A
+urxvt.keysym.C-Down:      \033[1;5B
+urxvt.keysym.C-Right:     \033[1;5C
+urxvt.keysym.C-Left:      \033[1;5D
+
+! clipboard
+urxvt.keysym.M-c:         perl:clipboard:copy
+urxvt.keysym.M-v:         perl:clipboard:paste
+urxvt.keysym.M-C-v:       perl:clipboard:paste_escaped
+urxvt.clipboard.copycmd:  xclip -i -selection clipboard
+urxvt.clipboard.pastecmd: xclip -o -selection clipboard
+
+! keyboard-select
+urxvt.keysym.M-Escape: perl:keyboard-select:activate
+urxvt.keysym.M-s:      perl:keyboard-select:search
+
+! url-select
+urxvt.keysym.M-u:  perl:url-select:select_next
+urxvt.urlLauncher: <%= get_var! 'urxvt.url_launcher' %>
+
+! }}}
+<% end %>
+
+
+! vim: set filetype=xdefaults :

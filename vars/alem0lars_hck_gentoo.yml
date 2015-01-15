@@ -31,7 +31,7 @@
 #                                                                              #
 ################################################################################
 #                                                                              #
-#=> INHERITS: nmlabs_linux                                                   <=#
+#=> INHERITS: nmlabs_hck_gentoo                                              <=#
 #                                                                              #
 ################################################################################
 
@@ -89,10 +89,12 @@ irc:
 features:
   - 'dracut'
   - 'systemd'
-  - 'minimal_de'
   - 'cli_centric'
   - 'gtk_vim'
   - 'zim'
+  - 'feh'
+  - 'parcellite'
+  - 'conky'
   - 'virtualbox_systemd'
   - 'vim'
   - 'firefox_vim'

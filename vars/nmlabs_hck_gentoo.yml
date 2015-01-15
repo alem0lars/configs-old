@@ -32,68 +32,21 @@
 #                                                                              #
 ################################################################################
 #                                                                              #
-#=> INHERITS: generic                                                        <=#
+#=> INHERITS: nmlabs_linux                                                   <=#
 #                                                                              #
 ################################################################################
 
 
-# favourite directories {{{
+distro_name: 'gentoo'
 
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
-
-# }}}
-
-
-# details directories {{{
-
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
-
-# }}}
-
-locale: 'en_US.UTF-8'
-
-fonts:
-  main:
-    name: 'DejaVu Sans Mono for Powerline'
-    size: 11
-
-xorg:
-  xresources:
-    custom_dir:  '/etc/X11/xinit/Xresources.d'
-    colors_name: 'wombat'
-
-gtk:
-  theme: 'FlatStudioDark'
-
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
-
-zsh:
-  history_file: '~/.zsh-history'
-  theme_path:   '/etc/zsh/mods/prompt/promptline.zsh'
+urxvt:
+  url_launcher: '/usr/bin/firefox'
 
 features:
-  - 'linux'
-  - 'g-sorcery'
-  - 'btrfs'
-  - 'grub'
-  - 'xorg'
-  - 'gtk'
-  - 'alsa'
-  - 'pulseaudio'
-  - 'zsh'
-  - 'tmux'
-  - 'haskell'
-  - 'ruby'
-  - 'python'
-  - 'latex'
+  - 'gentoo'
+  - 'slim'
+  - 'xorg_xmonad'
+  - 'trayer'
+  - 'autocutsel'
+  - 'urxvt'
+  - 'zathura'

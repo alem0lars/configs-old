@@ -1,9 +1,10 @@
+#!/usr/bin/env zsh
+#
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_linux.yml                                             #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs.                                                     #
+# - Name:    cmus/rc.tt                                                        #
+# - Summary: The cmus configuration.                                           #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -31,69 +32,78 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-# favourite directories {{{
-
-bkp_dir:       '/shared/bkp'
-tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
-downloads_dir: '~/downloads'
-
-# }}}
+autoload colors && colors
 
 
-# details directories {{{
+echo -e "${fg[blue]}merging in x11 defaults and keymaps${reset_color}"
+sysresources="/etc/X11/xinit/Xresources"
+if [ -f $sysresources ]; then xrdb -merge "${sysresources}"; fi
+sysmodmap="/etc/X11/xinit/Xmodmap"
+if [ -f $sysmodmap ]; then xmodmap "${sysmodmap}"; fi
+userresources="${HOME}/.Xresources"
+if [ -f "$userresources" ]; then xrdb -merge "${userresources}"; fi
+usermodmap="${HOME}/.Xmodmap"
+if [ -f "$usermodmap" ]; then xmodmap "${usermodmap}"; fi
 
-notes_templates_dir:    '/shared/notes/templates'
-notes_def_notebook_dir: '/shared/notes/notebook'
+echo -e "${fg[blue]}setting typmatic${reset_color}"
+xset r rate 300 30
 
-# }}}
+echo -e "${fg[blue]}setting custom keys${reset_color}"
+setxkbmap -option ctrl:nocaps
 
-locale: 'en_US.UTF-8'
+<% if has_feature? :pulseaudio %>
+echo -e "${fg[blue]}starting pulseaudio${reset_color}"
+start-pulseaudio-x11 &
+<% end %>
 
-fonts:
-  main:
-    name: 'DejaVu Sans Mono for Powerline'
-    size: 11
+<% if has_feature? :autocutsel %>
+echo -e "${fg[blue]}starting autocutsel${reset_color}"
+autocutsel -fork
+<% end %>
 
-xorg:
-  xresources:
-    custom_dir:  '/etc/X11/xinit/Xresources.d'
-    colors_name: 'wombat'
+<% if has_feature? :trayer %>
+echo -e "${fg[blue]}starting trayer${reset_color}"
+killall trayer-srg > /dev/null
+nohup trayer-srg --edge top --align right \
+                 --width  12 --widthtype  percent \
+                 --height 20 --heighttype pixel \
+                 --SetDockType true --SetPartialStrut true --expand true \
+                 --alpha 0 --transparent true --tint 0x1c1c1c > /dev/null &
+<% end %>
 
-gtk:
-  theme: 'FlatStudioDark'
+<% if has_feature? :feh %>
+if [[ -f "~/.fehbg" ]]; then
+  echo -e "${fg[blue]}background setup${reset_color}"
+  eval "$(cat ~/.fehbg)"
+fi
+<% end %>
 
-tmux:
-  config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
+<% if has_feature? :conky %>
+echo -e "${fg[blue]}starting conky${reset_color}"
+killall conky > /dev/null
+conky -c /etc/conky/conky_1.conf -d > /dev/null
+conky -c /etc/conky/conky_2.conf -d > /dev/null
+<% end %>
 
-zsh:
-  history_file: '~/.zsh-history'
-  theme_path:   '/etc/zsh/mods/prompt/promptline.zsh'
+<% if has_feature? :parcellite %>
+echo -e "${fg[blue]}starting parcellite${reset_color}"
+parcellite &
+<% end %>
 
-features:
-  - 'linux'
-  - 'g-sorcery'
-  - 'btrfs'
-  - 'grub'
-  - 'xorg'
-  - 'gtk'
-  - 'alsa'
-  - 'pulseaudio'
-  - 'zsh'
-  - 'tmux'
-  - 'haskell'
-  - 'ruby'
-  - 'python'
-  - 'latex'
+echo -e "${fg[blue]}starting gpg agent${reset_color}"
+if [ -x /usr/bin/gpg-agent ]; then
+  eval "$(/usr/bin/gpg-agent --daemon)"
+fi
+
+echo -e "${fg[blue]}starting ssh agent${reset_color}"
+if [ -x /usr/bin/ssh-agent ]; then
+  eval "$(/usr/bin/ssh-agent -s)"
+fi
+
+echo -e "${fg[blue]}starting xmonad${reset_color}"
+xmonad
+
+
+# vim: set filetype=zsh :

@@ -109,32 +109,27 @@ elems:
 
   # }}}
 
-  # minimal de {{{
+  # specific {{{
 
   - src:  'conky/(.+)'
     dst:  '/etc/conky/<1>'
     only:
-      features: ['minimal_de', 'conky']
+      features: ['conky']
 
   - src: 'parcellite/(.+)'
     dst: '~/.config/parcellite/<1>'
     only:
-      features: ['minimal_de', 'parcellite']
+      features: ['parcellite']
 
   - src:  'feh/(fehbg)'
     dst:  '~/.<1>'
     only:
-      features: ['minimal_de', 'feh']
-
-  # }}}
-
-  # specific {{{
+      features: ['feh']
 
   - src:  'tmux/tmux.conf'
     dst:  '<%= get_var! "tmux.config_file_path" %>'
     only:
       features: ['tmux']
-      vars: ['tmux']
     notes: |
       The program 'xclip' should be installed in order to provide clipboard
       support to tmux.
@@ -142,19 +137,17 @@ elems:
     dst:  '<%= get_var! "tmux.theme_path" %>'
     only:
       features: ['tmux']
-      vars: ['tmux']
 
   - src:  'vim/vimrc'
     dst:  '<%= get_var! "vim.entry_point" %>'
     only:
       features: ['vim']
-      vars: ['vim']
+      vars: ['vim.entry_point']
 
   - src:  '^vim/((?!.*vimrc).*)$'
     dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
     only:
       features: ['vim']
-      vars: ['vim']
 
   - src:  'grub/default_config'
     dst:  '/etc/default/grub'
@@ -184,6 +177,11 @@ elems:
         linkmap            -> graphviz
         sourceview         -> gtksourceview2
         versioncontrol     -> (optional) bzr, hg, git
+
+  - src:  'zathura/zathurarc'
+    dst:  '/etc/zathurarc'
+    only:
+      features: ['zathura']
 
   - src:  'alsa/alsasound'
     dst:  '/etc/conf.d/alsasound'
@@ -238,17 +236,31 @@ elems:
 
   # linux (& distros) {{{
 
-  - src:  'linux/bootmisc'
-    dst:  '/etc/conf.d/bootmisc'
+  - src: 'xorg/xresources/main'
+    dst: '/etc/X11/xinit/Xresources'
+    only:
+      features: ['xorg']
+  - src: 'xorg/xresources/((?!.*main).*)$'
+    dst: '<%= get_var! "xorg.xresources.custom_dir" %>/<1>'
+    only:
+      features: ['xorg']
+
+  - src: 'xorg/sessions/xmonad'
+    dst: '/etc/X11/Sessions/xmonad'
+    only:
+      features: ['xorg_xmonad']
+
+  - src: 'linux/bootmisc'
+    dst: '/etc/conf.d/bootmisc'
     only:
       features: ['linux']
 
-  - src:  'linux/hostname'
-    dst:  '/etc/conf.d/hostname'
+  - src: 'linux/hostname'
+    dst: '/etc/conf.d/hostname'
     only:
       features: ['linux']
-  - src:  'linux/systemd_hostname'
-    dst:  '/etc/hostname'
+  - src: 'linux/systemd_hostname'
+    dst: '/etc/hostname'
     only:
       features: ['systemd']
 
