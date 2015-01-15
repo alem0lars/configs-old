@@ -1,0 +1,159 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    portage/make.conf.tt                                              #
+# - Summary: The main portage configuration.                                   #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# host infos {{{
+
+CHOST="x86_64-pc-linux-gnu"
+LINGUAS="en"
+
+# }}}
+
+
+# synchronization {{{
+
+GENTOO_MIRRORS="rsync://rsync.de.gentoo.org/gentoo/"
+SYNC="rsync://rsync.de.gentoo.org/gentoo-portage"
+
+# }}}
+
+
+# devices {{{
+
+INPUT_DEVICES="<%= get_var!('portage.input_devices').join(' ') %>"
+VIDEO_CARDS="<%= get_var!('portage.video_cards').join(' ') %>"
+
+# }}}
+
+
+# compilers {{{
+
+CFLAGS="-O2 -pipe -march=native"
+CXXFLAGS="${CFLAGS}"
+DMDFLAGS="${CFLAGS}"
+GDCFLAGS="${CFLAGS}"
+LDCFLAGS="${CFLAGS}"
+
+MAKEOPTS="-j<%= get_var! 'parallelism' %> -l<%= get_var! 'parallelism' %>"
+
+# }}}
+
+
+# portage directories {{{
+
+PORTDIR="/usr/portage"
+DISTDIR="${PORTDIR}/distfiles"
+PKGDIR="${PORTDIR}/packages"
+
+# }}}
+
+
+# emerge {{{
+
+FEATURES="splitdebug parallel-fetch metadata-transfer ${FEATURES}"
+FEATURES="-userfetch -userpriv ${FEATURES}"
+PORTAGE_NICENESS=16
+EMERGE_DEFAULT_OPTS="--with-bdeps=y --keep-going=y --quiet-unmerge-warn"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --quiet-build=y --verbose"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs=<%= get_var! 'parallelism' %>"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --load=<%= get_var! 'parallelism' %>"
+
+# }}}
+
+
+# python {{{
+
+PYTHON_TARGETS="python3_4 python3_3 python2_7"
+USE_PYTHON="3.3 2.7" # 3.4 is unsupported atm
+PYTHON_SINGLE_TARGET="python3_3"
+
+# }}}
+
+
+# use flags {{{
+
+USE="${USE} <%= get_var!('portage.use_flags').join(' ') %>"
+
+<% if has_feature? :btrfs %>
+USE="${USE} btrfs"
+<% end %>
+<% if has_feature? :systemd %>
+USE="${USE} -consolekit systemd"
+<% end %>
+
+<% if has_feature? :alsa %>
+USE="${USE} alsa"
+<% end %>
+<% if has_feature? :pulseaudio %>
+USE="${USE} pulseaudio"
+<% end %>
+
+<% if has_feature :zsh %>
+USE="${USE} zsh-completion"
+<% end %>
+<% if has_feature? :vim %>
+USE="${USE} vim-syntax"
+<% end %>
+<% if has_feature? :mutt %>
+USE="${USE} mbox imap nntp"
+<% end %>
+
+<% if has_feature :java %>
+USE="${USE} java gcj"
+<% end %>
+<% if has_feature :latex %>
+USE="${USE} latex"
+<% end %>
+<% if has_feature :ruby %>
+USE="${USE} ruby"
+<% end %>
+<% if has_feature :python %>
+USE="${USE} python"
+<% end %>
+<% if has_feature :haskell %>
+USE="${USE} hoogle hscolour"
+<% end %>
+
+# }}}
+
+
+# layman {{{
+
+source "/var/lib/layman/make.conf"
+LOCAL_OVERLAYS="/usr/local/portage"
+PORTDIR_OVERLAY="${LOCAL_OVERLAYS} ${PORTDIR_OVERLAY}"
+
+# }}}
+
+
+# vim: set filetype=gentoo-make-conf :

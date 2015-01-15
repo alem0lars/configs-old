@@ -1,7 +1,7 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    eix/00-eixrc.tt                                                   #
+# - Name:    eix/eixrc/00-eixrc.tt                                             #
 # - Summary: The eix main configuration.                                       #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #

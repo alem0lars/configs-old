@@ -285,7 +285,17 @@ elems:
     only:
       features: ['linux']
 
-  - src:  'eix/(.+)'
+  - src:  'portage/(.+)'
+    dst:  '/etc/portage/<1>'
+    only:
+      features: ['gentoo']
+
+  - src:  'eix/(eix-sync.conf)'
+    dst:  '/etc/<1>'
+    only:
+      features: ['gentoo']
+
+  - src:  'eix/eixrc/(.+)'
     dst:  '/etc/eixrc/<1>'
     only:
       features: ['gentoo']

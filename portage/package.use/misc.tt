@@ -1,0 +1,131 @@
+# { permanent
+
+app-admin/conky lua-imlib lua-cairo
+
+app-crypt/gnupg tools
+
+app-editors/emacs libxml2
+
+app-misc/geoclue -modemmanager
+
+app-portage/eix tools
+app-portage/layman g-sorcery gpg
+
+app-text/libwpd tools
+app-text/poppler utils
+app-text/docbook-sgml-utils jadetex
+app-text/texlive humanities graphics luatex omega publishers science xetex extra jadetex
+app-text/texlive-core xetex
+
+dev-cpp/glog gflags
+
+dev-lang/ghc llvm
+
+dev-libs/boost tools
+dev-libs/elfutils utils
+dev-libs/glib utils
+dev-libs/gmp pgo
+
+dev-vcs/git gpg
+dev-vcs/mercurial gpg
+
+dev-python/matplotlib -doc
+dev-python/ipython matplotlib mongodb octave nbconvert -doc
+dev-python/PyQt4 help
+
+gnome-base/libglade tools
+gnome-base/librsvg tools
+
+media-libs/mesa llvm
+media-libs/chromaprint tools
+media-libs/freetype utils auto-hinter
+media-libs/libpng apng
+media-libs/openimageio colorio
+
+media-fonts/powerline-fonts inconsolata anonymouspro dejavusansmono droidsansmono inconsolatadz liberationmono meslo sourcecodepro terminus_pcf
+
+media-gfx/exiv2 contrib
+media-gfx/ufraw timezone
+media-gfx/imagemagick lqr fpx
+media-gfx/blender colorio collada openimageio redcode
+
+media-sound/mpd mpg123 faad
+media-sound/beets beatport convert chroma echonest echonest_tempo discogs lastgenre replaygain mpdstats
+
+media-video/ffmpeg vaapi
+media-video/mplayer faad
+
+mail-client/mutt gpg sidebar smime smtp
+
+net-dns/avahi utils bookmarks autoipd
+
+net-misc/networkmanager dhcpcd -modemmanager -nss -dhclient
+net-misc/aria2 bittorrent metalink
+
+sys-apps/systemd gudev
+sys-apps/kmod tools
+
+sys-devel/llvm clang
+
+sys-libs/libseccomp tools
+sys-libs/zlib minizip
+
+x11-base/xorg-server kdrive
+
+x11-libs/libdrm libkms
+
+x11-misc/redshift geoclue
+
+x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
+
+x11-themes/FlatStudio gtk2 gtk3
+
+www-client/firefox pgo
+
+virtual/ffmpeg vaapi
+
+# }
+
+# { temporary
+
+app-text/asciidoc python_single_target_python2_7
+
+app-emulation/virtualbox-modules -pax_kernel
+
+# invalid javadoc
+dev-java/ant-core -doc
+dev-java/hawtjni-runtime -doc
+dev-java/jrexx -doc
+dev-java/concurrent-util -doc
+dev-java/libreadline-java -doc
+dev-java/xsdlib -doc
+dev-java/hamcrest-core -doc
+dev-java/bsf -doc
+dev-vcs/subversion -doc
+
+# circular dependency
+dev-python/pandas -doc
+
+# }
+
+# required by dev-vcs/git-2.0.4[perl,subversion]
+# required by sys-devel/gettext-0.18.3.2[git]
+# required by sys-process/psmisc-22.20[nls]
+# required by sys-apps/openrc-0.12.4
+# required by virtual/service-manager-0
+# required by @system
+# required by @world (argument)
+>=dev-vcs/subversion-1.8.10 -dso
+
+# required by www-client/firefox-32.0
+# required by firefox (argument)
+=media-libs/libpng-1.6.12 apng
+
+# Remove when with tools flag is compatible with python_single_target python3_3
+gnome-base/libglade -tools
+
+# Because at the moment cxx and fortran are uncompatible with threads
+sci-libs/hdf5 -cxx -fortran
+
+# TODO: remove
+dev-python/pygments -doc

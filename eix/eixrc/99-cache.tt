@@ -1,10 +1,11 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    eix/99-cache.tt                                                   #
+# - Name:    eix/eixrc/99-cache.tt                                             #
 # - Summary: The eix cache configuration.                                      #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#   - Luca Molari <molari.luca@gmail.com> (LMolr)                              #
 #                                                                              #
 # Project informations:                                                        #
 #   - Homepage:        https://github.com/alem0lars/configs                    #
@@ -32,4 +33,5 @@
 ################################################################################
 
 
-OVERLAY_CACHE_METHOD=assign
+PORTDIR_CACHE_METHOD="sqlite"
+OVERLAY_CACHE_METHOD="assign"

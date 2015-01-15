@@ -1,0 +1,198 @@
+# packages always at the latest version {{{
+
+app-admin/lastpass-cli ~amd64
+app-admin/eselect-metasploit ~amd64
+
+app-emulation/vagrant ~amd64
+
+app-misc/task ~amd64
+
+app-text/pandoc ~amd64
+app-text/mupdf ~amd64
+app-text/zathura ~amd64
+app-text/zathura-pdf-mupdf ~amd64
+
+# haskell packages should always be at the latest version
+app-emacs/ghc-mod ~amd64
+dev-haskell/* ~amd64
+
+dev-java/oracle-jdk-bin ~amd64
+dev-java/java-sdk-docs ~amd64
+
+dev-lang/scala ~amd64
+dev-lang/elixir ~amd64
+dev-lang/erlang ~amd64
+
+dev-libs/girara ~amd64
+
+dev-python/ipython ~amd64
+dev-python/sympy ~amd64
+dev-python/cython ~amd64
+
+# ruby packages should always be at the latest version
+dev-ruby/* ~amd64
+
+dev-util/android-tools ~amd64
+dev-util/radare2 ~amd64
+
+media-fonts/powerline-fonts ~amd64
+media-fonts/powerline-symbols ~amd64
+
+media-gfx/blender ~amd64
+
+media-sound/ardour ~amd64
+
+net-analyzer/nikto ~amd64
+net-analyzer/metasploit ~amd64
+
+net-im/turses ~amd64
+
+net-irc/weechat ~amd64
+
+net-misc/youtube-dl ~amd64
+
+net-libs/nodejs ~amd64
+
+sys-devel/llvm ~amd64
+sys-devel/clang ~amd64
+
+www-client/firefox ~amd64
+
+# }}}
+
+
+# temporary (deps) {{{
+
+# needed by dev-lang/scala
+=dev-java/hawtjni-runtime-1.8 ~amd64
+
+# needed for dev-util/radare2
+dev-util/capstone ~amd64
+
+# needed for media-gfx/blender
+=media-video/ffmpeg-2.2.10 ~amd64
+
+# needed for www-client/firefox
+=x11-libs/libdrm-2.4.56 ~amd64
+=media-libs/mesa-10.3.0 ~amd64
+
+# needed for app-emulation/vagrant
+=dev-ruby/net-ssh-2.9.0 ~amd64
+=dev-ruby/net-scp-1.2.1 ~amd64
+=dev-ruby/childprocess-0.5.5 ~amd64
+=dev-ruby/log4r-1.1.10-r1 ~amd64
+=dev-ruby/i18n-0.6.11 ~amd64
+
+# needed by dev-haskell/haskell-platform
+=dev-lang/ghc-7.8.3 ~amd64
+
+# needed by dev-python/ipython
+=dev-python/oct2py-1.3.0-r1 ~amd64
+=dev-python/sphinx-bootstrap-theme-0.4.2 ~amd64
+=dev-python/matplotlib-1.4.2 ~amd64
+=dev-python/pymongo-2.7.2 ~amd64
+=sci-libs/scipy-0.14.0-r1 ~amd64
+=dev-python/pytz-2014.9 ~amd64
+=dev-python/pyzmq-14.4.1 ~amd64
+
+# needed by dev-python/sympy
+=dev-python/mpmath-0.19 ~amd64
+
+# needed by dev-ruby/sass
+=dev-ruby/rb-inotify-0.9.5-r1 ~amd64
+=dev-ruby/celluloid-0.16.0 ~amd64
+=dev-ruby/listen-2.7.5 ~amd64
+=dev-ruby/timers-4.0.1 ~amd64
+=dev-ruby/hitimes-1.2.2 ~amd64
+
+# needed by dev-ruby/haml
+=dev-ruby/tilt-2.0.1 ~amd64
+=dev-ruby/builder-3.2.2 ~amd64
+=dev-ruby/haml-4.0.5 ~amd64
+=dev-ruby/maruku-0.7.2-r1 ~amd64
+
+# needed by net-im/turses
+=dev-python/tweepy-2.3 ~amd64
+
+# needed by net-news/canto-daemon
+=dev-python/feedparser-5.1.3-r2 ~amd64
+
+# needed by dev-ruby/rubocop
+=dev-ruby/ast-2.0.0 ~amd64
+=dev-ruby/parser-2.2.0_pre8 ~amd64
+=dev-ruby/powerpack-0.0.9 ~amd64
+
+# }}}
+
+
+# temporary (not yet stable) {{{
+
+dev-db/sqlmap ~amd64
+
+media-plugins/gimp-lensfun ~amd64
+media-plugins/gimp-gmic ~amd64
+
+sys-kernel/dracut ~amd64
+
+net-news/canto-curses ~amd64
+net-news/canto-daemon ~amd64
+
+sci-electronics/ghdl ~amd64
+
+dev-util/shellcheck ~amd64
+
+app-shells/fasd ~amd64
+
+x11-misc/zim ~amd64
+
+x11-themes/FlatStudio ~amd64
+
+# }}}
+
+
+# specific {{{
+
+app-editors/vim ~amd64
+app-editors/vim-core ~amd64
+
+# }}}
+
+# required by dev-java/jansi-1.1
+# required by dev-java/groovy-1.7.5
+# required by @selected
+# required by @world (argument)
+=virtual/jre-1.7.0 ~amd64
+# required by dev-java/ant-contrib-1.0_beta2-r2
+# required by dev-lang/scala-2.11.2[-binary]
+# required by @selected
+# required by @world (argument)
+=virtual/jdk-1.7.0 ~amd64
+
+# required by app-portage/gs-elpa-0.1.2
+# required by gs-elpa (argument)
+=dev-python/sexpdata-0.0.3 ~amd64
+# required by app-portage/g-sorcery-0.1-r1
+# required by app-portage/gs-elpa-0.1.2
+# required by gs-elpa (argument)
+=app-portage/layman-2.2.0-r5 ~amd64
+# required by app-portage/gs-elpa-0.1.2
+# required by gs-elpa (argument)
+=app-portage/g-sorcery-0.1-r1 ~amd64
+
+# required by dev-ruby/pry-0.9.12.6-r1[ruby_targets_ruby20]
+# required by dev-ruby/pry (argument)
+=dev-ruby/slop-3.6.0 ~amd64
+# required by dev-ruby/pry-0.9.12.6-r1[ruby_targets_ruby20]
+# required by dev-ruby/pry (argument)
+=dev-ruby/method_source-0.8.2-r3 ~amd64
+
+# required by media-gfx/blender-2.69-r1
+# required by blender (argument)
+=sci-libs/ldl-2.1.0 ~amd64
+# required by media-gfx/blender-2.69-r1[collada]
+# required by blender (argument)
+=media-libs/opencollada-0_p864-r1 ~amd64
+# required by sci-libs/ldl-2.1.0
+# required by media-gfx/blender-2.69-r1
+# required by blender (argument)
+=sci-libs/suitesparseconfig-4.2.1 ~amd64

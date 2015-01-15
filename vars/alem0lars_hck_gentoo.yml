@@ -41,6 +41,13 @@ fullname: 'Alessandro Molari'
 
 github_username: 'alem0lars'
 
+portage:
+  use_flags:
+    # Audio.
+    - 'jack'
+    # Databases.
+    - 'postgres'
+
 dracut:
   root: 'LABEL=main'
 
