@@ -138,6 +138,7 @@ dev-db/sqlmap ~amd64
 dev-util/shellcheck ~amd64
 media-plugins/gimp-lensfun ~amd64
 media-plugins/gimp-gmic ~amd64
+media-plugins/gimp-resynthesizer ~amd64
 sci-electronics/ghdl ~amd64
 
 <% if has_feature? :canto || has_feature? :cli_centric %>

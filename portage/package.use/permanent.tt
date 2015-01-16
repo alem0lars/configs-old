@@ -58,6 +58,7 @@ gnome-base/librsvg tools
 media-libs/mesa llvm
 media-libs/chromaprint tools
 media-libs/freetype utils auto-hinter harfbuzz
+media-libs/gegl lensfun umfpack
 media-libs/libpng apng
 media-libs/openimageio colorio
 media-libs/libpng apng
@@ -81,6 +82,7 @@ net-misc/aria2 bittorrent metalink
 sys-apps/kmod tools
 
 sys-devel/llvm clang
+sys-devel/gcc graphite
 
 sys-libs/libseccomp tools
 sys-libs/zlib minizip
@@ -137,6 +139,14 @@ dev-lang/ghc llvm
 dev-python/matplotlib -doc
 dev-python/ipython matplotlib mongodb octave nbconvert -doc
 dev-python/PyQt4 help
+<% end %>
+
+<% if has_feature? :pulseaudio %>
+media-sound/pulseaudio equalizer qt4
+<% end %>
+
+<% if has_feature? :steam %>
+games-util/steam-client-meta steamfonts
 <% end %>
 
 

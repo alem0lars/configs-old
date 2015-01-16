@@ -1,5 +1,7 @@
 app-emulation/virtualbox-bin PUEL
 
-dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
-
 www-plugins/adobe-flash AdobeFlash-11.x
+
+<% if has_feature? :java %>
+dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
+<% end %>

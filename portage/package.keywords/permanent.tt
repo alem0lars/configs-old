@@ -115,5 +115,9 @@ net-im/turses ~amd64
 net-irc/weechat ~amd64
 <% end %>
 
+<% if has_feature? :steam %>
+*/*::steam-overlay ~amd64
+<% end %>
+
 
 # vim: set filetype=gentoo-package-keywords :
