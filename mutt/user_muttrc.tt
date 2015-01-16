@@ -7,7 +7,7 @@
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Homepage:        https://github.com/alem0lars/configs                      #
 # - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
@@ -67,3 +67,6 @@ set ssl_force_tls = yes
 unset ssl_starttls
 
 # }}}
+
+
+# vim: set filetype=muttrc :
