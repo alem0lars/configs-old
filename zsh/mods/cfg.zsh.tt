@@ -1,0 +1,60 @@
+#!/usr/bin/env zsh
+
+
+# general {{{
+
+# color output (auto set to 'no' on dumb terminals).
+zstyle ':custom:*:*' color 'yes'
+
+# set the zsh modules to load (man zshmodules).
+zstyle ':custom:load' zmodule 'attr' 'stat'
+
+# set the zsh functions to load (man zshcontrib).
+zstyle ':custom:load' zfunction 'zargs' 'zmv'
+
+# set the custom modules to load (browse modules). the order matters
+zstyle ':custom:load' mod \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'directory' \
+  'fasd_integration' \
+  'gpg' \
+  'completion' \
+  'syntax_highlighting' \
+  'history' \
+  'history_substring_search' \
+  'prompt'
+
+# }}}
+
+
+# module editor {{{
+
+# set the key mapping style to 'emacs' or 'vi'
+zstyle ':custom:module:editor' key-bindings 'vi'
+
+# auto convert .... to ../..
+zstyle ':custom:module:editor' dot-expansion 'yes'
+
+# }}}
+
+
+# module history substring search {{{
+
+zstyle ':custom:module:history-substring-search' color 'yes'
+
+# }}}
+
+
+# module syntax highlighting {{{
+
+set syntax highlighters
+# by default, only the main highlighter is enabled
+zstyle ':custom:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'root'
+
+# }}}

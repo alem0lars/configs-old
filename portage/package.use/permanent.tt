@@ -1,0 +1,143 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    portage/package.use/permanent.tt                                  #
+# - Summary: The permanent local package use flags.                            #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+app-crypt/gnupg tools
+
+app-misc/geoclue -modemmanager
+
+app-portage/eix tools optimization
+app-portage/layman g-sorcery gpg
+
+app-text/libwpd tools
+app-text/poppler utils
+
+dev-cpp/glog gflags
+
+dev-libs/boost tools
+dev-libs/elfutils utils
+dev-libs/glib utils
+dev-libs/gmp pgo
+
+dev-vcs/git gpg
+dev-vcs/mercurial gpg
+
+gnome-base/libglade tools
+gnome-base/librsvg tools
+
+media-libs/mesa llvm
+media-libs/chromaprint tools
+media-libs/freetype utils auto-hinter harfbuzz
+media-libs/libpng apng
+media-libs/openimageio colorio
+media-libs/libpng apng
+
+media-fonts/powerline-fonts inconsolata anonymouspro dejavusansmono droidsansmono inconsolatadz liberationmono meslo sourcecodepro terminus_pcf
+
+media-gfx/exiv2 contrib
+media-gfx/ufraw timezone
+media-gfx/imagemagick lqr fpx
+media-gfx/blender colorio collada openimageio redcode
+
+media-sound/beets beatport convert chroma echonest echonest_tempo discogs lastgenre replaygain mpdstats
+
+media-video/ffmpeg vaapi
+media-video/mplayer faad
+
+net-dns/avahi utils bookmarks autoipd
+
+net-misc/aria2 bittorrent metalink
+
+sys-apps/kmod tools
+
+sys-devel/llvm clang
+
+sys-libs/libseccomp tools
+sys-libs/zlib minizip
+
+x11-base/xorg-server kdrive
+
+x11-libs/libdrm libkms
+
+x11-misc/redshift geoclue
+
+x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
+
+www-client/firefox pgo
+
+virtual/ffmpeg vaapi
+
+app-text/asciidoc highlight
+
+<% if has_feature? :mutt %>
+mail-client/mutt gpg sidebar smime smtp
+<% end %>
+
+<% if has_feature? :networkmanager %>
+net-misc/networkmanager dhcpcd -modemmanager -nss -dhclient
+<% end %>
+
+<% if has_feature? :systemd %>
+sys-apps/systemd gudev
+<% end %>
+
+<% if has_feature? :gtk %>
+x11-themes/FlatStudio gtk2 gtk3
+<% end %>
+
+<% if has_feature? :conky %>
+app-admin/conky lua-imlib lua-cairo
+<% end %>
+
+<% if has_feature? :emacs %>
+app-editors/emacs libxml2
+<% end %>
+
+<% if has_feature? :latex %>
+app-text/docbook-sgml-utils jadetex
+app-text/texlive humanities graphics luatex omega publishers science xetex extra jadetex
+app-text/texlive-core xetex
+<% end %>
+
+<% if has_feature? :haskell %>
+dev-lang/ghc llvm
+<% end %>
+
+<% if has_feature? :python %>
+dev-python/matplotlib -doc
+dev-python/ipython matplotlib mongodb octave nbconvert -doc
+dev-python/PyQt4 help
+<% end %>
+
+
+# vim: set filetype=gentoo-package-keywords

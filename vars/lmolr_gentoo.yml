@@ -58,3 +58,5 @@ features:
   - 'minimal_de'
   - 'gtk'
   - 'firefox'
+  - 'emacs'
+  - 'networkmanager'

@@ -1,0 +1,47 @@
+# global configuration {{{
+
+export ZSH_ROOT_DIR="/etc/zsh"
+export ZSH_LIB_DIR="${ZSH_ROOT_DIR}/lib"
+export ZSH_MODS_DIR="${ZSH_ROOT_DIR}/mods"
+export ZSH_MODS_CFG_FILE="${ZSH_MODS_DIR}/cfg.zsh"
+
+# }}}
+
+
+# require all libraries {{{
+
+function {
+  setopt EXTENDED_GLOB
+  for lib_file in "${ZSH_LIB_DIR}"/*.zsh(.N); do
+    source "${lib_file}"
+  done
+}
+
+# }}}
+
+
+# require all modules {{{
+
+# load the modules configuration
+if [[ -r ${ZSH_MODS_CFG_FILE} ]]; then
+  source ${ZSH_MODS_CFG_FILE}
+fi
+
+function {
+  # load zsh modules
+  zstyle -a ':custom:load' zmodule 'zmodules'
+  for zmodule ("$zmodules[@]") zmodload "zsh/${(z)zmodule}"
+  unset zmodule{s,}
+
+  # autoload zsh functions
+  zstyle -a ':custom:load' zfunction 'zfunctions'
+  for zfunction ("$zfunctions[@]") autoload -Uz "$zfunction"
+  unset zfunction{s,}
+
+  # load custom modules
+  zstyle -a ':custom:load' mod 'mods'
+  load_mods ${ZSH_MODS_DIR} $mods
+  unset mods
+}
+
+# }}}

@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+#
+# integrate zsh with fasd
+#
+
+
+if [[ ! -x $(which fasd) ]]; then
+  return 1
+fi
+
+
+# initialization {{{
+
+eval "$(fasd --init auto)"
+
+# }}}
+
+
+# aliases to well-known fasd commands {{{
+
+# any
+alias a='fasd -a'
+# show / search / select
+alias s='fasd -si'
+# directory
+alias d='fasd -d'
+# file
+alias f='fasd -f'
+# interactive directory selection
+alias sd='fasd -sid'
+# interactive file selection
+alias sf='fasd -sif'
+# cd, same functionality as j in autojump
+alias z='fasd_cd -d'
+# cd with interactive selection
+alias zz='fasd_cd -d -i'
+
+# }}}

@@ -1,0 +1,28 @@
+#
+# zsh-syntax-highlighting support
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# return if requirements are not found.
+if ! zstyle -t ':custom:module:syntax-highlighting' color; then
+  return 1
+fi
+
+# source module files
+source "${0:h}/external/zsh-syntax-highlighting.zsh" || return 1
+
+# set highlighters
+zstyle -a ':custom:module:syntax-highlighting' highlighters 'ZSH_HIGHLIGHT_HIGHLIGHTERS'
+if (( ${#ZSH_HIGHLIGHT_HIGHLIGHTERS[@]} == 0 )); then
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+fi
+
+# set highlighting styles
+typeset -A syntax_highlighting_styles
+zstyle -a ':custom:module:syntax-highlighting' styles 'syntax_highlighting_styles'
+for syntax_highlighting_style in "${(k)syntax_highlighting_styles[@]}"; do
+  ZSH_HIGHLIGHT_STYLES[$syntax_highlighting_style]="$syntax_highlighting_styles[$syntax_highlighting_style]"
+done
+unset syntax_highlighting_style{s,}

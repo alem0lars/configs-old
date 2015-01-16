@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+#
+# Execute commands at logout
+#
+
+
+# vim: filetype=zsh :

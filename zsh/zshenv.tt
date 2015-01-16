@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+
+# ensure that a non-login, non-interactive shell has a defined environment
+function {
+  zprofile_path="/etc/zsh/zprofile"
+  if [[ "${SHLVL}" -eq 1 && ! -o LOGIN && -s "${zprofile_path}" ]]; then
+    source ${zprofile_path}
+  fi
+}

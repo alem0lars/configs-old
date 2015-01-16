@@ -1,0 +1,160 @@
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    portage/package.keywords/temporary.tt                             #
+# - Summary: Temporary package keywords. Tipycally these packages should       #
+#            be removed as soon as possible. There are two main use-cases:     #
+#            1. A package should be installed but it has a dependency not      #
+#               stable. In this case the dependency should be included in this #
+#               file (in the right section). When that dependency package has  #
+#               an available stable version satisfying the dependendants, then #
+#               it can (and it should!) be removed from this file asap.        #
+#            2. The user wants to install a package, possibly a stable         #
+#               version, but there isn't a stable version yet for that         #
+#               package. In this case, the package should be specified in this #
+#               file (in the right section).                                   #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
+
+
+# dependencies of permanent packages {{{
+
+# Needed by `dev-util/radare2`.
+dev-util/capstone ~amd64
+
+# Needed by `media-gfx/blender`.
+=media-video/ffmpeg-2.2.10 ~amd64
+=sci-libs/ldl-2.1.0 ~amd64
+=media-libs/opencollada-0_p864-r1 ~amd64
+=sci-libs/suitesparseconfig-4.2.1 ~amd64
+
+# Needed by `www-client/firefox`.
+=x11-libs/libdrm-2.4.56 ~amd64
+=media-libs/mesa-10.3.0 ~amd64
+
+# Needed by `app-emulation/vagrant`.
+=dev-ruby/net-ssh-2.9.0 ~amd64
+=dev-ruby/net-scp-1.2.1 ~amd64
+=dev-ruby/childprocess-0.5.5 ~amd64
+=dev-ruby/log4r-1.1.10-r1 ~amd64
+=dev-ruby/i18n-0.6.11 ~amd64
+
+<% if has_feature? :scala %>
+# Needed by `dev-lang/scala`.
+=dev-java/hawtjni-runtime-1.8 ~amd64
+<% end %>
+
+<% if has_feature? :haskell %>
+# needed by `dev-haskell/haskell-platform`.
+=dev-lang/ghc-7.8.3 ~amd64
+<% end %>
+
+<% if has_feature? :python %>
+# Needed by `dev-python/ipython`.
+=dev-python/oct2py-1.3.0-r1 ~amd64
+=dev-python/sphinx-bootstrap-theme-0.4.2 ~amd64
+=dev-python/matplotlib-1.4.2 ~amd64
+=dev-python/pymongo-2.7.2 ~amd64
+=sci-libs/scipy-0.14.0-r1 ~amd64
+=dev-python/pytz-2014.9 ~amd64
+=dev-python/pyzmq-14.4.1 ~amd64
+
+# Needed by `dev-python/sympy.
+=dev-python/mpmath-0.19 ~amd64
+<% end %>
+
+<% if has_feature? :ruby %>
+# Needed by `dev-ruby/rubocop`.
+=dev-ruby/ast-2.0.0 ~amd64
+=dev-ruby/parser-2.2.0_pre8 ~amd64
+=dev-ruby/powerpack-0.0.9 ~amd64
+
+# Needed by `dev-ruby/pry`.
+=dev-ruby/slop-3.6.0 ~amd64
+=dev-ruby/method_source-0.8.2-r3 ~amd64
+
+# Needed by `dev-ruby/sass`.
+=dev-ruby/rb-inotify-0.9.5-r1 ~amd64
+=dev-ruby/celluloid-0.16.0 ~amd64
+=dev-ruby/listen-2.7.5 ~amd64
+=dev-ruby/timers-4.0.1 ~amd64
+=dev-ruby/hitimes-1.2.2 ~amd64
+
+# Needed by `dev-ruby/haml`.
+=dev-ruby/tilt-2.0.1 ~amd64
+=dev-ruby/builder-3.2.2 ~amd64
+=dev-ruby/haml-4.0.5 ~amd64
+=dev-ruby/maruku-0.7.2-r1 ~amd64
+<% end %>
+
+<% if has_feature? :zathura %>
+# Needed by `app-text/zathura`.
+app-text/mupdf ~amd64
+dev-libs/girara ~amd64
+<% end %>
+
+<% if has_feature? :turses || has_feature? :cli_centric %>
+# Needed by `net-im/turses`.
+=dev-python/tweepy-2.3 ~amd64
+<% end %>
+
+<% if has_feature? :canto || has_feature? :cli_centric %>
+# Needed by `net-news/canto-daemon`.
+=dev-python/feedparser-5.1.3-r2 ~amd64
+<% end %>
+
+# }}}
+
+
+# not yet stable {{{
+
+app-shells/fasd ~amd64
+dev-db/sqlmap ~amd64
+dev-util/shellcheck ~amd64
+media-plugins/gimp-lensfun ~amd64
+media-plugins/gimp-gmic ~amd64
+sci-electronics/ghdl ~amd64
+
+<% if has_feature? :canto || has_feature? :cli_centric %>
+net-news/canto-curses ~amd64
+net-news/canto-daemon ~amd64
+<% end %>
+
+<% if has_feature? :dracut %>
+sys-kernel/dracut ~amd64
+<% end %>
+
+<% if has_feature? :zim %>
+x11-misc/zim ~amd64
+<% end %>
+
+<% if has_feature? :gtk %>
+x11-themes/FlatStudio ~amd64
+<% end %>
+
+# }}}

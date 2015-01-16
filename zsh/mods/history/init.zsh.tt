@@ -1,0 +1,55 @@
+#!/usr/bin/env zsh
+#
+# set history options and define history aliases
+#
+
+
+# variables {{{
+
+# the path to the history file
+HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"
+
+# the maximum number of events to save in the internal history
+HISTSIZE=10240
+# the maximum number of events to save in the history file
+SAVEHIST=10240
+
+# }}}
+
+
+# options {{{
+
+# treat the '!' character specially during expansion
+setopt BANG_HIST
+# write the history file in the ':start:elapsed;command' format
+setopt EXTENDED_HISTORY
+# write to the history file immediately, not when the shell exits
+setopt INC_APPEND_HISTORY
+# share history between all sessions
+setopt SHARE_HISTORY
+# expire a duplicate event first when trimming history
+setopt HIST_EXPIRE_DUPS_FIRST
+# do not record an event that was just recorded again
+setopt HIST_IGNORE_DUPS
+# delete an old recorded event if a new event is a duplicate
+setopt HIST_IGNORE_ALL_DUPS
+# do not display a previously found event
+setopt HIST_FIND_NO_DUPS
+# do not record an event starting with a space
+setopt HIST_IGNORE_SPACE
+# do not write a duplicate event to the history file
+setopt HIST_SAVE_NO_DUPS
+# do not execute immediately upon history expansion
+setopt HIST_VERIFY
+# beep when accessing non-existent history
+setopt HIST_BEEP
+
+# }}}
+
+
+# aliases {{{
+
+# list the ten most used commands
+alias history_stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+
+# }}}

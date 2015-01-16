@@ -1,0 +1,14 @@
+log_inf()
+{
+  echo "$1"
+}
+
+log_wrn()
+{
+  echo "[WARNING] $1"
+}
+
+log_err()
+{
+  echo "[ERROR] $1"
+}

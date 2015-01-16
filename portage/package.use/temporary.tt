@@ -2,7 +2,10 @@
 #                                                                              #
 # File informations:                                                           #
 # - Name:    portage/package.keywords/commons.tt                               #
-# - Summary: The common local package use flags.                               #
+# - Summary: The local package use flags that should be removed as soon as     #
+#            possible. A tipical use-case of temporary local package use flags #
+#            is that otherwise the package will not build due to a bug or      #
+#            incompatibilities.                                                #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -32,35 +35,17 @@
 ################################################################################
 
 
-# optimization {{{
+# Otherwise it will fail to build.
+app-text/asciidoc python_single_target_python2_7
 
-*/* optimization
-*/* strong-optimization
-*/* pgo
+# IDK the reason. Can we remove it?
+app-emulation/virtualbox-modules -pax_kernel
 
-# }}}
+# Remove when with tools flag is compatible with python_single_target python3_3
+gnome-base/libglade -tools
 
-
-# audio {{{
-
-*/* speech
-*/* flite
-
-# }}}
-
-
-# fonts {{{
-
-media-libs/freetype harfbuzz
-
-# }}}
-
-
-# utils {{{
-
-*/* highlight
-
-# }}}
+# Because at the moment cxx and fortran are uncompatible with threads
+sci-libs/hdf5 -cxx -fortran
 
 
 # vim: set filetype=gentoo-package-keywords

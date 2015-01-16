@@ -107,6 +107,11 @@ elems:
     only:
       features: ['cli_centric', 'weechat']
 
+  - src:  'canto/(conf)'
+    dst:  '~/.canto-ng/<1>'
+    only:
+      features: ['cli_centric', 'canto']
+
   # }}}
 
   # specific {{{

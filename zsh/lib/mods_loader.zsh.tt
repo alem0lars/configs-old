@@ -1,0 +1,78 @@
+#
+# Initializes Prezto.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# loads modules
+function load_mods {
+  local mod
+  local func_glob='^([_.]*|prompt_*_setup|README*)(-.N:t)'
+  local init_file_name="init.zsh"
+  local funcs_dir_name="functions"
+  # set modules directory from first argument
+  local mods_dir=$1
+  if [[ ! -d ${mods_dir} ]]; then
+    echo "$0: invalid modules directory: ${mods_dir}" >&2
+    return -1
+  fi
+  # set list of modules to be loaded from second argument
+  local -a mods
+  if [[ $# -lt 2 ]]; then
+    echo "$0: no modules to be loaded" >&2
+    return -2
+  fi
+  mods=("${@:2}")
+
+  # add functions to $fpath.
+  fpath=(${mods:+${mods_dir}/${^mods}/${funcs_dir_name}(/FN)} $fpath)
+
+  function {
+    local func
+
+    # extended globbing is needed for listing autoloadable function directories
+    setopt LOCAL_OPTIONS EXTENDED_GLOB
+
+    # load custom functions
+    for func in ${mods_dir}/${^mods}/${funcs_dir_name}/$~func_glob; do
+      autoload -Uz "${func}"
+    done
+  }
+
+  # load custom modules
+  for mod in $mods; do
+    if zstyle -t ":custom:module:${mod}" loaded 'yes' 'no'; then
+      continue
+    elif [[ ! -d "${mods_dir}/${mod}" ]]; then
+      print "$0: no such module: ${mod}" >&2
+      continue
+    else
+      if [[ -s "${mods_dir}/${mod}/${init_file_name}" ]]; then
+        source "${mods_dir}/${mod}/${init_file_name}"
+      fi
+
+      if (( $? == 0 )); then
+        zstyle ":custom:module:${mod}" loaded 'yes'
+      else
+        # remove the $fpath entry
+        fpath[(r)${mods_dir}/${mod}/${funcs_dir_name}]=()
+
+        function {
+          local func
+
+          # extended globbing is needed for listing autoloadable function
+          # directories
+          setopt LOCAL_OPTIONS EXTENDED_GLOB
+
+          # unload custom functions
+          for func in ${mods_dir}/${mod}/${funcs_dir_name}/$~func_glob; do
+            unfunction "$func"
+          done
+        }
+
+        zstyle ":custom:module:${mod}" loaded 'no'
+      fi
+    fi
+  done
+}
