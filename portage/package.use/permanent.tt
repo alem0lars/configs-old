@@ -89,13 +89,15 @@ x11-base/xorg-server kdrive
 
 x11-libs/libdrm libkms
 
-x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
-
 www-client/firefox pgo
 
 virtual/ffmpeg vaapi
 
 app-text/asciidoc highlight
+
+<% if has_feature? :urxvt %>
+x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
+<% end %>
 
 <% if has_feature? :mutt %>
 mail-client/mutt gpg sidebar smime smtp

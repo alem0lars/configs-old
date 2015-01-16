@@ -45,6 +45,9 @@ urxvt:
 xmonad:
   terminal_cmd: 'openterm'
 
+zsh:
+  custom_dir: '/etc/zsh'
+
 portage:
   use_flags: # {{{
     # Removed flags.
@@ -207,3 +210,4 @@ features:
   - 'autocutsel'
   - 'urxvt'
   - 'zathura'
+  - 'zsh'
