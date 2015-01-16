@@ -37,7 +37,7 @@
 
 # global configuration {{{
 
-export ZSH_ROOT_DIR="/etc/zsh"
+export ZSH_ROOT_DIR="<%= get_var! 'zsh.custom_dir' %>"
 export ZSH_LIB_DIR="${ZSH_ROOT_DIR}/lib"
 export ZSH_MODS_DIR="${ZSH_ROOT_DIR}/mods"
 export ZSH_MODS_CFG_FILE="${ZSH_MODS_DIR}/cfg.zsh"
@@ -59,23 +59,23 @@ function {
 
 # require all modules {{{
 
-# load the modules configuration
+# Load the modules configuration.
 if [[ -r ${ZSH_MODS_CFG_FILE} ]]; then
   source ${ZSH_MODS_CFG_FILE}
 fi
 
 function {
-  # load zsh modules
+  # Load zsh modules.
   zstyle -a ':custom:load' zmodule 'zmodules'
   for zmodule ("$zmodules[@]") zmodload "zsh/${(z)zmodule}"
   unset zmodule{s,}
 
-  # autoload zsh functions
+  # Autoload zsh functions.
   zstyle -a ':custom:load' zfunction 'zfunctions'
   for zfunction ("$zfunctions[@]") autoload -Uz "$zfunction"
   unset zfunction{s,}
 
-  # load custom modules
+  # Load custom modules.
   zstyle -a ':custom:load' mod 'mods'
   load_mods ${ZSH_MODS_DIR} $mods
   unset mods

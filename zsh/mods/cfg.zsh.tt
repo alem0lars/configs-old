@@ -1,18 +1,51 @@
 #!/usr/bin/env zsh
+#
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zsh/mods/cfg.zsh.tt                                               #
+# - Summary: Enable and configure the available ZSH custom modules.            #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
 
 
 # general {{{
 
-# color output (auto set to 'no' on dumb terminals).
+# Color output (auto set to `no` on dumb terminals).
 zstyle ':custom:*:*' color 'yes'
 
-# set the zsh modules to load (man zshmodules).
+# Set the zsh modules to load (`man zshmodules`).
 zstyle ':custom:load' zmodule 'attr' 'stat'
 
-# set the zsh functions to load (man zshcontrib).
+# Set the zsh functions to load (`man zshcontrib`).
 zstyle ':custom:load' zfunction 'zargs' 'zmv'
 
-# set the custom modules to load (browse modules). the order matters
+# Set the custom modules to load (browse modules); the order matters.
 zstyle ':custom:load' mod \
   'environment' \
   'terminal' \
@@ -31,10 +64,15 @@ zstyle ':custom:load' mod \
 
 # module editor {{{
 
-# set the key mapping style to 'emacs' or 'vi'
+<% if has_feature? :vim %>
+# Set the key mapping style to `emacs` or `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
+<% elif has_feature? :emacs %>
+# Set the key mapping style to `emacs` or `vi`.
+zstyle ':custom:module:editor' key-bindings 'vi'
+<% end %>
 
-# auto convert .... to ../..
+# Auto convert `....` to `../..`.
 zstyle ':custom:module:editor' dot-expansion 'yes'
 
 # }}}
@@ -50,7 +88,7 @@ zstyle ':custom:module:history-substring-search' color 'yes'
 # module syntax highlighting {{{
 
 set syntax highlighters
-# by default, only the main highlighter is enabled
+# By default, only the main highlighter is enabled.
 zstyle ':custom:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \

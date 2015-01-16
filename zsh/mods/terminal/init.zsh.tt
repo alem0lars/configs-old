@@ -1,14 +1,38 @@
+#!/usr/bin/env zsh
 #
-# Sets terminal window and tab titles.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zsh/mods/terminal/init.zsh.tt                                     #
+# - Summary: Sets terminal window and tab titles.                              #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
 
-# Return if requirements are not found.
-if [[ "$TERM" == (dumb|linux|*bsd*) ]]; then
-  return 1
-fi
 
 # Sets the terminal or terminal multiplexer window title.
 function set-window-title {
@@ -119,3 +143,6 @@ then
   # Sets the tab and window titles before command execution.
   add-zsh-hook preexec _terminal-set-titles-with-command
 fi
+
+
+# vim: set filetype=zsh :

@@ -1,23 +1,52 @@
+#!/usr/bin/env zsh
 #
-# Initializes Prezto.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zsh/lib/mods_loader.zsh.tt                                        #
+# - Summary: Definition of how ZSH configuration modules should be loaded.     #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
 
-# loads modules
+
+# Loads modules.
 function load_mods {
   local mod
   local func_glob='^([_.]*|prompt_*_setup|README*)(-.N:t)'
   local init_file_name="init.zsh"
   local funcs_dir_name="functions"
-  # set modules directory from first argument
+  # Set modules directory from first argument.
   local mods_dir=$1
   if [[ ! -d ${mods_dir} ]]; then
     echo "$0: invalid modules directory: ${mods_dir}" >&2
     return -1
   fi
-  # set list of modules to be loaded from second argument
+  # Set list of modules to be loaded from second argument.
   local -a mods
   if [[ $# -lt 2 ]]; then
     echo "$0: no modules to be loaded" >&2
@@ -25,7 +54,7 @@ function load_mods {
   fi
   mods=("${@:2}")
 
-  # add functions to $fpath.
+  # Add functions to `$fpath`.
   fpath=(${mods:+${mods_dir}/${^mods}/${funcs_dir_name}(/FN)} $fpath)
 
   function {
@@ -40,7 +69,7 @@ function load_mods {
     done
   }
 
-  # load custom modules
+  # Load custom modules.
   for mod in $mods; do
     if zstyle -t ":custom:module:${mod}" loaded 'yes' 'no'; then
       continue
@@ -55,17 +84,17 @@ function load_mods {
       if (( $? == 0 )); then
         zstyle ":custom:module:${mod}" loaded 'yes'
       else
-        # remove the $fpath entry
+        # Remove the `$fpath` entry.
         fpath[(r)${mods_dir}/${mod}/${funcs_dir_name}]=()
 
         function {
           local func
 
-          # extended globbing is needed for listing autoloadable function
-          # directories
+          # Extended globbing is needed for listing autoloadable function
+          # directories.
           setopt LOCAL_OPTIONS EXTENDED_GLOB
 
-          # unload custom functions
+          # Unload custom functions.
           for func in ${mods_dir}/${mod}/${funcs_dir_name}/$~func_glob; do
             unfunction "$func"
           done
@@ -76,3 +105,6 @@ function load_mods {
     fi
   done
 }
+
+
+# vim: set filetype=zsh :

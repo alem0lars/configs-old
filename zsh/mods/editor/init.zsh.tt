@@ -1,25 +1,48 @@
+#!/usr/bin/env zsh
 #
-# Sets key bindings.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zsh/mods/editor/init.zsh.tt                                       #
+# - Summary: Sets key bindings.                                                #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
 
-# Return if requirements are not found.
-if [[ "$TERM" == 'dumb' ]]; then
-  return 1
-fi
 
-#
-# Options
-#
+# options {{{
 
-# beep on error in line editor
+# Beep on error in line editor.
 setopt BEEP
 
-#
-# Variables
-#
+# }}}
+
+
+# variables {{{
 
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
@@ -67,17 +90,19 @@ for key in "${(k)key_info[@]}"; do
   fi
 done
 
-#
-# External Editor
-#
+# }}}
+
+
+# external editor {{{
 
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
 zle -N edit-command-line
 
-#
-# Functions
-#
+# }}}
+
+
+# functions {{{
 
 # Exposes information about the Zsh Line Editor via the $editor_info associative
 # array.
@@ -204,60 +229,10 @@ zle -N prepend-sudo
 # Reset to default key bindings.
 bindkey -d
 
-#
-# Emacs Key Bindings
-#
+# }}}
 
-for key in "$key_info[Escape]"{B,b} "${(s: :)key_info[ControlLeft]}"
-  bindkey -M emacs "$key" emacs-backward-word
-for key in "$key_info[Escape]"{F,f} "${(s: :)key_info[ControlRight]}"
-  bindkey -M emacs "$key" emacs-forward-word
 
-# Kill to the beginning of the line.
-for key in "$key_info[Escape]"{K,k}
-  bindkey -M emacs "$key" backward-kill-line
-
-# Redo.
-bindkey -M emacs "$key_info[Escape]_" redo
-
-# Search previous character.
-bindkey -M emacs "$key_info[Control]X$key_info[Control]B" vi-find-prev-char
-
-# Match bracket.
-bindkey -M emacs "$key_info[Control]X$key_info[Control]]" vi-match-bracket
-
-# Edit command in an external editor.
-bindkey -M emacs "$key_info[Control]X$key_info[Control]E" edit-command-line
-
-if (( $+widgets[history-incremental-pattern-search-backward] )); then
-  bindkey -M emacs "$key_info[Control]R" \
-    history-incremental-pattern-search-backward
-  bindkey -M emacs "$key_info[Control]S" \
-    history-incremental-pattern-search-forward
-fi
-
-#
-# Vi Key Bindings
-#
-
-# Edit command in an external editor.
-bindkey -M vicmd "v" edit-command-line
-
-# Undo/Redo
-bindkey -M vicmd "u" undo
-bindkey -M vicmd "$key_info[Control]R" redo
-
-if (( $+widgets[history-incremental-pattern-search-backward] )); then
-  bindkey -M vicmd "?" history-incremental-pattern-search-backward
-  bindkey -M vicmd "/" history-incremental-pattern-search-forward
-else
-  bindkey -M vicmd "?" history-incremental-search-backward
-  bindkey -M vicmd "/" history-incremental-search-forward
-fi
-
-#
-# Emacs and Vi Key Bindings
-#
+# general keybindings {{{
 
 for keymap in 'emacs' 'viins'; do
   bindkey -M "$keymap" "$key_info[Home]" beginning-of-line
@@ -312,9 +287,63 @@ if zstyle -t ':custom:module:editor' dot-expansion; then
   bindkey -M isearch . self-insert 2> /dev/null
 fi
 
-#
-# Layout
-#
+# }}}
+
+
+# emacs keybindings {{{
+
+for key in "$key_info[Escape]"{B,b} "${(s: :)key_info[ControlLeft]}"
+  bindkey -M emacs "$key" emacs-backward-word
+for key in "$key_info[Escape]"{F,f} "${(s: :)key_info[ControlRight]}"
+  bindkey -M emacs "$key" emacs-forward-word
+
+# Kill to the beginning of the line.
+for key in "$key_info[Escape]"{K,k}
+  bindkey -M emacs "$key" backward-kill-line
+
+# Redo.
+bindkey -M emacs "$key_info[Escape]_" redo
+
+# Search previous character.
+bindkey -M emacs "$key_info[Control]X$key_info[Control]B" vi-find-prev-char
+
+# Match bracket.
+bindkey -M emacs "$key_info[Control]X$key_info[Control]]" vi-match-bracket
+
+# Edit command in an external editor.
+bindkey -M emacs "$key_info[Control]X$key_info[Control]E" edit-command-line
+
+if (( $+widgets[history-incremental-pattern-search-backward] )); then
+  bindkey -M emacs "$key_info[Control]R" \
+    history-incremental-pattern-search-backward
+  bindkey -M emacs "$key_info[Control]S" \
+    history-incremental-pattern-search-forward
+fi
+
+# }}}
+
+
+# vim keybindings {{{
+
+# Edit command in an external editor.
+bindkey -M vicmd "v" edit-command-line
+
+# Undo/Redo
+bindkey -M vicmd "u" undo
+bindkey -M vicmd "$key_info[Control]R" redo
+
+if (( $+widgets[history-incremental-pattern-search-backward] )); then
+  bindkey -M vicmd "?" history-incremental-pattern-search-backward
+  bindkey -M vicmd "/" history-incremental-pattern-search-forward
+else
+  bindkey -M vicmd "?" history-incremental-search-backward
+  bindkey -M vicmd "/" history-incremental-search-forward
+fi
+
+# }}}
+
+
+# layout {{{
 
 # Set the key layout.
 zstyle -s ':custom:module:editor' key-bindings 'key_bindings'
@@ -326,4 +355,10 @@ else
   print "custom: editor: invalid key bindings: $key_bindings" >&2
 fi
 
+# }}}
+
+
 unset key{,map,bindings}
+
+
+# vim: set filetype=zsh :
