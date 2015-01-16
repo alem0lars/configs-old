@@ -51,6 +51,10 @@ portage:
 dracut:
   root: 'LABEL=main'
 
+xorg:
+  xresources:
+    colors_name: 'wombat'
+
 gtk:
   key_theme: 'Vi'
 
