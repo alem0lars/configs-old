@@ -89,8 +89,6 @@ x11-base/xorg-server kdrive
 
 x11-libs/libdrm libkms
 
-x11-misc/redshift geoclue
-
 x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
 
 www-client/firefox pgo

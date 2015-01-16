@@ -87,7 +87,6 @@ features:
   - 'g-sorcery'
   - 'btrfs'
   - 'grub'
-  - 'xorg'
   - 'gtk'
   - 'alsa'
   - 'pulseaudio'

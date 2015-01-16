@@ -250,11 +250,11 @@ elems:
   - src: 'xorg/xresources/main'
     dst: '/etc/X11/xinit/Xresources'
     only:
-      features: ['xorg']
+      features: ['linux']
   - src: 'xorg/xresources/((?!.*main).*)$'
     dst: '<%= get_var! "xorg.xresources.custom_dir" %>/<1>'
     only:
-      features: ['xorg']
+      features: ['linux']
 
   - src: 'xorg/sessions/xmonad'
     dst: '/etc/X11/Sessions/xmonad'
