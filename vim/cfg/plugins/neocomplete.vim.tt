@@ -95,7 +95,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-<% if has_feature :latex %>
+<% if has_feature? :latex %>
 let g:neocomplete#sources#omni#input_patterns.tex = '\v\\\a*(ref|cite)\a*([^]]*\])?\{([^}]*,)*[^}]*'
 <% end %>
 
@@ -111,10 +111,10 @@ let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*
 let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 let g:neocomplete#force_omni_input_patterns.objc = '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
 let g:neocomplete#force_omni_input_patterns.objcpp = '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
-<% if has_feature :python %>
+<% if has_feature? :python %>
 let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 <% end %>
-<% if has_feature :ruby %>
+<% if has_feature? :ruby %>
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 <% end %>
 
@@ -126,7 +126,7 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 " c,c++,objc,objcpp -> clang_complete
 " automatic setup by plugin
 
-<% if has_feature :python %>
+<% if has_feature? :python %>
 " python -> jedi
 " Needed because we set `g:jedi#completions_enabled=0` to skip the
 " direct usage of jedi-vim, but it's there where the plugin also
@@ -134,12 +134,12 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 autocmd FileType python setlocal omnifunc=jedi#completions
 <% end %>
 
-<% if has_feature :ruby %>
+<% if has_feature? :ruby %>
 " ruby -> rubycomplete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 <% end %>
 
-<% if has_feature :haskell %>
+<% if has_feature? :haskell %>
 " haskell -> necoghc
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 <% end %>

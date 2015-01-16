@@ -118,7 +118,7 @@ USE="${USE} alsa"
 USE="${USE} pulseaudio"
 <% end %>
 
-<% if has_feature :zsh %>
+<% if has_feature? :zsh %>
 USE="${USE} zsh-completion"
 <% end %>
 <% if has_feature? :vim %>
