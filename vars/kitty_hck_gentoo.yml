@@ -38,8 +38,7 @@
 
 hostname: 'kitty'
 
-kernel:
-  config: 'kitty_hck_gentoo'
+kernel_config: 'kitty_hck_gentoo'
 
 portage:
   input_devices:

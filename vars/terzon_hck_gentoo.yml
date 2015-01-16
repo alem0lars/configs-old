@@ -38,8 +38,7 @@
 
 hostname: 'terzon'
 
-kernel:
-  config: 'terzon_hck_gentoo'
+kernel_config: 'terzon_hck_gentoo'
 
 portage:
   input_devices:
