@@ -48,7 +48,7 @@ Xft.rgba:      rgb
 ! colors {{{
 
 <% if get_var 'xorg.xresources.colors_name' %>
-#include "<%= get_var! 'xorg.xresources.custom_dir %>/colors_<%= get_var! 'xorg.xresources.colors_name' %>"
+#include "<%= get_var! 'xorg.xresources.custom_dir' %>/colors_<%= get_var! 'xorg.xresources.colors_name' %>"
 <% end %>
 
 ! }}}
