@@ -66,9 +66,9 @@ edit.verbose = on
 <% if get_var 'taskwarrior.taskd' %>
 # Sync settings.
 taskd.server=<%= get_var! 'taskwarrior.taskd.server' %>
-taskd.key=<%= File.join(get_env! :HOME, '.task',  get_var!('taskwarrior.taskd.key_file').gsub('/', '\/') %>
-taskd.certificate=<%= File.join(get_env! :HOME, '.task', get_var!('taskwarrior.taskd.cert_file').gsub('/', '\/') %>
-taskd.ca=<%= File.join(ENV['HOME'], '.task', get_var!('taskwarrior.taskd.ca_file').gsub('/', '\/') %>
+taskd.key=<%= File.join(get_env! :HOME, '.task',  get_var!('taskwarrior.taskd.key_file').gsub('/', '\/')) %>
+taskd.certificate=<%= File.join(get_env! :HOME, '.task', get_var!('taskwarrior.taskd.cert_file').gsub('/', '\/')) %>
+taskd.ca=<%= File.join(get_env! :HOME, '.task', get_var!('taskwarrior.taskd.ca_file').gsub('/', '\/')) %>
 taskd.credentials=<%= eval(get_var!('taskwarrior.taskd.credentials')) %>
 <% end %>
 
