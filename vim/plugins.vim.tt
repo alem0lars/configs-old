@@ -124,7 +124,7 @@ NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-rake'
 <% end %>
 
-<% if has_feature :haskell %>
+<% if has_feature? :haskell %>
 " haskell
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
@@ -133,7 +133,7 @@ NeoBundle 'eagletmt/neco-ghc'
 " hex
 NeoBundle 'Shougo/vinarise'
 
-<% if has_feature :latex %>
+<% if has_feature? :latex %>
 " latex
 NeoBundle 'vim-latex/vim-latex'
 <% end %>
@@ -149,10 +149,10 @@ NeoBundle 'pangloss/vim-javascript'
 
 " airline and derivatives {{{
 NeoBundle 'bling/vim-airline'
-<% if has_feature :zsh %>
+<% if has_feature? :zsh %>
 NeoBundle 'edkolev/promptline.vim'
 <% end %>
-<% if has_feature :tmux %>
+<% if has_feature? :tmux %>
 NeoBundle 'edkolev/tmuxline.vim'
 <% end %>
 " }}}
