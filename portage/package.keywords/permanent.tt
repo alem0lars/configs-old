@@ -63,7 +63,7 @@ app-text/zathura ~amd64
 app-text/zathura-pdf-mupdf ~amd64
 <% end %>
 
-<% if has_feature? :taskwarrior || has_feature? :cli_centric %>
+<% if has_feature?(:taskwarrior) || has_feature?(:cli_centric) %>
 app-misc/task ~amd64
 <% end %>
 
@@ -107,11 +107,11 @@ virtual/jre ~amd64
 virtual/jdk ~amd64
 <% end %>
 
-<% if has_feature? :turses || has_feature? :cli_centric %>
+<% if has_feature?(:turses) || has_feature?(:cli_centric) %>
 net-im/turses ~amd64
 <% end %>
 
-<% if has_feature? :weechat || has_feature? :cli_centric %>
+<% if has_feature?(:weechat) || has_feature?(:cli_centric) %>
 net-irc/weechat ~amd64
 <% end %>
 
