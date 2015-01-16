@@ -128,19 +128,19 @@ USE="${USE} vim-syntax"
 USE="${USE} mbox imap nntp"
 <% end %>
 
-<% if has_feature :java %>
+<% if has_feature? :java %>
 USE="${USE} java gcj"
 <% end %>
-<% if has_feature :latex %>
+<% if has_feature? :latex %>
 USE="${USE} latex"
 <% end %>
-<% if has_feature :ruby %>
+<% if has_feature? :ruby %>
 USE="${USE} ruby"
 <% end %>
-<% if has_feature :python %>
+<% if has_feature? :python %>
 USE="${USE} python"
 <% end %>
-<% if has_feature :haskell %>
+<% if has_feature? :haskell %>
 USE="${USE} hoogle hscolour"
 <% end %>
 
