@@ -1,28 +1,60 @@
+#!/usr/bin/env zsh
 #
-# zsh-syntax-highlighting support
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zsh/mods/syntax_highlighting/init.zsh.tt                          #
+# - Summary: This module provides zsh-syntax-highlighting support.             #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
 
-# return if requirements are not found.
+
+# Return if requirements are not found.
 if ! zstyle -t ':custom:module:syntax-highlighting' color; then
   return 1
 fi
 
-# source module files
+# Source module files.
 source "${0:h}/external/zsh-syntax-highlighting.zsh" || return 1
 
-# set highlighters
+# Set highlighters.
 zstyle -a ':custom:module:syntax-highlighting' highlighters 'ZSH_HIGHLIGHT_HIGHLIGHTERS'
 if (( ${#ZSH_HIGHLIGHT_HIGHLIGHTERS[@]} == 0 )); then
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 fi
 
-# set highlighting styles
+# Set highlighting styles.
 typeset -A syntax_highlighting_styles
 zstyle -a ':custom:module:syntax-highlighting' styles 'syntax_highlighting_styles'
 for syntax_highlighting_style in "${(k)syntax_highlighting_styles[@]}"; do
   ZSH_HIGHLIGHT_STYLES[$syntax_highlighting_style]="$syntax_highlighting_styles[$syntax_highlighting_style]"
 done
 unset syntax_highlighting_style{s,}
+
+
+# vim: set filetype=zsh :

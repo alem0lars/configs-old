@@ -143,6 +143,16 @@ elems:
     only:
       features: ['tmux']
 
+  - src:  'zsh/(.+)'
+    dst:  '<%= get_var! "zsh.custom_dir" %>/<1>'
+    only:
+      features: ['zsh']
+
+  - src:  '^vim/((?!.*vimrc).*)$'
+    dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
+    only:
+      features: ['vim']
+
   - src:  'vim/vimrc'
     dst:  '<%= get_var! "vim.entry_point" %>'
     only:
@@ -270,10 +280,6 @@ elems:
     dst: '/etc/conf.d/hostname'
     only:
       features: ['linux']
-  - src: 'linux/systemd_hostname'
-    dst: '/etc/hostname'
-    only:
-      features: ['systemd']
 
   - src:  'linux/hwclock'
     dst:  '/etc/conf.d/hwclock'
@@ -314,6 +320,16 @@ elems:
     dst:  '/etc/eixrc/<1>'
     only:
       features: ['g-sorcery']
+
+  - src: 'systemd/hostname'
+    dst: '/etc/hostname'
+    only:
+      features: ['systemd']
+
+  - src:  '^systemd/((?!.*hostname).*)$'
+    dst: '/etc/systemd/<1>'
+    only:
+      features: ['systemd']
 
   # }}}
 

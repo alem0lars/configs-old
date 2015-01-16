@@ -1,15 +1,44 @@
 #!/usr/bin/env zsh
 #
-# integrate zsh with fasd
-#
+################################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    zsh/mods/fasd_integration/init.zsh.tt                             #
+# - Summary: Integrate zsh with fasd, if the fasd program is available.        #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+################################################################################
 
+
+# init {{{
 
 if [[ ! -x $(which fasd) ]]; then
   return 1
 fi
-
-
-# initialization {{{
 
 eval "$(fasd --init auto)"
 
@@ -18,21 +47,24 @@ eval "$(fasd --init auto)"
 
 # aliases to well-known fasd commands {{{
 
-# any
+# Any.
 alias a='fasd -a'
-# show / search / select
+# Show / search / select.
 alias s='fasd -si'
-# directory
+# Directory.
 alias d='fasd -d'
-# file
+# File.
 alias f='fasd -f'
-# interactive directory selection
+# Interactive directory selection.
 alias sd='fasd -sid'
-# interactive file selection
+# Interactive file selection.
 alias sf='fasd -sif'
-# cd, same functionality as j in autojump
+# Cd, same functionality as j in autojump.
 alias z='fasd_cd -d'
-# cd with interactive selection
+# Cd with interactive selection.
 alias zz='fasd_cd -d -i'
 
 # }}}
+
+
+# vim: set filetype=zsh :
