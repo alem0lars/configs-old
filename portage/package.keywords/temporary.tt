@@ -118,12 +118,12 @@ app-text/mupdf ~amd64
 dev-libs/girara ~amd64
 <% end %>
 
-<% if has_feature? :turses || has_feature? :cli_centric %>
+<% if has_feature?(:turses) || has_feature?(:cli_centric) %>
 # Needed by `net-im/turses`.
 =dev-python/tweepy-2.3 ~amd64
 <% end %>
 
-<% if has_feature? :canto || has_feature? :cli_centric %>
+<% if has_feature?(:canto) || has_feature?(:cli_centric) %>
 # Needed by `net-news/canto-daemon`.
 =dev-python/feedparser-5.1.3-r2 ~amd64
 <% end %>
@@ -141,7 +141,7 @@ media-plugins/gimp-gmic ~amd64
 media-plugins/gimp-resynthesizer ~amd64
 sci-electronics/ghdl ~amd64
 
-<% if has_feature? :canto || has_feature? :cli_centric %>
+<% if has_feature?(:canto) || has_feature?(:cli_centric) %>
 net-news/canto-curses ~amd64
 net-news/canto-daemon ~amd64
 <% end %>
