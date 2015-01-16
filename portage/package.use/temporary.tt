@@ -35,17 +35,26 @@
 ################################################################################
 
 
-# Otherwise it will fail to build.
+# prevent build failure {{{
+
+# It isn't yet compatible with python 3.
 app-text/asciidoc python_single_target_python2_7
+
+# `libglade` with tools flag isn't yet compatible with python 3).
+gnome-base/libglade -tools
+
+# Because at the moment `cxx` and `fortran` are uncompatible with `threads`.
+sci-libs/hdf5 -cxx -fortran
+
+# }}}
+
+
+# other {{{
 
 # IDK the reason. Can we remove it?
 app-emulation/virtualbox-modules -pax_kernel
 
-# Remove when with tools flag is compatible with python_single_target python3_3
-gnome-base/libglade -tools
-
-# Because at the moment cxx and fortran are uncompatible with threads
-sci-libs/hdf5 -cxx -fortran
+# }}}
 
 
 # vim: set filetype=gentoo-package-keywords
