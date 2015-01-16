@@ -1,13 +1,13 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    lmolr_gentoo.yml                                                  #
-# - Summary: Holds the variables for LMolr's gentoo-based systems              #
+# - Name:    vars/lmolr_hck_gentoo.yml                                         #
+# - Summary: Holds the variables for LMolr's gentoo-based hacking systems.     #
 # - Authors:                                                                   #
-#   - Luca Molari <molari.luca@gmail.com> (lmolr)                              #
+#   - Luca Molari <molari.luca@gmail.com> (LMolr)                              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/cfg                          #
+# - Homepage:        https://github.com/alem0lars/configs                      #
 # - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
@@ -41,22 +41,17 @@ fullname: 'Luca Molari'
 
 github_username: 'LMolr'
 
-hostname: 'terzon'
+gtk:
+  key_theme: 'Emacs'
 
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/ADP0'
-  wifi_dev: &conky_wifi_dev 'wlp3s0'
-  eth_dev:  &conky_eth_dev  'enp6s0'
-  net_devs:
-    - *conky_wifi_dev
-    - *conky_eth_dev
+irc:
+  nickname: 'LMolr'
+  servers:
+    firrre:
+      password: '`lpass show --password "LMolr_firrre"`'
 
 features:
-  - 'haskell'
-  - 'ruby'
-  - 'minimal_de'
-  - 'gtk'
-  - 'firefox'
-  - 'emacs'
+  - 'feh'
+  - 'parcellite'
+  - 'conky'
   - 'networkmanager'
