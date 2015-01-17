@@ -67,7 +67,7 @@ zstyle ':custom:load' mod \
 <% if has_feature? :vim %>
 # Set the key mapping style to `emacs` or `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
-<% elif has_feature? :emacs %>
+<% else if has_feature? :emacs %>
 # Set the key mapping style to `emacs` or `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
 <% end %>
