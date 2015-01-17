@@ -1,8 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_osx.yml                                               #
-# - Summary: Common variables for all OSX nextreamlabs systems                 #
+# - Name:    vars/julia_osx.yml                                                #
+# - Summary: Variables for installing OSX in Julia.                            #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -31,35 +31,6 @@
 #                                                                              #
 ################################################################################
 #                                                                              #
-#=> INHERITS: generic                                                        <=#
+#=> INHERITS: alem0lars_osx                                                  <=#
 #                                                                              #
 ################################################################################
-
-
-vim:
-  entry_point: '~/.vimrc'
-  custom_dir:  '~/.vim'
-
-features:
-  # System.
-  - osx
-  - homebrew
-  # Shell.
-  - zsh
-  - tmux
-  # Editor.
-  #- vim
-  # Browser.
-  #- firefox_vim
-  # Languages.
-  - rbenv
-  - pyenv
-  - sbt
-  - haskell
-  - ruby
-  - python
-  - latex
-  - java
-  - erlang
-  - groovy
-  - mono
