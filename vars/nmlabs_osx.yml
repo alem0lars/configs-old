@@ -72,8 +72,9 @@ features:
   - 'iterm'
   - 'zsh'
   - 'tmux'
-  # Editor.
+  # Apps.
   - 'vim'
+  - 'kaleidoscope'
   # Browser.
   #- 'firefox_vim'
   # Languages.
