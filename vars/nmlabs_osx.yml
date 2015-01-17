@@ -36,30 +36,56 @@
 ################################################################################
 
 
+email:    'molari.alessandro@gmail.com'
+fullname: 'Alessandro Molari'
+
+github_username: 'alem0lars'
+
+fonts:
+  main:
+    name: 'Menlo'
+    size: 13
+
+tmux:
+  config_file_path: '~/.tmux.conf'
+  theme_path:       '~/.tmux/tmuxline.conf'
+
+zsh:
+  custom_dir:   '~/.zsh'
+  history_file: '~/.zsh-history'
+  theme_path:   '~/.zsh/mods/prompt/promptline.zsh'
+
 vim:
-  entry_point: '~/.vimrc'
-  custom_dir:  '~/.vim'
+  bkp_dir:          '~/.vim_swaps'
+  views_dir:        '~/.vim_views'
+  undos_dir:        '~/.vim_undos'
+  vimshell_tmp_dir: '~/.vim_shell'
+  custom_dir:       '~/.vim'
+  terminal_cmd:     'open /Applications/iTerm.app -n'
+  latex_viewer:     'open /Applications/Preview.app'
 
 features:
   # System.
-  - osx
-  - homebrew
+  - 'osx'
+  - 'homebrew'
   # Shell.
-  - zsh
-  - tmux
+  - 'zsh'
+  - 'tmux'
   # Editor.
-  #- vim
+  - 'vim'
   # Browser.
-  #- firefox_vim
+  #- 'firefox_vim'
   # Languages.
-  - rbenv
-  - pyenv
-  - sbt
-  - haskell
-  - ruby
-  - python
-  - latex
-  - java
-  - erlang
-  - groovy
-  - mono
+  - 'rbenv'
+  - 'pyenv'
+  - 'sbt'
+  - 'haskell'
+  - 'ruby'
+  - 'python'
+  - 'latex'
+  - 'java'
+  - 'scala'
+  - 'erlang'
+  - 'elixir'
+  - 'groovy'
+  - 'mono'
