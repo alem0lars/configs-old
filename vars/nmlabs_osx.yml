@@ -68,7 +68,8 @@ features:
   # System.
   - 'osx'
   - 'homebrew'
-  # Shell.
+  # CLI.
+  - 'iterm'
   - 'zsh'
   - 'tmux'
   # Editor.

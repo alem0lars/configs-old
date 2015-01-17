@@ -144,5 +144,12 @@ then
   add-zsh-hook preexec _terminal-set-titles-with-command
 fi
 
+<% if has_feature? :iterm %>
+# Enable iTerm2 shell integration if available.
+if [[ -f ~/.iterm2_shell_integration.zsh ]]; then
+  source ~/.iterm2_shell_integration.zsh
+fi
+<% end %>
+
 
 # vim: set filetype=zsh :
