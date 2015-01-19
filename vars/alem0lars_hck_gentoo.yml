@@ -65,6 +65,7 @@ vim:
   vimshell_tmp_dir: '~/.vim_shell'
   custom_dir:       '/etc/vim'
   entry_point:      '/etc/vim/vimrc'
+  gui_entry_point:  '/etc/vim/gvimrc'
   terminal_cmd:     'urxvt -e'
   latex_viewer:     'zathura'
 
