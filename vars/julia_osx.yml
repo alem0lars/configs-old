@@ -1,8 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    git/gitconfig.tt                                                  #
-# - Summary: The global git configuration.                                     #
+# - Name:    vars/julia_osx.yml                                                #
+# - Summary: Variables for installing OSX in Julia.                            #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -30,45 +30,7 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-
-
-<% if get_var :github_username %>
-[github]
-  user = <%= get_var :github_username %>
-<% end %>
-
-[user]
-  <% if get_var :email %>
-  email = <%= get_var :email %>
-  <% end %>
-  <% if get_var :fullname %>
-  name = <%= get_var :fullname %>
-  <% end %>
-
-[push]
-  default = simple
-
-[color]
-  ui = true
-
-[help]
-  autocorrect = 1
-
-[core]
-  autocrlf = input
-
-<% if has_feature? :kaleidoscope %>
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustexitcode = true
-[merge]
-  tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
-[mergetool]
-  prompt = false
-[diff]
-  tool = Kaleidoscope
-<% end %>
+#                                                                              #
+#=> INHERITS: alem0lars_osx                                                  <=#
+#                                                                              #
+################################################################################

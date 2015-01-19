@@ -87,6 +87,11 @@
     <string>"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}</string>
     <% end %>
 
+    <% if has_feature? :mono %>
+    <key>MONO_GAC_PREFIX</key>
+    <string>/usr/local</string>
+    <% end %>
+
   </dict>
 
 </plist>

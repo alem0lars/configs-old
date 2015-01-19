@@ -46,6 +46,16 @@ password-stores = keychain
 
 [helpers]
 
+<% if has_feature? :kaleidoscope %>
+# Set diff-cmd to the absolute path of your 'diff' program.
+# This will override the compile-time default, which is to use Subversion's internal
+# diff implementation.
+diff-cmd = ksdiff
+# Set merge-tool-cmd to the command used to invoke your external merging tool of choice.
+# Subversion will pass 5 arguments to the specified command: base theirs mine merged wcfile.
+merge-tool-cmd = ksdiff
+<% end %>
+
 
 [tunnels]
 

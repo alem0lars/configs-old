@@ -67,7 +67,8 @@ zstyle ':custom:load' mod \
 <% if has_feature? :vim %>
 # Set the key mapping style to `emacs` or `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
-<% elif has_feature? :emacs %>
+<% end %>
+<% if has_feature? :emacs %>
 # Set the key mapping style to `emacs` or `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
 <% end %>
@@ -87,7 +88,7 @@ zstyle ':custom:module:history-substring-search' color 'yes'
 
 # module syntax highlighting {{{
 
-set syntax highlighters
+# Set syntax highlighters.
 # By default, only the main highlighter is enabled.
 zstyle ':custom:module:syntax-highlighting' highlighters \
   'main' \
