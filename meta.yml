@@ -143,15 +143,26 @@ elems:
     only:
       features: ['tmux']
 
-  - src:  'zsh/(.+)'
+  - src:  'zsh/(zshrc)'
+    dst:  '<%= get_var! "zsh.zshrc_path" %>/<1>'
+    only:
+      features: ['zsh']
+  - src:  'zsh/(zshenv)'
+    dst:  '<%= get_var! "zsh.zshenv_path" %>/<1>'
+    only:
+      features: ['zsh']
+  - src:  'zsh/(zlogin)'
+    dst:  '<%= get_var! "zsh.zlogin_path" %>/<1>'
+    only:
+      features: ['zsh']
+  - src:  'zsh/(zlogout)'
+    dst:  '<%= get_var! "zsh.zlogout_path" %>/<1>'
+    only:
+      features: ['zsh']
+  - src:  '^zsh/((?!.*(?:zshrc|zshenv|zlogin|zlogout)$).*)$'
     dst:  '<%= get_var! "zsh.custom_dir" %>/<1>'
     only:
       features: ['zsh']
-
-  - src:  '^vim/((?!.*vimrc).*)$'
-    dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
-    only:
-      features: ['vim']
 
   - src:  'vim/vimrc'
     dst:  '<%= get_var! "vim.entry_point" %>'
@@ -159,7 +170,7 @@ elems:
       features: ['vim']
       vars: ['vim.entry_point']
 
-  - src:  '^vim/((?!.*vimrc).*)$'
+  - src:  '^vim/((?!.*vimrc$).*)$'
     dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
     only:
       features: ['vim']
@@ -261,7 +272,7 @@ elems:
     dst: '/etc/X11/xinit/Xresources'
     only:
       features: ['linux']
-  - src: 'xorg/xresources/((?!.*main).*)$'
+  - src: 'xorg/xresources/((?!.*main$).*)$'
     dst: '<%= get_var! "xorg.xresources.custom_dir" %>/<1>'
     only:
       features: ['linux']
@@ -326,7 +337,7 @@ elems:
     only:
       features: ['systemd']
 
-  - src:  '^systemd/((?!.*hostname).*)$'
+  - src:  '^systemd/((?!.*hostname$).*)$'
     dst: '/etc/systemd/<1>'
     only:
       features: ['systemd']
