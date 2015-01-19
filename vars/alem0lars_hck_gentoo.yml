@@ -64,6 +64,7 @@ vim:
   undos_dir:        '~/.vim_undos'
   vimshell_tmp_dir: '~/.vim_shell'
   custom_dir:       '/etc/vim'
+  entry_point:      '/etc/vim/vimrc'
   terminal_cmd:     'urxvt -e'
   latex_viewer:     'zathura'
 

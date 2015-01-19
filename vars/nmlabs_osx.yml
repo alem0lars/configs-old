@@ -64,6 +64,7 @@ vim:
   views_dir:        '~/.vim_views'
   undos_dir:        '~/.vim_undos'
   vimshell_tmp_dir: '~/.vim_shell'
+  entry_point:      '~/.vimrc'
   custom_dir:       '~/.vim'
   terminal_cmd:     'open /Applications/iTerm.app -n'
   latex_viewer:     'open /Applications/Preview.app'
