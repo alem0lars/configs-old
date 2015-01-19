@@ -1,1 +1,1 @@
-set guifont = <%= get_var! 'fonts.main.name' %>:h<%= get_var! 'fonts.main.size' %>
+set guifont=<%= get_var! 'fonts.main.name' %>:<%= get_var! 'fonts.main.size' %>
