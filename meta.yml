@@ -144,19 +144,19 @@ elems:
       features: ['tmux']
 
   - src:  'zsh/(zshrc)'
-    dst:  '<%= get_var! "zsh.zshrc_path" %>/<1>'
+    dst:  '<%= get_var! "zsh.zshrc_path" %>'
     only:
       features: ['zsh']
   - src:  'zsh/(zshenv)'
-    dst:  '<%= get_var! "zsh.zshenv_path" %>/<1>'
+    dst:  '<%= get_var! "zsh.zshenv_path" %>'
     only:
       features: ['zsh']
   - src:  'zsh/(zlogin)'
-    dst:  '<%= get_var! "zsh.zlogin_path" %>/<1>'
+    dst:  '<%= get_var! "zsh.zlogin_path" %>'
     only:
       features: ['zsh']
   - src:  'zsh/(zlogout)'
-    dst:  '<%= get_var! "zsh.zlogout_path" %>/<1>'
+    dst:  '<%= get_var! "zsh.zlogout_path" %>'
     only:
       features: ['zsh']
   - src:  '^zsh/((?!.*(?:zshrc|zshenv|zlogin|zlogout)$).*)$'
