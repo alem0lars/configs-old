@@ -51,8 +51,12 @@ tmux:
   theme_path:       '~/.tmux/tmuxline.conf'
 
 zsh:
-  custom_dir:   '~/.zsh'
+  zshrc_path:   '~/.zshrc'
+  zshenv_path:  '~/.zshenv'
+  zlogin_path:  '~/.zlogin'
+  zlogout_path: '~/.zlogout'
   history_file: '~/.zsh-history'
+  custom_dir:   '~/.zsh'
   theme_path:   '~/.zsh/mods/prompt/promptline.zsh'
 
 vim:
