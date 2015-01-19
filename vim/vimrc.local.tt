@@ -67,40 +67,40 @@ exe 'source' . commons_cfg_dir_path . 'search.vim.tt'
 
 " Plugins configuration.
 let plugins_cfg_dir_path=expand('<%= get_var! "vim.custom_dir" %>/cfg/plugins')
-exe 'source' . plugins_cfg_dir_path . 'airline.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'bbye.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'choosewin.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'clang_complete.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'emmet.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'indent_guides.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'multiple_cursors.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'neocomplete.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'rainbow.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'tagbar.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'undotree.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'unite.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'vim_easy_align.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'vimfiler.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'vimproc.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'vimshell.vim.tt'
-exe 'source' . plugins_cfg_dir_path . 'vinarise.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/airline.vim'
+exe 'source' plugins_cfg_dir_path . '/bbye.vim'
+exe 'source' plugins_cfg_dir_path . '/choosewin.vim'
+exe 'source' plugins_cfg_dir_path . '/clang_complete.vim'
+exe 'source' plugins_cfg_dir_path . '/emmet.vim'
+exe 'source' plugins_cfg_dir_path . '/indent_guides.vim'
+exe 'source' plugins_cfg_dir_path . '/multiple_cursors.vim'
+exe 'source' plugins_cfg_dir_path . '/neocomplete.vim'
+exe 'source' plugins_cfg_dir_path . '/rainbow.vim'
+exe 'source' plugins_cfg_dir_path . '/tagbar.vim'
+exe 'source' plugins_cfg_dir_path . '/undotree.vim'
+exe 'source' plugins_cfg_dir_path . '/unite.vim'
+exe 'source' plugins_cfg_dir_path . '/vim_easy_align.vim'
+exe 'source' plugins_cfg_dir_path . '/vimfiler.vim'
+exe 'source' plugins_cfg_dir_path . '/vimproc.vim'
+exe 'source' plugins_cfg_dir_path . '/vimshell.vim'
+exe 'source' plugins_cfg_dir_path . '/vinarise.vim'
 <% if has_feature? :python %>
-exe 'source' . plugins_cfg_dir_path . 'jedi.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/jedi.vim'
 <% end %>
 <% if has_feature? :latex %>
-exe 'source' . plugins_cfg_dir_path . 'latex.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/latex.vim'
 <% end %>
 <% if has_feature? :haskell %>
-exe 'source' . plugins_cfg_dir_path . 'necoghc.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/necoghc.vim'
 <% end %>
 <% if has_feature? :zsh %>
-exe 'source' . plugins_cfg_dir_path . 'promptline.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/promptline.vim'
 <% end %>
 <% if has_feature? :tmux %>
-exe 'source' . plugins_cfg_dir_path . 'tmuxline.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/tmuxline.vim'
 <% end %>
 <% if has_feature? :ruby %>
-exe 'source' . plugins_cfg_dir_path . 'vim_ruby.vim.tt'
+exe 'source' plugins_cfg_dir_path . '/vim_ruby.vim'
 <% end %>
 
 " }}}
