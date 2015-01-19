@@ -164,7 +164,7 @@ elems:
     only:
       features: ['zsh']
 
-  - src:  'vim/vimrc'
+  - src:  '^vim/vimrc$'
     dst:  '<%= get_var! "vim.entry_point" %>'
     only:
       features: ['vim']
