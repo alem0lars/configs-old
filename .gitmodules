@@ -7,3 +7,6 @@
 [submodule "zsh/mods/syntax_highlighting/external"]
 	path = zsh/mods/syntax_highlighting/external
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "vim/bundle/neobundle.vim"]
+	path = vim/bundle/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim
