@@ -79,10 +79,10 @@ tmux:
   theme_path:       '/etc/tmux/tmuxline.conf'
 
 zsh:
-  zshrc_path:   '/etc/zsh/.zshrc'
-  zshenv_path:  '/etc/zsh/.zshenv'
-  zlogin_path:  '/etc/zsh/.zlogin'
-  zlogout_path: '/etc/zsh/.zlogout'
+  zshrc_path:   '/etc/zsh/zshrc'
+  zshenv_path:  '/etc/zsh/zshenv'
+  zlogin_path:  '/etc/zsh/zlogin'
+  zlogout_path: '/etc/zsh/zlogout'
   history_file: '~/.zsh-history'
   custom_dir:   '/etc/zsh'
   theme_path:   '/etc/zsh/mods/prompt/promptline.zsh'
