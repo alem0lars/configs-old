@@ -44,7 +44,7 @@ github_username: 'alem0lars'
 fonts:
   main:
     name: 'Menlo'
-    size: 13
+    size: 15
 
 tmux:
   config_file_path: '~/.tmux.conf'
