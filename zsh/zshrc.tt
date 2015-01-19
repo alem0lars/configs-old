@@ -49,7 +49,7 @@ export ZSH_MODS_CFG_FILE="${ZSH_MODS_DIR}/cfg.zsh"
 
 function {
   setopt EXTENDED_GLOB
-  for lib_file in "${ZSH_LIB_DIR}"/*.zsh(.N); do
+  for lib_file in "${ZSH_LIB_DIR}"/*.zsh; do
     source "${lib_file}"
   done
 }
