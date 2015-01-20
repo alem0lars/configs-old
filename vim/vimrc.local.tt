@@ -54,16 +54,16 @@ source <%= get_var! 'vim.custom_dir' %>/plugins.vim
 
 " Commons configuration.
 let commons_cfg_dir_path=expand('<%= get_var! "vim.custom_dir" %>/cfg/commons')
-exe 'source' . commons_cfg_dir_path . 'appearance.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'encoding.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'fold.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'indentation.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'minibuffer.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'misc.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'mouse.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'navigation.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'persistence.vim.tt'
-exe 'source' . commons_cfg_dir_path . 'search.vim.tt'
+exe 'source' commons_cfg_dir_path . '/appearance.vim'
+exe 'source' commons_cfg_dir_path . '/encoding.vim'
+exe 'source' commons_cfg_dir_path . '/fold.vim'
+exe 'source' commons_cfg_dir_path . '/indentation.vim'
+exe 'source' commons_cfg_dir_path . '/minibuffer.vim'
+exe 'source' commons_cfg_dir_path . '/misc.vim'
+exe 'source' commons_cfg_dir_path . '/mouse.vim'
+exe 'source' commons_cfg_dir_path . '/navigation.vim'
+exe 'source' commons_cfg_dir_path . '/persistence.vim'
+exe 'source' commons_cfg_dir_path . '/search.vim'
 
 " Plugins configuration.
 let plugins_cfg_dir_path=expand('<%= get_var! "vim.custom_dir" %>/cfg/plugins')

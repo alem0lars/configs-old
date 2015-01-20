@@ -37,7 +37,7 @@
 
 # global configuration {{{
 
-export ZSH_ROOT_DIR="<%= get_var! 'zsh.custom_dir' %>"
+export ZSH_ROOT_DIR="<%= File.expand_path get_var!('zsh.custom_dir') %>"
 export ZSH_LIB_DIR="${ZSH_ROOT_DIR}/lib"
 export ZSH_MODS_DIR="${ZSH_ROOT_DIR}/mods"
 export ZSH_MODS_CFG_FILE="${ZSH_MODS_DIR}/cfg.zsh"
@@ -49,7 +49,7 @@ export ZSH_MODS_CFG_FILE="${ZSH_MODS_DIR}/cfg.zsh"
 
 function {
   setopt EXTENDED_GLOB
-  for lib_file in "${ZSH_LIB_DIR}"/*.zsh; do
+  for lib_file in ${ZSH_LIB_DIR}/*.zsh; do
     source "${lib_file}"
   done
 }

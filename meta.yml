@@ -170,7 +170,13 @@ elems:
       features: ['vim']
       vars: ['vim.entry_point']
 
-  - src:  '^vim/((?!.*vimrc$).*)$'
+  - src:  '^vim/gvimrc$'
+    dst:  '<%= get_var! "vim.gui_entry_point" %>'
+    only:
+      features: ['vim']
+      vars: ['vim.gui_entry_point']
+
+  - src:  '^vim/((?!.*(?:vimrc|gvimrc)$).*)$'
     dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
     only:
       features: ['vim']
