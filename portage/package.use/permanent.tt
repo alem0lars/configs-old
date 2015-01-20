@@ -106,7 +106,7 @@ mail-client/mutt gpg sidebar smime smtp
 <% end %>
 
 <% if has_feature? :networkmanager %>
-net-misc/networkmanager dhcpcd -modemmanager -nss -dhclient
+net-misc/networkmanager -dhclient -modemmanager -nss dhclient
 <% end %>
 
 <% if has_feature? :systemd %>

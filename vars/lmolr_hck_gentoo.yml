@@ -55,7 +55,8 @@ irc:
       password: '`lpass show --password "LMolr_firrre"`'
 
 features:
-  - 'feh'
-  - 'parcellite'
   - 'conky'
+  - 'feh'
   - 'networkmanager'
+  - 'parcellite'
+  - 'steam'

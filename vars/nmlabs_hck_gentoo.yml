@@ -1,8 +1,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_linux.yml                                             #
-# - Summary: The variables which are common to every linux system of           #
+# - Name:    vars/nmlabs_hck_gentoo.yml                                        #
+# - Summary: The variables which are common to gentoo hacking systems of       #
 #            nextreamlabs.                                                     #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
