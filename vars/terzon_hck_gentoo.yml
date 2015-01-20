@@ -41,6 +41,8 @@ hostname: 'terzon'
 kernel_config: 'terzon_hck_gentoo'
 
 portage:
+  abi_x86:
+    - '64'
   input_devices:
     - 'synaptics'
     - 'evdev'

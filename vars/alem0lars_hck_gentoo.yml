@@ -42,6 +42,8 @@ fullname: 'Alessandro Molari'
 github_username: 'alem0lars'
 
 portage:
+  abi_x86:
+    - '64'
   use_flags:
     # Audio.
     - 'jack'

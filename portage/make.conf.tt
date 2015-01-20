@@ -50,6 +50,7 @@ SYNC="rsync://rsync.de.gentoo.org/gentoo-portage"
 
 # devices {{{
 
+ABI_X86="<%= get_var!('portage.abi_x86').join(' ') %>"
 INPUT_DEVICES="<%= get_var!('portage.input_devices').join(' ') %>"
 VIDEO_CARDS="<%= get_var!('portage.video_cards').join(' ') %>"
 
