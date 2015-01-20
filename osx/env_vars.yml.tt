@@ -75,4 +75,4 @@ MONO_GAC_PREFIX: '/usr/local'
 <% end %>
 
 
-<!-- vim: set filetype=yaml : -->
+# vim: set filetype=yaml :
