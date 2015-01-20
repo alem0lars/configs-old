@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-
-<!--############################################################################
+################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    osx/environment.plist                                             #
-# - Summary: System-wide environments variables definition                     #
+# - Name:    osx/env_vars.yml.tt                                               #
+# - Summary: Definition of environments variables for OSX systems.             #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -35,66 +32,47 @@
 #############################################################################-->
 
 
-<plist version="1.0">
+LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
 
-  <dict>
+<% if has_feature? :vim %>
+EDITOR: 'mvim'
+<% end %>
 
-    <key>LIBRARY_PATH</key>
-    <string>/usr/local/lib:${LIBRARY_PATH}</string>
+<% if has_feature? :homebrew %>
+HOMEBREW_CASK_OPTS: '--appdir=/Applications'
+<% end %>
 
-    <% if has_feature? :vim %>
-    <key>EDITOR</key>
-    <string>vim</string>
-    <% end %>
+<% if has_feature? :rbenv %>
+RBENV_ROOT: '/usr/local/opt/rbenv'
+<% end %>
 
-    <% if has_feature? :homebrew %>
-    <key>HOMEBREW_CASK_OPTS</key>
-    <string>--appdir=/Applications</string>
-    <% end %>
+<% if has_feature? :python %>
+PYTHONIOENCODING: 'utf-8'
+<% end %>
 
-    <% if has_feature? :rbenv %>
-    <key>RBENV_ROOT</key>
-    <string>/usr/local/opt/rbenv</string>
-    <% end %>
+<% if has_feature? :pyenv %>
+PYENV_ROOT: '/usr/local/opt/pyenv'
+<% end %>
 
-    <% if has_feature? :python %>
-    <key>PYTHONIOENCODING</key>
-    <string>utf-8</string>
-    <% end %>
+<% if has_feature? :java %>
+JAVA_HOME: '/Library/Java/Home'
+<% end %>
 
-    <% if has_feature? :pyenv %>
-    <key>PYENV_ROOT</key>
-    <string>/usr/local/opt/pyenv</string>
-    <% end %>
+<% if has_feature? :groovy %>
+GROOVY_HOME: '/usr/local/opt/groovy/libexec'
+<% end %>
 
-    <% if has_feature? :java %>
-    <key>JAVA_HOME</key>
-    <string>/Library/Java/Home</string>
-    <% end %>
+<% if has_feature? :erlang %>
+MANPATH: '/usr/local/opt/erlang/lib/erlang/man:${MANPATH}'
+<% end %>
 
-    <% if has_feature? :groovy %>
-    <key>GROOVY_HOME</key>
-    <string>/usr/local/opt/groovy/libexec</string>
-    <% end %>
+<% if has_feature? :sbt %>
+SBT_OPTS: '"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}'
+<% end %>
 
-    <% if has_feature? :erlang %>
-    <key>MANPATH</key>
-    <string>/usr/local/opt/erlang/lib/erlang/man:${MANPATH}</string>
-    <% end %>
-
-    <% if has_feature? :sbt %>
-    <key>SBT_OPTS</key>
-    <string>"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}</string>
-    <% end %>
-
-    <% if has_feature? :mono %>
-    <key>MONO_GAC_PREFIX</key>
-    <string>/usr/local</string>
-    <% end %>
-
-  </dict>
-
-</plist>
+<% if has_feature? :mono %>
+MONO_GAC_PREFIX: '/usr/local'
+<% end %>
 
 
-<!-- vim: set filetype=xml : -->
+<!-- vim: set filetype=yaml : -->

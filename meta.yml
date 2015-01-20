@@ -352,8 +352,8 @@ elems:
 
   # osx {{{
 
-  - src:  'osx/(environment.plist)'
-    dst:  '~/.MacOSX/<1>'
+  - src:  'osx/(env_vars.yml)'
+    dst:  '~/.<1>'
     only:
       features: ['osx']
 
