@@ -55,7 +55,7 @@ dev-vcs/mercurial gpg
 gnome-base/libglade tools
 gnome-base/librsvg tools
 
-media-libs/mesa llvm
+media-libs/mesa llvm xa
 media-libs/chromaprint tools
 media-libs/freetype utils auto-hinter harfbuzz
 media-libs/gegl lensfun umfpack
