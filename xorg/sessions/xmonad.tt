@@ -78,6 +78,12 @@ nohup trayer-srg --edge top --align right \
                  --alpha 0 --transparent true --tint 0x1c1c1c > /dev/null &
 <% end %>
 
+<% if has_feature? :networkmanager %>
+echo -e "${fg[blue]}starting nm-applet${reset_color}"
+killall nm-applet > /dev/null
+nm-applet &
+<% end %>
+
 <% if has_feature? :conky %>
 echo -e "${fg[blue]}starting conky${reset_color}"
 killall conky > /dev/null
