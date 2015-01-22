@@ -68,6 +68,7 @@ vim:
   entry_point:      '~/.vimrc'
   gui_entry_point:  '~/.gvimrc'
   custom_dir:       '~/.vim'
+  bundle_dir:       '~/.vim/bundle'
   terminal_cmd:     'open /Applications/iTerm.app -n'
   latex_viewer:     'open /Applications/Preview.app'
 

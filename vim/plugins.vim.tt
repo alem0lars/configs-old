@@ -34,10 +34,10 @@
 
 " Add neobundle to runtime path.
 if has('vim_starting')
-  set runtimepath+=<%= get_var! 'vim.custom_dir' %>/bundle/neobundle.vim/
+  set runtimepath+=<%= get_var! 'vim.bundle_dir' %>/neobundle.vim/
 endif
 
-call neobundle#begin(expand('<%= get_var! "vim.custom_dir" %>/bundle/'))
+call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>/'))
 
 " Let neobundle manage neobundle.
 NeoBundle 'Shougo/neobundle.vim'

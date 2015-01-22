@@ -33,6 +33,13 @@
 ################################################################################
 
 
+commands:
+  - type: 'git_sync'
+    repo: 'https://github.com/Shougo/neobundle.vim'
+    dst:  '<%= get_var! "vim.bundle_dir" %>/neobundle.vim'
+    only:
+      features: ['vim']
+
 elems:
 
   # commons {{{
