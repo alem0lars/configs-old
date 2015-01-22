@@ -32,6 +32,8 @@
 #############################################################################-->
 
 
+PATH: '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin'
+
 LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
 
 <% if has_feature? :vim %>
@@ -43,10 +45,12 @@ HOMEBREW_CASK_OPTS: '--appdir=/Applications'
 <% end %>
 
 <% if has_feature? :rbenv %>
+PATH:       '/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:${PATH}'
 RBENV_ROOT: '/usr/local/opt/rbenv'
 <% end %>
 
 <% if has_feature? :python %>
+PATH:             '/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin:${PATH}'
 PYTHONIOENCODING: 'utf-8'
 <% end %>
 
@@ -72,6 +76,11 @@ SBT_OPTS: '"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}'
 
 <% if has_feature? :mono %>
 MONO_GAC_PREFIX: '/usr/local'
+<% end %>
+
+<% if has_feature? :go %>
+GOPATH: '<%= get_var! "go.base_dir" %>'
+PATH:   '${GOPATH//://bin:}/bin:/usr/local/opt/go/libexec/bin:${PATH}'
 <% end %>
 
 
