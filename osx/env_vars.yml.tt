@@ -29,10 +29,15 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-#############################################################################-->
+################################################################################
 
 
-LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
+# {{{ Local variables
+
+<% path = [] %>
+
+# }}}
+
 
 <% if has_feature? :vim %>
 EDITOR: 'mvim'
@@ -43,6 +48,7 @@ HOMEBREW_CASK_OPTS: '--appdir=/Applications'
 <% end %>
 
 <% if has_feature? :rbenv %>
+<% path << '/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:' %>
 RBENV_ROOT: '/usr/local/opt/rbenv'
 <% end %>
 
@@ -51,6 +57,7 @@ PYTHONIOENCODING: 'utf-8'
 <% end %>
 
 <% if has_feature? :pyenv %>
+<% path << '/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin:' %>
 PYENV_ROOT: '/usr/local/opt/pyenv'
 <% end %>
 
@@ -73,6 +80,16 @@ SBT_OPTS: '"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}'
 <% if has_feature? :mono %>
 MONO_GAC_PREFIX: '/usr/local'
 <% end %>
+
+<% if has_feature? :go %>
+<% path << '${GOPATH//://bin:}/bin:/usr/local/opt/go/libexec/bin:' %>
+GOPATH: '<%= get_var! "go.base_dir" %>'
+<% end %>
+
+<% path << '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}' %>
+PATH: <%= path.join %>
+
+LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
 
 
 # vim: set filetype=yaml :

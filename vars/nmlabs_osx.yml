@@ -72,6 +72,9 @@ vim:
   terminal_cmd:     'open /Applications/iTerm.app -n'
   latex_viewer:     'open /Applications/Preview.app'
 
+go:
+  base_dir: '~/Develop/Workspaces/GO'
+
 features:
   # System.
   - 'osx'
@@ -99,3 +102,4 @@ features:
   - 'elixir'
   - 'groovy'
   - 'mono'
+  - 'go'
