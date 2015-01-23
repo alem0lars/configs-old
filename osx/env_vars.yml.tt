@@ -32,13 +32,12 @@
 ################################################################################
 
 
-PATH:
-  '<% if has_feature? :ruby   %>/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:<% end %>'  +
-  '<% if has_feature? :python %>/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin:<% end %>'  +
-  '<% if has_feature? :go     %>${GOPATH//://bin:}/bin:/usr/local/opt/go/libexec/bin:<% end %>' +
-  '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}'
+# {{{ Local variables
 
-LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
+<% path = [] %>
+
+# }}}
+
 
 <% if has_feature? :vim %>
 EDITOR: 'mvim'
@@ -49,6 +48,7 @@ HOMEBREW_CASK_OPTS: '--appdir=/Applications'
 <% end %>
 
 <% if has_feature? :rbenv %>
+<% path << '/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:' %>
 RBENV_ROOT: '/usr/local/opt/rbenv'
 <% end %>
 
@@ -57,6 +57,7 @@ PYTHONIOENCODING: 'utf-8'
 <% end %>
 
 <% if has_feature? :pyenv %>
+<% path << '/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin:' %>
 PYENV_ROOT: '/usr/local/opt/pyenv'
 <% end %>
 
@@ -81,8 +82,14 @@ MONO_GAC_PREFIX: '/usr/local'
 <% end %>
 
 <% if has_feature? :go %>
+<% path << '${GOPATH//://bin:}/bin:/usr/local/opt/go/libexec/bin:' %>
 GOPATH: '<%= get_var! "go.base_dir" %>'
 <% end %>
+
+<% path << '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}' %>
+PATH: <%= path.join %>
+
+LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
 
 
 # vim: set filetype=yaml :
