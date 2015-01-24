@@ -8,6 +8,7 @@
 #            incompatibilities.                                                #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#   - Luca Molari       <molari.luca@gmail.com>       (LMolr)                  #
 #                                                                              #
 # Project informations:                                                        #
 #   - Homepage:        https://github.com/alem0lars/configs                    #
@@ -45,6 +46,10 @@ gnome-base/libglade -tools
 
 # Because at the moment `cxx` and `fortran` are uncompatible with `threads`.
 sci-libs/hdf5 -cxx -fortran
+
+# Disable some non-PIC-friendly optimizations.
+media-libs/x264 pic
+media-video/libav pic
 
 # }}}
 
