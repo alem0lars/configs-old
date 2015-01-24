@@ -56,6 +56,9 @@ media-video/libav pic
 
 # other {{{
 
+# Harfbuzz triggers circular dependencies errors.
+*/* -harfbuzz
+
 # IDK the reason. Can we remove it?
 app-emulation/virtualbox-modules -pax_kernel
 

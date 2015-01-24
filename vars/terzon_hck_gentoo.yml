@@ -43,6 +43,7 @@ kernel_config: 'terzon_hck_gentoo'
 portage:
   abi_x86:
     - '64'
+    - '32'
   input_devices:
     - 'synaptics'
     - 'evdev'
