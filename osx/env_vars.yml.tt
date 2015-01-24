@@ -40,7 +40,7 @@
 
 
 <% if has_feature? :vim %>
-EDITOR: 'mvim'
+EDITOR: '<%= get_var! "editor_cmd" %>'
 <% end %>
 
 <% if has_feature? :homebrew %>
