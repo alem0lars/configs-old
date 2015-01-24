@@ -104,21 +104,21 @@ NeoBundle 'scrooloose/syntastic'
 
 " languages support {{{
 
-" c,c++,objc,objcpp
+" C, C++, Obj-c, Objcpp
 NeoBundle 'Rip-Rip/clang_complete', {
       \   'build': {
       \     'mac':   'make install',
-      \     'linux': 'make install'
+      \     'linux': 'make install',
       \   }
       \ }
 
 <% if has_feature? :python %>
-" python
+" Python
 NeoBundle 'davidhalter/jedi-vim'
 <% end %>
 
 <% if has_feature? :ruby %>
-" ruby
+" Ruby
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'skalnik/vim-vroom'
 NeoBundle 'tpope/vim-bundler'
@@ -126,20 +126,30 @@ NeoBundle 'tpope/vim-rake'
 <% end %>
 
 <% if has_feature? :haskell %>
-" haskell
+" Haskell
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 <% end %>
 
-" hex
+" Hex
 NeoBundle 'Shougo/vinarise'
 
 <% if has_feature? :latex %>
-" latex
+" Latex
 NeoBundle 'vim-latex/vim-latex'
 <% end %>
 
-" html, css
+<% if has_feature? :rust %>
+NeoBundle 'wting/rust.vim'
+NeoBundle 'phildawes/racer', {
+      \   'build' : {
+      \     'mac':  'cargo build --release',
+      \     'unix': 'cargo build --release',
+      \   }
+      \ }
+<% end %>
+
+" HTML, CSS
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
