@@ -57,7 +57,7 @@ gnome-base/librsvg tools
 
 media-libs/mesa llvm xa
 media-libs/chromaprint tools
-media-libs/freetype utils auto-hinter harfbuzz
+media-libs/freetype utils auto-hinter
 media-libs/gegl lensfun umfpack
 media-libs/libpng apng
 media-libs/openimageio colorio
