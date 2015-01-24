@@ -75,6 +75,9 @@ vim:
 go:
   base_dir: '~/Develop/Workspaces/GO'
 
+rust:
+  racer_dir: '~/.vim/bundle/racer'
+
 features:
   # System.
   - 'osx'
