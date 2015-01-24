@@ -86,6 +86,10 @@ MONO_GAC_PREFIX: '/usr/local'
 GOPATH: '<%= get_var! "go.base_dir" %>'
 <% end %>
 
+<% if has_feature? :rust %>
+RUST_SRC_PATH: '/usr/local/opt/rust/src'
+<% end %>
+
 <% path << '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}' %>
 PATH: <%= path.join %>
 
