@@ -75,6 +75,9 @@ vim:
 go:
   base_dir: '~/Develop/Workspaces/GO'
 
+rust:
+  racer_dir: '~/.vim/bundle/racer'
+
 features:
   # System.
   - 'osx'
@@ -88,7 +91,7 @@ features:
   - 'kaleidoscope'
   # Browser.
   #- 'firefox_vim'
-  # Languages.
+  # Programming languages.
   - 'rbenv'
   - 'pyenv'
   - 'sbt'
@@ -103,3 +106,4 @@ features:
   - 'groovy'
   - 'mono'
   - 'go'
+  - 'rust'

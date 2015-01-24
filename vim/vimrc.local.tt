@@ -102,5 +102,8 @@ exe 'source' plugins_cfg_dir_path . '/tmuxline.vim'
 <% if has_feature? :ruby %>
 exe 'source' plugins_cfg_dir_path . '/vim_ruby.vim'
 <% end %>
+<% if has_feature? :rust %>
+exe 'source' plugins_cfg_dir_path . '/rust.vim'
+<% end %>
 
 " }}}
