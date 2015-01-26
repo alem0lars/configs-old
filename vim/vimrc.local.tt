@@ -84,6 +84,7 @@ exe 'source' plugins_cfg_dir_path . '/vimfiler.vim'
 exe 'source' plugins_cfg_dir_path . '/vimproc.vim'
 exe 'source' plugins_cfg_dir_path . '/vimshell.vim'
 exe 'source' plugins_cfg_dir_path . '/vinarise.vim'
+exe 'source' plugins_cfg_dir_path . '/investigate.vim'
 <% if has_feature? :python %>
 exe 'source' plugins_cfg_dir_path . '/jedi.vim'
 <% end %>

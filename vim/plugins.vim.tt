@@ -83,10 +83,11 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'myusuf3/numbers.vim'
 " }}}
 
-" autocomplete and snippets {{{
+" autocomplete, snippets, documentation {{{
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Keithbsmiley/investigate.vim'
 " }}}
 
 " files management {{{
