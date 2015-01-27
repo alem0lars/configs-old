@@ -39,9 +39,7 @@
 # }}}
 
 
-<% if has_feature? :vim %>
 EDITOR: '<%= get_var! "editor_cmd" %>'
-<% end %>
 
 <% if has_feature? :homebrew %>
 HOMEBREW_CASK_OPTS: '--appdir=/Applications'
