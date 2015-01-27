@@ -1,0 +1,30 @@
+"*":
+  editor:
+    fontFamily: "Menlo"
+    fontSize: 15
+    showInvisibles: true
+    showIndentGuide: true
+    invisibles: {}
+  core:
+    followSymlinks: true
+    themes: [
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+    projectHome: "<%= File.expand_path(get_var! 'develop_dir') %>"
+  welcome:
+    showOnStartup: false
+  linter:
+    lintOnChangeInterval: 1024
+    showErrorInline: true
+    statusBar: "None"
+    executionTimeout: 8192
+  "linter-csslint": {}
+  minimap:
+    plugins:
+      selection: true
+      "color-highlight": true
+      "git-diff": false
+      "find-and-replace": true
+  "atom-color-highlight":
+    dotMarkersSpacing: 2

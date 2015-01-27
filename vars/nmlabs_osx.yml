@@ -46,6 +46,8 @@ fonts:
     name: 'Menlo'
     size: 15
 
+develop_dir: '~/Develop'
+
 tmux:
   config_file_path: '~/.tmux.conf'
   theme_path:       '~/.tmux/tmuxline.conf'
