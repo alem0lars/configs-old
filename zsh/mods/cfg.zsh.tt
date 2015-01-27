@@ -34,7 +34,7 @@
 ################################################################################
 
 
-# general {{{
+# {{{ General
 
 # Color output (auto set to `no` on dumb terminals).
 zstyle ':custom:*:*' color 'yes'
@@ -62,14 +62,13 @@ zstyle ':custom:load' mod \
 # }}}
 
 
-# module editor {{{
+# {{{ Module editor
 
-<% if has_feature? :vim %>
-# Set the key mapping style to `emacs` or `vi`.
-zstyle ':custom:module:editor' key-bindings 'vi'
-<% end %>
 <% if has_feature? :emacs %>
-# Set the key mapping style to `emacs` or `vi`.
+# Set the key mapping style to `emacs`.
+zstyle ':custom:module:editor' key-bindings 'emacs'
+<% elsif has_feature? :vim %>
+# Set the key mapping style to `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
 <% end %>
 
