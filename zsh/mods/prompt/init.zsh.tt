@@ -69,8 +69,6 @@ if [[ "$prompt_name" == (promptline|) ]]; then
     log_err "The file `${_promptline_path}` not found. You need to generate it."
   fi
 elif [[ "$prompt_name" == (pure|) ]]; then
-  # Add `pure` to `$fpath`.
-  #fpath=("${0:h}/external" $fpath)
   # Set the prompt to pure.
   prompt pure
 else

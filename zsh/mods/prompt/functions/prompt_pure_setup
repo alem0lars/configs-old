@@ -34,7 +34,7 @@
 ################################################################################
 
 
-source ../externals/pure/pure.zsh
+source "${ZSH_MODS_DIR}/prompt/externals/pure/pure.zsh"
 
 
 # vim: set filetype=zsh :
