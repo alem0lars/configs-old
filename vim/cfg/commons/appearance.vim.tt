@@ -35,7 +35,8 @@
 " color scheme {{{
 
 set background=dark
-colorscheme wombat256mod
+let base16colorspace=256
+colorscheme base16-default
 
 " }}}
 

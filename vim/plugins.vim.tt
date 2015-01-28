@@ -43,7 +43,7 @@ call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>/'))
 NeoBundle 'Shougo/neobundle.vim'
 
 
-" plugins {{{
+" {{{ Plugins
 
 NeoBundle 'Shougo/unite.vim'
 
@@ -54,13 +54,13 @@ NeoBundle 'Shougo/vimproc.vim', {
       \   }
       \ }
 
-" shell {{{
+" {{{ Shell
 NeoBundle 'Shougo/neossh.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'ujihisa/vimshell-ssh'
 " }}}
 
-" editing capabilities extensions {{{
+" {{{ Editing capabilities extensions
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-speeddating'
@@ -74,7 +74,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'moll/vim-bbye'
 " }}}
 
-" ui additions {{{
+" {{{ UI additions
 NeoBundle 'luochen1990/rainbow'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mbbill/undotree'
@@ -83,27 +83,27 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'myusuf3/numbers.vim'
 " }}}
 
-" autocomplete, snippets, documentation {{{
+" {{{ Autocomplete, snippets, documentation
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Keithbsmiley/investigate.vim'
 " }}}
 
-" files management {{{
+" {{{ Files management
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'chrisbra/SudoEdit.vim'
 " }}}
 
-" vcs {{{
+" {{{ VCS
 NeoBundle 'tpope/vim-fugitive'
 " }}}
 
-" syntax checking {{{
+" {{{ Syntax checking
 NeoBundle 'scrooloose/syntastic'
 " }}}
 
-" languages support {{{
+" {{{ Languages support
 
 " C, C++, Obj-c, Objcpp
 NeoBundle 'Rip-Rip/clang_complete', {
@@ -159,7 +159,7 @@ NeoBundle 'pangloss/vim-javascript'
 
 " }}}
 
-" airline and derivatives {{{
+" {{{ Airline and derivatives
 NeoBundle 'bling/vim-airline'
 <% if has_feature? :zsh %>
 NeoBundle 'edkolev/promptline.vim'
@@ -172,8 +172,8 @@ NeoBundle 'edkolev/tmuxline.vim'
 " }}}
 
 
-" theme {{{
-NeoBundle 'wombat256.vim'
+" {{{ Theme
+NeoBundle 'chriskempson/base16-vim'
 " }}}
 
 

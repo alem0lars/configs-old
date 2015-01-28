@@ -32,21 +32,22 @@
 "###############################################################################
 
 
-" theme {{{
+" {{{ Theme
 
-let g:airline_theme = 'wombat'
+"let g:airline#themes#base16#constant = 0
+let g:airline_theme = 'base16'
 
 " }}}
 
 
-" powerline {{{
+" {{{ Powerline
 
 let g:airline_powerline_fonts = <%= has_feature?(:powerline) ? 1 : 0 %>
 
 " }}}
 
 
-" tabline {{{
+" {{{ Tabline
 
 " Enable tabline.
 let g:airline#extensions#tabline#enabled = 1
@@ -70,7 +71,7 @@ nmap <Leader>9 <Plug>AirlineSelectTab9
 
 
 <% if has_feature? :promptline %>
-" promptline integration {{{
+" {{{ Promptline integration
 
 if ((filewritable(fnamemodify('<%= get_var! "zsh.theme_path" %>', ':h')) == 2 &&
    \ glob('<%= get_var! "zsh.theme_path" %>') == '') ||
@@ -92,7 +93,7 @@ endif
 
 
 <% if has_feature? :tmuxline %>
-" tmuxline integration {{{
+" {{{ Tmuxline integration
 
 if ((filewritable(fnamemodify('<%= get_var! "tmux.theme_path" %>', ':h')) == 2 &&
    \ glob('<%=get_var! "tmux.theme_path" %>') == '') ||
@@ -113,7 +114,7 @@ endif
 <% end %>
 
 
-" tagbar integration {{{
+" {{{ Tagbar integration
 
 " Enable airline tagbar extension.
 let g:airline#extensions#tagbar#enabled = 1
@@ -124,7 +125,7 @@ let g:airline#extensions#tagbar#flags = 's'
 " }}}
 
 
-" syntastic integration {{{
+" {{{ Syntastic integration
 
 let g:airline#extensions#syntastic#enabled = 1
 
