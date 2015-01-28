@@ -47,6 +47,7 @@ zstyle ':custom:load' zfunction 'zargs' 'zmv'
 
 # Set the custom modules to load (browse modules); the order matters.
 zstyle ':custom:load' mod \
+  <%- if get_var('colorscheme.name') == 'base16' -%>'base16' \<%- end -%>
   'environment' \
   'terminal' \
   'editor' \
@@ -62,15 +63,23 @@ zstyle ':custom:load' mod \
 # }}}
 
 
+<%- if get_var('colorscheme.name') == 'base16' -%>
+# {{{ Module - Base16
+zstyle ':custom:module:base16' variant '<%= get_var! "colorscheme.variant" %>'
+zstyle ':custom:module:base16' brightness '<%= get_var! "colorscheme.brightness" %>'
+# }}}
+<%- end -%>
+
+
 # {{{ Module - Editor
 
-<% if has_feature? :emacs %>
+<%- if has_feature? :emacs -%>
 # Set the key mapping style to `emacs`.
 zstyle ':custom:module:editor' key-bindings 'emacs'
-<% elsif has_feature? :vim %>
+<%- elsif has_feature? :vim -%>
 # Set the key mapping style to `vi`.
 zstyle ':custom:module:editor' key-bindings 'vi'
-<% end %>
+<%- end -%>
 
 # Auto convert `....` to `../..`.
 zstyle ':custom:module:editor' dot-expansion 'yes'
@@ -87,8 +96,7 @@ zstyle ':custom:module:history-substring-search' color 'yes'
 
 # {{{ Module - Syntax highlighting
 
-# Set syntax highlighters.
-# By default, only the main highlighter is enabled.
+# Set syntax highlighters (by default, only the main highlighter is enabled).
 zstyle ':custom:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
@@ -100,13 +108,13 @@ zstyle ':custom:module:syntax-highlighting' highlighters \
 
 # {{{ Module - Prompt
 
-<% if has_feature? :promptline %>
+<%- if has_feature? :promptline -%>
 # Set the prompt to `promptline`.
 zstyle ':custom:module:prompt' name 'promptline'
-<% else %>
+<%- else -%>
 # Fallback to `pure` prompt.
 zstyle ':custom:module:prompt' name 'pure'
-<% end %>
+<%- end -%>
 
 # }}}
 

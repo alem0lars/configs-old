@@ -69,14 +69,9 @@ fonts:
 xorg:
   xresources:
     custom_dir:  '/etc/X11/xinit/Xresources.d'
-    colors_name: 'wombat'
-
-gtk:
-  theme: 'FlatStudioDark'
 
 tmux:
   config_file_path: '/etc/tmux.conf'
-  theme_path:       '/etc/tmux/tmuxline.conf'
 
 zsh:
   zshrc_path:   '/etc/zsh/zshrc'
@@ -85,7 +80,6 @@ zsh:
   zlogout_path: '/etc/zsh/zlogout'
   history_file: '~/.zsh-history'
   custom_dir:   '/etc/zsh'
-  theme_path:   '/etc/zsh/mods/prompt/promptline.zsh'
 
 features:
   - 'linux'

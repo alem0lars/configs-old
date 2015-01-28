@@ -39,6 +39,9 @@
 
 distro_name: 'gentoo'
 
+gtk:
+  theme: 'FlatStudioDark'
+
 urxvt:
   url_launcher: '/usr/bin/firefox'
 

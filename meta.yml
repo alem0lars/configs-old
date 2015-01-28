@@ -55,10 +55,22 @@ commands:
     only:
       features: ['zsh']
   - type: 'git_sync'
+    repo: 'https://github.com/chriskempson/base16-shell.git'
+    dst:  '<%= get_var! "zsh.custom_dir" %>/mods/base16/external'
+    only:
+      features: ['vim']
+  - type: 'git_sync'
     repo: 'https://github.com/Shougo/neobundle.vim'
     dst:  '<%= get_var! "vim.bundle_dir" %>/neobundle.vim'
     only:
       features: ['vim']
+  - type: 'git_sync'
+    repo: 'https://github.com/chriskempson/base16-xresources'
+    dst:  '<%= get_var! "xorg.xresources.custom_dir" %>/colorschemes/base16'
+    only:
+      features: ['linux']
+      vars: ['colorscheme']
+
 
 elems:
 

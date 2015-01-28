@@ -1,8 +1,10 @@
+#!/usr/bin/env zsh
+#
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_osx.yml                                               #
-# - Summary: Common variables for all OSX nextreamlabs systems                 #
+# - Name:    zsh/mods/base16/init.zsh.tt                                       #
+# - Summary: The ZSH base16 colorscheme configuration.                         #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -30,56 +32,14 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: generic                                                        <=#
-#                                                                              #
-################################################################################
 
 
-fonts:
-  main:
-    name: 'Menlo'
-    size: 15
+# Get the base16's variant and brightness (set from the configuration).
+zstyle -s ':custom:module:base16' variant 'variant'
+zstyle -s ':custom:module:base16' brightness 'brightness'
 
-develop_dir: '~/Develop'
+# Load the colorscheme.
+source "${ZSH_MODS_DIR}/base16/external/base16-${variant}.${brightness}.sh"
 
-tmux:
-  config_file_path: '~/.tmux.conf'
 
-zsh:
-  zshrc_path:   '~/.zshrc'
-  zshenv_path:  '~/.zshenv'
-  zlogin_path:  '~/.zlogin'
-  zlogout_path: '~/.zlogout'
-  history_file: '~/.zsh-history'
-  custom_dir:   '~/.zsh'
-
-go:
-  base_dir: '~/Develop/Workspaces/GO'
-
-features:
-  # System.
-  - 'osx'
-  - 'homebrew'
-  # CLI.
-  - 'iterm'
-  - 'zsh'
-  - 'tmux'
-  # Programming languages.
-  - 'rbenv'
-  - 'pyenv'
-  - 'sbt'
-  - 'haskell'
-  - 'ruby'
-  - 'python'
-  - 'latex'
-  - 'java'
-  - 'scala'
-  - 'erlang'
-  - 'elixir'
-  - 'groovy'
-  - 'mono'
-  - 'go'
-  - 'rust'
-
-# vim: set filetype=yaml :
+# vim: set filetype=zsh :

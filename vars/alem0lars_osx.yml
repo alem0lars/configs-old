@@ -54,6 +54,11 @@ vim:
   terminal_cmd:     'open /Applications/iTerm.app -n'
   latex_viewer:     'open /Applications/Preview.app'
 
+colorscheme:
+  name:       'base16'
+  variant:    'default'
+  brightness: 'dark'
+
 rust:
   racer_dir: '~/.vim/bundle/racer'
 

@@ -41,12 +41,13 @@ fullname: 'Luca Molari'
 
 github_username: 'LMolr'
 
-xorg:
-  xresources:
-    colors_name: 'wombat'
-
 gtk:
   key_theme: 'Emacs'
+
+colorscheme:
+  name:       'base16'
+  variant:    'monokai'
+  brightness: 'dark'
 
 irc:
   nickname: 'LMolr'
