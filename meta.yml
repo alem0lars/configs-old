@@ -51,7 +51,7 @@ commands:
       features: ['zsh']
   - type: 'git_sync'
     repo: 'https://github.com/sindresorhus/pure'
-    dst:  '<%= get_var! "zsh.custom_dir" %>/mods/prompt/external'
+    dst:  '<%= get_var! "zsh.custom_dir" %>/mods/prompt/externals/pure'
     only:
       features: ['zsh']
   - type: 'git_sync'
