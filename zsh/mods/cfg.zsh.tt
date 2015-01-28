@@ -62,7 +62,7 @@ zstyle ':custom:load' mod \
 # }}}
 
 
-# {{{ Module editor
+# {{{ Module - Editor
 
 <% if has_feature? :emacs %>
 # Set the key mapping style to `emacs`.
@@ -78,14 +78,14 @@ zstyle ':custom:module:editor' dot-expansion 'yes'
 # }}}
 
 
-# module history substring search {{{
+# {{{ Module - History substring search
 
 zstyle ':custom:module:history-substring-search' color 'yes'
 
 # }}}
 
 
-# module syntax highlighting {{{
+# {{{ Module - Syntax highlighting
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
@@ -96,3 +96,19 @@ zstyle ':custom:module:syntax-highlighting' highlighters \
   'root'
 
 # }}}
+
+
+# {{{ Module - Prompt
+
+<% if has_feature? :promptline %>
+# Set the prompt to `promptline`.
+zstyle ':custom:module:prompt' name 'promptline'
+<% else %>
+# Fallback to `pure` prompt.
+zstyle ':custom:module:prompt' name 'pure'
+<% end %>
+
+# }}}
+
+
+# vim: set filetype=zsh :

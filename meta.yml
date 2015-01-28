@@ -50,6 +50,11 @@ commands:
     only:
       features: ['zsh']
   - type: 'git_sync'
+    repo: 'https://github.com/sindresorhus/pure'
+    dst:  '<%= get_var! "zsh.custom_dir" %>/mods/prompt/external'
+    only:
+      features: ['zsh']
+  - type: 'git_sync'
     repo: 'https://github.com/Shougo/neobundle.vim'
     dst:  '<%= get_var! "vim.bundle_dir" %>/neobundle.vim'
     only:

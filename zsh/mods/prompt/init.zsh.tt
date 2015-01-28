@@ -34,43 +34,48 @@
 ################################################################################
 
 
-<% if has_feature?(:vim) and has_feature?(:promptline) %>
-# integration between zsh vim-mode and promptline {{{
+# Load and execute the prompt theming system.
+autoload -Uz promptinit && promptinit
 
-vim_ins_mode="INS"
-vim_cmd_mode="NRM"
-vim_mode=$vim_ins_mode
 
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  __promptline
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
+zstyle -s ':custom:module:prompt' name 'prompt_name'
+if [[ "$prompt_name" == (promptline|) ]]; then
+  <% if has_feature?(:vim) %>
+  # {{{ Integration between ZSH's vim-mode and promptline
+  vim_ins_mode="INS"
+  vim_cmd_mode="NRM"
   vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-function TRAPINT() {
-  vim_mode=$vim_ins_mode
-  return $(( 128 + $1 ))
-}
-
-# }}}
-<% end %>
-
-
-<% if has_feature? :promptline %>
-# Require the promptline prompt.
-_promptline_path="${ZSH_MODS_DIR}/prompt/promptline.zsh"
-if [[ -r ${_promptline_path} ]]; then
-  source "${_promptline_path}"
+  function zle-keymap-select {
+    vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+    __promptline
+    zle reset-prompt
+  }
+  zle -N zle-keymap-select
+  function zle-line-finish {
+    vim_mode=$vim_ins_mode
+  }
+  zle -N zle-line-finish
+  function TRAPINT() {
+    vim_mode=$vim_ins_mode
+    return $(( 128 + $1 ))
+  }
+  # }}}
+  <% end %>
+  # Require the promptline prompt.
+  _promptline_path="${ZSH_MODS_DIR}/prompt/promptline.zsh"
+  if [[ -r ${_promptline_path} ]]; then
+    source "${_promptline_path}"
+  else
+    log_err "The file `${_promptline_path}` not found. You need to generate it."
+  fi
+elif [[ "$prompt_name" == (pure|) ]]; then
+  # Add `pure` to `$fpath`.
+  fpath=("${0:h}/external" $fpath)
+  # Set the prompt to pure.
+  prompt pure
 else
-  log_err "The file `${_promptline_path}` not found. You need to generate it."
+  log_err 'No prompt has been selected.'
 fi
-<% end %>
 
 
 # vim: set filetype=zsh :
