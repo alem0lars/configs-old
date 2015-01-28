@@ -1,0 +1,108 @@
+
+weechat/perl/autoload/buffers.pl,1503
+sub buffers_cmd_whitelistbuffers_cmd_whitelist278,13863
+sub buffers_cmd_detachbuffers_cmd_detach316,15980
+sub create_whitelistcreate_whitelist356,18148
+sub hook_timer_detachhook_timer_detach370,18483
+sub hook_timer_laghook_timer_lag387,18990
+sub buffers_config_readbuffers_config_read404,19509
+sub buffers_config_writebuffers_config_write408,19624
+sub buffers_config_reload_cbbuffers_config_reload_cb412,19741
+sub buffers_config_initbuffers_config_init417,19869
+sub build_buffersbuild_buffers897,37206
+sub add_inactive_parentlessadd_inactive_parentless1445,62043
+sub add_hotlist_countadd_hotlist_count1457,62382
+sub buffers_signal_bufferbuffers_signal_buffer1535,65176
+sub buffers_signal_hotlistbuffers_signal_hotlist1569,66207
+sub buffers_signal_config_whitelistbuffers_signal_config_whitelist1576,66319
+sub buffers_signal_config_immune_detach_buffersbuffers_signal_config_immune_detach_buffers1584,66569
+sub buffers_signal_config_detach_buffer_immediatelybuffers_signal_config_detach_buffer_immediately1592,66838
+sub buffers_signal_configbuffers_signal_config1600,67123
+sub buffers_focus_buffersbuffers_focus_buffers1608,67366
+sub buffers_hsignal_mousebuffers_hsignal_mouse1631,68011
+sub move_buffermove_buffer1710,70508
+sub check_immune_detached_bufferscheck_immune_detached_buffers1737,71384
+sub check_detach_buffer_immediatelycheck_detach_buffer_immediately1750,71663
+sub shutdown_cbshutdown_cb1763,71948
+sub check_bar_itemcheck_bar_item1769,72118
+
+weechat/perl/autoload/highmon.pl,837
+sub print_helpprint_help214,11296
+sub highmon_bar_buildhighmon_bar_build222,11501
+sub highmon_bar_openhighmon_bar_open262,12486
+sub highmon_bar_closehighmon_bar_close272,12795
+sub highmon_buffer_openhighmon_buffer_open295,13247
+sub highmon_buffer_inputhighmon_buffer_input324,14065
+sub highmon_buffer_closehighmon_buffer_close329,14137
+sub highmon_command_cbhighmon_command_cb341,14568
+sub highmon_config_cleanhighmon_config_clean398,15568
+sub highmon_config_inithighmon_config_init483,17607
+sub highmon_config_cbhighmon_config_cb592,20292
+sub highmon_hookhighmon_hook675,22231
+sub highmon_new_messagehighmon_new_message687,23259
+sub highmon_printhighmon_print779,26331
+sub highmon_starthighmon_start944,31416
+sub highmon_togglehighmon_toggle957,31678
+sub format_buffer_nameformat_buffer_name1040,33841
+
+weechat/perl/buffers.pl,1503
+sub buffers_cmd_whitelistbuffers_cmd_whitelist278,13863
+sub buffers_cmd_detachbuffers_cmd_detach316,15980
+sub create_whitelistcreate_whitelist356,18148
+sub hook_timer_detachhook_timer_detach370,18483
+sub hook_timer_laghook_timer_lag387,18990
+sub buffers_config_readbuffers_config_read404,19509
+sub buffers_config_writebuffers_config_write408,19624
+sub buffers_config_reload_cbbuffers_config_reload_cb412,19741
+sub buffers_config_initbuffers_config_init417,19869
+sub build_buffersbuild_buffers897,37206
+sub add_inactive_parentlessadd_inactive_parentless1445,62043
+sub add_hotlist_countadd_hotlist_count1457,62382
+sub buffers_signal_bufferbuffers_signal_buffer1535,65176
+sub buffers_signal_hotlistbuffers_signal_hotlist1569,66207
+sub buffers_signal_config_whitelistbuffers_signal_config_whitelist1576,66319
+sub buffers_signal_config_immune_detach_buffersbuffers_signal_config_immune_detach_buffers1584,66569
+sub buffers_signal_config_detach_buffer_immediatelybuffers_signal_config_detach_buffer_immediately1592,66838
+sub buffers_signal_configbuffers_signal_config1600,67123
+sub buffers_focus_buffersbuffers_focus_buffers1608,67366
+sub buffers_hsignal_mousebuffers_hsignal_mouse1631,68011
+sub move_buffermove_buffer1710,70508
+sub check_immune_detached_bufferscheck_immune_detached_buffers1737,71384
+sub check_detach_buffer_immediatelycheck_detach_buffer_immediately1750,71663
+sub shutdown_cbshutdown_cb1763,71948
+sub check_bar_itemcheck_bar_item1769,72118
+
+weechat/perl/highmon.pl,837
+sub print_helpprint_help214,11296
+sub highmon_bar_buildhighmon_bar_build222,11501
+sub highmon_bar_openhighmon_bar_open262,12486
+sub highmon_bar_closehighmon_bar_close272,12795
+sub highmon_buffer_openhighmon_buffer_open295,13247
+sub highmon_buffer_inputhighmon_buffer_input324,14065
+sub highmon_buffer_closehighmon_buffer_close329,14137
+sub highmon_command_cbhighmon_command_cb341,14568
+sub highmon_config_cleanhighmon_config_clean398,15568
+sub highmon_config_inithighmon_config_init483,17607
+sub highmon_config_cbhighmon_config_cb592,20292
+sub highmon_hookhighmon_hook675,22231
+sub highmon_new_messagehighmon_new_message687,23259
+sub highmon_printhighmon_print779,26331
+sub highmon_starthighmon_start944,31416
+sub highmon_togglehighmon_toggle957,31678
+sub format_buffer_nameformat_buffer_name1040,33841
+
+weechat/tcl/autoload/rnotify.tcl,281
+		proc highlight { data buffer date tags displayed highlight prefix message } {highlight64,2497
+		proc notify {title text} {notify80,3251
+	proc notify_server {port} {notify_server99,3801
+	proc accept {sock addr port} {accept104,3934
+	proc recieve {sock} {recieve107,4017
+
+weechat/tcl/rnotify.tcl,281
+		proc highlight { data buffer date tags displayed highlight prefix message } {highlight64,2497
+		proc notify {title text} {notify80,3251
+	proc notify_server {port} {notify_server99,3801
+	proc accept {sock addr port} {accept104,3934
+	proc recieve {sock} {recieve107,4017
+
+xorg/sessions/xmonad.tt,0

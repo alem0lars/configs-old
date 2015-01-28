@@ -58,7 +58,7 @@ commands:
     repo: 'https://github.com/chriskempson/base16-shell.git'
     dst:  '<%= get_var! "zsh.custom_dir" %>/mods/base16/external'
     only:
-      features: ['vim']
+      features: ['zsh']
   - type: 'git_sync'
     repo: 'https://github.com/Shougo/neobundle.vim'
     dst:  '<%= get_var! "vim.bundle_dir" %>/neobundle.vim'
