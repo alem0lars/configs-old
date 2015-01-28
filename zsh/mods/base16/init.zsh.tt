@@ -39,7 +39,12 @@ zstyle -s ':custom:module:base16' variant 'variant'
 zstyle -s ':custom:module:base16' brightness 'brightness'
 
 # Load the colorscheme.
-source "${ZSH_MODS_DIR}/base16/external/base16-${variant}.${brightness}.sh"
+export BASE16_SHELL="${ZSH_MODS_DIR}/base16/external/base16-${variant}.${brightness}.sh"
+if [[ ! -f "${BASE16_SHELL}" ]]; then
+  log_err "Invalid `BASE16_SHELL` environment variable."
+else
+  source "${BASE16_SHELL}"
+fi
 
 
 # vim: set filetype=zsh :
