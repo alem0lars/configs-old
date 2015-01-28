@@ -34,7 +34,7 @@
 ################################################################################
 
 
-<% if has_feature? :vim %>
+<% if has_feature?(:vim) and has_feature?(:promptline) %>
 # integration between zsh vim-mode and promptline {{{
 
 vim_ins_mode="INS"
@@ -62,6 +62,7 @@ function TRAPINT() {
 <% end %>
 
 
+<% if has_feature? :promptline %>
 # Require the promptline prompt.
 _promptline_path="${ZSH_MODS_DIR}/prompt/promptline.zsh"
 if [[ -r ${_promptline_path} ]]; then
@@ -69,6 +70,7 @@ if [[ -r ${_promptline_path} ]]; then
 else
   log_err "The file `${_promptline_path}` not found. You need to generate it."
 fi
+<% end %>
 
 
 # vim: set filetype=zsh :

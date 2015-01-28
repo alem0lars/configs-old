@@ -1,15 +1,15 @@
 "###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/plugins/necoghc.vim.tt                                    #
-" - Summary: The configuration for the necoghc plugin, which provides haskell  #
-"            support to neocomplete.                                           #
+" - Name:    vim/cfg/plugins/ruby.vim.tt                                       #
+" - Summary: The configuration for the Ruby language plugins.                  #
+" -          - `rubycomplete`: provides Ruby support to NeoComplete.           #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -33,7 +33,28 @@
 "###############################################################################
 
 
-let g:necoghc_enable_detailed_browse=1
+" {{{ RubyComplete configuration
+
+" Parse the entire buffer to add a list of classes to the completion results.
+let g:rubycomplete_classes_in_global = 1
+
+" Load/evaluate code in order to provide completions.
+" This may cause some code execution, which may be a concern.
+let g:rubycomplete_buffer_loading = 1
+
+let g:rubycomplete_include_object = 1
+let g:rubycomplete_include_objectspace = 1
+
+" Parse the `Gemfile` if available, in case gems are being implicitly required.
+let g:rubycomplete_load_gemfile = 1
+
+" Use `Bundler.require` instead of parsing the `Gemfile`.
+let g:rubycomplete_use_bundler = 1
+
+" Detect rails.
+let g:rubycomplete_rails = 1
+
+" }}}
 
 
 " vim: set filetype=vim :

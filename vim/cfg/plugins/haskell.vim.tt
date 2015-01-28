@@ -1,8 +1,9 @@
 "###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/plugins/jedi.vim.tt                                       #
-" - Summary: The configuration for the jedi plugin.                            #
+" - Name:    vim/cfg/plugins/haskell.vim.tt                                    #
+" - Summary: The configuration for Haskell language plugins, in particular:    #
+ "           - `necoghc`: provides Haskell support to NeoComplete.             #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,13 +33,7 @@
 "###############################################################################
 
 
-" Disable the standalone completion (jedi is only used as backend for
-" neocomplete.
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-
-" Don't popup automatically the first completion element.
-let g:jedi#popup_select_first = 0
+let g:necoghc_enable_detailed_browse=1
 
 
 " vim: set filetype=vim :

@@ -41,7 +41,7 @@ let g:airline_theme = 'wombat'
 
 " powerline {{{
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = <%= has_feature?(:powerline) ? 1 : 0 %>
 
 " }}}
 
@@ -69,7 +69,7 @@ nmap <Leader>9 <Plug>AirlineSelectTab9
 " }}}
 
 
-<% if has_feature? :zsh %>
+<% if has_feature? :promptline %>
 " promptline integration {{{
 
 if ((filewritable(fnamemodify('<%= get_var! "zsh.theme_path" %>', ':h')) == 2 &&
@@ -91,7 +91,7 @@ endif
 <% end %>
 
 
-<% if has_feature? :tmux %>
+<% if has_feature? :tmuxline %>
 " tmuxline integration {{{
 
 if ((filewritable(fnamemodify('<%= get_var! "tmux.theme_path" %>', ':h')) == 2 &&
