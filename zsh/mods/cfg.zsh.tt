@@ -108,13 +108,8 @@ zstyle ':custom:module:syntax-highlighting' highlighters \
 
 # {{{ Module - Prompt
 
-<%- if has_feature? :promptline -%>
-# Set the prompt to `promptline`.
-zstyle ':custom:module:prompt' name 'promptline'
-<%- else -%>
-# Fallback to `pure` prompt.
+# At the moment only the `pure` theme is supported.
 zstyle ':custom:module:prompt' name 'pure'
-<%- end -%>
 
 # }}}
 

@@ -94,12 +94,6 @@ exe 'source' plugins_cfg_dir_path . '/latex.vim'
 <% if has_feature? :haskell %>
 exe 'source' plugins_cfg_dir_path . '/haskell.vim'
 <% end %>
-<% if has_feature? :promptline %>
-exe 'source' plugins_cfg_dir_path . '/promptline.vim'
-<% end %>
-<% if has_feature? :tmuxline %>
-exe 'source' plugins_cfg_dir_path . '/tmuxline.vim'
-<% end %>
 <% if has_feature? :ruby %>
 exe 'source' plugins_cfg_dir_path . '/ruby.vim'
 <% end %>

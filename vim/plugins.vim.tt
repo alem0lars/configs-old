@@ -161,12 +161,6 @@ NeoBundle 'pangloss/vim-javascript'
 
 " {{{ Airline and derivatives
 NeoBundle 'bling/vim-airline'
-<% if has_feature? :zsh %>
-NeoBundle 'edkolev/promptline.vim'
-<% end %>
-<% if has_feature? :tmux %>
-NeoBundle 'edkolev/tmuxline.vim'
-<% end %>
 " }}}
 
 " }}}

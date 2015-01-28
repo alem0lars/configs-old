@@ -70,50 +70,6 @@ nmap <Leader>9 <Plug>AirlineSelectTab9
 " }}}
 
 
-<% if has_feature? :promptline %>
-" {{{ Promptline integration
-
-if ((filewritable(fnamemodify('<%= get_var! "zsh.theme_path" %>', ':h')) == 2 &&
-   \ glob('<%= get_var! "zsh.theme_path" %>') == '') ||
-   \ filewritable('<%= get_var! "zsh.theme_path" %>') == 1)
-
-  " Enable autogeneration the promptline file.
-  let g:airline#extensions#promptline#enabled = 1
-
-  " The path where the promptline file will be saved.
-  let g:airline#extensions#promptline#snapshot_file = '<%= get_var! "zsh.theme_path" %>'
-
-  " The airline template to be used for promptline.
-  let g:airline#extensions#promptline#color_template = 'visual'
-
-endif
-
-" }}}
-<% end %>
-
-
-<% if has_feature? :tmuxline %>
-" {{{ Tmuxline integration
-
-if ((filewritable(fnamemodify('<%= get_var! "tmux.theme_path" %>', ':h')) == 2 &&
-   \ glob('<%=get_var! "tmux.theme_path" %>') == '') ||
-   \ filewritable('<%=get_var! "tmux.theme_path" %>') == 1)
-
-  " Enable autogeneration the tmuxline file.
-  let g:airline#extensions#tmuxline#enabled = 1
-
-  " The path where the tmuxline file will be saved.
-  let g:airline#extensions#tmuxline#snapshot_file = '<%=get_var! "tmux.theme_path" %>'
-
-  " The airline template to be used for tmuxline.
-  let g:airline#extensions#tmuxline#color_template = 'normal'
-
-endif
-
-" }}}
-<% end %>
-
-
 " {{{ Tagbar integration
 
 " Enable airline tagbar extension.

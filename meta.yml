@@ -177,10 +177,6 @@ elems:
     notes: |
       The program 'xclip' should be installed in order to provide clipboard
       support to tmux.
-  - src:  'tmux/tmuxline.conf'
-    dst:  '<%= get_var! "tmux.theme_path" %>'
-    only:
-      features: ['tmux']
 
   - src:  'zsh/(zshrc)'
     dst:  '<%= get_var! "zsh.zshrc_path" %>'
