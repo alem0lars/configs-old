@@ -47,7 +47,9 @@ zstyle ':custom:load' zfunction 'zargs' 'zmv'
 
 # Set the custom modules to load (browse modules); the order matters.
 zstyle ':custom:load' mod \
-  <%- if get_var('colorscheme.name') == 'base16' -%>'base16' \<%- end -%>
+  <%- if get_var('colorscheme.name') == 'base16' -%>
+  'base16' \
+  <%- end -%>
   'environment' \
   'terminal' \
   'editor' \
