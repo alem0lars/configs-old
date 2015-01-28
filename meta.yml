@@ -203,6 +203,11 @@ elems:
     only:
       features: ['vim']
 
+  - src: 'atom/(.+)'
+    dst: '<%= ENV["HOME"] %>/.atom/<1>'
+    only:
+      features: ['atom']
+
   - src:  'grub/default_config'
     dst:  '/etc/default/grub'
     only:

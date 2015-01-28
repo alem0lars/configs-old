@@ -34,3 +34,36 @@
 #=> INHERITS: nmlabs_osx                                                     <=#
 #                                                                              #
 ################################################################################
+
+
+email:    'molari.alessandro@gmail.com'
+fullname: 'Alessandro Molari'
+
+github_username: 'alem0lars'
+
+vim:
+  bkp_dir:          '~/.vim_bkps'
+  swaps_dir:        '~/.vim_swaps'
+  views_dir:        '~/.vim_views'
+  undos_dir:        '~/.vim_undos'
+  vimshell_tmp_dir: '~/.vim_shell'
+  entry_point:      '~/.vimrc'
+  gui_entry_point:  '~/.gvimrc'
+  custom_dir:       '~/.vim'
+  bundle_dir:       '~/.vim/bundle'
+  terminal_cmd:     'open /Applications/iTerm.app -n'
+  latex_viewer:     'open /Applications/Preview.app'
+
+rust:
+  racer_dir: '~/.vim/bundle/racer'
+
+editor_cmd: 'mvim -f'
+
+features:
+  # Apps.
+  #- 'emacs'
+  - 'vim'
+  - 'atom'
+  - 'kaleidoscope'
+  # Browser.
+  #- 'firefox_vim'
