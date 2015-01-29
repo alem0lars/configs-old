@@ -32,7 +32,7 @@
 "###############################################################################
 
 
-" enable neocomplete {{{
+" {{{ Enable neocomplete
 
 " Disable autocomplpop.
 let g:acp_enableAtStartup = 0
@@ -42,8 +42,7 @@ let g:neocomplete#enable_at_startup = 1
 
 " }}}
 
-
-" completion rules {{{
+" {{{ Completion rules
 
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
@@ -52,7 +51,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#max_list = 32
 
 " Minimum char completion lengths.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 " Don't preselect entries.
 let g:neocomplete#enable_auto_select = 0
@@ -60,12 +59,11 @@ let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#enable_auto_delimiter = 0
 
 let g:neocomplete#enable_cursor_hold_i = 1
-let g:neocomplete#cursor_hold_i_time = 256
+let g:neocomplete#cursor_hold_i_time = 32
 
 " }}}
 
-
-" dictionary definition {{{
+" {{{ Dictionary definition
 
 let g:neocomplete#sources#dictionary#dictionaries = {
   \ 'default'  : '',
@@ -74,8 +72,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 
 " }}}
 
-
-" keywords patterns to completion {{{
+" {{{ Keywords patterns to completion
 
 " Define keywords patterns for completion.
 if !exists('g:neocomplete#keyword_patterns')
@@ -85,8 +82,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " }}}
 
-
-" keywords patterns to omni completion {{{
+" {{{ Keywords patterns to omni completion
 
 " Enable per-language completion based on input patterns.
 " The following input patterns definitions will add corresponding
@@ -124,7 +120,7 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 " omnifunc setup {{{
 
 " c,c++,objc,objcpp -> clang_complete
-" automatic setup by plugin
+" Automatic setup by plugin
 
 <% if has_feature? :python %>
 " python -> jedi
