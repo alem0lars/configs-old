@@ -1,1 +1,2 @@
 set guifont=<%= get_var! 'fonts.main.name' %>:h<%= get_var! 'fonts.main.size' %>
+set go-=L
