@@ -42,7 +42,6 @@ call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>/'))
 " Let neobundle manage neobundle.
 NeoBundle 'Shougo/neobundle.vim'
 
-
 " {{{ Plugins
 
 NeoBundle 'Shougo/unite.vim'
@@ -151,8 +150,8 @@ NeoBundle 'phildawes/racer', {
 <% end %>
 
 " HTML, CSS
-NeoBundle 'tpope/vim-haml'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
@@ -165,11 +164,9 @@ NeoBundle 'bling/vim-airline'
 
 " }}}
 
-
 " {{{ Theme
 NeoBundle 'chriskempson/base16-vim'
 " }}}
-
 
 call neobundle#end()
 
