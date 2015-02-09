@@ -1,7 +1,7 @@
 "*":
   editor:
     fontFamily: "Menlo"
-    fontSize: 15
+    fontSize: 13
     showInvisibles: true
     showIndentGuide: true
     invisibles: {}
@@ -9,15 +9,15 @@
     followSymlinks: true
     themes: [
       "atom-dark-ui"
-      "base16-tomorrow-dark-theme"
+      "monokai"
     ]
-    projectHome: "<%= File.expand_path(get_var! 'develop_dir') %>"
+    projectHome: "/Users/alem0lars/Develop"
   welcome:
     showOnStartup: false
   linter:
     lintOnChangeInterval: 1024
     showErrorInline: true
-    statusBar: "None"
+    statusBar: "Show all errors"
     executionTimeout: 8192
   "linter-csslint": {}
   minimap:
@@ -28,3 +28,9 @@
       "find-and-replace": true
   "atom-color-highlight":
     dotMarkersSpacing: 2
+  "autocomplete-plus":
+    autoActivationDelay: 96
+    maxSuggestions: 12
+  "linter-coffeelint": {}
+  "atom-ternjs":
+    coffeeScript: true
