@@ -38,6 +38,7 @@
 # {{{ Requires.
 
 require 'yaml'
+require 'etc'
 
 # }}}
 
