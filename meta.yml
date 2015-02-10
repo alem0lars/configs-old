@@ -70,6 +70,14 @@ commands:
     only:
       features: ['linux']
       vars: ['colorscheme']
+  - type: 'register_service'
+    path: '/Library/LaunchAgents/environment.user.plist'
+    only:
+      features: ['osx']
+  - type: 'register_service'
+    path: '/Library/LaunchAgents/environment.user.plist'
+    only:
+      features: ['osx']
 
 
 elems:
@@ -394,6 +402,21 @@ elems:
 
   - src:  'osx/(env_vars.yml)'
     dst:  '~/.<1>'
+    only:
+      features: ['osx']
+
+  - src:  'osx/(environment)'
+    dst:  '/etc/<1>'
+    only:
+      features: ['osx']
+
+  - src:  'osx/(environment.user.plist)'
+    dst:  '/Library/LaunchAgents/<1>'
+    only:
+      features: ['osx']
+
+  - src:  'osx/(environment.plist)'
+    dst:  '/Library/LaunchDaemons/<1>'
     only:
       features: ['osx']
 

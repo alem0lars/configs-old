@@ -1,8 +1,9 @@
-################################################################################
+<!--############################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    osx/env_vars.yml.tt                                               #
-# - Summary: Definition of environments variables for OSX systems.             #
+# - Name:    osx/environment.user.plist.tt                                     #
+# - Summary: User-level launchd service definition for the `environment.tt`    #
+#            script.                                                           #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -29,69 +30,29 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+#############################################################################-->
 
 
-<%# {{{ Local variables %>
-
-<% path = [] %>
-
-<%# }}} %>
-
-
-EDITOR: '<%= get_var! "editor_cmd" %>'
-
-<% if has_feature? :homebrew %>
-HOMEBREW_CASK_OPTS: '--appdir=/Applications'
-<% end %>
-
-<% if has_feature? :rbenv %>
-<% path << '/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:' %>
-RBENV_ROOT: '/usr/local/opt/rbenv'
-<% end %>
-
-<% if has_feature? :python %>
-PYTHONIOENCODING: 'utf-8'
-<% end %>
-
-<% if has_feature? :pyenv %>
-<% path << '/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin:' %>
-PYENV_ROOT: '/usr/local/opt/pyenv'
-<% end %>
-
-<% if has_feature? :java %>
-JAVA_HOME: '/Library/Java/Home'
-<% end %>
-
-<% if has_feature? :groovy %>
-GROOVY_HOME: '/usr/local/opt/groovy/libexec'
-<% end %>
-
-<% if has_feature? :erlang %>
-MANPATH: '/usr/local/opt/erlang/lib/erlang/man:${MANPATH}'
-<% end %>
-
-<% if has_feature? :sbt %>
-SBT_OPTS: '"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M":${SBT_OPTS}'
-<% end %>
-
-<% if has_feature? :mono %>
-MONO_GAC_PREFIX: '/usr/local'
-<% end %>
-
-<% if has_feature? :go %>
-<% path << '${GOPATH//://bin:}/bin:/usr/local/opt/go/libexec/bin:' %>
-GOPATH: '<%= get_var! "go.base_dir" %>'
-<% end %>
-
-<% if has_feature? :rust %>
-RUST_SRC_PATH: '/usr/local/opt/rust/src'
-<% end %>
-
-<% path << '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}' %>
-PATH: <%= path.join %>
-
-LIBRARY_PATH: '/usr/local/lib:${LIBRARY_PATH}'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>environment.user</string>
+    <key>ProgramArguments</key>
+    <array>
+            <string>/etc/environment</string>
+    </array>
+    <key>KeepAlive</key>
+    <false/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WatchPaths</key>
+    <array>
+        <string>/etc/environment</string>
+    </array>
+</dict>
+</plist>
 
 
-# vim: set filetype=yaml :
+<!-- vim: set filetype=xml : -->
