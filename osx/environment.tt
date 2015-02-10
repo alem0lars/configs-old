@@ -79,6 +79,7 @@ end
 # {{{ Utilities - Environment variables.
 
 def set_env_var(name, value)
+  value = value.gsub('"', '\"')
   puts("/bin/launchctl setenv \"#{name}\" \"#{value}\"")
   system("/bin/launchctl setenv \"#{name}\" \"#{value}\"")
 end
