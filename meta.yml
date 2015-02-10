@@ -70,14 +70,6 @@ commands:
     only:
       features: ['linux']
       vars: ['colorscheme']
-  - type: 'register_service'
-    path: '/Library/LaunchAgents/environment.user.plist'
-    only:
-      features: ['osx']
-  - type: 'register_service'
-    path: '/Library/LaunchDaemons/environment.plist'
-    only:
-      features: ['osx']
 
 
 elems:
