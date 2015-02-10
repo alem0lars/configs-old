@@ -48,7 +48,7 @@
       data_for_features({
         rbenv: "/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin",
         pyenv: "/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin",
-        go:    "<%= File.expand_path(get_var!("go.base_dir")) %>/bin:/usr/local/opt/go/libexec/bin"
+        go:    "#{File.expand_path(get_var!("go.base_dir"))}/bin:/usr/local/opt/go/libexec/bin"
       }).join(":") %></string>
   </array>
   <key>KeepAlive</key>
