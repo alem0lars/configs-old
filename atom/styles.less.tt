@@ -23,3 +23,6 @@ atom-text-editor {
 atom-text-editor::shadow .cursor {
 
 }
+
+
+/* vim: set filetype=less : */

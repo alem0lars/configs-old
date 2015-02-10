@@ -3,9 +3,8 @@
 <!--############################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    osx/environment.plist.tt                                          #
-# - Summary: Root-level launchd service definition for the `environment.tt`    #
-#            script.                                                           #
+# - Name:    osx/setenv.HOMEBREW_CASK_OPTS.plist.tt                            #
+# - Summary: Set the `HOMEBREW_CASK_OPTS` environment variable.                #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -35,24 +34,22 @@
 #############################################################################-->
 
 
-
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Label</key>
-    <string>environment</string>
-    <key>ProgramArguments</key>
-    <array>
-            <string>/usr/bin/ruby /etc/environment</string>
-    </array>
-    <key>KeepAlive</key>
-    <false/>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WatchPaths</key>
-    <array>
-        <string>/etc/environment</string>
-    </array>
+  <key>Label</key>
+  <string>setenv.HOMEBREW_CASK_OPTS</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/launchctl</string>
+    <string>setenv</string>
+    <string>HOMEBREW_CASK_OPTS</string>
+    <string>--appdir</string>
+  </array>
+  <key>KeepAlive</key>
+  <false/>
+  <key>RunAtLoad</key>
+  <true/>
 </dict>
 </plist>
 

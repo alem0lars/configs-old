@@ -3,9 +3,8 @@
 <!--############################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    osx/environment.user.plist.tt                                     #
-# - Summary: User-level launchd service definition for the `environment.tt`    #
-#            script.                                                           #
+# - Name:    osx/setenv.LIBRARY_PATH.plist.tt                                  #
+# - Summary: Set the `LIBRARY_PATH` environment variable.                      #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -38,20 +37,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Label</key>
-    <string>environment.user</string>
-    <key>ProgramArguments</key>
-    <array>
-            <string>/usr/bin/ruby /etc/environment</string>
-    </array>
-    <key>KeepAlive</key>
-    <false/>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WatchPaths</key>
-    <array>
-        <string>/etc/environment</string>
-    </array>
+  <key>Label</key>
+  <string>setenv.LIBRARY_PATH</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/launchctl</string>
+    <string>setenv</string>
+    <string>LIBRARY_PATH</string>
+    <string>/usr/local/lib</string>
+  </array>
+  <key>KeepAlive</key>
+  <false/>
+  <key>RunAtLoad</key>
+  <true/>
 </dict>
 </plist>
 

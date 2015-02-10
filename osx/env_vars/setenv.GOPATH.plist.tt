@@ -1,11 +1,10 @@
-#!/usr/bin/env ruby
-#
-################################################################################
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--############################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    osx/environment.tt                                                #
-# - Summary: Startup script for setting the environment (based on              #
-#            `env_vars.yml` and other system informations.                     #
+# - Name:    osx/setenv.GOPATH.plist.tt                                        #
+# - Summary: Set the `GOPATH` environment variable.                            #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -32,98 +31,27 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+#############################################################################-->
 
 
-# {{{ Requires.
-
-require 'yaml'
-require 'etc'
-
-# }}}
-
-
-# {{{ Utilities - Logging.
-
-def log_info(msg)
-  system("syslog -s -l info \"#{msg}\"")
-end
-
-def log_warn(msg)
-  system("syslog -s -l warning \"#{msg}\"")
-end
-
-def log_error(msg, should_exit: true)
-  system("syslog -s -l critical \"#{msg}\"")
-  exit(-1) if should_exit
-end
-
-# }}}
-
-# {{{ Utilities - System informations.
-
-def username
-  Etc.getpwnam(Etc.getlogin).gecos.split(/,/).first
-end
-
-# }}}
-
-# {{{ Utilities - Applications / Commands execution.
-
-def exec_cmd(cmd)
-  log_info(cmd)
-  system(cmd)
-end
-
-def quit_app(app_name)
-  exec_cmd("osascript -e 'tell app \"#{app_name}\" to quit'")
-end
-
-# }}}
-
-# {{{ Utilities - Environment variables.
-
-def set_env_var(name, value)
-  value = value.gsub('"', '\"')
-  exec_cmd("/bin/launchctl setenv \"#{name}\" \"#{value}\"")
-end
-
-def env_vars
-  path = File.expand_path("~/.env_vars.yml")
-  unless File.exist?(path) && !File.directory?(path)
-    return log_error("Can't find environment variables file at `#{path}`.")
-  end
-  YAML.load(File.read(path))
-end
-
-def reset_env_var_path
-  if File.executable?("/usr/libexec/path_helper")
-    cmds = []
-    cmds << "export PATH=\"\""
-    cmds << "eval `/usr/libexec/path_helper -s`"
-    cmds << "/bin/launchctl setenv \"PATH\" \"$PATH\""
-    exec_cmd(cmds.join(" && "))
-  end
-end
-
-# }}}
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>setenv.GOPATH</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/launchctl</string>
+    <string>setenv</string>
+    <string>GOPATH</string>
+    <string><%= get_var!("go.base_dir") %></string>
+  </array>
+  <key>KeepAlive</key>
+  <false/>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
 
 
-# {{{ Main
-
-log_warn("START -> Set environment vars with \\`#{__FILE__}\\` for " \
-         "\\`#{username}\\`.")
-
-reset_env_var_path
-
-env_vars.each { |name, value| set_env_var(name, value) }
-
-quit_app("Dock")
-
-log_warn("FINISH -> Set environment vars with \\`#{__FILE__}\\` for " \
-         "\\`#{username}\\`.")
-
-# }}}
-
-
-# vim: set filetype=ruby :
+<!-- vim: set filetype=xml : -->
