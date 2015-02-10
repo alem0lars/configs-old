@@ -46,15 +46,15 @@ require 'etc'
 # {{{ Utilities - Logging.
 
 def log_info(msg)
-  puts("syslog -s -l info \"#{msg}\"")
+  system("syslog -s -l info \"#{msg}\"")
 end
 
 def log_warn(msg)
-  puts("syslog -s -l warning \"#{msg}\"")
+  system("syslog -s -l warning \"#{msg}\"")
 end
 
 def log_error(msg, should_exit: true)
-  puts("syslog -s -l critical \"#{msg}\"")
+  system("syslog -s -l critical \"#{msg}\"")
   exit(-1) if should_exit
 end
 
@@ -71,7 +71,7 @@ end
 # {{{ Utilities - Applications.
 
 def quit_app(app_name)
-  puts("osascript -e 'tell app \"#{app_name}\" to quit'")
+  system("osascript -e 'tell app \"#{app_name}\" to quit'")
 end
 
 # }}}
@@ -79,7 +79,7 @@ end
 # {{{ Utilities - Environment variables.
 
 def set_env_var(name, value)
-  puts("launchctl setenv \"#{name}\" \"#{value}\"")
+  system("launchctl setenv \"#{name}\" \"#{value}\"")
 end
 
 def env_vars
@@ -96,7 +96,7 @@ def reset_env_var_path
     cmds << "export PATH=\"\""
     cmds << "eval `/usr/libexec/path_helper -s`"
     cmds << "launchctl setenv PATH $PATH"
-    puts(cmds.join(" && "))
+    system(cmds.join(" && "))
   end
 end
 
