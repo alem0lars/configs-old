@@ -68,10 +68,15 @@ end
 
 # }}}
 
-# {{{ Utilities - Applications.
+# {{{ Utilities - Applications / Commands execution.
+
+def exec_cmd(cmd)
+  log_info(cmd)
+  system(cmd)
+end
 
 def quit_app(app_name)
-  system("osascript -e 'tell app \"#{app_name}\" to quit'")
+  exec_cmd("osascript -e 'tell app \"#{app_name}\" to quit'")
 end
 
 # }}}
@@ -80,8 +85,7 @@ end
 
 def set_env_var(name, value)
   value = value.gsub('"', '\"')
-  puts("/bin/launchctl setenv \"#{name}\" \"#{value}\"")
-  system("/bin/launchctl setenv \"#{name}\" \"#{value}\"")
+  exec_cmd("/bin/launchctl setenv \"#{name}\" \"#{value}\"")
 end
 
 def env_vars
@@ -98,7 +102,7 @@ def reset_env_var_path
     cmds << "export PATH=\"\""
     cmds << "eval `/usr/libexec/path_helper -s`"
     cmds << "/bin/launchctl setenv \"PATH\" \"$PATH\""
-    system(cmds.join(" && "))
+    exec_cmd(cmds.join(" && "))
   end
 end
 
