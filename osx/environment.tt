@@ -92,11 +92,11 @@ end
 
 def reset_env_var_path
   if File.executable?("/usr/libexec/path_helper")
-    cmd =  ""
-    cmd << "export PATH=\"\""
-    cmd << "eval `/usr/libexec/path_helper -s`"
-    cmd << "launchctl setenv PATH $PATH"
-    system(cmd)
+    cmds = []
+    cmds << "export PATH=\"\""
+    cmds << "eval `/usr/libexec/path_helper -s`"
+    cmds << "launchctl setenv PATH $PATH"
+    system(cmds.join(" && "))
   end
 end
 
