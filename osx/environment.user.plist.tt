@@ -42,7 +42,7 @@
     <string>environment.user</string>
     <key>ProgramArguments</key>
     <array>
-            <string>ruby /etc/environment</string>
+            <string>/usr/bin/ruby /etc/environment</string>
     </array>
     <key>KeepAlive</key>
     <false/>
