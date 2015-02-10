@@ -55,7 +55,11 @@ irc:
     firrre:
       password: '`lpass show --password "LMolr_firrre"`'
 
+atom:
+  project_home: '/shared/develop/projects'
+
 features:
+  - 'atom'
   - 'conky'
   - 'feh'
   - 'networkmanager'

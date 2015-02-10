@@ -1,7 +1,7 @@
 "*":
   editor:
-    fontFamily: "Menlo"
-    fontSize: 13
+    fontFamily: "<%= get_var! 'fonts.main.name' %>"
+    fontSize: "<%= get_var! 'fonts.main.size' %>"
     showInvisibles: true
     showIndentGuide: true
     invisibles: {}
@@ -11,7 +11,7 @@
       "atom-dark-ui"
       "monokai"
     ]
-    projectHome: "/Users/alem0lars/Develop"
+    projectHome: "<%= File.expand_path(get_var!('atom.project_home')) %>"
   welcome:
     showOnStartup: false
   linter:
