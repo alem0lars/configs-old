@@ -64,6 +64,9 @@ rust:
 
 editor_cmd: 'mvim -f'
 
+atom:
+  project_home: "/Users/alem0lars/Develop"
+
 features:
   # Apps.
   #- 'emacs'

@@ -83,7 +83,6 @@ zsh:
 
 features:
   - 'linux'
-  - 'g-sorcery'
   - 'btrfs'
   - 'grub'
   - 'gtk'
