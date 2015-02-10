@@ -1,7 +1,7 @@
 "*":
   editor:
-    fontFamily: <%= get_var! 'fonts.main.name' %>
-    fontSize: <%= get_var! 'fonts.main.size' %>
+    fontFamily: "<%= get_var! 'fonts.main.name' %>"
+    fontSize: "<%= get_var! 'fonts.main.size' %>"
     showInvisibles: true
     showIndentGuide: true
     invisibles: {}
