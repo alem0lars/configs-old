@@ -11,7 +11,7 @@
       "atom-dark-ui"
       "monokai"
     ]
-    projectHome: <%= File.expand_path(get_var!('atom.project_home')) %>
+    projectHome: "<%= File.expand_path(get_var!('atom.project_home')) %>"
   welcome:
     showOnStartup: false
   linter:
