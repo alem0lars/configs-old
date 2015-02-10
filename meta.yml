@@ -400,22 +400,22 @@ elems:
 
   # osx {{{
 
-  - src:  'osx/(env_vars.yml)'
+  - src:  'osx/(env_vars.yml)$'
     dst:  '~/.<1>'
     only:
       features: ['osx']
 
-  - src:  'osx/(environment)'
+  - src:  'osx/(environment)$'
     dst:  '/etc/<1>'
     only:
       features: ['osx']
 
-  - src:  'osx/(environment.user.plist)'
+  - src:  'osx/(environment.user.plist)$'
     dst:  '/Library/LaunchAgents/<1>'
     only:
       features: ['osx']
 
-  - src:  'osx/(environment.plist)'
+  - src:  'osx/(environment.plist)$'
     dst:  '/Library/LaunchDaemons/<1>'
     only:
       features: ['osx']
