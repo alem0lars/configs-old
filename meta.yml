@@ -393,72 +393,72 @@ elems:
   # OSX {{{
 
   - src:  'osx/env_vars/(setenv\.LIBRARY_PATH\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: ['osx']
 
   - src:  'osx/env_vars/(setenv\.PATH\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: ['osx']
 
   - src:  'osx/env_vars/(setenv\.EDITOR\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: ['osx']
 
   - src:  'osx/env_vars/(setenv\.MANPATH\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: ['osx']
 
   - src:  'osx/env_vars/(setenv\.HOMEBREW_CASK_OPTS\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'homebrew']]
 
   - src:  'osx/env_vars/(setenv\.RBENV_ROOT\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'rbenv']]
 
   - src:  'osx/env_vars/(setenv\.PYENV_ROOT\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'pyenv']]
 
   - src:  'osx/env_vars/(setenv\.PYTHONIOENCODING\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'python']]
 
   - src:  'osx/env_vars/(setenv\.JAVA_HOME\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'java']]
 
   - src:  'osx/env_vars/(setenv\.GROOVY_HOME\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'groovy']]
 
   - src:  'osx/env_vars/(setenv\.SBT_OPTS\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'sbt']]
 
   - src:  'osx/env_vars/(setenv\.MONO_GAC_PREFIX\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'mono']]
 
   - src:  'osx/env_vars/(setenv\.GOPATH\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'go']]
 
   - src:  'osx/env_vars/(setenv\.RUST_SRC_PATH\.plist)$'
-    dst:  '/Library/LaunchDaemons/<1>'
+    dst:  '~/Library/LaunchAgents/<1>'
     only:
       features: [['osx', 'rust']]
 
