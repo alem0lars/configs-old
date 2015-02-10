@@ -44,7 +44,7 @@
     <string>/bin/launchctl</string>
     <string>setenv</string>
     <string>GOPATH</string>
-    <string><%= get_var!("go.base_dir") %></string>
+    <string><%= File.expand_path(get_var!("go.base_dir")) %></string>
   </array>
   <key>KeepAlive</key>
   <false/>
