@@ -3,8 +3,8 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    zsh/mods/fasd_integration/init.zsh.tt                             #
-# - Summary: Integrate zsh with fasd, if the fasd program is available.        #
+# - Name:    zsh/mods/python/init.zsh.tt                                       #
+# - Summary: Initialisation specific to the Python programming language.       #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -34,35 +34,13 @@
 ################################################################################
 
 
-# Init {{{
+# PyEnv support {{{
 
-if [[ ! -x $(which fasd) ]]; then
+if [[ ! -x $(which pyenv) ]]; then
   return 1
 fi
 
-eval "$(fasd --init auto)"
-
-# }}}
-
-
-# aliases to well-known fasd commands {{{
-
-# Any.
-alias a='fasd -a'
-# Show / search / select.
-alias s='fasd -si'
-# Directory.
-alias d='fasd -d'
-# File.
-alias f='fasd -f'
-# Interactive directory selection.
-alias sd='fasd -sid'
-# Interactive file selection.
-alias sf='fasd -sif'
-# Cd, same functionality as j in autojump.
-alias z='fasd_cd -d'
-# Cd with interactive selection.
-alias zz='fasd_cd -d -i'
+eval "$(pyenv init -)"
 
 # }}}
 
