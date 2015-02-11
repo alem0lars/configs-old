@@ -62,7 +62,7 @@ colorscheme:
 rust:
   racer_dir: '~/.vim/bundle/racer'
 
-editor_cmd: 'mvim -f'
+editor_cmd: 'atom -f'
 
 atom:
   project_home: "/Users/alem0lars/Develop"
