@@ -9,7 +9,10 @@
     followSymlinks: true
     themes: [
       "atom-dark-ui"
-      "monokai"
+      "<%= get_var('colorscheme.name') == 'base16' ?
+            'base16-syntax' :
+            get_var!('colorscheme.name')
+       %>"
     ]
     projectHome: "<%= File.expand_path(get_var!('atom.project_home')) %>"
     destroyEmptyPanes: false
