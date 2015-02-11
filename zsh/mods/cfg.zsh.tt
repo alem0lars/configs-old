@@ -50,6 +50,12 @@ zstyle ':custom:load' mod \
   <%- if get_var('colorscheme.name') == 'base16' -%>
   'base16' \
   <%- end -%>
+  <%- if has_feature? 'ruby' -%>
+  'ruby' \
+  <%- end -%>
+  <%- if has_feature? 'python' -%>
+  'python' \
+  <%- end -%>
   'environment' \
   'terminal' \
   'editor' \
