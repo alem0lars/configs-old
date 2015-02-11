@@ -38,3 +38,9 @@
   "linter-coffeelint": {}
   "atom-ternjs":
     coffeeScript: true
+  <% if get_var('colorscheme.name') == 'base16' %>
+  "base16-syntax":
+    scheme: "<%= get_var!('colorscheme.variant').capitalize %>",
+    style:  "<%= get_var!('colorscheme.brightness').capitalize %>",
+  <% end %>
+
