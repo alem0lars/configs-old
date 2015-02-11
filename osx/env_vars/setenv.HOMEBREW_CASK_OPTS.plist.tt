@@ -44,7 +44,7 @@
     <string>/bin/launchctl</string>
     <string>setenv</string>
     <string>HOMEBREW_CASK_OPTS</string>
-    <string>--appdir</string>
+    <string>--appdir=/Applications</string>
   </array>
   <key>KeepAlive</key>
   <false/>
