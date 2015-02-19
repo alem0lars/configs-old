@@ -44,7 +44,7 @@
     <string>/bin/launchctl</string>
     <string>setenv</string>
     <string>PATH</string>
-    <string>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin<%=
+    <string>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:<%=
       data_for_features({
         rbenv: "/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin",
         pyenv: "/usr/local/opt/pyenv/shims:/usr/local/opt/pyenv/bin",
