@@ -50,19 +50,19 @@ vim:
   entry_point:      '~/.vimrc'
   gui_entry_point:  '~/.gvimrc'
   custom_dir:       '~/.vim'
-  bundle_dir:       '~/.vim/bundle'
-  terminal_cmd:     'open /Applications/iTerm.app -n'
-  latex_viewer:     'open /Applications/Preview.app'
+  bundle_dir:       "~/.vim/bundle"
+  terminal_cmd:     "open /Applications/iTerm.app -n"
+  latex_viewer:     "open /Applications/Preview.app"
 
 colorscheme:
-  name:       'base16'
-  variant:    'default'
-  brightness: 'dark'
+  name:       "base16"
+  variant:    "default"
+  brightness: "dark"
 
 rust:
-  racer_dir: '~/.vim/bundle/racer'
+  racer_dir: "~/.vim/bundle/racer"
 
-editor_cmd: 'atom -f'
+editor_cmd: "mvim -f"
 
 atom:
   project_home: "/Users/alem0lars/Develop"
