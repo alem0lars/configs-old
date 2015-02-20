@@ -42,7 +42,7 @@ call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>/'))
 " Let neobundle manage neobundle.
 NeoBundle 'Shougo/neobundle.vim'
 
-" {{{ Plugins
+" {{{ Plugins.
 
 NeoBundle 'Shougo/unite.vim'
 
@@ -53,13 +53,13 @@ NeoBundle 'Shougo/vimproc.vim', {
       \   }
       \ }
 
-" {{{ Shell
+" {{{ Shell.
 NeoBundle 'Shougo/neossh.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'ujihisa/vimshell-ssh'
 " }}}
 
-" {{{ Editing capabilities extensions
+" {{{ Editing capabilities extensions.
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-speeddating'
@@ -73,7 +73,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'moll/vim-bbye'
 " }}}
 
-" {{{ UI additions
+" {{{ UI additions.
 NeoBundle 'luochen1990/rainbow'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mbbill/undotree'
@@ -82,29 +82,29 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'myusuf3/numbers.vim'
 " }}}
 
-" {{{ Autocomplete, snippets, documentation
+" {{{ Autocomplete, snippets, documentation.
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Keithbsmiley/investigate.vim'
 " }}}
 
-" {{{ Files management
+" {{{ Files management.
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'chrisbra/SudoEdit.vim'
 " }}}
 
-" {{{ VCS
+" {{{ VCS.
 NeoBundle 'tpope/vim-fugitive'
 " }}}
 
-" {{{ Syntax checking
+" {{{ Syntax checking.
 NeoBundle 'scrooloose/syntastic'
 " }}}
 
-" {{{ Languages support
+" {{{ Languages support.
 
-" C, C++, Obj-c, Objcpp
+" C, C++, Obj-c, Objcpp.
 NeoBundle 'Rip-Rip/clang_complete', {
       \   'build': {
       \     'mac':   'make install',
@@ -113,12 +113,12 @@ NeoBundle 'Rip-Rip/clang_complete', {
       \ }
 
 <% if has_feature? :python %>
-" Python
+" Python.
 NeoBundle 'davidhalter/jedi-vim'
 <% end %>
 
 <% if has_feature? :ruby %>
-" Ruby
+" Ruby.
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'skalnik/vim-vroom'
 NeoBundle 'tpope/vim-bundler'
@@ -126,36 +126,44 @@ NeoBundle 'tpope/vim-rake'
 <% end %>
 
 <% if has_feature? :haskell %>
-" Haskell
+" Haskell.
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 <% end %>
 
-" Hex
+" Hex.
 NeoBundle 'Shougo/vinarise'
 
 <% if has_feature? :latex %>
-" Latex
+" Latex.
 NeoBundle 'vim-latex/vim-latex'
 <% end %>
 
 <% if has_feature? :rust %>
+" Rust.
 NeoBundle 'wting/rust.vim'
 NeoBundle 'phildawes/racer', {
-      \   'build' : {
+      \   'build': {
       \     'mac':  'cargo build --release',
       \     'unix': 'cargo build --release',
       \   }
       \ }
 <% end %>
 
-" HTML, CSS
+" HTML, CSS.
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 
-" Javascript
+" Javascript.
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'marijnh/tern_for_vim', {
+      \   'build': {
+      \     'mac':  'npm install',
+      \     'unix': 'npm install',
+      \   }
+      \ }
 
 " }}}
 
