@@ -152,7 +152,8 @@ NeoBundle 'phildawes/racer', {
 " HTML, CSS
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
+
+" Javascript
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
 
