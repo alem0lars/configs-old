@@ -34,11 +34,9 @@
 
 " {{{ Theme
 
-"let g:airline#themes#base16#constant = 0
 let g:airline_theme = 'base16'
 
 " }}}
-
 
 " {{{ Powerline
 
@@ -46,14 +44,27 @@ let g:airline_powerline_fonts = <%= has_feature?(:powerline) ? 1 : 0 %>
 
 " }}}
 
-
 " {{{ Tabline
 
 " Enable tabline.
 let g:airline#extensions#tabline#enabled = 1
 
-" Show tab number, which is the index.
+" Enable displaying buffers with a single tab.
+let g:airline#extensions#tabline#show_buffers = 1
+
+" Enable displaying tabs, regardless of number.
+let g:airline#extensions#tabline#show_tabs = 1
+
+" Show tab number.
 let g:airline#extensions#tabline#tab_nr_type = 1
+
+" Enable displaying tab number in tabs mode.
+let g:airline#extensions#tabline#show_tab_nr = 1
+
+" Enable displaying tab type.
+let g:airline#extensions#tabline#show_tab_type = 1
+
+" Use the tab index as the tab number.
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " <Leader>number: Select the tab of index equal to number.
@@ -67,8 +78,18 @@ nmap <Leader>7 <Plug>AirlineSelectTab7
 nmap <Leader>8 <Plug>AirlineSelectTab8
 nmap <Leader>9 <Plug>AirlineSelectTab9
 
-" }}}
+" The `unique_tail` algorithm will display the tail of the filename, unless
+" there is another file of the same name, in which it will display it along
+" with the containing parent directory.
+" The `unique_tail_improved` - another algorithm, that will smartly uniquify
+" buffers names with similar filename, suppressing common parts of paths.
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+" Show the close button (with the provided symbol).
+let g:airline#extensions#tabline#show_close_button = 1
+let g:airline#extensions#tabline#close_symbol = '✗'
+
+" }}}
 
 " {{{ Tagbar integration
 
@@ -79,7 +100,6 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 's'
 
 " }}}
-
 
 " {{{ Syntastic integration
 
