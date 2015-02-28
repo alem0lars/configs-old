@@ -74,7 +74,6 @@ NeoBundle 'moll/vim-bbye'
 " }}}
 
 " {{{ UI additions.
-NeoBundle 'luochen1990/rainbow'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'nathanaelkane/vim-indent-guides'
