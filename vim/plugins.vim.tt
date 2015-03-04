@@ -135,7 +135,7 @@ NeoBundle 'Shougo/vinarise'
 
 <% if has_feature? :latex %>
 " Latex.
-NeoBundle 'vim-latex/vim-latex'
+NeoBundle 'lervag/vim-latex'
 <% end %>
 
 <% if has_feature? :rust %>
@@ -151,6 +151,7 @@ NeoBundle 'phildawes/racer', {
 
 " HTML, CSS.
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
 
 " Javascript.

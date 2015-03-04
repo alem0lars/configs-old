@@ -35,7 +35,11 @@
 " Add `'` as a SCSS keyword. This has the following main effects:
 " - Correctly highlight function names starting with a keyword.
 " - A word separated by dashes it's considered a single word.
-autocmd FileType scss set iskeyword+=-
+augroup VimSCSSSyntax
+  autocmd!
 
+  autocmd FileType scss setlocal iskeyword+=-
+augroup end
+" autocmd FileType scss set iskeyword+=-
 
 " vim: set filetype=vim :

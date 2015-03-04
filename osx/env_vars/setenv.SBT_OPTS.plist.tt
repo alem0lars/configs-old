@@ -44,7 +44,7 @@
     <string>/bin/launchctl</string>
     <string>setenv</string>
     <string>SBT_OPTS</string>
-    <string>"-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"</string>
+    <string>-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M</string>
   </array>
   <key>KeepAlive</key>
   <false/>

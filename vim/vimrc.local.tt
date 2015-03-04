@@ -69,10 +69,13 @@ exe 'source' plugins_cfg_dir_path . '/airline.vim'
 exe 'source' plugins_cfg_dir_path . '/bbye.vim'
 exe 'source' plugins_cfg_dir_path . '/choosewin.vim'
 exe 'source' plugins_cfg_dir_path . '/clang_complete.vim'
+exe 'source' plugins_cfg_dir_path . '/css3-syntax.vim'
 exe 'source' plugins_cfg_dir_path . '/emmet.vim'
 exe 'source' plugins_cfg_dir_path . '/indent_guides.vim'
+exe 'source' plugins_cfg_dir_path . '/investigate.vim'
 exe 'source' plugins_cfg_dir_path . '/multiple_cursors.vim'
 exe 'source' plugins_cfg_dir_path . '/neocomplete.vim'
+exe 'source' plugins_cfg_dir_path . '/scss_syntax.vim'
 exe 'source' plugins_cfg_dir_path . '/tagbar.vim'
 exe 'source' plugins_cfg_dir_path . '/undotree.vim'
 exe 'source' plugins_cfg_dir_path . '/unite.vim'
@@ -81,13 +84,8 @@ exe 'source' plugins_cfg_dir_path . '/vimfiler.vim'
 exe 'source' plugins_cfg_dir_path . '/vimproc.vim'
 exe 'source' plugins_cfg_dir_path . '/vimshell.vim'
 exe 'source' plugins_cfg_dir_path . '/vinarise.vim'
-exe 'source' plugins_cfg_dir_path . '/investigate.vim'
-exe 'source' plugins_cfg_dir_path . '/scss_syntax.vim'
 <% if has_feature? :python %>
 exe 'source' plugins_cfg_dir_path . '/python.vim'
-<% end %>
-<% if has_feature? :latex %>
-exe 'source' plugins_cfg_dir_path . '/latex.vim'
 <% end %>
 <% if has_feature? :haskell %>
 exe 'source' plugins_cfg_dir_path . '/haskell.vim'

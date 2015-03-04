@@ -1,8 +1,8 @@
 "###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/plugins/latex.vim.tt                                      #
-" - Summary: The configuration for the latex plugin.                           #
+" - Name:    vim/cfg/plugins/css3-syntax.vim.tt                                #
+" - Summary: The configuration for the `vim-css3-syntax` plugin.               #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,10 +32,14 @@
 "###############################################################################
 
 
-let g:latex_enabled=1
-let g:latex_default_mappings=1
-let g:latex_view_method='<%= get_var! "vim.latex_viewer" %>'
-let g:Tex_DefaultTargetFormat='pdf'
+" Add `'` as a CSS keyword. This has the following main effects:
+" - Correctly highlight function names starting with a keyword.
+" - A word separated by dashes it's considered a single word.
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup end
 
 
 " vim: set filetype=vim :
