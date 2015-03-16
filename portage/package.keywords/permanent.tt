@@ -47,7 +47,7 @@ media-sound/ardour ~amd64
 net-analyzer/nikto ~amd64
 net-analyzer/metasploit ~amd64
 net-misc/youtube-dl ~amd64
-net-libs/nodejs ~amd64
+# net-libs/nodejs ~amd64 # TODO compilation of atom-shell fails
 sys-devel/llvm ~amd64
 sys-devel/clang ~amd64
 www-client/firefox ~amd64
