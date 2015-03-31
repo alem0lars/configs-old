@@ -79,6 +79,7 @@ NeoBundle 'mbbill/undotree'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 't9md/vim-choosewin'
 NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'kshenoy/vim-signature'
 " }}}
 
 " {{{ Autocomplete, snippets, documentation.
@@ -147,6 +148,10 @@ NeoBundle 'phildawes/racer', {
       \     'unix': 'cargo build --release',
       \   }
       \ }
+<% end %>
+
+<% if has_feature? :elixir %>
+NeoBundle 'elixir-lang/vim-elixir'
 <% end %>
 
 " HTML, CSS.
