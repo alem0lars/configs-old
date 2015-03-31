@@ -54,7 +54,7 @@ function! SignatureGitGutter(lnum)
 endfunction
 
 " Assign it to `g:SignatureMarkTextHL`
-let g:SignatureMarkTextHL = 'SignatureGitGutter(l:lnum)'
+let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
 
 " Now everytime Signature wants to place a sign, it calls this function and
 " thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
