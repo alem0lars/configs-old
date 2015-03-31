@@ -1,8 +1,8 @@
 "###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/plugins/scss_syntax.vim.tt                                #
-" - Summary: The configuration for the `scss-syntax` plugin.                   #
+" - Name:    vim/cfg/plugins/signature.vim.tt                                  #
+" - Summary: The configuration for the `vim-signature` plugin.                 #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,16 +32,36 @@
 "###############################################################################
 
 
-" Add `'` as a SCSS keyword. This has the following main effects:
-" - Correctly highlight function names starting with a keyword.
-" - A word separated by dashes it's considered a single word.
-augroup VimSCSSSyntax
-  autocmd!
+" {{{ GitGutter integration.
 
-  autocmd FileType scss setlocal iskeyword+=-
-augroup end
+" This function returns the highlight group used by git-gutter depending on how
+" the line was edited (added/modified/deleted).
+function! SignatureGitGutter(lnum)
+  let gg_line_state = filter(copy(gitgutter#diff#process_hunks(gitgutter#hunk#hunks())), 'v:val[0] == a:lnum')
+  "echo gg_line_state
 
-autocmd FileType scss set iskeyword+=-
+  if len(gg_line_state) == 0
+    return 'Exception'
+  endif
+
+  if gg_line_state[0][1] =~ 'added'
+    return 'GitGutterAdd'
+  elseif gg_line_state[0][1] =~ 'modified'
+    return 'GitGutterChange'
+  elseif gg_line_state[0][1] =~ 'removed'
+    return 'GitGutterDelete'
+  endif
+endfunction
+
+" Assign it to `g:SignatureMarkTextHL`
+let g:SignatureMarkTextHL = 'SignatureGitGutter(l:lnum)'
+
+" Now everytime Signature wants to place a sign, it calls this function and
+" thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
+" The advantage of doing it this way is that this decouples Signature from
+" git-gutter. Both can remain unaware of the other.
+
+" }}}
 
 
 " vim: set filetype=vim :
