@@ -32,6 +32,9 @@
 "###############################################################################
 
 
+" Vimfiler conflicts with the default file manager netrw.vim: disable it.
+let g:loaded_netrwPlugin = 1
+
 " Use vimfiler as the default file explorer.
 let g:vimfiler_as_default_explorer = 1
 
@@ -44,10 +47,33 @@ call vimfiler#custom#profile('default', 'context', {
   \  'no_quit': 1,
   \ })
 
+<% if get_var :quick_look_command %>
+let g:vimfiler_quick_look_command = '<%= get_var! :quick_look_command %>'
+<% end %>
 
-" hotkeys {{{
+" {{{ Hotkeys.
 
 nnoremap <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
+
+" <Leaver>vff: Find and focus the current file in Vimfiler.
+nnoremap <Leader>vff :<C-u>VimFilerExplorer -find<CR>
+
+" <v>: Vertical split with the file selected in Vimfiler.
+nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('vsplit')
+" <s>: Horizontal split with the file selected in Vimfiler.
+nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('split')
+
+" <e>: Edit a file and change working directory to its parent.
+nmap <buffer><expr> e vimfiler#smart_cursor_map(
+      \  "\<Plug>(vimfiler_cd_file)",
+      \  "\<Plug>(vimfiler_edit_file)")
+
+" }}}
+
+" {{{ Mouse support.
+
+" Open files by double-clicking on them.
+autocmd FileType vimfiler nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
 
 " }}}
 
