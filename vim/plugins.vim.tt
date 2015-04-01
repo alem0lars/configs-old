@@ -145,8 +145,8 @@ NeoBundle 'lervag/vim-latex'
 NeoBundle 'wting/rust.vim'
 NeoBundle 'phildawes/racer', {
       \   'build': {
-      \     'mac':  'cargo build --release',
-      \     'unix': 'cargo build --release',
+      \     'mac':   'cargo build --release',
+      \     'linux': 'cargo build --release',
       \   }
       \ }
 <% end %>
@@ -166,8 +166,8 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'marijnh/tern_for_vim', {
       \   'build': {
-      \     'mac':  'npm install',
-      \     'unix': 'npm install',
+      \     'mac':   'npm install',
+      \     'linux': 'npm install',
       \   }
       \ }
 
