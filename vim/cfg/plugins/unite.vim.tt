@@ -43,18 +43,18 @@ let g:unite_source_grep_default_opts =
 
 " TODO
 " {{{ Shougo default config
-"nnoremap <silent> [unite]r  :<C-u>Unite
+"nnoremap <silent> <Leader>unr  :<C-u>Unite
 "        \ -buffer-name=register register<CR>
-"nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-"nnoremap <silent> [unite]f
+"nnoremap <silent> <Leader>uno  :<C-u>Unite outline<CR>
+"nnoremap <silent> <Leader>unf
 "        \ :<C-u>Unite -buffer-name=resume resume<CR>
-"nnoremap <silent> [unite]ma
+"nnoremap <silent> <Leader>unma
 "        \ :<C-u>Unite mapping<CR>
-"nnoremap <silent> [unite]me
+"nnoremap <silent> <Leader>unme
 "        \ :<C-u>Unite output:message<CR>
-"nnoremap  [unite]f  :<C-u>Unite source<CR>
+"nnoremap  <Leader>unf  :<C-u>Unite source<CR>
 "
-"nnoremap <silent> [unite]s
+"nnoremap <silent> <Leader>uns
 "        \ :<C-u>Unite -buffer-name=files -no-split
 "        \ jump_point file_point buffer_tab
 "        \ file_rec:! file file/new<CR>
@@ -130,29 +130,29 @@ let g:unite_source_grep_default_opts =
 " {{{ Hotkeys.
 
 " The prefix key.
-nnoremap [unite] <Nop>
-nmap un [unite]
+"nnoremap <Leader>un <Nop>
+"nmap un <Leader>un
 
-" [unite]kc: Bookmark file (from current directory).
-nnoremap <silent> [unite]kc :<C-u>UniteWithCurrentDir
+" <Leader>unkc: Bookmark file (from current directory).
+nnoremap <silent> <Leader>unkc :<C-u>UniteWithCurrentDir
         \ -buffer-name=files buffer bookmark file<CR>
-" [unite]kc: Bookmark file (from current buffer's directory).
-nnoremap <silent> [unite]kb :<C-u>UniteWithBufferDir
+" <Leader>unkc: Bookmark file (from current buffer's directory).
+nnoremap <silent> <Leader>unkb :<C-u>UniteWithBufferDir
         \ -buffer-name=files buffer bookmark file<CR>
 
-" [unite]s: Perform file search, like control-p.
-nnoremap <silent> [unite]s :<C-u>Unite
+" <Leader>uns: Perform file search, like control-p.
+nnoremap <silent> <Leader>uns :<C-u>Unite
         \ -buffer-name=files -start-insert file_rec/async:!<CR>
 
-" [unite]g: Start a grep search from the current directory.
-nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
+" <Leader>ung: Start a grep search from the current directory.
+nnoremap <silent> <Leader>ung :<C-u>Unite -buffer-name=grep grep:.<CR>
 
-" [unite]y: Open yank history.
+" <Leader>uny: Open yank history.
 let g:unite_source_history_yank_enable = 1
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank_history history/yank<CR>
+nnoremap <silent> <Leader>uny :<C-u>Unite -buffer-name=yank_history history/yank<CR>
 
-" [unite]b: Buffer switching.
-nnoremap <silent> [unite]b :<C-u>Unite -quick-match -buffer-name=buffers buffer<CR>
+" <Leader>unb: Buffer switching.
+nnoremap <silent> <Leader>unb :<C-u>Unite -quick-match -buffer-name=buffers buffer<CR>
 
 " Custom mappings for the unite buffer.
 autocmd FileType unite call s:unite_settings()
