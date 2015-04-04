@@ -1,8 +1,8 @@
 "###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/plugins/vimfiler.vim.tt                                   #
-" - Summary: The configuration for the vimfiler plugin.                        #
+" - Name:    vim/cfg/plugins/junkfile.vim.tt                                   #
+" - Summary: The configuration for the junkfile plugin.                        #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,97 +32,9 @@
 "###############################################################################
 
 
-" {{{ Enable Vimfiler.
-
-" Vimfiler conflicts with the default file manager netrw.vim: disable it.
-let g:loaded_netrwPlugin = 1
-
-" Use vimfiler as the default file explorer.
-let g:vimfiler_as_default_explorer = 1
-
-" }}}
-
-
-" {{{ Custom profile.
-
-call vimfiler#custom#profile('default', 'context', {
-  \  'safe': 0,
-  \  'explorer': 1,
-  \  'auto_cd': 1,
-  \  'auto_expand': 1,
-  \  'no_quit': 1,
-  \ })
-
-" }}}
-
-
-" {{{ QuickLook.
-
-<% if get_var :quick_look_command %>
-let g:vimfiler_quick_look_command = '<%= get_var! :quick_look_command %>'
-<% end %>
-
-" }}}
-
-
-" {{{ Icons.
-
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = ' '
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_marked_file_icon = '✓'
-
-" }}}
-
-
-" {{{ History.
-
-" Max directories history.
-let g:vimfiler_max_directories_history = 64
-
-" }}}
-
-
 " {{{ Hotkeys.
 
-" <C-e>: Toggle (open/close) Vimfiler explorer in a pane.
-nnoremap <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
-
-" <Leader>vff: Find and focus the current file in Vimfiler.
-nnoremap <Leader>vff :<C-u>VimFilerExplorer -find<CR>
-
-autocmd FileType vimfiler call s:setup_vimfiler_hotkeys()
-function! s:setup_vimfiler_hotkeys()
-
-  " <e>: Edit a file and change working directory to its parent.
-  nmap <buffer><expr> e vimfiler#smart_cursor_map(
-        \  "\<Plug>(vimfiler_cd_file)",
-        \  "\<Plug>(vimfiler_edit_file)")
-
-  " <v>: Vertical split with the file selected in Vimfiler.
-  nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('vsplit')
-  " <s>: Horizontal split with the file selected in Vimfiler.
-  nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('split')
-
-  " <p>: Use the quick-look command to preview the file.
-  <% if get_var :quick_look_command %>
-    nmap <buffer> p <Plug>(vimfiler_quick_look)
-  <% end %>
-
-  " <V>: Preview the file (default was `v`).
-  nmap <buffer> V <Plug>(vimfiler_preview_file)
-
-endfunction
-
-" }}}
-
-
-" {{{ Mouse support.
-
-" Open files by double-clicking on them.
-autocmd FileType vimfiler nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+nnoremap <silent> jf  :<C-u>Unite junkfile/new junkfile -start-insert<CR>
 
 " }}}
 

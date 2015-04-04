@@ -44,7 +44,15 @@ NeoBundle 'Shougo/neobundle.vim'
 
 " {{{ Plugins.
 
-NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/neomru.vim', {
+      \ 'filetypes' : 'all'
+      \ }
+
+NeoBundleLazy 'Shougo/unite.vim', {
+      \ 'commands' : [{ 'name' : 'Unite',
+      \                 'complete' : 'customlist,unite#complete_source'}],
+      \ 'depends' : 'Shougo/neomru.vim',
+      \ }
 
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
@@ -54,7 +62,6 @@ NeoBundle 'Shougo/vimproc.vim', {
       \ }
 
 " {{{ Shell.
-NeoBundle 'Shougo/neossh.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'ujihisa/vimshell-ssh'
 " }}}
@@ -84,20 +91,56 @@ NeoBundle 'airblade/vim-gitgutter'
 " }}}
 
 " {{{ Autocomplete, snippets, documentation.
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundleLazy 'Shougo/neocomplete.vim', {
+      \ 'depends' : 'Shougo/context_filetype.vim',
+      \ 'insert' : 1
+      \ }
+NeoBundleLazy 'Shougo/neosnippet.vim', {
+      \ 'depends' : ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim'],
+      \ 'insert' : 1,
+      \ 'filetypes' : 'snippet',
+      \ 'unite_sources' : [
+      \    'neosnippet', 'neosnippet/user', 'neosnippet/runtime'],
+      \ }
 NeoBundle 'Keithbsmiley/investigate.vim'
+NeoBundleLazy 'Shougo/unite-help'
+NeoBundleLazy 'Shougo/echodoc.vim', {
+      \ 'insert' : 1
+      \ }
 " }}}
 
 " {{{ Files management.
-NeoBundle 'Shougo/vimfiler.vim'
+NeoBundleLazy 'Shougo/vimfiler.vim', {
+      \   'depends' : 'Shougo/unite.vim',
+      \   'commands' : [
+      \     { 'name' : ['VimFiler', 'Edit', 'Write'],
+      \       'complete' : 'customlist,vimfiler#complete'
+      \     },
+      \     'Read', 'Source'
+      \   ],
+      \   'mappings' : '<Plug>',
+      \   'explorer' : 1,
+      \  }
+NeoBundleLazy 'Shougo/neossh.vim', {
+      \ 'filetypes' : 'vimfiler',
+      \ 'sources' : 'ssh',
+      \ }
 NeoBundle 'chrisbra/SudoEdit.vim'
 NeoBundle 'jordwalke/VimAutoMakeDirectory'
 " }}}
 
+" {{{ Temporary files.
+NeoBundle 'Shougo/junkfile.vim', {
+      \ 'unite_sources' : 'junkfile',
+      \ }
+" }}}
+
 " {{{ VCS.
 NeoBundle 'tpope/vim-fugitive'
+" }}}
+
+" {{{ Highlighting.
+NeoBundle 'Shougo/context_filetype.vim'
 " }}}
 
 " {{{ Syntax checking.
