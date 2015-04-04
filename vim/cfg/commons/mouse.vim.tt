@@ -32,8 +32,10 @@
 "###############################################################################
 
 
-" Enable mouse in all modes.
-set mouse=a
+if has('mouse')
+  " Enable mouse in all modes.
+  set mouse=a
+endif
 
 
 " vim: set filetype=vim :

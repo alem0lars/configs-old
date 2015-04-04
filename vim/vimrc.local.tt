@@ -32,23 +32,25 @@
 "###############################################################################
 
 
-" vi improved {{{
+" {{{ Startup.
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
+" Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
+" Disable compatibility with VI.
+if &compatible
+  set nocompatible
 endif
 
 " }}}
 
-" load plugins {{{
+" {{{ Load plugins.
 
 source <%= get_var! 'vim.custom_dir' %>/plugins.vim
 
 " }}}
 
-" load configuration {{{
+" {{{ Load configuration.
 
 " Commons configuration.
 let commons_cfg_dir_path=expand('<%= get_var! "vim.custom_dir" %>/cfg/commons')

@@ -56,12 +56,16 @@ set ruler
 
 " Show matching parenthesis & brackets.
 set showmatch
+" Tenths of a second to show the matching paren.
+set matchtime=1
+" Add angular brackets to the list of characters that form pairs.
+set matchpairs+=<:>
 
 " Set the leader as ',' instead of '\'.
 let mapleader = ','
 
 
-" modeline {{{
+" {{{ Modeline.
 
 set modeline
 set modelines=5
@@ -69,7 +73,7 @@ set modelines=5
 " }}}
 
 
-" hotkeys {{{
+" {{{ Hotkeys.
 
 " <F12>: Enable the pastetoggle mode, which preserves formatting on paste.
 set pastetoggle=<F12>

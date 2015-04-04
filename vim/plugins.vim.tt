@@ -185,8 +185,10 @@ NeoBundle 'chriskempson/base16-vim'
 
 call neobundle#end()
 
-" if there are uninstalled bundles found, this'll prompt you to install them
-NeoBundleCheck
+if !has('vim_starting')
+  " If there are uninstalled bundles found, this'll prompt you to install them.
+  NeoBundleCheck
+endif
 
 
 " vim: set filetype=vim :
