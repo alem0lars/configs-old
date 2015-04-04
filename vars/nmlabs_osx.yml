@@ -51,7 +51,7 @@ zsh:
   zshenv_path:  '~/.zshenv'
   zlogin_path:  '~/.zlogin'
   zlogout_path: '~/.zlogout'
-  history_file: '~/.zsh-history'
+  history_file: '~/.zhistory'
   custom_dir:   '~/.zsh'
 
 go:

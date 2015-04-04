@@ -1,4 +1,4 @@
-"###############################################################################
+" {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
 " - Name:    vim/cfg/plugins/vimshell.vim.tt                                   #
@@ -29,7 +29,7 @@
 " See the License for the specific language governing permissions and          #
 " limitations under the License.                                               #
 "                                                                              #
-"###############################################################################
+" }}} ##########################################################################
 
 
 " prompt {{{
@@ -40,26 +40,17 @@ let g:vimshell_prompt = '$ '
 " }}}
 
 
-<% if has_feature? :zsh %>
-" zsh integration {{{
-
-" Use zsh history.
-let g:vimshell_external_history_path = expand('<%= get_var! "zsh.history_file" %>')
-
-" }}}
-<% end %>
-
-
-" system terminal integration {{{
+" {{{ System terminal integration.
 
 let g:vimshell_use_terminal_command = '<%= get_var! "vim.terminal_cmd" %>'
 
 " }}}
 
 
-" history, scrollback {{{
+" {{{ History, scrollback.
 
-let g:vimshell_temporary_directory = expand('<%= get_var! "vim.vimshell_tmp_dir" %>')
+let g:vimshell_temporary_directory = expand(
+      \ '<%= get_var! "vim.vimshell_tmp_dir" %>')
 
 " Maximum number of lines that can be scrolled back.
 let g:vimshell_scrollback_limit = 2048
@@ -67,20 +58,38 @@ let g:vimshell_scrollback_limit = 2048
 " Maximum number of commands to keep in history.
 let g:vimshell_max_command_history = 1024
 
+" Read from the external history file.
+<% if has_feature? :zsh %>
+let g:vimshell_external_history_path = expand(
+      \ '<%= get_var! "zsh.history_file" %>')
+<% end %>
+
 " }}}
 
 
-" completion {{{
+" {{{ Completion.
 
 let g:vimshell_enable_smart_case = 1
 
 " }}}
 
 
-" hotkeys {{{
+" {{{ Hotkeys.
 
 nnoremap <Leader>sh :<C-u>VimShell<CR>
 nnoremap <F3> :<C-u>VimShellPop<CR>
+
+autocmd FileType vimshell call s:setup_vimshell_hotkeys()
+function! s:setup_vimshell_hotkeys()
+
+  nnoremap <silent><buffer> <C-j>
+        \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
+
+  " Autojump.
+  call vimshell#set_alias('j', ':Unite -buffer-name=files
+        \ -default-action=lcd -no-split -input=$$args directory_mru')
+
+endfunction
 
 " }}}
 

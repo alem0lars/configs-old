@@ -34,7 +34,7 @@
 ################################################################################
 
 
-# variables {{{
+# {{{ Variables.
 
 # The path to the history file.
 HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"
@@ -47,7 +47,7 @@ SAVEHIST=10240
 # }}}
 
 
-# options {{{
+# {{{ Options.
 
 # Treat the `!` character specially during expansion.
 setopt BANG_HIST
@@ -77,7 +77,7 @@ setopt HIST_BEEP
 # }}}
 
 
-# aliases {{{
+# {{{ Aliases.
 
 # List the ten most used commands.
 alias history_stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
