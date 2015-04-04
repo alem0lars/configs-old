@@ -34,7 +34,8 @@
 
 " {{{ Hotkeys.
 
-nnoremap <silent> jf  :<C-u>Unite junkfile/new junkfile -start-insert<CR>
+" <Leader>js: Open UI for creating a new junkfile.
+nnoremap <silent> <Leader>js :<C-u>Unite junkfile/new junkfile -start-insert<CR>
 
 " }}}
 
