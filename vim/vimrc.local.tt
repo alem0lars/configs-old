@@ -44,11 +44,13 @@ endif
 
 " }}}
 
+
 " {{{ Load plugins.
 
 source <%= get_var! 'vim.custom_dir' %>/plugins.vim
 
 " }}}
+
 
 " {{{ Load configuration.
 
@@ -60,6 +62,7 @@ exe 'source' commons_cfg_dir_path . '/fold.vim'
 exe 'source' commons_cfg_dir_path . '/indentation.vim'
 exe 'source' commons_cfg_dir_path . '/minibuffer.vim'
 exe 'source' commons_cfg_dir_path . '/misc.vim'
+exe 'source' commons_cfg_dir_path . '/clipboard.vim'
 exe 'source' commons_cfg_dir_path . '/mouse.vim'
 exe 'source' commons_cfg_dir_path . '/navigation.vim'
 exe 'source' commons_cfg_dir_path . '/persistence.vim'

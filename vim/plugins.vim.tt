@@ -93,6 +93,7 @@ NeoBundle 'Keithbsmiley/investigate.vim'
 " {{{ Files management.
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'chrisbra/SudoEdit.vim'
+NeoBundle 'jordwalke/VimAutoMakeDirectory'
 " }}}
 
 " {{{ VCS.
