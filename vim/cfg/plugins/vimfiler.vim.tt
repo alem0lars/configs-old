@@ -43,7 +43,7 @@ let g:vimfiler_as_default_explorer = 1
 " }}}
 
 
-" {{{ Custom profile.
+" {{{ Profile / options.
 
 call vimfiler#custom#profile('default', 'context', {
   \  'safe': 0,
@@ -53,10 +53,10 @@ call vimfiler#custom#profile('default', 'context', {
   \  'no_quit': 1,
   \ })
 
-" }}}
+let g:vimfiler_define_wrapper_commands = 1
 
-
-" {{{ QuickLook.
+" Max directories history.
+let g:vimfiler_max_directories_history = 64
 
 <% if get_var :quick_look_command %>
 let g:vimfiler_quick_look_command = '<%= get_var! :quick_look_command %>'
@@ -73,14 +73,6 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = ' '
 let g:vimfiler_readonly_file_icon = '✗'
 let g:vimfiler_marked_file_icon = '✓'
-
-" }}}
-
-
-" {{{ History.
-
-" Max directories history.
-let g:vimfiler_max_directories_history = 64
 
 " }}}
 

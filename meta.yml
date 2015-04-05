@@ -211,6 +211,8 @@ elems:
       features: ['vim']
       vars: ['vim.gui_entry_point']
 
+  # Other vim files (all except `.vimrc` and `.gvimrc`) should stay in the vim
+  # custom directory.
   - src:  '^vim/((?!.*(?:vimrc|gvimrc)$).*)$'
     dst:  '<%= get_var! "vim.custom_dir" %>/<1>'
     only:

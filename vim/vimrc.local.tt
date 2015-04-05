@@ -32,24 +32,16 @@
 "###############################################################################
 
 
-" {{{ Startup.
-
 " Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-" Disable compatibility with VI.
+" Disable compatibility with the old vi.
 if &compatible
   set nocompatible
 endif
 
-" }}}
-
-
-" {{{ Load plugins.
-
-source <%= get_var! 'vim.custom_dir' %>/plugins.vim
-
-" }}}
+" Load plugins.
+source <%= get_var! "vim.custom_dir" %>/plugins_load.vim
 
 
 " {{{ Load configuration.

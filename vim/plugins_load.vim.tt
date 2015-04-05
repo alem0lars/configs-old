@@ -1,14 +1,14 @@
-"###############################################################################
+" {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/commons/appearance.vim.tt                                 #
-" - Summary: Settings related to the VIM appearance and Look&Feel.             #
+" - Name:    vim/plugins_load.vim.tt                                           #
+" - Summary: Load vim plugins.                                                 #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-" - Homepage:        https://github.com/alem0lars/configs                      #
-" - Getting started: see README.md in the project root folder                  #
+"   - Homepage:        https://github.com/alem0lars/configs                    #
+"   - Getting started: see README.md in the project root folder                #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -29,34 +29,47 @@
 " See the License for the specific language governing permissions and          #
 " limitations under the License.                                               #
 "                                                                              #
-"###############################################################################
+" }}} ##########################################################################
 
 
-" {{{ Color scheme.
+" Add neobundle to runtime path
+" (when reloading it's already in the path so we don't need to add it again).
+if has('vim_starting')
+  set runtimepath+=<%= get_var! 'vim.bundle_dir' %>/neobundle.vim/
+endif
 
-set background=dark
-let base16colorspace=256
-colorscheme base16-default
+call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>/'))
 
-" }}}
+if neobundle#has_cache()
+  " Load plugins configuration from the cache file.
+  NeoBundleLoadCache
+else
+  " Let neobundle manage neobundle.
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
+  " Load vimproc before loading the plugins, so neobundle can use vimproc
+  " to perform async operations.
+  NeoBundle 'Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'mac':     'make -f make_mac.mak',
+        \     'linux':   'make'
+        \    }
+        \ }
 
-" {{{ Status bar.
+  " Load other plugins from toml file.
+  call neobundle#load_toml('<%= get_var! "vim.custom_dir" %>/plugins_spec.toml',
+        \ { 'lazy' : 1 })
 
-" Always have a statusbar.
-set laststatus=2
+  " Save plugins configuration to the cache file (used in further executions,
+  " because `neobundle#has_cache()` will evaluate to `true` and the plugins
+  " configuration won't be reparsed but read from the cache file).
+  NeoBundleSaveCache
+endif
 
-" }}}
+call neobundle#end()
 
-
-" {{{ Long lines.
-
-" Set the maximum line length.
-set textwidth=80
-" Highlight longer text.
-au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-
-" }}}
+" If there are uninstalled bundles found, this'll prompt you to install them.
+NeoBundleCheck
 
 
 " vim: set filetype=vim :

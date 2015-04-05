@@ -1,0 +1,439 @@
+# {{{ ##########################################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    vim/plugins_spec.toml.tt                                          #
+# - Summary: The vim plugins specification.                                    #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
+#                                                                              #
+# License: Apache v2.0 (see below)                                             #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+# }}} ##########################################################################
+
+
+# {{{ Unite.
+
+[[plugins]]
+repository    = 'Shougo/neomru.vim'
+filetypes     = 'all'
+unite_sources = ['file_mru', 'directory_mru']
+
+[[plugins]]
+repository = 'Shougo/unite.vim'
+depends    = 'Shougo/neomru.vim'
+
+  [plugins.commands]
+  name     = 'Unite'
+  complete = 'customlist,unite#complete_source'
+
+# }}}
+
+
+# {{{ Shell.
+
+[[plugins]]
+repository = 'ujihisa/vimshell-ssh'
+filetypes = 'vimshell'
+
+[[plugins]]
+repository = 'Shougo/vimshell.vim'
+mappings   = '<Plug>'
+
+  [plugins.commands]
+  name = 'VimShell'
+  complete = 'customlist,vimshell#complete'
+
+[[plugins]]
+repository = 'yomi322/vim-gitcomplete'
+filetypes = 'vimshell'
+
+# }}}
+
+
+# {{{ Editing capabilities extensions.
+
+[[plugins]]
+repository = 'tomtom/tcomment_vim'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'tpope/vim-abolish'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'tpope/vim-speeddating'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'tpope/vim-surround'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'tpope/vim-unimpaired'
+filetypes  = 'all'
+
+# TODO: Use smartinput + smartinput-endwise instead of this plugins?
+[[plugins]]
+repository = 'tpope/vim-endwise'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'tpope/vim-repeat'
+mappings   = '.'
+
+[[plugins]]
+repository = 'junegunn/vim-easy-align'
+mappings = '<Plug>(EasyAlign)'
+
+[[plugins]]
+repository = 'terryma/vim-multiple-cursors'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'Lokaltog/vim-easymotion'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'moll/vim-bbye'
+filetypes  = 'all'
+
+# }}}
+
+
+# {{{ UI additions.
+
+[[plugins]]
+repository = 'majutsushi/tagbar'
+filetypes  = 'all'
+
+# TODO Check if there is a unite-based alternative.
+[[plugins]]
+repository = 'mbbill/undotree'
+commands   = 'UndotreeToggle'
+
+[[plugins]]
+repository = 'nathanaelkane/vim-indent-guides'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 't9md/vim-choosewin'
+mappings   = '<Plug>'
+
+[[plugins]]
+repository = 'kshenoy/vim-signature'
+filetypes  = 'all'
+
+[[plugins]]
+repository = 'airblade/vim-gitgutter'
+filetypes  = 'all'
+
+# }}}
+
+
+# {{{ Autocomplete, snippets, documentation.
+
+[[plugins]]
+repository = 'Shougo/neocomplete.vim'
+depends    = 'Shougo/context_filetype.vim'
+insert     = 1
+
+[[plugins]]
+repository    = 'Shougo/neosnippet.vim'
+depends       = ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim']
+insert        = 1
+filetypes     = 'snippet'
+unite_sources = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
+
+[[plugins]]
+repository = 'Keithbsmiley/investigate.vim'
+filetypes  = 1
+
+[[plugins]]
+repository = 'Shougo/unite-help'
+
+[[plugins]]
+repository = 'Shougo/echodoc.vim'
+insert = 1
+
+# }}}
+
+
+# {{{ Files management.
+
+[[plugins]]
+repository = 'Shougo/neossh.vim'
+filetypes  = ['vimfiler', 'vimshell']
+sources    = 'ssh'
+
+[[plugins]]
+repository = 'Shougo/vimfiler.vim'
+depends = 'Shougo/unite.vim'
+mappings = '<Plug>'
+explorer = 1
+
+  [plugins.commands]
+  name = ['VimFiler', 'Edit', 'Write', 'Read', 'Source']
+  complete = 'customlist,vimfiler#complete'
+
+[[plugins]]
+repository = 'chrisbra/SudoEdit.vim'
+
+  [plugins.commands]
+  name = ['SudoRead', 'SudoWrite']
+
+[[plugins]]
+repository = 'jordwalke/VimAutoMakeDirectory'
+filetypes  = 'all'
+
+# }}}
+
+
+# {{{ Temporary files.
+
+[[plugins]]
+repository = 'Shougo/junkfile.vim'
+unite_sources = 'junkfile'
+
+# }}}
+
+
+# {{{ VCS.
+
+# TODO: What is augroup and why lazy is 0?
+[[plugins]]
+repository = 'tpope/vim-fugitive'
+augroup = 'fugitive'
+lazy = 0
+
+# }}}
+
+
+# {{{ Highlighting.
+
+repository = 'Shougo/context_filetype.vim'
+
+# }}}
+
+
+# {{{ Syntax checking.
+
+[[plugins]]
+repository = 'scrooloose/syntastic'
+depends    = 'airblade/vim-rooter'
+filetypes  = 'all'
+
+# }}}
+
+
+# {{{ Project management.
+
+[[plugins]]
+repository = 'airblade/vim-rooter'
+filetypes = 'all'
+
+# }}}
+
+
+# {{{ Languages support.
+
+# {{{ C, C++, Obj-c, Objcpp.
+
+[[plugins]]
+repository = 'Rip-Rip/clang_complete'
+filetypes  = ['c', 'cpp', 'objc', 'objcpp']
+
+    [plugins.build]
+      mac   = 'make install'
+      linux = 'make install'
+
+# }}}
+
+<% if has_feature? :python %> # {{{
+
+[[plugins]]
+repository = 'davidhalter/jedi-vim'
+filetypes  = 'python'
+
+<% end %> # }}}
+
+<% if has_feature? :ruby %> # {{{
+
+[[plugins]]
+repository = 'vim-ruby/vim-ruby'
+filetypes  = 'ruby'
+
+[[plugins]]
+repository = 'skalnik/vim-vroom'
+filetypes  = 'ruby'
+
+[[plugins]]
+repository = 'tpope/vim-bundler'
+filetypes  = 'ruby'
+
+[[plugins]]
+repository = 'tpope/vim-rake'
+filetypes  = 'ruby'
+
+<% end %> # }}}
+
+<% if has_feature? :haskell %> # {{{
+
+[[plugins]]
+repository = 'eagletmt/neco-ghc'
+filetypes  = 'haskell'
+
+[[plugins]]
+repository = 'ujihisa/neco-look'
+filetypes  = 'haskell'
+insert     = 1
+
+[[plugins]]
+repository = 'eagletmt/ghcmod-vim'
+filetypes  = 'haskell'
+
+<% end %> # }}}
+
+# {{{ Hex.
+
+[[plugins]]
+repository = 'Shougo/vinarise.vim'
+
+  [plugins.commands]
+  name = 'Vinarise'
+  complete = 'file'
+
+# }}}
+
+<% if has_feature? :latex %> # {{{
+
+[[plugins]]
+repository = 'lervag/vim-latex'
+filetypes  = 'tex'
+
+<% end %> # }}}
+
+<% if has_feature? :rust %> # {{{
+
+[[plugins]]
+repository = 'wting/rust.vim'
+filetypes  = 'rust'
+
+[[plugins]]
+repository = 'phildawes/racer'
+filetypes  = 'rust'
+
+    [plugins.build]
+      mac   = 'cargo build --release'
+      linux = 'cargo build --release'
+
+<% end %> # }}}
+
+<% if has_feature? :elixir %> # {{{
+
+[[plugins]]
+repository = 'elixir-lang/vim-elixir'
+filetypes  = 'elixir'
+
+<% end %> # }}}
+
+# {{{ HTML, CSS.
+
+[[plugins]]
+repository = 'hail2u/vim-css3-syntax'
+filetypes = ['css', 'scss', 'sass']
+
+[[plugins]]
+repository = 'mattn/emmet-vim'
+filetypes = ['html', 'xml', 'xsl', 'xslt', 'xsd', 'css', 'sass', 'scss', 'less', 'mustache']
+
+[[plugins]]
+repository = 'cakebaker/scss-syntax.vim'
+filetypes = ['scss', 'sass']
+
+# }}}
+
+# {{{ Javascript.
+
+[[plugins]]
+repository = 'pangloss/vim-javascript'
+filetypes  = 'javascript'
+
+[[plugins]]
+repository = 'leshill/vim-json'
+filetypes  = ['javascript', 'json']
+
+[[plugins]]
+repository = 'kchmck/vim-coffee-script'
+filetypes  = 'coffee'
+
+[[plugins]]
+repository = 'othree/javascript-libraries-syntax.vim'
+filetypes  = ['javascript', 'coffee', 'ls', 'typescript']
+
+[[plugins]]
+repository = 'mxw/vim-jsx'
+depends    = 'pangloss/vim-javascript'
+filetypes  = ['jsx', 'javascript']
+
+[[plugins]]
+repository = 'marijnh/tern_for_vim'
+filetypes = 'javascript'
+
+    [plugins.build]
+    linux = 'npm install'
+    mac   = 'npm install'
+
+# }}}
+
+# {{{ TOML
+
+[[plugins]]
+repository = 'cespare/vim-toml'
+filetypes = 'toml'
+
+# }}}
+
+# }}}
+
+
+# {{{ Airline and derivatives.
+
+[[plugins]]
+repository = 'bling/vim-airline'
+filetypes  = 'all'
+
+# }}}
+
+
+# {{{ Theme.
+
+# TODO: Is it correctly lazy = 0 ?
+[[plugins]]
+repository = 'chriskempson/base16-vim'
+lazy = 0
+
+# }}}
+
+
+# vim: set filetype=toml :
