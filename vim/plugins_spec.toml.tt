@@ -37,7 +37,7 @@
 [[plugins]]
 repository    = 'Shougo/neomru.vim'
 filetypes     = 'all'
-unite_sources = ['file_mru', 'directory_mru']
+unite_sources = ['neomru/file', 'neomru/directory']
 
 [[plugins]]
 repository = 'Shougo/unite.vim'
