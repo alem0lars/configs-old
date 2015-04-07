@@ -100,7 +100,7 @@ function! s:setup_vimfiler_hotkeys()
 
   " <p>: Use the quick-look command to preview the file.
   <% if get_var :quick_look_command %>
-    nmap <buffer> p <Plug>(vimfiler_quick_look)
+  nmap <buffer> p <Plug>(vimfiler_quick_look)
   <% end %>
 
   " <V>: Preview the file (default was `v`).
