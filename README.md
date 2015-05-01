@@ -12,7 +12,11 @@ This repository contains a complete set of configurations, viable in different w
 
   If you're interested in this option, check out the [`fizzy` branch](https://github.com/alem0lars/configs/tree/fizzy)
 
-2. **Plain**:
+2. **`Nix`**:
+  
+  `Nix`-based configurations. These should be functionally similar to `Fizzy` ones but using `Nix` instead of `Fizzy`.
+
+3. **Plain**:
 
   We never want to store plain configuration but using a configuration management system, but *sometimes we need plain files, because some configurations aren't designed to be managed with a tool*.
   
@@ -22,8 +26,8 @@ This repository contains a complete set of configurations, viable in different w
   These cases are really a few and you should always ask yourself whether using a plain configuration is *really necessary*.
   
   Everyone finds its own answers but AFAIK I *only find that use-case* and, trust me, I managed a lot of really different configurations and software..
-  
-3. **`Nix`**:
-  
-  `Nix`-based configurations. These should be functionally similar to `Fizzy` ones but using `Nix` instead of `Fizzy`.
 
+
+----
+
+Please notice that `master` branch should be kept empty (except for [README.md](./README.md), [LICENSE](./LICENSE) and that kind of stuff..). The only reason is for issue #1 !
