@@ -1,8 +1,8 @@
 # Configs
 
-This repository contains a complete set of configurations, viable in different ways:
-
 [![Stories in Ready](https://badge.waffle.io/alem0lars/configs.png?label=ready&title=Ready)](https://waffle.io/alem0lars/configs)
+
+This repository contains a complete set of configurations, viable in different ways:
 
 1. **`Fizzy`**:
   
@@ -31,4 +31,6 @@ This repository contains a complete set of configurations, viable in different w
 
 ----
 
-Please notice that `master` branch should be kept empty (except for [README.md](./README.md), [LICENSE](./LICENSE) and that kind of stuff..). We should move the other contents from `master` to `fizzy`.. See [this issue](https://github.com/alem0lars/configs/issues/2) !
+**Please notice that `master` branch should be kept empty** (except for [README.md](./README.md), [LICENSE](./LICENSE) and that kind of stuff..).
+
+**We should move the other contents from `master` to `fizzy`.. See [this issue](https://github.com/alem0lars/configs/issues/2)**.
