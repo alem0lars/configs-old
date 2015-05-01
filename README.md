@@ -30,4 +30,4 @@ This repository contains a complete set of configurations, viable in different w
 
 ----
 
-Please notice that `master` branch should be kept empty (except for [README.md](./README.md), [LICENSE](./LICENSE) and that kind of stuff..). The only reason is for issue #1 !
+Please notice that `master` branch should be kept empty (except for [README.md](./README.md), [LICENSE](./LICENSE) and that kind of stuff..). We should move the other contents from `master` to `fizzy`.. See [this issue](https://github.com/alem0lars/configs/issues/2) !
