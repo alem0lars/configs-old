@@ -2,6 +2,8 @@
 
 [![Stories in Ready](https://badge.waffle.io/alem0lars/configs.png?label=ready&title=Ready)](https://waffle.io/alem0lars/configs)
 
+## Configs flavours
+
 This repository contains a complete set of configurations, viable in different ways:
 
 1. **`Fizzy`**:
@@ -28,6 +30,20 @@ This repository contains a complete set of configurations, viable in different w
   These cases are really a few and you should always ask yourself whether using a plain configuration is *really necessary*. I've *only found that use-case* and, trust me, I managed a lot of really different configurations and software..
 
   To see the contents, check out the [`plain` branch](https://github.com/alem0lars/configs/tree/plain).
+
+### Why branches?
+
+To store the different flavours I had some options:
+
+1. Different branches.
+2. Different repositories.
+3. Different folders inside the same repository and branch.
+
+I've choosen the first because:
+
+1. I want to keep them always aligned, I think the best way to do this is to merge branches. The third option because really sucks when it comes to align the different flavours. The second option is like the third since you can't merge commits having different heads in an easy way.
+2. Many repositories (second option) implies more repetitive work and I just want to DRY. Do one thing and do it well! If I have to manage a single repository I can manage it better.
+3. Without taking into account the management complexity, IMHO the first opiton is still better because conceptually different flavours are the same content with just different "versions".
 
 ----
 
