@@ -10,11 +10,13 @@ This repository contains a complete set of configurations, viable in different w
   
   We want our configurations to be available with `Fizzy`!
 
-  If you're interested in this option, check out the [`fizzy` branch](https://github.com/alem0lars/configs/tree/fizzy)
+  If you're interested in this option, check out the [`fizzy` branch](https://github.com/alem0lars/configs/tree/fizzy).
 
 2. **`Nix`**:
   
   `Nix`-based configurations. These should be functionally similar to `Fizzy` ones but using `Nix` instead of `Fizzy`.
+
+  If you're interested in this option, check out the [`nix` branch](https://github.com/alem0lars/configs/tree/nix).
 
 3. **Plain**:
 
@@ -23,10 +25,9 @@ This repository contains a complete set of configurations, viable in different w
   For example `rEFInd` configuration cannot be managed with a configuration system like `Fizzy` because when the configuration is evaluated the filesystem isn't already mounted (`rEFInd` is a boot-manager), so the configuration file can't be a symbolic link to a file stored in a partition.
   Also, `EFI` partition isn't mean to be mounted or used elsewhere except when booting, i.e. you shouldn't normally mount that partition.
   
-  These cases are really a few and you should always ask yourself whether using a plain configuration is *really necessary*.
-  
-  Everyone finds its own answers but AFAIK I *only find that use-case* and, trust me, I managed a lot of really different configurations and software..
+  These cases are really a few and you should always ask yourself whether using a plain configuration is *really necessary*. I've *only found that use-case* and, trust me, I managed a lot of really different configurations and software..
 
+  To see the contents, check out the [`plain` branch](https://github.com/alem0lars/configs/tree/plain).
 
 ----
 
