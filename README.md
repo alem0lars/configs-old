@@ -23,7 +23,7 @@ This repository contains a complete set of configurations, viable in different w
   
   Everyone finds its own answers but AFAIK I *only find that use-case* and, trust me, I managed a lot of really different configurations and software..
   
-  3. **`Nix`**:
+3. **`Nix`**:
   
-    `Nix`-based configurations. These should be functionally similar to `Fizzy` ones but using `Nix` instead of `Fizzy`.
+  `Nix`-based configurations. These should be functionally similar to `Fizzy` ones but using `Nix` instead of `Fizzy`.
 
