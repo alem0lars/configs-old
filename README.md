@@ -2,48 +2,11 @@
 
 [![Stories in Ready](https://badge.waffle.io/alem0lars/configs.png?label=ready&title=Ready)](https://waffle.io/alem0lars/configs)
 
-## Configs flavours
+## Notes
 
-This repository contains a complete set of configurations, viable in different ways:
+### Configuration files format
 
-1. **`Fizzy`**:
-  
-  [`Fizzy`](https://github.com/alem0lars/fizzy) is a tool, an opinated way to manage your configurations in multiple-systems, different OSes, different users with simple but powerful reuse machanisms. If you didn't, you should really check out it. You'll be astonished seeing how it can be simple (i.e. hassle-free).
-  
-  We want our configurations to be available with `Fizzy`!
-
-  If you're interested in this option, check out the [`fizzy` branch](https://github.com/alem0lars/configs/tree/fizzy).
-
-2. **`Nix`**:
-  
-  `Nix`-based configurations. These should be functionally similar to `Fizzy` ones but using `Nix` instead of `Fizzy`.
-
-  If you're interested in this option, check out the [`nix` branch](https://github.com/alem0lars/configs/tree/nix).
-
-3. **Plain**:
-
-  We never want to store plain configuration but using a configuration management system, but *sometimes we need plain files, because some configurations aren't designed to be managed with a tool*.
-  
-  For example `rEFInd` configuration cannot be managed with a configuration system like `Fizzy` because when the configuration is evaluated the filesystem isn't already mounted (`rEFInd` is a boot-manager), so the configuration file can't be a symbolic link to a file stored in a partition.
-  Also, `EFI` partition isn't mean to be mounted or used elsewhere except when booting, i.e. you shouldn't normally mount that partition.
-  
-  These cases are really a few and you should always ask yourself whether using a plain configuration is *really necessary*. I've *only found that use-case* and, trust me, I managed a lot of really different configurations and software..
-
-  To see the contents, check out the [`plain` branch](https://github.com/alem0lars/configs/tree/plain).
-
-### Why branches?
-
-To store the different flavours I had some options:
-
-1. Different branches.
-2. Different repositories.
-3. Different folders inside the same repository and branch.
-
-I've choosen the first because:
-
-1. I want to keep them always aligned, I think the best way to do this is to merge branches. The third option because really sucks when it comes to align the different flavours. The second option is like the third since you can't merge commits having different heads in an easy way.
-2. Many repositories (second option) implies more repetitive work and I just want to DRY. Do one thing and do it well! If I have to manage a single repository I can manage it better.
-3. Without taking into account the management complexity, IMHO the first opiton is still better because conceptually different flavours are the same content with just different "versions".
+The configurations aren't directly usable. This is because they're meant to be used with [`Fizzy`](https://github.com/alem0lars/fizzy), an opinated tool to manage your configurations in multiple-systems, different OSes, different users with simple but powerful reuse machanisms. If you didn't, you should really check out it. You'll be astonished seeing how it can be simple (i.e. hassle-free).
 
 ----
 
