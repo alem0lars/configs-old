@@ -11,7 +11,7 @@ It is an opinated tool to manage your configurations in multiple-systems, differ
 
 ## Troubleshooting
 
-### I don't want to use `Fizzy`!
+### I don't want to use `Fizzy`
 
 If you don't want to use `Fizzy` you can still use these configuration files but you have to take a look at the configuration files content and customize them to fit your needs. Here's a rule of thumb:
 
