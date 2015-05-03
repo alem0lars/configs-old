@@ -41,7 +41,7 @@ fonts:
     name: 'Menlo'
     size: 13
 
-develop_dir: '~/Develop'
+develop_dir: '~/development'
 
 tmux:
   config_file_path: '~/.tmux.conf'
@@ -54,9 +54,6 @@ zsh:
   history_file: '~/.zhistory'
   custom_dir:   '~/.zsh'
 
-go:
-  base_dir: '~/Develop/Workspaces/GO'
-
 features:
   # System.
   - 'osx'
@@ -68,18 +65,7 @@ features:
   # Programming languages.
   - 'rbenv'
   - 'pyenv'
-  - 'sbt'
-  - 'haskell'
   - 'ruby'
   - 'python'
-  - 'latex'
-  - 'java'
-  - 'scala'
-  - 'erlang'
-  - 'elixir'
-  - 'groovy'
-  - 'mono'
-  - 'go'
-  - 'rust'
 
 # vim: set filetype=yaml :
