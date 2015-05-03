@@ -32,7 +32,9 @@
 "###############################################################################
 
 
+<% if has_feature? :rust %>
 let g:racer_cmd = "<%= get_var! 'rust.racer_dir' %>/target/release/racer"
+<% end %>
 
 
 " vim: set filetype=vim :
