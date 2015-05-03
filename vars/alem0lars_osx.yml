@@ -71,5 +71,4 @@ atom:
 features:
   # Apps.
   - 'vim'
-  - 'atom'
   - 'kaleidoscope'
