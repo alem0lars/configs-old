@@ -91,6 +91,11 @@ elems:
     only:
       features: ['haskell']
 
+  - src:  'ruby/(rbenv-default-gems)$'
+    dst:  '~/.rbenv-default-gems'
+    only:
+      features: ['rbenv']
+
   - src:  'ruby/irbrc'
     dst:  '~/.irbrc'
     only:
