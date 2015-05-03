@@ -67,5 +67,6 @@ features:
   - 'pyenv'
   - 'ruby'
   - 'python'
+  - 'java'
 
 # vim: set filetype=yaml :
