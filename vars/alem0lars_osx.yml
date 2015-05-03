@@ -70,9 +70,6 @@ atom:
 
 features:
   # Apps.
-  #- 'emacs'
   - 'vim'
   - 'atom'
   - 'kaleidoscope'
-  # Browser.
-  #- 'firefox_vim'
