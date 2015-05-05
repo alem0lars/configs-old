@@ -131,7 +131,7 @@ dev-libs/girara ~amd64
 # }}}
 
 
-# not yet stable {{{
+# {{{ Not yet stable.
 
 app-shells/fasd ~amd64
 dev-db/sqlmap ~amd64
@@ -140,6 +140,10 @@ media-plugins/gimp-lensfun ~amd64
 media-plugins/gimp-gmic ~amd64
 media-plugins/gimp-resynthesizer ~amd64
 sci-electronics/ghdl ~amd64
+
+<% if has_feature :ruby %>
+dev-ruby/thor ~amd64
+<% end %>
 
 <% if has_feature?(:canto) || has_feature?(:cli_centric) %>
 net-news/canto-curses ~amd64

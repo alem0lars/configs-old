@@ -59,6 +59,7 @@ atom:
   project_home: '/shared/develop/projects'
 
 features:
+  - 'grub'
   - 'atom'
   - 'conky'
   - 'feh'
