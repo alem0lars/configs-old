@@ -37,7 +37,7 @@ app-crypt/gnupg tools
 app-misc/geoclue -modemmanager
 
 app-portage/eix tools optimization
-app-portage/layman g-sorcery gpg
+app-portage/layman g-sorcery gpg sync-plugin-portage
 
 app-text/libwpd tools
 app-text/poppler utils

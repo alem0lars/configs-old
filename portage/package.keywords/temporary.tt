@@ -163,3 +163,11 @@ x11-themes/FlatStudio ~amd64
 <% end %>
 
 # }}}
+
+# {{{ We need >=2.3.0 for repos.conf feature, but it's not stable yet :(
+
+app-portage/layman ~amd64
+app-portage/g-sorcery ~amd64
+dev-python/pyGPG ~amd64
+
+# }}}

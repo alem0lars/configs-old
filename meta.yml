@@ -370,7 +370,12 @@ elems:
     only:
       features: ['linux']
 
-  - src:  'portage/(.+)'
+  - src:  'portage/repos.conf/(.+)$'
+    dst:  '/etc/portage/repos.conf/<1>'
+    only:
+      features: ['gentoo']
+
+  - src:  'portage/((?!.*repos\.conf$).*)$'
     dst:  '/etc/portage/<1>'
     only:
       features: ['gentoo']
