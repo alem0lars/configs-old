@@ -40,14 +40,6 @@ LINGUAS="en"
 # }}}
 
 
-# synchronization {{{
-
-GENTOO_MIRRORS="rsync://rsync.de.gentoo.org/gentoo/"
-SYNC="rsync://rsync.de.gentoo.org/gentoo-portage"
-
-# }}}
-
-
 # devices {{{
 
 ABI_X86="<%= get_var!('portage.abi_x86').join(' ') %>"
@@ -144,15 +136,6 @@ USE="${USE} python"
 <% if has_feature? :haskell %>
 USE="${USE} hoogle hscolour"
 <% end %>
-
-# }}}
-
-
-# layman {{{
-
-source "/var/lib/layman/make.conf"
-LOCAL_OVERLAYS="/usr/local/portage"
-PORTDIR_OVERLAY="${LOCAL_OVERLAYS} ${PORTDIR_OVERLAY}"
 
 # }}}
 

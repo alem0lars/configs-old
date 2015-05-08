@@ -141,7 +141,7 @@ media-plugins/gimp-gmic ~amd64
 media-plugins/gimp-resynthesizer ~amd64
 sci-electronics/ghdl ~amd64
 
-<% if has_feature :ruby %>
+<% if has_feature? :ruby %>
 dev-ruby/thor ~amd64
 <% end %>
 

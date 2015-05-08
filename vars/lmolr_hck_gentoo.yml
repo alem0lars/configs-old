@@ -60,6 +60,7 @@ atom:
 
 features:
   - 'grub'
+  - 'btrfs'
   - 'atom'
   - 'conky'
   - 'feh'

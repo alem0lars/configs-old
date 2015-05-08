@@ -83,7 +83,6 @@ zsh:
 
 features:
   - 'linux'
-  - 'btrfs'
   - 'gtk'
   - 'alsa'
   - 'pulseaudio'
