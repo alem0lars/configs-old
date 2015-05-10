@@ -42,11 +42,11 @@ kernel_config: 'julia_hck_gentoo'
 
 portage:
   input_devices:
-    - 'synaptics'
-    #- 'evdev'
+    #- 'synaptics'
+    - 'evdev'
   video_cards:
     - 'intel'
-    - 'i915'
+    #- 'i915'
   use_flags:
     # Architecture / Instruction set.
     - 'mmx'
