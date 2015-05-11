@@ -87,7 +87,7 @@ sys-devel/gcc graphite
 sys-libs/libseccomp tools
 sys-libs/zlib minizip
 
-x11-base/x11-server kdrive
+x11-base/xorg-server kdrive
 
 x11-libs/libdrm libkms
 
