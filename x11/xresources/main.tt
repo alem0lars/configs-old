@@ -35,6 +35,10 @@
 
 ! {{{ Xft
 
+<% if get_var 'hdpi' %>
+Xft.dpi: 160
+<% end %>
+
 Xft.antialias: true
 Xft.autohint:  true
 Xft.hinting:   true
@@ -44,19 +48,17 @@ Xft.rgba:      rgb
 
 ! }}}
 
-
-<% if get_var 'colorscheme' %>
 ! {{{ Colors
-<% if get_var!('colorscheme.name') == 'base16' %>
+<% if get_var 'colorscheme' %>
+  <% if get_var!('colorscheme.name') == 'base16' %>
 #include "<%= get_var! 'x11.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>/<%= get_var! 'colorscheme.name' %>-<%= get_var! 'colorscheme.variant' %>.<%= get_var! 'colorscheme.brightness' %>.256.xresources"
-<% else %>
+  <% else %>
 #include "<%= get_var! 'x11.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>.xresources"
+  <% end %>
 <% end %>
 ! }}}
-<% end %>
 
-
-! {{{ Cross-terminal settings
+! {{{ Cross-terminal settings.
 
 *saveLines:    65536
 *cursorBlink:  false
@@ -64,8 +66,7 @@ Xft.rgba:      rgb
 
 ! }}}
 
-
-! xterm {{{
+! {{{ XTerm.
 
 xterm*faceName:          xft:<%= get_var!('fonts.main.name').gsub(' ', '\ ') %>:size=<%= get_var! 'fonts.main.size' %>
 xterm*utf8:              2
@@ -81,9 +82,9 @@ xterm*toolBar:           false
 
 ! }}}
 
+! {{{ URXVT.
 
 <% if has_feature? :urxvt %>
-! urxvt {{{
 
 ! terminal info
 urxvt*termName:       rxvt-256color
@@ -152,8 +153,9 @@ urxvt.keysym.M-s:      perl:keyboard-select:search
 urxvt.keysym.M-u:  perl:url-select:select_next
 urxvt.urlLauncher: <%= get_var! 'urxvt.url_launcher' %>
 
-! }}}
 <% end %>
+
+! }}}
 
 
 ! vim: set filetype=xdefaults :
