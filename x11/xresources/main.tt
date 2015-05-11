@@ -35,10 +35,6 @@
 
 ! {{{ Xft
 
-<% if get_var 'hdpi' %>
-Xft.dpi: 160
-<% end %>
-
 Xft.antialias: true
 Xft.autohint:  true
 Xft.hinting:   true

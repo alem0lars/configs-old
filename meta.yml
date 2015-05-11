@@ -158,7 +158,7 @@ elems:
 
   # }}}
 
-  # {{{ Specific.
+  # {{{ Software specific.
 
   - src: 'xmonad/xmonad.hs'
     dst: '~/.xmonad/xmonad.hs'
@@ -375,15 +375,20 @@ elems:
     only:
       features: ['linux']
 
-  - src:  'portage/repos.conf/(.+)$'
-    dst:  '/etc/portage/repos.conf/<1>'
+  - src:  '(portage/(?:modules|make\.conf|repos\.conf/.+|package\.license))$'
+    dst:  '/etc/<1>'
     only:
       features: ['gentoo']
 
-  - src:  'portage/((?!.*repos\.conf$).*)$'
-    dst:  '/etc/portage/<1>'
+  - src:  '(portage/package\.(?:keywords|use|license)/(?!(?:.+[\W_])?julia(?:[\W_].+)?$).*)$'
+    dst:  '/etc/<1>'
     only:
       features: ['gentoo']
+
+  - src:  '(portage/package\.(?:keywords|use|license)/(?:.+[\W_])?julia(?:[\W_].+)?)$'
+    dst:  '/etc/<1>'
+    only:
+      features: [['host_julia', 'gentoo']]
 
   - src:  'eix/(eix-sync.conf)'
     dst:  '/etc/<1>'
