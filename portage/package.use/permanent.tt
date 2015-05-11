@@ -87,9 +87,9 @@ sys-devel/gcc graphite
 sys-libs/libseccomp tools
 sys-libs/zlib minizip
 
-xorg-base/xorg-server kdrive
+x11-base/x11-server kdrive
 
-xorg-libs/libdrm libkms
+x11-libs/libdrm libkms
 
 www-client/firefox pgo
 
@@ -98,7 +98,7 @@ virtual/ffmpeg vaapi
 app-text/asciidoc highlight
 
 <% if has_feature? :urxvt %>
-xorg-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
+x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
 <% end %>
 
 <% if has_feature? :mutt %>
@@ -114,7 +114,7 @@ sys-apps/systemd gudev
 <% end %>
 
 <% if has_feature? :gtk %>
-xorg-themes/FlatStudio gtk2 gtk3
+x11-themes/FlatStudio gtk2 gtk3
 <% end %>
 
 <% if has_feature? :conky %>

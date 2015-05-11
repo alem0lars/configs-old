@@ -54,7 +54,7 @@ dev-util/capstone ~amd64
 =sci-libs/suitesparseconfig-4.2.1 ~amd64
 
 # Needed by `www-client/firefox`.
-=xorg-libs/libdrm-2.4.56 ~amd64
+=x11-libs/libdrm-2.4.56 ~amd64
 =media-libs/mesa-10.3.0 ~amd64
 
 # Needed by `app-emulation/vagrant`.
@@ -155,11 +155,11 @@ sys-kernel/dracut ~amd64
 <% end %>
 
 <% if has_feature? :zim %>
-xorg-misc/zim ~amd64
+x11-misc/zim ~amd64
 <% end %>
 
 <% if has_feature? :gtk %>
-xorg-themes/FlatStudio ~amd64
+x11-themes/FlatStudio ~amd64
 <% end %>
 
 # }}}

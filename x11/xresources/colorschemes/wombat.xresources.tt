@@ -1,8 +1,8 @@
 !###############################################################################
 !                                                                              #
 ! File informations:                                                           #
-! - Name:    xorg/xresources/colors_wombat.tt                                  #
-! - Summary: The wombat color scheme for xorg.                                 #
+! - Name:    x11/xresources/colors_wombat.tt                                  #
+! - Summary: The wombat color scheme for x11.                                 #
 ! - Authors:                                                                   #
 !   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 !                                                                              #

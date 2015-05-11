@@ -66,7 +66,7 @@ commands:
       features: ['vim']
   - type: 'git_sync'
     repo: 'https://github.com/chriskempson/base16-xresources'
-    dst:  '<%= get_var! "xorg.xresources.custom_dir" %>/colorschemes/base16'
+    dst:  '<%= get_var! "x11.xresources.custom_dir" %>/colorschemes/base16'
     only:
       features: ['linux']
       vars: ['colorscheme']
@@ -331,19 +331,24 @@ elems:
       features: ['linux']
       vars:     ['kernel_config']
 
-  - src: 'xorg/xresources/main'
+  - src: 'x11/xresources/main'
     dst: '/etc/X11/xinit/Xresources'
     only:
-      features: ['linux']
-  - src: 'xorg/xresources/((?!.*main$).*)$'
-    dst: '<%= get_var! "xorg.xresources.custom_dir" %>/<1>'
+      features: ['x11']
+  - src: 'x11/xresources/((?!.*main$).*)$'
+    dst: '<%= get_var! "x11.xresources.custom_dir" %>/<1>'
     only:
-      features: ['linux']
+      features: ['x11']
 
-  - src: 'xorg/sessions/xmonad'
+  - src: 'x11/sessions/xmonad'
     dst: '/etc/X11/Sessions/xmonad'
     only:
-      features: ['xorg_xmonad']
+      features: [['x11', 'xmonad']]
+
+  - src: 'linux/gentoo/env/(.+)$'
+    dst: '/etc/env.d/<1>'
+    only:
+      features: [['gentoo', 'x11']]
 
   - src: 'linux/bootmisc'
     dst: '/etc/conf.d/bootmisc'

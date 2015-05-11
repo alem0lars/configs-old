@@ -45,7 +45,7 @@ gtk:
 urxvt:
   url_launcher: '/usr/bin/firefox'
 
-xorg:
+x11:
   xsession: "xmonad"
 
 xmonad:
@@ -210,11 +210,10 @@ features:
   - 'gentoo'
   - 'g-sorcery'
   - 'slim'
-  - 'xorg_xmonad'
   - 'xmonad'
   - 'trayer'
   - 'autocutsel'
   - 'urxvt'
   - 'zathura'
   - 'zsh'
-  - 'xorg'
+  - 'x11'

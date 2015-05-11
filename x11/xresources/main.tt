@@ -1,8 +1,8 @@
 !###############################################################################
 !                                                                              #
 ! File informations:                                                           #
-! - Name:    xorg/xresources/main.tt                                           #
-! - Summary: The entry point for xorg configuration (formerly known as         #
+! - Name:    x11/xresources/main.tt                                           #
+! - Summary: The entry point for x11 configuration (formerly known as         #
 !            Xresources).                                                      #
 ! - Authors:                                                                   #
 !   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
@@ -48,9 +48,9 @@ Xft.rgba:      rgb
 <% if get_var 'colorscheme' %>
 ! {{{ Colors
 <% if get_var!('colorscheme.name') == 'base16' %>
-#include "<%= get_var! 'xorg.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>/<%= get_var! 'colorscheme.name' %>-<%= get_var! 'colorscheme.variant' %>.<%= get_var! 'colorscheme.brightness' %>.256.xresources"
+#include "<%= get_var! 'x11.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>/<%= get_var! 'colorscheme.name' %>-<%= get_var! 'colorscheme.variant' %>.<%= get_var! 'colorscheme.brightness' %>.256.xresources"
 <% else %>
-#include "<%= get_var! 'xorg.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>.xresources"
+#include "<%= get_var! 'x11.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>.xresources"
 <% end %>
 ! }}}
 <% end %>

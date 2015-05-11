@@ -66,7 +66,7 @@ fonts:
     name: 'DejaVu Sans Mono for Powerline'
     size: 11
 
-xorg:
+x11:
   xresources:
     custom_dir:  '/etc/X11/xinit/Xresources.d'
 

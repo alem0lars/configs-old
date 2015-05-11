@@ -37,7 +37,7 @@
 autoload colors && colors
 
 
-echo -e "${fg[blue]}merging in xorg defaults and keymaps${reset_color}"
+echo -e "${fg[blue]}merging in x11 defaults and keymaps${reset_color}"
 sysresources="/etc/X11/xinit/Xresources"
 if [ -f $sysresources ]; then xrdb -merge "${sysresources}"; fi
 sysmodmap="/etc/X11/xinit/Xmodmap"
@@ -65,7 +65,7 @@ urxvtd -o -f
 
 <% if has_feature? :pulseaudio %>
 echo -e "${fg[blue]}starting pulseaudio${reset_color}"
-start-pulseaudio-xorg &
+start-pulseaudio-x11 &
 <% end %>
 
 <% if has_feature? :autocutsel %>

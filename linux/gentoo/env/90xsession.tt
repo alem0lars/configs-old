@@ -32,7 +32,7 @@
 ################################################################################
 
 
-XSESSION="<%= get_var! 'xorg.xsession' %>"
+XSESSION="<%= get_var! 'x11.xsession' %>"
 
 
 # vim: set filetype=sh :
