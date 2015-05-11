@@ -45,6 +45,9 @@ gtk:
 urxvt:
   url_launcher: '/usr/bin/firefox'
 
+xorg:
+  xsession: "xmonad"
+
 xmonad:
   terminal_cmd: 'openterm'
 
@@ -214,3 +217,4 @@ features:
   - 'urxvt'
   - 'zathura'
   - 'zsh'
+  - 'xorg'
