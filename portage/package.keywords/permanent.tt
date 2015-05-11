@@ -119,5 +119,7 @@ net-irc/weechat ~amd64
 */*::steam-overlay ~amd64
 <% end %>
 
+media-fonts/powerline-fonts ~amd64
+
 
 # vim: set filetype=gentoo-package-keywords :

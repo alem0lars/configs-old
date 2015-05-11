@@ -2,5 +2,14 @@
 priority = 50
 location = /var/lib/layman/sunrise
 layman-type = git
-auto-sync = No
+sync-type = laymansync
+sync-uri = git://anongit.gentoo.org/proj/sunrise-reviewed.git
+auto-sync = Yes
 
+[raiagent]
+priority = 50
+location = /var/lib/layman/raiagent
+layman-type = git
+sync-type = laymansync
+sync-uri = git://github.com/leycec/raiagent.git
+auto-sync = Yes

@@ -38,6 +38,10 @@
 
 hostname: 'julia'
 
+monitors:
+  - name: 'eDP1'
+    dpi:  160
+
 kernel_config: 'julia_hck_gentoo'
 
 portage:

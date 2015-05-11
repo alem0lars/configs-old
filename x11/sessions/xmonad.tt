@@ -116,6 +116,14 @@ if [ -x /usr/bin/ssh-agent ]; then
   eval "$(/usr/bin/ssh-agent -s)"
 fi
 
+<% if get_var 'monitors' %>
+  <% get_var!('monitors').each do |monitor| %>
+    <% if monitor["dpi"] %>
+xrandr --output <%= monitor['name'] %> --dpi <%= monitor['dpi'] %>
+    <% end %>
+  <% end %>
+<% end %>
+
 echo -e "${fg[blue]}starting xmonad${reset_color}"
 xmonad
 
