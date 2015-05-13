@@ -287,8 +287,9 @@ defStatusBarPP h = defaultPP
   , ppLayout = uncurry dzenColor defLayCols . uncurry wrap defLayW . take 16 . (++ repeat ' ')
   , ppOutput = hPutStrLn h
   }
-defStatusBarCmd screenWidth = "dzen2 -ta l -fn '" ++ defFont ++ "' -bg '" ++
-                              defBgColor ++ "' -x 0 -y 0 -h 20 -w " ++ (show $ screenWidth * 0.88)
+defStatusBarCmd screenWidth =
+  "dzen2 -e 'button2=;' -ta l -fn '" ++ defFont ++ "' -bg '" ++ defBgColor ++
+  "' -x 0 -y 0 -h 20 -w " ++ (show $ screenWidth * 0.88)
 
 -- Runner
 defDMenuRunCmd = "dmenu_run -i -l 16 -fn '" ++ defFont ++ "' -p '>> '"
