@@ -40,7 +40,7 @@ hostname: 'julia'
 
 kernel_config: 'julia_hck_gentoo'
 
-dpi: 160
+dpi: 190
 
 portage:
   input_devices:
