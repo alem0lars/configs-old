@@ -31,7 +31,6 @@
 #                                                                              #
 # }}} ##########################################################################
 
-
 # {{{ Unite.
 
 [[plugins]]
@@ -48,7 +47,6 @@ depends    = 'Shougo/neomru.vim'
   complete = 'customlist,unite#complete_source'
 
 # }}}
-
 
 # {{{ Shell.
 
@@ -69,7 +67,6 @@ repository = 'yomi322/vim-gitcomplete'
 filetypes = 'vimshell'
 
 # }}}
-
 
 # {{{ Editing capabilities extensions.
 
@@ -120,7 +117,6 @@ filetypes  = 'all'
 
 # }}}
 
-
 # {{{ UI additions.
 
 [[plugins]]
@@ -150,7 +146,6 @@ filetypes  = 'all'
 
 # }}}
 
-
 # {{{ Autocomplete, snippets, documentation.
 
 [[plugins]]
@@ -177,7 +172,6 @@ repository = 'Shougo/echodoc.vim'
 insert = 1
 
 # }}}
-
 
 # {{{ Files management.
 
@@ -208,7 +202,6 @@ filetypes  = 'all'
 
 # }}}
 
-
 # {{{ Temporary files.
 
 [[plugins]]
@@ -216,7 +209,6 @@ repository = 'Shougo/junkfile.vim'
 unite_sources = 'junkfile'
 
 # }}}
-
 
 # {{{ VCS.
 
@@ -228,13 +220,13 @@ lazy = 0
 
 # }}}
 
-
 # {{{ Highlighting.
 
+[[plugins]]
 repository = 'Shougo/context_filetype.vim'
+filetypes  = 'all'
 
 # }}}
-
 
 # {{{ Syntax checking.
 
@@ -245,7 +237,6 @@ filetypes  = 'all'
 
 # }}}
 
-
 # {{{ Project management.
 
 [[plugins]]
@@ -253,7 +244,6 @@ repository = 'airblade/vim-rooter'
 filetypes = 'all'
 
 # }}}
-
 
 # {{{ Languages support.
 
@@ -266,6 +256,7 @@ filetypes  = ['c', 'cpp', 'objc', 'objcpp']
     [plugins.build]
       mac   = 'make install'
       linux = 'make install'
+      unix  = 'make install'
 
 # }}}
 
@@ -346,6 +337,7 @@ filetypes  = 'rust'
     [plugins.build]
       mac   = 'cargo build --release'
       linux = 'cargo build --release'
+      unix  = 'cargo build --release'
 
 <% end %> # }}}
 
@@ -401,8 +393,9 @@ repository = 'marijnh/tern_for_vim'
 filetypes = 'javascript'
 
     [plugins.build]
-    linux = 'npm install'
     mac   = 'npm install'
+    linux = 'npm install'
+    unix  = 'npm install'
 
 # }}}
 
@@ -416,7 +409,6 @@ filetypes = 'toml'
 
 # }}}
 
-
 # {{{ Airline and derivatives.
 
 [[plugins]]
@@ -424,7 +416,6 @@ repository = 'bling/vim-airline'
 filetypes  = 'all'
 
 # }}}
-
 
 # {{{ Theme.
 
