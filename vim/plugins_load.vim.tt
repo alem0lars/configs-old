@@ -51,10 +51,10 @@ else
   " to perform async operations.
   NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
-        \     'mac':   'make -f make_mac.mak',
-        \     'linux': 'make',
-        \     'unix':  'make'
-        \    }
+        \     'mac' : 'make -f make_mac.mak',
+        \     'linux' : 'make',
+        \     'unix' : 'gmake',
+        \   },
         \ }
 
   " Load other plugins from toml file.

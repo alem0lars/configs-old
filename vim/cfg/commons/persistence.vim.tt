@@ -33,32 +33,30 @@
 "###############################################################################
 
 
-" backups {{{
+" {{{ Backups.
 
 " Enable files backups.
 set backup
 
 " Set the directory for saving files backups.
-set backupdir=<%= File.expand_path get_var!('vim.bkp_dir') %>
-silent execute '!mkdir -p <%= File.expand_path get_var!("vim.bkp_dir") %>'
+set backupdir=<%= get_var! 'vim.bkp_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.bkp_dir" %>'
 
 " }}}
 
-
-" swaps {{{
+" {{{ Swap files.
 
 " Set the directory for saving swap files.
-set directory=<%= File.expand_path get_var!('vim.swaps_dir') %>
-silent execute '!mkdir -p <%= File.expand_path get_var!("vim.swaps_dir") %>'
+set directory=<%= get_var! 'vim.swaps_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.swaps_dir" %>'
 
 " }}}
 
-
-" views {{{
+" {{{ Views.
 
 " Set the directory for saving views state.
-set viewdir=<%= File.expand_path get_var!('vim.views_dir') %>
-silent execute '!mkdir -p <%= File.expand_path get_var!("vim.views_dir") %>'
+set viewdir=<%= get_var! 'vim.views_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.views_dir" %>'
 
 " When entering and exiting from a buffer load the view state.
 au BufWinLeave \* silent! mkview
@@ -66,12 +64,11 @@ au BufWinEnter \* silent! loadview
 
 " }}}
 
-
-" undo history {{{
+" {{{ Undo history.
 
 " Set the directory for saving undos.
-set undodir=<%= File.expand_path get_var!('vim.undos_dir') %>
-silent execute '!mkdir -p <%= File.expand_path get_var!("vim.undos_dir") %>'
+set undodir=<%= get_var! 'vim.undos_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.undos_dir" %>'
 
 " How many undos.
 set undolevels=2048

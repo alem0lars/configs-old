@@ -35,8 +35,8 @@
 
 ! {{{ Xft
 
-<% if has_feature? 'hidpi' %>
-Xft.dpi: 160
+<% if get_var 'dpi' %>
+Xft.dpi: <%= get_var! 'dpi' %>
 <% end %>
 
 Xft.antialias: true

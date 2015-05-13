@@ -8,10 +8,16 @@ gtk-button-images=1
 gtk-menu-images=1
 gtk-enable-event-sounds=0
 gtk-enable-input-feedback-sounds=0
+
+<% if get_var 'dpi' %>
+gtk-xft-dpi=<%= get_var! 'dpi' %>
+<% end %>
+
 gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintfull"
 gtk-xft-rgba="rgb"
+
 <% if get_var 'gtk.key_theme' %>
 gtk-key-theme="<%= get_var! 'gtk.key_theme' %>"
 <% end %>
