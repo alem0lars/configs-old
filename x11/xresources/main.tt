@@ -35,6 +35,10 @@
 
 ! {{{ Xft
 
+<% if has_feature? 'hidpi' %>
+Xft.dpi: 160
+<% end %>
+
 Xft.antialias: true
 Xft.autohint:  true
 Xft.hinting:   true

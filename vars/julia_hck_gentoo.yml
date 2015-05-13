@@ -38,8 +38,6 @@
 
 hostname: 'julia'
 
-hdpi: true
-
 kernel_config: 'julia_hck_gentoo'
 
 portage:
@@ -69,4 +67,5 @@ conky:
     - *conky_eth_dev
 
 features:
+  - 'hidpi'
   - 'host_julia'
