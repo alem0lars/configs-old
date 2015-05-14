@@ -40,14 +40,12 @@ colorscheme base16-default
 
 " }}}
 
-
 " {{{ Status bar.
 
 " Always have a statusbar.
 set laststatus=2
 
 " }}}
-
 
 " {{{ Long lines.
 

@@ -43,7 +43,7 @@ syntax on
 set hidden
 
 " Set history size.
-set history=65536
+set history=8192
 
 " Set to auto read when a file is changed from the outside.
 set autoread

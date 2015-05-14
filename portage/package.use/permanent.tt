@@ -148,5 +148,9 @@ media-sound/pulseaudio equalizer qt4
 games-util/steam-client-meta steamfonts
 <% end %>
 
+<% if get_var('dpi') && Integer(get_var!('dpi')) > 96 %>
+www-client/chromium hidpi
+<% end %>
+
 
 # vim: set filetype=gentoo-package-keywords

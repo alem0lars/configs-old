@@ -40,21 +40,18 @@ endif
 
 call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>/'))
 
-if neobundle#has_cache()
-  " Load plugins configuration from the cache file.
-  NeoBundleLoadCache
-else
+if neobundle#load_cache()
   " Let neobundle manage neobundle.
   NeoBundleFetch 'Shougo/neobundle.vim'
 
   " Load vimproc before loading the plugins, so neobundle can use vimproc
   " to perform async operations.
+
   NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
-        \     'mac' : 'make -f make_mac.mak',
-        \     'linux' : 'make',
-        \     'unix' : 'gmake',
-        \   },
+        \     'mac':   'make -f make_mac.mak',
+        \     'unix':  'make -f make_unix.mak'
+        \    }
         \ }
 
   " Load other plugins from toml file.
