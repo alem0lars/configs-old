@@ -356,6 +356,11 @@ elems:
     only:
       features: ['linux']
 
+  - src: 'linux/fstabs/fstab_julia'
+    dst: '/etc/fstab'
+    only:
+      features: [['host_julia', 'gentoo']]
+
   # {{{ X11.
 
   - src: 'x11/xresources/main'
