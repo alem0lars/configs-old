@@ -72,5 +72,9 @@ conky:
     - *conky_eth_dev
 
 features:
+  - 'macbook'
   - 'host_julia'
   - 'touchpad'
+
+
+# vim: set filetype=yaml :
