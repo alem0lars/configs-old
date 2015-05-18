@@ -323,7 +323,7 @@ elems:
 
   # }}}
 
-  # {{{ Linux (& distros).
+  # {{{ GNU/Linux.
 
   - src: 'linux/kernel_configs/<%= get_var! "kernel_config" %>.config'
     dst: '/usr/src/linux/.config'
@@ -331,28 +331,28 @@ elems:
       features: ['linux']
       vars:     ['kernel_config']
 
-  - src: 'linux/bootmisc'
-    dst: '/etc/conf.d/bootmisc'
+  - src: 'linux/(bootmisc)$'
+    dst: '/etc/conf.d/<1>'
     only:
       features: ['linux']
 
-  - src: 'linux/hostname'
-    dst: '/etc/conf.d/hostname'
+  - src: 'linux/(hostname)$'
+    dst: '/etc/conf.d/<1>'
     only:
       features: ['linux']
 
-  - src:  'linux/hwclock'
-    dst:  '/etc/conf.d/hwclock'
+  - src:  'linux/(hwclock)$'
+    dst:  '/etc/conf.d/<1>'
     only:
       features: ['linux']
 
-  - src:  'linux/keymaps'
-    dst:  '/etc/conf.d/keymaps'
+  - src:  'linux/(keymaps)$'
+    dst:  '/etc/conf.d/<1>'
     only:
       features: ['linux']
 
-  - src:  'linux/locale.conf'
-    dst:  '/etc/locale.conf'
+  - src:  'linux/(locale.conf)$'
+    dst:  '/etc/<1>'
     only:
       features: ['linux']
 
@@ -373,8 +373,13 @@ elems:
     only:
       features: ['x11']
 
-  - src: 'x11/sessions/xmonad'
-    dst: '/etc/X11/Sessions/xmonad'
+  - src: 'x11/(xorg.conf.d/00-touchpad.conf)$'
+    dst: '/etc/X11/<1>'
+    only:
+      features: ['touchpad']
+
+  - src: 'x11/sessions/(xmonad)$'
+    dst: '/etc/X11/Sessions/<1>'
     only:
       features: [['x11', 'xmonad']]
 

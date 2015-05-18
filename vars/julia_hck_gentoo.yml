@@ -42,6 +42,9 @@ kernel_config: 'julia_hck_gentoo'
 
 dpi: 190
 
+touchpad:
+  driver: 'mtrack'
+
 portage:
   input_devices:
     - 'evdev'
@@ -70,3 +73,4 @@ conky:
 
 features:
   - 'host_julia'
+  - 'touchpad'
