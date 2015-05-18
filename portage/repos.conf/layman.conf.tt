@@ -13,3 +13,11 @@ layman-type = git
 sync-type = laymansync
 sync-uri = git://github.com/leycec/raiagent.git
 auto-sync = Yes
+
+[betagarden]
+priority = 50
+location = /var/lib/layman/betagarden
+layman-type = git
+sync-type = laymansync
+sync-uri = git://anongit.gentoo.org/proj/betagarden.git
+auto-sync = Yes
