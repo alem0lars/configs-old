@@ -128,8 +128,10 @@ dev-libs/girara ~amd64
 =dev-python/feedparser-5.1.3-r2 ~amd64
 <% end %>
 
-# }}}
+# Needed by `www-client/chromium`.
+media-libs/libvpx ~amd64
 
+# }}}
 
 # {{{ Not yet stable.
 
