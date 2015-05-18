@@ -2,7 +2,7 @@
 #                                                                              #
 # File informations:                                                           #
 # - Name:    linux/gentoo/90xsession.tt                                        #
-# - Summary: Environment variable declaration for the default X11 session.     #
+# - Summary: Environment variables declaration for the default X11 session.     #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
