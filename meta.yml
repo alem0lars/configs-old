@@ -331,25 +331,6 @@ elems:
       features: ['linux']
       vars:     ['kernel_config']
 
-  - src: 'x11/xresources/main'
-    dst: '/etc/X11/xinit/Xresources'
-    only:
-      features: ['x11']
-  - src: 'x11/xresources/((?!.*main$).*)$'
-    dst: '<%= get_var! "x11.xresources.custom_dir" %>/<1>'
-    only:
-      features: ['x11']
-
-  - src: 'x11/sessions/xmonad'
-    dst: '/etc/X11/Sessions/xmonad'
-    only:
-      features: [['x11', 'xmonad']]
-
-  - src: 'linux/gentoo/env/(.+)$'
-    dst: '/etc/env.d/<1>'
-    only:
-      features: [['gentoo', 'x11']]
-
   - src: 'linux/bootmisc'
     dst: '/etc/conf.d/bootmisc'
     only:
@@ -374,6 +355,55 @@ elems:
     dst:  '/etc/locale.conf'
     only:
       features: ['linux']
+
+  # {{{ X11.
+
+  - src: 'x11/xresources/main'
+    dst: '/etc/X11/xinit/Xresources'
+    only:
+      features: ['x11']
+
+  - src: 'x11/xresources/((?!.*main$).*)$'
+    dst: '<%= get_var! "x11.xresources.custom_dir" %>/<1>'
+    only:
+      features: ['x11']
+
+  - src: 'x11/sessions/xmonad'
+    dst: '/etc/X11/Sessions/xmonad'
+    only:
+      features: [['x11', 'xmonad']]
+
+  # }}}
+
+  # {{{ Systemd
+
+  - src: 'systemd/hostname'
+    dst: '/etc/hostname'
+    only:
+      features: ['systemd']
+
+  - src:  '^systemd/((?!.*hostname$).*)$'
+    dst: '/etc/systemd/<1>'
+    only:
+      features: ['systemd']
+
+  # }}}
+
+  # {{{ Gentoo - Environment variables.
+
+  - src: 'linux/gentoo/env/([0-9]*(?:.+[\W_])?perl(?:[\W_].+)?)$'
+    dst: '/etc/env.d/<1>'
+    only:
+      features: [['gentoo', 'perl']]
+
+  - src: 'linux/gentoo/env/([0-9]*(?:.+[\W_])?xsession(?:[\W_].+)?)$'
+    dst: '/etc/env.d/<1>'
+    only:
+      features: [['gentoo', 'x11']]
+
+  # }}}
+
+  # {{{ Gentoo - Portage.
 
   - src:  '(portage/(?:modules|make\.conf|repos\.conf/.+|package\.license))$'
     dst:  '/etc/<1>'
@@ -410,15 +440,7 @@ elems:
     only:
       features: ['g-sorcery']
 
-  - src: 'systemd/hostname'
-    dst: '/etc/hostname'
-    only:
-      features: ['systemd']
-
-  - src:  '^systemd/((?!.*hostname$).*)$'
-    dst: '/etc/systemd/<1>'
-    only:
-      features: ['systemd']
+  # }}}
 
   # }}}
 
