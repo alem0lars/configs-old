@@ -116,6 +116,10 @@ if [ -x /usr/bin/ssh-agent ]; then
   eval "$(/usr/bin/ssh-agent -s)"
 fi
 
+<% if get_var 'dpi' %>
+xrandr --dpi <%= get_var! 'dpi' %>
+<% end %>
+
 echo -e "${fg[blue]}starting xmonad${reset_color}"
 xmonad
 

@@ -1,14 +1,14 @@
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/kitty_hck_gentoo.yml                                         #
-# - Summary: Holds the variables for alem0lars gentoo-based systems            #
+# - Name:    linux/gentoo/90hidpi.tt                                           #
+# - Summary: Environment variables declaration for supporting HiDPI displays.  #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-# - Homepage:        https://github.com/alem0lars/configs                      #
-# - Getting started: see README.md in the project root folder                  #
+#   - Homepage:        https://github.com/alem0lars/configs                    #
+#   - Getting started: see README.md in the project root folder                #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -30,53 +30,11 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: alem0lars_hck_gentoo                                           <=#
-#                                                                              #
-################################################################################
 
 
-hostname: 'julia'
-
-kernel_config: 'julia_hck_gentoo'
-
-dpi: 190
-
-touchpad:
-  driver: 'mtrack'
-
-portage:
-  input_devices:
-    - 'evdev'
-  video_cards:
-    - 'intel'
-    - 'i965'
-  use_flags:
-    # Architecture / Instruction set.
-    - 'mmx'
-    - 'mmxext'
-    - 'sse'
-    - 'sse2'
-    - 'sse3'
-    - 'ssse3'
-    - 'sse4'
-    - 'sse4_1'
-    - 'sse4_2'
-
-parallelism: 8
-
-conky:
-  battery_name: 'BAT0'
-  ac_path:      '/sys/class/power_supply/ADP1'
-  eth_dev:  &conky_eth_dev  'enp12s0'
-  net_devs:
-    - *conky_eth_dev
-
-features:
-  - 'macbook'
-  - 'host_julia'
-  - 'touchpad'
-  - 'hidpi'
+QT_DEVICE_PIXEL_RATIO=2
+GDK_SCALE=2
+#GDK_DPI_SCALE=0.5
 
 
-# vim: set filetype=yaml :
+# vim: set filetype=sh :

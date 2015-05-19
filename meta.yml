@@ -289,6 +289,20 @@ elems:
 
   # }}}
 
+  # {{{ Boot loaders.
+
+  - src:  'refind/(.+)'
+    # At the moment, install isn't meaningless in `rEFInd`, since symlinks
+    # can't be followed when configuration is evaluated, since there is
+    # no filesystem mounted. If install is performed, we want to be
+    # really sure we don't overwrite `rEFInd` destination files, so just
+    # set the destination to a temporary directory.
+    dst:  '<%= get_var! "tmp_dir" %>/refind'
+    only:
+      features: ['refind']
+
+  # }}}
+
   # {{{ GTK.
 
   - src:  'gtk/bookmarks'
@@ -311,15 +325,14 @@ elems:
     only:
       features: ['gtk_vim']
 
-  - src:  'refind/(.+)'
-    # At the moment, install isn't meaningless in `rEFInd`, since symlinks
-    # can't be followed when configuration is evaluated, since there is
-    # no filesystem mounted. If install is performed, we want to be
-    # really sure we don't overwrite `rEFInd` destination files, so just
-    # set the destination to a temporary directory.
-    dst:  '<%= get_var! "tmp_dir" %>/refind'
+  # }}}
+
+  # {{{ Qt.
+
+  - src:  'qt/trolltech.conf'
+    dst:  '~/.config/Trolltech.conf'
     only:
-      features: ['refind']
+      features: ['qt']
 
   # }}}
 
@@ -411,6 +424,11 @@ elems:
     only:
       features: [['gentoo', 'x11']]
 
+  - src: 'linux/gentoo/env/([0-9]*(?:.+[\W_])?hidpi(?:[\W_].+)?)$'
+    dst: '/etc/env.d/<1>'
+    only:
+      features: [['gentoo', 'hidpi']]
+
   # }}}
 
   # {{{ Gentoo - Portage.
@@ -454,7 +472,7 @@ elems:
 
   # }}}
 
-  # OSX {{{
+  # {{{ OSX.
 
   - src:  'osx/env_vars/(setenv\.LIBRARY_PATH\.plist)$'
     dst:  '/Library/LaunchAgents/<1>'
