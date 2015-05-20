@@ -42,7 +42,7 @@
 ################################################################################
 
 
-# dependencies of permanent packages {{{
+# {{{ Dependencies of permanent packages.
 
 # Needed by `dev-util/radare2`.
 dev-util/capstone ~amd64
@@ -152,17 +152,30 @@ net-news/canto-curses ~amd64
 net-news/canto-daemon ~amd64
 <% end %>
 
-<% if has_feature? :dracut %>
+<% if has_feature? 'dracut' %>
 sys-kernel/dracut ~amd64
 <% end %>
 
-<% if has_feature? :zim %>
+<% if has_feature? 'zim' %>
 x11-misc/zim ~amd64
 <% end %>
 
-<% if has_feature? :gtk %>
+<% if has_feature? 'gtk' %>
 x11-themes/FlatStudio ~amd64
 <% end %>
+
+<% if has_feature? 'java' %>
+dev-util/findbugs ~amd64
+<% end %>
+
+# }}}
+
+# {{{ Needed by `Not yet stable` packages.
+
+# Needed by `dev-util/findbugs`.
+=dev-java/jformatstring-2.0.3 ~amd64
+=dev-java/jcip-annotations-1.0.1 ~amd64
+=dev-java/bcel-6.0_rc3 ~amd64
 
 # }}}
 
