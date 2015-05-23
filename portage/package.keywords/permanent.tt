@@ -36,6 +36,7 @@
 app-admin/lastpass-cli ~amd64
 app-admin/eselect-metasploit ~amd64
 app-emulation/vagrant ~amd64
+app-forensics/afl ~amd64
 app-text/pandoc ~amd64
 app-portage/g-sorcery ~amd64
 dev-util/android-tools ~amd64
@@ -54,7 +55,6 @@ sys-devel/clang ~amd64
 # web standards and technologies support.
 www-client/firefox ~amd64
 www-client/chromium ~amd64
-
 
 <% if has_feature? :vim %>
 app-editors/vim ~amd64
