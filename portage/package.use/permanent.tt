@@ -32,6 +32,8 @@
 ################################################################################
 
 
+*/* html
+
 app-crypt/gnupg tools
 
 app-misc/geoclue -modemmanager

@@ -21,3 +21,19 @@ layman-type = git
 sync-type = laymansync
 sync-uri = git://anongit.gentoo.org/proj/betagarden.git
 auto-sync = Yes
+
+[pentoo]
+priority = 50
+location = /var/lib/layman/pentoo
+layman-type = svn
+sync-type = laymansync
+sync-uri = https://pentoo.googlecode.com/svn/portage/trunk/
+auto-sync = Yes
+
+[apo]
+priority = 50
+location = /var/lib/layman/apo
+layman-type = git
+sync-type = laymansync
+sync-uri = git://github.com/alem0lars/apo.git
+auto-sync = Yes

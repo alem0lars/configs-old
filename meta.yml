@@ -233,14 +233,24 @@ elems:
     only:
       features: ['grub']
 
-  - src:  'vimperator/vimperatorrc'
-    dst:  '~/.vimperatorrc'
+  # {{{ Vimperator.
+
+  - src:  '(vimperator/vimperatorrc)$'
+    dst:  '~/.<1>'
     only:
-      features: ['firefox_vim']
+      features: [['firefox', 'vim']]
+
+  - src:  '(vimperator/plugin/.+)$'
+    dst:  '~/.<1>'
+    only:
+      features: [['firefox', 'vim']]
+
   - src:  'vimperator/colors/amdarkness'
     dst:  '~/.vimperator/colors/amdarkness.vimp'
     only:
-      features: ['firefox_vim']
+      features: [['firefox', 'vim']]
+
+  # }}}
 
   - src: 'zim/(.+)'
     dst: '~/.config/zim/<1>'
@@ -276,11 +286,6 @@ elems:
     dst:  '/etc/slim.conf'
     only:
       features: ['slim']
-
-  - src:  'virtualbox/systemd_kernel_modules.conf'
-    dst:  '/etc/modules-load.d/virtualbox.conf'
-    only:
-      features: ['virtualbox_systemd']
 
   - src:  'mplayer/(.+)'
     dst:  '/etc/mplayer/<1>'
@@ -414,11 +419,6 @@ elems:
 
   # {{{ Gentoo - Environment variables.
 
-  - src: 'linux/gentoo/env/([0-9]*(?:.+[\W_])?perl(?:[\W_].+)?)$'
-    dst: '/etc/env.d/<1>'
-    only:
-      features: [['gentoo', 'perl']]
-
   - src: 'linux/gentoo/env/([0-9]*(?:.+[\W_])?xsession(?:[\W_].+)?)$'
     dst: '/etc/env.d/<1>'
     only:
@@ -469,6 +469,11 @@ elems:
       features: ['g-sorcery']
 
   # }}}
+
+  - src: 'linux/gentoo/(modules-load.d/virtualbox.conf)$'
+    dst: '/etc/<1>'
+    only:
+      features: [['gentoo', 'virtualbox', 'systemd']]
 
   # }}}
 

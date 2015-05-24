@@ -112,5 +112,7 @@ features:
   - 'feh'
   - 'parcellite'
   - 'conky'
-  - 'virtualbox_systemd'
+  - 'virtualbox'
+  - 'systemd'
   - 'vim'
+  - 'firefox'
