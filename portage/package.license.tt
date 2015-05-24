@@ -2,6 +2,9 @@ app-emulation/virtualbox-bin PUEL
 
 www-plugins/adobe-flash AdobeFlash-11.x
 
+www-plugins/chrome-binary-plugins google-chrome
+www-plugins/google-talkplugin Google-TOS
+
 <% if has_feature? :java %>
 dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
 <% end %>

@@ -1,9 +1,10 @@
+#!/usr/bin/env zsh
+#
 ################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    portage/package.keywords/permanent.tt                             #
-# - Summary: Permament package keywords. Tipycally these packages should       #
-#            always be at the latest available version.                        #
+# - Name:    zsh/mods/prompt/functions/prompt_pure_setup.zsh.tt                #
+# - Summary: The entry point for performing setup of the prompt `pure`.        #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -33,99 +34,7 @@
 ################################################################################
 
 
-app-admin/lastpass-cli ~amd64
-app-admin/eselect-metasploit ~amd64
-app-emulation/vagrant ~amd64
-app-forensics/afl ~amd64
-app-text/pandoc ~amd64
-app-portage/g-sorcery ~amd64
-dev-util/android-tools ~amd64
-dev-util/radare2 ~amd64
-media-fonts/powerline-fonts ~amd64
-media-fonts/powerline-symbols ~amd64
-media-gfx/blender ~amd64
-media-sound/ardour ~amd64
-net-analyzer/nikto ~amd64
-net-analyzer/metasploit ~amd64
-net-misc/youtube-dl ~amd64
-sys-devel/llvm ~amd64
-sys-devel/clang ~amd64
-
-# Web browsers should always be at the latest version for better
-# web standards and technologies support.
-www-client/firefox ~amd64
-www-client/chromium ~amd64
-
-<% if has_feature? :vim %>
-app-editors/vim ~amd64
-app-editors/vim-core ~amd64
-<% end %>
-
-<% if has_feature? :zathura %>
-app-text/zathura ~amd64
-app-text/zathura-pdf-mupdf ~amd64
-<% end %>
-
-<% if has_feature?(:taskwarrior) || has_feature?(:cli_centric) %>
-app-misc/task ~amd64
-<% end %>
-
-<% if has_feature? :haskell %>
-# Haskell packages should always be at the latest version.
-app-emacs/ghc-mod ~amd64
-dev-haskell/* ~amd64
-<% end %>
-
-<% if has_feature? :java %>
-dev-java/oracle-jdk-bin ~amd64
-dev-java/java-sdk-docs ~amd64
-<% end %>
-
-<% if has_feature? :scala %>
-dev-lang/scala ~amd64
-<% end %>
-
-<% if has_feature? :elixir %>
-dev-lang/elixir ~amd64
-<% end %>
-
-<% if has_feature? :erlang %>
-dev-lang/erlang ~amd64
-<% end %>
-
-<% if has_feature? :python %>
-dev-python/ipython ~amd64
-dev-python/sympy ~amd64
-dev-python/cython ~amd64
-<% end %>
-
-<% if has_feature? :ruby %>
-# Ruby packages should always be at the latest version.
-dev-ruby/* ~amd64
-<% end %>
-
-<% if has_feature? :java %>
-# If we can install the java packages, then the virtuals should never block.
-virtual/jre ~amd64
-virtual/jdk ~amd64
-<% end %>
-
-<% if has_feature?(:turses) || has_feature?(:cli_centric) %>
-net-im/turses ~amd64
-<% end %>
-
-<% if has_feature?(:weechat) || has_feature?(:cli_centric) %>
-net-irc/weechat ~amd64
-<% end %>
-
-<% if has_feature? :steam %>
-*/*::steam-overlay ~amd64
-<% end %>
-
-media-fonts/powerline-fonts ~amd64
-
-www-plugins/google-talkplugin ~amd64
-www-plugins/chrome-binary-plugins ~amd64
+source "${ZSH_MODS_DIR}/prompt/externals/pure/async.zsh"
 
 
-# vim: set filetype=gentoo-package-keywords :
+# vim: set filetype=zsh :
