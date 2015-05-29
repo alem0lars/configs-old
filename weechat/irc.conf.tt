@@ -34,6 +34,9 @@
 
 [look]
 
+buffer_open_before_autojoin = on
+buffer_open_before_join     = off
+
 buffer_switch_autojoin = on
 buffer_switch_join     = on
 
@@ -105,6 +108,8 @@ smart_filter_join_unmask = 30
 smart_filter_mode        = "+"
 smart_filter_nick        = on
 smart_filter_quit        = on
+
+temporary_servers = off
 
 topic_strip_colors = off
 
@@ -194,8 +199,8 @@ command_delay = 0
 connection_timeout = 60
 
 default_msg_kick = ""
-default_msg_part = "WeeChat %v"
-default_msg_quit = "WeeChat %v"
+default_msg_part = "Part."
+default_msg_quit = "Quit."
 
 ipv6 = on
 
@@ -272,9 +277,9 @@ firrre.ssl         = on
 firrre.ssl_cert
 firrre.ssl_priorities
 firrre.ssl_dhkey_size
-firrre.ssl_fingerprint
+firrre.ssl_fingerprint = "a85328ff23c32bf9ebca8f2511b727dc3b6980f9"
 firrre.ssl_verify
-firrre.password    = "<%= eval(get_var! 'irc.servers.firrre.password') %>"
+firrre.password    = "<%= `#{get_var! 'irc.servers.firrre.password'}` %>"
 firrre.capabilities
 firrre.sasl_mechanism
 firrre.sasl_username

@@ -78,9 +78,10 @@ echo -e "${fg[blue]}starting trayer${reset_color}"
 killall trayer-srg > /dev/null
 nohup trayer-srg --edge top --align right \
                  --width  12 --widthtype  percent \
-                 --height 20 --heighttype pixel \
-                 --SetDockType true --SetPartialStrut true --expand true \
-                 --alpha 0 --transparent true --tint 0x1c1c1c > /dev/null &
+                 --height <%= size = Integer(Integer(get_var!('fonts.main.size')) * 1.2); has_feature?('hidpi') ? size * 2 : size %> \
+                 --heighttype pixel --SetDockType true --SetPartialStrut true \
+                 --expand true --alpha 0 --transparent true --tint 0x1c1c1c \
+                 > /dev/null &
 <% end %>
 
 <% if has_feature? :networkmanager %>
@@ -101,7 +102,10 @@ if [[ -f ~/.screenlayout/default.sh ]]; then
   source ~/.screenlayout/default.sh
 fi
 
-<% if has_feature? :parcellite %>
+<% if has_feature? 'copyq' %>
+echo -e "${fg[blue]}starting copyq${reset_color}"
+copyq &
+<% elsif has_feature? 'parcellite' %>
 echo -e "${fg[blue]}starting parcellite${reset_color}"
 parcellite &
 <% end %>

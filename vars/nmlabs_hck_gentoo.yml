@@ -217,3 +217,4 @@ features:
   - 'zathura'
   - 'zsh'
   - 'x11'
+  - 'copyq'

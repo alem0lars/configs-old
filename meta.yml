@@ -160,6 +160,11 @@ elems:
 
   # {{{ Software specific.
 
+  - src: '(snort/.+)$'
+    dst: '/etc/<1>'
+    only:
+      features: ['snort']
+
   - src: 'xmonad/xmonad.hs'
     dst: '~/.xmonad/xmonad.hs'
     only:

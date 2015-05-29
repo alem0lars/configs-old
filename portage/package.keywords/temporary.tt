@@ -69,11 +69,6 @@ dev-util/capstone ~amd64
 =dev-java/hawtjni-runtime-1.8 ~amd64
 <% end %>
 
-<% if has_feature? :haskell %>
-# needed by `dev-haskell/haskell-platform`.
-=dev-lang/ghc-7.8.3 ~amd64
-<% end %>
-
 <% if has_feature? :python %>
 # Needed by `dev-python/ipython`.
 =dev-python/oct2py-1.3.0-r1 ~amd64
@@ -143,6 +138,13 @@ media-plugins/gimp-gmic ~amd64
 media-plugins/gimp-resynthesizer ~amd64
 sci-electronics/ghdl ~amd64
 net-misc/httpie ~amd64
+app-admin/lnav ~amd64
+www-servers/pshs ~amd64
+sys-apps/cv ~amd64
+x11-plugins/imgur-integration ~amd64
+app-crypt/hashcat-bin ~amd64
+media-video/handbrake ~amd64
+net-analyzer/snort ~amd64
 
 <% if has_feature? :ruby %>
 dev-ruby/thor ~amd64
@@ -177,6 +179,9 @@ dev-util/findbugs ~amd64
 =dev-java/jformatstring-2.0.3 ~amd64
 =dev-java/jcip-annotations-1.0.1 ~amd64
 =dev-java/bcel-6.0_rc3 ~amd64
+
+# Needed by `net-analyzer/snort`.
+net-libs/daq ~amd64
 
 # }}}
 

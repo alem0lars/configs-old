@@ -5,6 +5,8 @@ www-plugins/adobe-flash AdobeFlash-11.x
 www-plugins/chrome-binary-plugins google-chrome
 www-plugins/google-talkplugin Google-TOS
 
+media-libs/fdk-aac FraunhoferFDK
+
 <% if has_feature? :java %>
 dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
 <% end %>

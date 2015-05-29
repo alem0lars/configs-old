@@ -66,8 +66,10 @@ ipv6 = on
 
 max_clients = 5
 
-password                  = ""
-ssl_cert_key              = "%h/ssl/relay.pem"
+password       = ""
+ssl_cert_key   = "%h/ssl/relay.pem"
+ssl_priorities = "NORMAL:-VERS-SSL3.0"
+
 websocket_allowed_origins = ""
 
 

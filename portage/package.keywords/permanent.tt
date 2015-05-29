@@ -50,6 +50,7 @@ net-analyzer/metasploit ~amd64
 net-misc/youtube-dl ~amd64
 sys-devel/llvm ~amd64
 sys-devel/clang ~amd64
+x11-misc/copyq ~amd64
 
 # Web browsers should always be at the latest version for better
 # web standards and technologies support.
@@ -74,6 +75,7 @@ app-misc/task ~amd64
 # Haskell packages should always be at the latest version.
 app-emacs/ghc-mod ~amd64
 dev-haskell/* ~amd64
+dev-lang/ghc ~amd64
 <% end %>
 
 <% if has_feature? :java %>

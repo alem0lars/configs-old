@@ -32,15 +32,14 @@
 ################################################################################
 
 
-# host infos {{{
+# {{{ Host informations.
 
 CHOST="x86_64-pc-linux-gnu"
 LINGUAS="en"
 
 # }}}
 
-
-# devices {{{
+# {{{ Devices.
 
 ABI_X86="<%= get_var!('portage.abi_x86').join(' ') %>"
 INPUT_DEVICES="<%= get_var!('portage.input_devices').join(' ') %>"
@@ -48,8 +47,7 @@ VIDEO_CARDS="<%= get_var!('portage.video_cards').join(' ') %>"
 
 # }}}
 
-
-# compilers {{{
+# {{{ Compilers.
 
 CFLAGS="-O2 -pipe -march=native"
 CXXFLAGS="${CFLAGS}"
@@ -61,8 +59,7 @@ MAKEOPTS="-j<%= get_var! 'parallelism' %> -l<%= get_var! 'parallelism' %>"
 
 # }}}
 
-
-# portage directories {{{
+# {{{ Portage - Misc directories.
 
 PORTDIR="/usr/portage"
 DISTDIR="${PORTDIR}/distfiles"
@@ -70,12 +67,21 @@ PKGDIR="${PORTDIR}/packages"
 
 # }}}
 
+# {{{ Portage - Logging.
 
-# emerge {{{
+FEATURES="clean-logs split-log ${FEATURES}"
+
+PORT_LOGDIR="/var/log/portage"
+
+# }}}
+
+# {{{ Emerge.
 
 FEATURES="splitdebug parallel-fetch metadata-transfer ${FEATURES}"
 FEATURES="-userfetch -userpriv ${FEATURES}"
+
 PORTAGE_NICENESS=16
+
 EMERGE_DEFAULT_OPTS="--with-bdeps=y --keep-going=y --quiet-unmerge-warn"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --quiet-build=y --verbose"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs=<%= get_var! 'parallelism' %>"
@@ -83,8 +89,7 @@ EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --load=<%= get_var! 'parallelism' %>
 
 # }}}
 
-
-# python {{{
+# {{{ Python.
 
 PYTHON_TARGETS="python3_3 python2_7"
 USE_PYTHON="3.3 2.7"
@@ -92,8 +97,7 @@ PYTHON_SINGLE_TARGET="python3_3"
 
 # }}}
 
-
-# use flags {{{
+# {{{ Use flags.
 
 USE="${USE} <%= get_var!('portage.use_flags').join(' ') %>"
 

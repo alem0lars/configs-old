@@ -80,11 +80,11 @@ taskwarrior:
     key_file:    'freecinc_e2cca0ca.key.pem'
     cert_file:   'freecinc_e2cca0ca.cert.pem'
     ca_file:     'freecinc_e2cca0ca.ca.pem'
-    credentials: '`lpass show --password "freecinc_credentials"`'
+    credentials: 'lpass show --password "alem0lars @ freecinc"'
 
 mutt:
   theme: '/etc/mutt/theme'
-email_pass:  '`lpass show --password "kitty@mutt google app password"`'
+email_pass:  'lpass show --password "molari.alessandro@gmail.com @ mutt"'
 email_host:  'gmail.com'
 imap_server: 'imap.gmail.com'
 smtp_server: 'smtp.gmail.com'
@@ -102,15 +102,15 @@ irc:
   nickname: 'alem0lars'
   servers:
     firrre:
-      password: '`lpass show --password "alem0lars_firrre"`'
+      password: 'lpass show --password "alem0lars @ firrre.com"'
 
 features:
+  - 'snort'
   - 'dracut'
   - 'systemd'
   - 'cli_centric'
   - 'gtk_vim'
   - 'feh'
-  - 'parcellite'
   - 'conky'
   - 'virtualbox'
   - 'systemd'

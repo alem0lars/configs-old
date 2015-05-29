@@ -289,7 +289,7 @@ defStatusBarPP h = defaultPP
   }
 defStatusBarCmd screenWidth =
   "dzen2 -e 'button2=;' -ta l -fn '" ++ defFont ++ "' -bg '" ++ defBgColor ++
-  "' -x 0 -y 0 -h 20 -w " ++ (show $ screenWidth * 0.88)
+  "' -x 0 -y 0 -h <%= size = Integer(Integer(get_var!('fonts.main.size')) * 1.2); has_feature?('hidpi') ? size * 2 : size %> -w " ++ (show $ screenWidth * 0.88)
 
 -- Runner
 defDMenuRunCmd = "dmenu_run -i -l 16 -fn '" ++ defFont ++ "' -p '>> '"

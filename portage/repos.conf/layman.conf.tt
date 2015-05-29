@@ -37,3 +37,15 @@ layman-type = git
 sync-type = laymansync
 sync-uri = git://github.com/alem0lars/apo.git
 auto-sync = Yes
+
+<% if has_feature? 'haskell' %>
+
+[haskell]
+priority = 50
+location = /var/lib/layman/haskell
+layman-type = git
+sync-type = laymansync
+sync-uri = git://github.com/gentoo-haskell/gentoo-haskell.git
+auto-sync = Yes
+
+<% end %>
