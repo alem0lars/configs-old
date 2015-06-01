@@ -117,25 +117,25 @@ elems:
   - src:  'taskwarrior/taskrc'
     dst:  '~/.taskrc'
     only:
-      features: 'taskwarrior'
+      features: ['taskwarrior']
 
   - src: 'cmus/(.+)'
     dst: '~/.cmus/<1>'
     only:
-      features: 'cmus'
+      features: ['cmus']
 
   - src:  'mutt/global_muttrc'
     dst:  '/etc/mutt/Muttrc'
     only:
-      features: 'mutt'
+      features: ['mutt']
   - src:  'mutt/theme'
     dst:  '/etc/mutt/theme'
     only:
-      features: 'mutt'
+      features: ['mutt']
   - src:  'mutt/user_muttrc'
     dst:  '~/.muttrc'
     only:
-      features: 'mutt'
+      features: ['mutt']
     notes: |
       Depending on user's configuration, additional programs maybe required.
       For example, if passwords are retrieved using 'lpass', then the
@@ -144,17 +144,17 @@ elems:
   - src:  'turses/(.+)'
     dst:  '~/.turses/<1>'
     only:
-      features: 'turses'
+      features: ['turses']
 
   - src:  'weechat/(.+)'
     dst:  '~/.weechat/<1>'
     only:
-      features: 'weechat'
+      features: ['weechat']
 
   - src:  'canto/(conf)'
     dst:  '~/.canto-ng/<1>'
     only:
-      features: 'canto'
+      features: ['canto']
 
   # }}}
 
