@@ -230,6 +230,8 @@ ssl_verify = on
 
 [server]
 
+
+
 <% if get_var 'irc.servers.freenode' %>
 freenode.addresses = "chat.freenode.net/6667"
 freenode.proxy
@@ -306,6 +308,45 @@ firrre.default_msg_kick
 firrre.default_msg_part
 firrre.default_msg_quit
 firrre.notify
+<% end %>
+
+<% if get_var 'irc.servers.smashthestack' %>
+smashthestack.addresses   = "irc.smashthestack.org/6667"
+smashthestack.proxy
+smashthestack.ipv6
+smashthestack.ssl
+smashthestack.ssl_cert
+smashthestack.ssl_priorities
+smashthestack.ssl_dhkey_size
+smashthestack.ssl_fingerprint
+smashthestack.ssl_verify
+smashthestack.password
+smashthestack.capabilities
+smashthestack.sasl_mechanism
+smashthestack.sasl_username
+smashthestack.sasl_password
+smashthestack.sasl_timeout
+smashthestack.autoconnect = on
+smashthestack.autoreconnect
+smashthestack.autoreconnect_delay
+smashthestack.nicks
+smashthestack.username
+smashthestack.realname
+smashthestack.local_hostname
+smashthestack.command
+smashthestack.command_delay
+smashthestack.autojoin
+smashthestack.autorejoin
+smashthestack.autorejoin_delay
+smashthestack.connection_timeout
+smashthestack.anti_flood_prio_high
+smashthestack.anti_flood_prio_low
+smashthestack.away_check
+smashthestack.away_check_max_nicks
+smashthestack.default_msg_kick
+smashthestack.default_msg_part
+smashthestack.default_msg_quit
+smashthestack.notify
 <% end %>
 
 

@@ -103,12 +103,17 @@ irc:
   servers:
     firrre:
       password: 'lpass show --password "alem0lars @ firrre.com"'
+    smashthestack: true
 
 features:
   - 'snort'
   - 'dracut'
   - 'systemd'
-  - 'cli_centric'
+  - 'cmus'
+  - 'mutt'
+  - 'turses'
+  - 'weechat'
+  - 'canto'
   - 'gtk_vim'
   - 'feh'
   - 'conky'

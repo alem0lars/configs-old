@@ -103,7 +103,7 @@ x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth 
 <% end %>
 
 <% if has_feature? :mutt %>
-mail-client/mutt gpg sidebar smime smtp
+mail-client/mutt gpg sidebar smime smtp pop ntp mbox imap gpg
 <% end %>
 
 <% if has_feature? :networkmanager %>
