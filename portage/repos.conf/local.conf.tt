@@ -1,0 +1,4 @@
+[local]
+location = /usr/local/portage
+masters = gentoo
+auto-sync = no
