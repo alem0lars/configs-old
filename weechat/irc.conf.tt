@@ -227,12 +227,8 @@ ssl_fingerprint = ""
 ssl_priorities = "NORMAL"
 ssl_verify = on
 
-
-[server]
-
-
-
 <% if get_var 'irc.servers.freenode' %>
+[server]
 freenode.addresses = "chat.freenode.net/6667"
 freenode.proxy
 freenode.ipv6
@@ -272,6 +268,7 @@ freenode.notify
 <% end %>
 
 <% if get_var 'irc.servers.firrre' %>
+[server]
 firrre.addresses   = "furnace.firrre.com/9090"
 firrre.proxy
 firrre.ipv6
@@ -281,7 +278,7 @@ firrre.ssl_priorities
 firrre.ssl_dhkey_size
 firrre.ssl_fingerprint = "a85328ff23c32bf9ebca8f2511b727dc3b6980f9"
 firrre.ssl_verify
-firrre.password    = "<%= `#{get_var! 'irc.servers.firrre.password'}` %>"
+firrre.password    = "<%= `#{get_var!('irc.servers.firrre.password').chomp}` %>"
 firrre.capabilities
 firrre.sasl_mechanism
 firrre.sasl_username
@@ -311,6 +308,7 @@ firrre.notify
 <% end %>
 
 <% if get_var 'irc.servers.smashthestack' %>
+[server]
 smashthestack.addresses   = "irc.smashthestack.org/6667"
 smashthestack.proxy
 smashthestack.ipv6
@@ -333,9 +331,9 @@ smashthestack.nicks
 smashthestack.username
 smashthestack.realname
 smashthestack.local_hostname
-smashthestack.command
+smashthestack.command = "/msg nickserv identify <%= `#{get_var!('irc.servers.smashthestack.password').chomp}` %>"
 smashthestack.command_delay
-smashthestack.autojoin
+smashthestack.autojoin = "#social,#io"
 smashthestack.autorejoin
 smashthestack.autorejoin_delay
 smashthestack.connection_timeout

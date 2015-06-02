@@ -240,7 +240,7 @@ elems:
 
   # {{{ Vimperator.
 
-  - src:  '(vimperator/vimperatorrc)$'
+  - src:  'vimperator/(vimperatorrc)$'
     dst:  '~/.<1>'
     only:
       features: [['firefox', 'vim']]
@@ -250,8 +250,8 @@ elems:
     only:
       features: [['firefox', 'vim']]
 
-  - src:  'vimperator/colors/amdarkness'
-    dst:  '~/.vimperator/colors/amdarkness.vimp'
+  - src:  '(vimperator/colors/amdarkness)'
+    dst:  '~/.<1>.vimp'
     only:
       features: [['firefox', 'vim']]
 

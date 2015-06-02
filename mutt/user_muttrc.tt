@@ -42,19 +42,19 @@ set from     = "<%= get_var! :email    %>"
 
 # imap accounts {{{
 
-set imap_user = <%= get_var! 'email'     %>
-set imap_pass = <%= `#{get_var! 'email_pass'}` %>
-set folder    = imaps://<%= get_var! 'imap_server' %>/
-set spoolfile = +INBOX
+set imap_user = "<%= get_var! 'email'     %>"
+set imap_pass = "<%= `#{get_var! 'email_pass'}` %>"
+set folder    = "imaps://<%= get_var! 'imap_server' %>/"
+set spoolfile = "+INBOX"
 
 # }}}
 
 
 # smtp {{{
 
-set smtp_url  = smtps://<%= get_var! :email %>:<%= `#{get_var! 'email_pass'}` %>@<%= get_var! :smtp_server %>
-set realname  = <%= get_var! :fullname %>
-set from      = <%= get_var! :email    %>
+set smtp_url  = "smtps://<%= get_var! :email %>:<%= `#{get_var!('email_pass').chomp}` %>@<%= get_var! :smtp_server %>"
+set realname  = "<%= get_var! :fullname %>"
+set from      = "<%= get_var! :email    %>"
 set hostname  = "<%= get_var! :email_host      %>"
 set signature = "<%= get_var! :email_signature %>"
 

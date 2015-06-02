@@ -97,6 +97,8 @@ www-client/firefox pgo
 
 virtual/ffmpeg vaapi
 
+dev-util/radare2 debug
+
 app-text/asciidoc highlight 
 <% if has_feature? :urxvt %>
 x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3

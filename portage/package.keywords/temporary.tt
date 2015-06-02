@@ -56,6 +56,7 @@ dev-util/capstone ~amd64
 # Needed by `www-client/firefox`.
 =x11-libs/libdrm-2.4.56 ~amd64
 =media-libs/mesa-10.3.0 ~amd64
+=dev-libs/nss-3.19-r1 ~amd64
 
 # Needed by `app-emulation/vagrant`.
 =dev-ruby/net-ssh-2.9.0 ~amd64

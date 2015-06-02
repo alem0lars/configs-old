@@ -103,7 +103,8 @@ irc:
   servers:
     firrre:
       password: 'lpass show --password "alem0lars @ firrre.com"'
-    smashthestack: true
+    smashthestack:
+      password: 'lpass show --password "alem0lars @ irc.smashthestack.org"'
 
 features:
   - 'snort'
