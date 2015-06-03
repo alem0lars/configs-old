@@ -54,7 +54,7 @@ media-video/libav pic
 # }}}
 
 
-# other {{{
+# {{{ Other.
 
 # Harfbuzz triggers circular dependencies errors.
 */* -harfbuzz
