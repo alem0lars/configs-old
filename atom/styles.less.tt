@@ -1,28 +1,46 @@
-/*
- * Your Stylesheet
- *
- * This stylesheet is loaded when Atom starts up and is reloaded automatically
- * when it is changed.
- *
- * If you are unfamiliar with LESS, you can read more about it here:
- * http://www.lesscss.org
- */
+// {{{ File header. ############################################################
+//                                                                             #
+// File informations:                                                          #
+// - Name:    atom/styles.less.tt                                              #
+// - Summary: Custom stylesheets definition for Atom.                          #
+// - Description: This stylesheet is loaded when Atom starts up and is         #
+//                reloaded automatically when it is changed.                   #
+// - Authors:                                                                  #
+//   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)             #
+//                                                                             #
+// Project informations:                                                       #
+//   - Homepage:        https://github.com/alem0lars/configs                   #
+//   - Getting started: see README.md in the project root folder               #
+//                                                                             #
+// License: Apache v2.0 (see below)                                            #
+//                                                                             #
+// #############################################################################
+//                                                                             #
+// Licensed to the Apache Software Foundation (ASF) under one more contributor #
+// license agreements.  See the NOTICE file distributed with this work for     #
+// additional information regarding copyright ownership. The ASF licenses this #
+// file to you under the Apache License, Version 2.0 (the "License"); you may  #
+// not use this file except in compliance with the License.                    #
+// You may obtain a copy of the License at                                     #
+//                                                                             #
+//   http://www.apache.org/licenses/LICENSE-2.0                                #
+//                                                                             #
+// Unless required by applicable law or agreed to in writing, software         #
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT   #
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.            #
+// See the License for the specific language governing permissions and         #
+// limitations under the License.                                              #
+//                                                                             #
+// }}} #########################################################################
 
-.tree-view {
+.tree-view { }
 
-}
-
-// style the background and foreground colors on the atom-text-editor-element
-// itself
-atom-text-editor {
-
-}
+// Style the background and foreground colors on the atom-text-editor-element
+// itself.
+atom-text-editor { }
 
 // To style other content in the text editor's shadow DOM, use the ::shadow
-// expression
-atom-text-editor::shadow .cursor {
+// expression.
+atom-text-editor::shadow .cursor { }
 
-}
-
-
-/* vim: set filetype=less : */
+// vim: set filetype=less :

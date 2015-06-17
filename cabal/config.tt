@@ -1,4 +1,4 @@
---##############################################################################
+-- {{{ File header. ############################################################
 --                                                                             #
 -- File informations:                                                          #
 -- - Name:    cabal/config.tt                                                  #
@@ -12,7 +12,7 @@
 --                                                                             #
 -- License: Apache v2.0 (see below)                                            #
 --                                                                             #
---##############################################################################
+-- #############################################################################
 --                                                                             #
 -- Licensed to the Apache Software Foundation (ASF) under one more contributor #
 -- license agreements.  See the NOTICE file distributed with this work for     #
@@ -29,7 +29,7 @@
 -- See the License for the specific language governing permissions and         #
 -- limitations under the License.                                              #
 --                                                                             #
---##############################################################################
+-- }}} #########################################################################
 
 
 -- require-sandbox: False
@@ -190,3 +190,6 @@ program-default-options
   -- strip-options:
   -- tar-options:
   -- uhc-options:
+
+
+-- vim: set filetype=haskell :
