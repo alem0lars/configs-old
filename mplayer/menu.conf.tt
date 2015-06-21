@@ -31,7 +31,6 @@
 #                                                                              #
 #############################################################################-->
 
-
 <keybindings name="default">
   <binding key="UP" cmd="menu up" />
   <binding key="DOWN" cmd="menu down" />
@@ -181,6 +180,5 @@
   <e name="Console" ok="set_menu console0"/>
   <e name="Quit" ok="quit"/>
 </cmdlist>
-
 
 <!-- vim: set filetype=xml : -->

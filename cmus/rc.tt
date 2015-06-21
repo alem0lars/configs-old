@@ -31,7 +31,6 @@
 #                                                                              #
 ################################################################################
 
-
 set set_term_title=true
 set show_remaining_time=true
 set smart_artist_sort=true

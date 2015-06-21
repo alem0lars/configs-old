@@ -31,7 +31,6 @@
 #                                                                              #
 ################################################################################
 
-
 <% if get_var :github_username %>
 [github]
   user = <%= get_var :github_username %>

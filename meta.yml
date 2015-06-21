@@ -1,4 +1,4 @@
-################################################################################
+# {{{ ##########################################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    meta.yml                                                          #
@@ -30,8 +30,7 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
-
+# }}} ##########################################################################
 
 commands:
   - type: 'git_sync'
@@ -70,7 +69,6 @@ commands:
     only:
       features: ['linux']
       vars: ['colorscheme']
-
 
 elems:
 

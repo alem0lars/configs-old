@@ -31,7 +31,6 @@
 #                                                                              #
 ################################################################################
 
-
 GRUB_DISTRIBUTOR="<%= get_var!('distro_name').capitalize %>"
 
 <% if has_feature? 'btrfs' %>

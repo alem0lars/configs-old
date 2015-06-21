@@ -1,4 +1,4 @@
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    mplayer/input.conf.tt                                             #
@@ -36,8 +36,7 @@
 #                                                                              #
 # If you wish to unbind a key, use key ignore (e.g. ENTER ignore).             #
 #                                                                              #
-################################################################################
-
+# }}} ##########################################################################
 
 RIGHT seek +10
 LEFT seek -10
@@ -51,28 +50,28 @@ m mute
 + audio_delay 0.100
 = audio_delay 0.100
 - audio_delay -0.100
-[ speed_mult 0.9091     # Scale playback speed.
+[ speed_mult 0.9091 # Scale playback speed.
 ] speed_mult 1.1
 { speed_mult 0.5
 } speed_mult 2.0
-BS speed_set 1.0        # Reset speed to normal.
+BS speed_set 1.0 # Reset speed to normal.
 q quit
 ESC quit
-ENTER pt_step 1 1       # Skip to next file.
+ENTER pt_step 1 1 # Skip to next file.
 p pause
-. frame_step            # Advance one frame and pause.
+. frame_step # Advance one frame and pause.
 SPACE pause
 HOME pt_up_step 1
 END pt_up_step -1
-> pt_step 1             # Skip to next file.
-< pt_step -1            # Skip to previous file.
+> pt_step 1  # Skip to next file.
+< pt_step -1 # Skip to previous file.
 INS alt_src_step 1
 DEL alt_src_step -1
 o osd
 I osd_show_property_text "${filename}" # Display filename in osd.
 P osd_show_progression
-z sub_delay -0.1        # Subtract 100ms delay from subs.
-x sub_delay +0.1        # Add 100ms delay from subs.
+z sub_delay -0.1 # Subtract 100ms delay from subs.
+x sub_delay +0.1 # Add 100ms delay from subs.
 9 volume -1
 / volume -1
 0 volume 1
@@ -85,31 +84,30 @@ x sub_delay +0.1        # Add 100ms delay from subs.
 6 hue 1
 7 saturation -1
 8 saturation 1
-( balance -0.1          # Adjust audio balance in favor of left.
-) balance +0.1          # Adjust audio balance in favor of right.
+( balance -0.1 # Adjust audio balance in favor of left.
+) balance +0.1 # Adjust audio balance in favor of right.
 d frame_drop
 D step_property deinterlace  # Toggle deinterlacer, requires -vf yadif or kerndeint.
-r sub_pos -1            # Move subtitles up.
-t sub_pos +1            # Move subtitles down.
-#? sub_step +1          # Immediately display next subtitle.
-#? sub_step -1          # Immediately display previous subtitle.
-#? sub_scale +0.1       # Increase subtitle font size.
-#? sub_scale -0.1       # Decrease subtitle font size.
+r sub_pos -1      # Move subtitles up.
+t sub_pos +1      # Move subtitles down.
+#? sub_step +1    # Immediately display next subtitle.
+#? sub_step -1    # Immediately display previous subtitle.
+#? sub_scale +0.1 # Increase subtitle font size.
+#? sub_scale -0.1 # Decrease subtitle font size.
 f vo_fullscreen
-T vo_ontop              # Toggle video window ontop of other windows.
-w panscan -0.1          # Zoom out with '-panscan 0 -fs'.
-e panscan +0.1          # Zoom in with '-panscan 0 -fs'.
-c capturing             # Save (and append) file/stream to stream.dump with '-capture'.
-s screenshot            # Take a png screenshot with '-vf' screenshot.
-                        # 'S' will take a png screenshot of every frame.
+T vo_ontop     # Toggle video window ontop of other windows.
+w panscan -0.1 # Zoom out with '-panscan 0 -fs'.
+e panscan +0.1 # Zoom in with '-panscan 0 -fs'.
+c capturing    # Save (and append) file/stream to stream.dump with '-capture'.
+s screenshot   # Take a png screenshot with '-vf' screenshot.
+               # 'S' will take a png screenshot of every frame.
 
 h tv_step_channel 1
 l tv_step_channel -1
 n tv_step_norm
 b tv_step_chanlist
 
-
-# joystick {{{
+# {{{ Joystick.
 #
 # WARNING: joystick support has to be explicitly enabled at compiletime with
 #          --enable-joystick
@@ -126,12 +124,10 @@ JOY_BTN4 set_menu main
 
 # }}}
 
-
-# apple remote {{{
+# {{{ Apple remote.
 #
 # To use OSD menu with Apple Remote, set key AR_MENU to any OSD menu command,
 # or just comment out the 'AR_MENU osd' line and uncomment the line after it.
-
 
 AR_PLAY pause
 AR_PLAY_HOLD quit
@@ -147,8 +143,7 @@ AR_VDOWN volume -1
 
 # }}}
 
-
-# osd menu movement keys {{{
+# {{{ OSD menu movement keys.
 #
 # If you are using only the keyboard it is enough to define one command (like
 # "menu up"), because then that single key will display the menu, which can
@@ -160,7 +155,6 @@ AR_VDOWN volume -1
 # its argument. Usage should be self-explanatory (although not likely
 # to be needed), after reading input.conf.
 
-
 #MOUSE_BTN0 menu up
 #y menu down
 #y menu ok
@@ -170,8 +164,7 @@ AR_VDOWN volume -1
 
 # }}}
 
-
-# dvdnav {{{
+# {{{ Dvdnav.
 #
 # Requires dvdnav://
 
@@ -192,8 +185,7 @@ AR_PLAY   {dvdnav} dvdnav select  # DVDNav SELECT (ok)
 
 # }}}
 
-
-# seek {{{
+# {{{ Seek.
 
 #? seek_chapter -1      # skip to previous dvd chapter
 #? seek_chapter +1      #         next
@@ -214,6 +206,5 @@ AR_PLAY   {dvdnav} dvdnav select  # DVDNav SELECT (ok)
 #F9 seek 90 1
 
 # }}}
-
 
 # vim: set filetype=conf :

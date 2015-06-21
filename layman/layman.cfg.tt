@@ -31,7 +31,6 @@
 #                                                                              #
 ################################################################################
 
-
 [MAIN]
 #-----------------------------------------------------------
 # Defines the directory where overlays should be installed
@@ -308,6 +307,5 @@ news_reporter: portage
 #
 #git_user  : layman
 #git_email : layman@localhost
-
 
 # vim: set filetype=conf :

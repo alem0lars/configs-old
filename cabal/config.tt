@@ -31,7 +31,6 @@
 --                                                                             #
 -- }}} #########################################################################
 
-
 -- require-sandbox: False
 -- ignore-sandbox: False
 remote-repo: hackage.haskell.org:http://hackage.haskell.org/packages/archive
@@ -190,6 +189,5 @@ program-default-options
   -- strip-options:
   -- tar-options:
   -- uhc-options:
-
 
 -- vim: set filetype=haskell :
