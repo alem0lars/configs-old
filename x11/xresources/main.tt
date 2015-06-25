@@ -153,6 +153,11 @@ urxvt.keysym.M-s:      perl:keyboard-select:search
 urxvt.keysym.M-u:  perl:url-select:select_next
 urxvt.urlLauncher: <%= get_var! 'urxvt.url_launcher' %>
 
+urxvt.url-select.launcher:  <%= get_var! 'urxvt.url_launcher' %>
+urxvt.url-select.underline: true
+urxvt.url-select.button:    1
+urxvt.url-select.autocopy:  false
+
 <% end %>
 
 ! }}}

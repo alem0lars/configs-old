@@ -105,6 +105,13 @@ irc:
       password: 'lpass show --password "alem0lars @ firrre.com"'
     smashthestack:
       password: 'lpass show --password "alem0lars @ irc.smashthestack.org"'
+    slack:
+      - name: 'nextreamlabs'
+        username: 'alem0lars'
+        password: 'lpass show --password "alem0lars @ nextreamlabs.irc.slack.com"'
+      - name: 'cesena'
+        username: 'alem0lars'
+        password: 'lpass show --password "alem0lars @ cesena.irc.slack.com"'
 
 features:
   - 'snort'

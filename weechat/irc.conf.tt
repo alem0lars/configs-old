@@ -228,6 +228,7 @@ ssl_priorities = "NORMAL"
 ssl_verify = on
 
 <% if get_var 'irc.servers.freenode' %>
+
 [server]
 freenode.addresses = "chat.freenode.net/6667"
 freenode.proxy
@@ -265,9 +266,11 @@ freenode.default_msg_kick
 freenode.default_msg_part
 freenode.default_msg_quit
 freenode.notify
+
 <% end %>
 
 <% if get_var 'irc.servers.firrre' %>
+
 [server]
 firrre.addresses   = "furnace.firrre.com/9090"
 firrre.proxy
@@ -278,7 +281,7 @@ firrre.ssl_priorities
 firrre.ssl_dhkey_size
 firrre.ssl_fingerprint = "a85328ff23c32bf9ebca8f2511b727dc3b6980f9"
 firrre.ssl_verify
-firrre.password    = "<%= `#{get_var!('irc.servers.firrre.password').chomp}` %>"
+firrre.password    = "<%= `#{get_var!('irc.servers.firrre.password')}`.chomp %>"
 firrre.capabilities
 firrre.sasl_mechanism
 firrre.sasl_username
@@ -308,11 +311,12 @@ firrre.notify
 <% end %>
 
 <% if get_var 'irc.servers.smashthestack' %>
+
 [server]
-smashthestack.addresses   = "irc.smashthestack.org/6667"
+smashthestack.addresses   = "irc.smashthestack.org/6697"
 smashthestack.proxy
 smashthestack.ipv6
-smashthestack.ssl
+smashthestack.ssl         = on
 smashthestack.ssl_cert
 smashthestack.ssl_priorities
 smashthestack.ssl_dhkey_size
@@ -331,7 +335,7 @@ smashthestack.nicks
 smashthestack.username
 smashthestack.realname
 smashthestack.local_hostname
-smashthestack.command = "/msg nickserv identify <%= `#{get_var!('irc.servers.smashthestack.password').chomp}` %>"
+smashthestack.command = "/msg nickserv identify <%= `#{get_var!('irc.servers.smashthestack.password')}`.chomp %>"
 smashthestack.command_delay
 smashthestack.autojoin = "#social,#io"
 smashthestack.autorejoin
@@ -345,7 +349,51 @@ smashthestack.default_msg_kick
 smashthestack.default_msg_part
 smashthestack.default_msg_quit
 smashthestack.notify
+
 <% end %>
 
+<% if get_var 'irc.servers.slack' %>
+  <% get_var!('irc.servers.slack').each do |server| %>
+
+[server]
+<%= server.name %>.addresses = "<%= server.name %>.irc.slack.com/6697"
+<%= server.name %>.proxy
+<%= server.name %>.ipv6
+<%= server.name %>.ssl = on
+<%= server.name %>.ssl_cert
+<%= server.name %>.ssl_priorities
+<%= server.name %>.ssl_dhkey_size
+<%= server.name %>.ssl_fingerprint
+<%= server.name %>.ssl_verify
+<%= server.name %>.password = "<%= `#{server.password}`.chomp %>"
+<%= server.name %>.capabilities
+<%= server.name %>.sasl_mechanism
+<%= server.name %>.sasl_username
+<%= server.name %>.sasl_password
+<%= server.name %>.sasl_timeout
+<%= server.name %>.autoconnect = on
+<%= server.name %>.autoreconnect
+<%= server.name %>.autoreconnect_delay
+<%= server.name %>.nicks
+<%= server.name %>.username = "<%= server.username %>"
+<%= server.name %>.realname
+<%= server.name %>.local_hostname
+<%= server.name %>.command
+<%= server.name %>.command_delay
+<%= server.name %>.autojoin
+<%= server.name %>.autorejoin
+<%= server.name %>.autorejoin_delay
+<%= server.name %>.connection_timeout
+<%= server.name %>.anti_flood_prio_high
+<%= server.name %>.anti_flood_prio_low
+<%= server.name %>.away_check
+<%= server.name %>.away_check_max_nicks
+<%= server.name %>.default_msg_kick
+<%= server.name %>.default_msg_part
+<%= server.name %>.default_msg_quit
+<%= server.name %>.notify
+
+  <% end %>
+<% end %>
 
 # vim: set filetype=conf :

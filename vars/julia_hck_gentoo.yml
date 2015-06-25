@@ -35,7 +35,6 @@
 #                                                                              #
 ################################################################################
 
-
 hostname: 'julia'
 
 kernel_config: 'julia_hck_gentoo'
@@ -77,6 +76,5 @@ features:
   - 'host_julia'
   - 'touchpad'
   - 'hidpi'
-
 
 # vim: set filetype=yaml :
