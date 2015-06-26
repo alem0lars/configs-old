@@ -50,7 +50,13 @@ sci-libs/hdf5 -cxx -fortran
 media-libs/x264 pic
 media-video/libav pic
 
-dev-vcs/subversion -dso
+dev-vcs/subversion -dso -doc
+
+# Prevent build failures because their javadoc contain errors.
+dev-java/ant-core -doc
+dev-java/jsr305 -doc
+dev-java/hamcrest-core -doc
+dev-java/libreadline-java -doc
 
 # }}}
 

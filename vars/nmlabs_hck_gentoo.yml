@@ -83,6 +83,8 @@ portage:
     - 'lm_sensors'
     # Printing.
     - 'cups'
+    # Web.
+    - 'webkit'
     # Graphics.
     - 'gimp'
     - 'dia'

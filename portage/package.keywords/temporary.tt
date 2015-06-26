@@ -146,6 +146,8 @@ x11-plugins/imgur-integration ~amd64
 app-crypt/hashcat-bin ~amd64
 media-video/handbrake ~amd64
 net-analyzer/snort ~amd64
+sci-physics/root ~amd64
+app-doc/root-docs ~amd64
 
 <% if has_feature? :ruby %>
 dev-ruby/thor ~amd64
@@ -170,6 +172,9 @@ x11-themes/FlatStudio ~amd64
 
 <% if has_feature? 'java' %>
 dev-util/findbugs ~amd64
+# `-r1` has patch applied for JDK1.8 compatibility.
+# Remove as soon as a newer version is available.
+dev-java/commons-collections ~amd64
 <% end %>
 
 # }}}
