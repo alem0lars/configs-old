@@ -52,11 +52,11 @@ set spoolfile = "+INBOX"
 
 # smtp {{{
 
-set smtp_url  = "smtps://<%= get_var! :email %>:<%= `#{get_var!('email_pass').chomp}` %>@<%= get_var! :smtp_server %>"
+set smtp_url  = "smtps://<%= get_var! :email %>:<%= `#{get_var!('email_pass')}`.chomp %>@<%= get_var! 'smtp_server' %>"
 set realname  = "<%= get_var! :fullname %>"
 set from      = "<%= get_var! :email    %>"
 set hostname  = "<%= get_var! :email_host      %>"
-set signature = "<%= get_var! :email_signature %>"
+set signature = "~/.signature"
 
 # }}}
 

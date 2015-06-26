@@ -38,6 +38,9 @@
 
 email:    'molari.alessandro@gmail.com'
 fullname: 'Alessandro Molari'
+homepage: 'http://molarialessandro.info'
+
+twitter_username: 'alem0lars'
 
 github_username: 'alem0lars'
 
@@ -88,15 +91,6 @@ email_pass:  'lpass show --password "molari.alessandro@gmail.com @ mutt"'
 email_host:  'gmail.com'
 imap_server: 'imap.gmail.com'
 smtp_server: 'smtp.gmail.com'
-email_signature: |
-  +------------------------------------------+
-  |            Alessandro Molari             |
-  |                                          |
-  |-> email:   molari.alessandro@gmail.com   |
-  |-> twitter: @alem0lars                    |
-  |-> github:  https://github.com/alem0lars  |
-  |-> website: https://molarialessandro.info |
-  +------------------------------------------+
 
 irc:
   nickname: 'alem0lars'
@@ -127,3 +121,4 @@ features:
   - 'systemd'
   - 'vim'
   - 'firefox'
+  - 'signature'

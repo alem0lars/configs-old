@@ -35,8 +35,7 @@
 #                                                                              #
 ################################################################################
 
-
-# prevent build failure {{{
+# {{{ Prevent build failure.
 
 # It isn't yet compatible with python 3.
 app-text/asciidoc python_single_target_python2_7
@@ -51,8 +50,9 @@ sci-libs/hdf5 -cxx -fortran
 media-libs/x264 pic
 media-video/libav pic
 
-# }}}
+dev-vcs/subversion -dso
 
+# }}}
 
 # {{{ Other.
 
@@ -64,5 +64,4 @@ app-emulation/virtualbox-modules -pax_kernel
 
 # }}}
 
-
-# vim: set filetype=gentoo-package-keywords
+# vim: set filetype=gentoo-package-keywords :

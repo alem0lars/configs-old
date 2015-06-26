@@ -1,0 +1,13 @@
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│ ❰ <%= get_var! 'fullname' %> ❱                                                        │
+│                                                                              │
+│ ➤ email: <%= get_var! 'email' %>                                         │
+│ ➤ github: https://github.com/<%= get_var! 'github_username' %>                                       │
+│ ➤ twitter: <%= get_var! 'twitter_username' %>                                                         │
+│ ➤ website: <%= get_var! 'homepage' %>                                      │
+│                                                                              │
+│                       “Everything we call real is made of things that cannot │
+│                        be regarded as real.”  ✒ Niels Bohr (1885-1962)       │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘

@@ -112,6 +112,11 @@ elems:
 
   # {{{ CLI centric.
 
+  - src:  'signature/full'
+    dst:  '~/.signature'
+    only:
+      features: ['signature']
+
   - src:  'taskwarrior/taskrc'
     dst:  '~/.taskrc'
     only:
