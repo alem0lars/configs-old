@@ -147,7 +147,7 @@ app-crypt/hashcat-bin ~amd64
 media-video/handbrake ~amd64
 net-analyzer/snort ~amd64
 sci-physics/root ~amd64
-app-doc/root-docs ~amd64
+net-analyzer/tsung ~amd64
 
 <% if has_feature? :ruby %>
 dev-ruby/thor ~amd64
@@ -188,6 +188,9 @@ dev-java/commons-collections ~amd64
 
 # Needed by `net-analyzer/snort`.
 net-libs/daq ~amd64
+
+# Needed by `sci-physics/root`.
+app-doc/root-docs ~amd64
 
 # }}}
 

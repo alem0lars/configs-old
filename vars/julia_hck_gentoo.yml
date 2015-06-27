@@ -39,8 +39,6 @@ hostname: 'julia'
 
 kernel_config: 'julia_hck_gentoo'
 
-dpi: 190
-
 touchpad:
   driver: 'mtrack'
 
@@ -75,6 +73,6 @@ features:
   - 'macbook'
   - 'host_julia'
   - 'touchpad'
-  - 'hidpi'
+  - 'downscale'
 
 # vim: set filetype=yaml :
