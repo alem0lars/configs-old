@@ -1,14 +1,15 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/vimrc.local.tt                                                #
-" - Summary: The main VIM configuration file.                                  #
+" - Name:    vim/cfg/commons/persistence.vim.tt                                #
+" - Summary: Settings related to the vim persistence, i.e. how vim should      #
+"            store backups, swap files, views state, undo history, etc..       #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -32,47 +33,51 @@
 " }}} ##########################################################################
 
 
-" The entry point.
-function! RC_Start()
-  let l:paths = {}
-  let l:paths['custom_dir'] = '<%= get_var! "vim.custom_dir" %>'
-  let l:paths['bundle_dir'] = '<%= get_var! "vim.bundle_dir" %>'
-  let l:paths['core_dir'] = join([l:paths['custom_dir'], 'core'], '/')
-  let l:paths['plugins_dir'] = join([l:paths['custom_dir'], 'plugins'], '/')
-  let l:paths['backups_dir'] = '<%= get_var! "vim.backups_dir" %>'
-  let l:paths['swap_dir'] = '<%= get_var! "vim.swap_dir" %>'
-  let l:paths['views_dir'] = '<%= get_var! "vim.views_dir" %>'
-  let l:paths['undo_dir'] = '<%= get_var! "vim.undo_dir" %>'
-
-  " Skip initialization for vim-tiny or vim-small.
-  if !1 | finish | endif
-
-  " Disable compatibility with the old vi.
-  if &compatible
-    set nocompatible
-  endif
-
-  call RC_LoadFF(['plugins/load', 'Plugins_Load'], l:paths)
-
-  call RC_LoadFF(['core/configure', 'Core_Configure'], l:paths)
+function! RC_CorePart_Persistence_Load(paths)
+  call s:RC_CorePart_Persistence_ConfigureBackups(a:paths['backups_dir'])
+  call s:RC_CorePart_Persistence_ConfigureSwap(a:paths['swap_dir'])
+  call s:RC_CorePart_Persistence_ConfigureViews(a:paths['views_dir'])
+  call s:RC_CorePart_Persistence_ConfigureUndo(a:paths['undo_dir'])
 endfunction
 
-" Load a file and call it's main function.
-function! RC_LoadFF(name, paths)
-  if type(a:name) == type([])
-    let l:file_name = tolower(a:name[0]) . '.vim'
-    let l:func_name = a:name[1]
-  else
-    let l:file_name = tolower(a:name) . '.vim'
-    let l:func_name = a:name
-  end
+function! s:RC_CorePart_Persistence_ConfigureBackups(backups_dir)
+  " Enable files backups.
+  set backup
 
-  exe 'source ' . a:paths['custom_dir'] . '/' . l:file_name
-  exe 'call RC_' . l:func_name . '(a:paths)'
+  " Set the directory for saving files backups.
+  let &backupdir = a:backups_dir
+  silent execute '!mkdir -p ' . a:backups_dir
 endfunction
 
-" Call the entry point to begin configuring vim.
-call RC_Start()
+function! s:RC_CorePart_Persistence_ConfigureSwap(swap_dir)
+  " Set the directory for saving swap files.
+  let &directory = a:swap_dir
+  silent execute '!mkdir -p ' . a:swap_dir
+endfunction
+
+function! s:RC_CorePart_Persistence_ConfigureViews(views_dir)
+  " Set the directory for saving views state.
+  let &viewdir = a:views_dir
+  silent execute '!mkdir -p ' . a:views_dir
+
+  " When entering and exiting from a buffer load the view state.
+  au BufWinLeave \* silent! mkview
+  au BufWinEnter \* silent! loadview
+endfunction
+
+function! s:RC_CorePart_Persistence_ConfigureUndo(undo_dir)
+  " Set the directory for saving undos.
+  let &undodir = a:undo_dir
+  silent execute '!mkdir -p ' . a:undo_dir
+
+  " How many undos.
+  set undolevels=2048
+
+  " Number of lines to save for undo.
+  set undoreload=10240
+
+  set undofile
+endfunction
 
 
 " vim: set filetype=vim :

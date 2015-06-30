@@ -1,14 +1,14 @@
-" {{{ ##########################################################################
+"###############################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/vimrc.local.tt                                                #
-" - Summary: The main VIM configuration file.                                  #
+" - Name:    vim/cfg/commons/navigation.vim.tt                                 #
+" - Summary: Settings related to the navigation in vim windows.                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -29,50 +29,38 @@
 " See the License for the specific language governing permissions and          #
 " limitations under the License.                                               #
 "                                                                              #
-" }}} ##########################################################################
+"###############################################################################
 
 
-" The entry point.
-function! RC_Start()
-  let l:paths = {}
-  let l:paths['custom_dir'] = '<%= get_var! "vim.custom_dir" %>'
-  let l:paths['bundle_dir'] = '<%= get_var! "vim.bundle_dir" %>'
-  let l:paths['core_dir'] = join([l:paths['custom_dir'], 'core'], '/')
-  let l:paths['plugins_dir'] = join([l:paths['custom_dir'], 'plugins'], '/')
-  let l:paths['backups_dir'] = '<%= get_var! "vim.backups_dir" %>'
-  let l:paths['swap_dir'] = '<%= get_var! "vim.swap_dir" %>'
-  let l:paths['views_dir'] = '<%= get_var! "vim.views_dir" %>'
-  let l:paths['undo_dir'] = '<%= get_var! "vim.undo_dir" %>'
-
-  " Skip initialization for vim-tiny or vim-small.
-  if !1 | finish | endif
-
-  " Disable compatibility with the old vi.
-  if &compatible
-    set nocompatible
-  endif
-
-  call RC_LoadFF(['plugins/load', 'Plugins_Load'], l:paths)
-
-  call RC_LoadFF(['core/configure', 'Core_Configure'], l:paths)
+function! RC_CorePart_Navigation_Load(paths)
+  call s:RC_CorePart_Navigation_ConfigureWindowMoving()
+  call s:RC_CorePart_Navigation_ConfigureWindowSplitting()
 endfunction
 
-" Load a file and call it's main function.
-function! RC_LoadFF(name, paths)
-  if type(a:name) == type([])
-    let l:file_name = tolower(a:name[0]) . '.vim'
-    let l:func_name = a:name[1]
-  else
-    let l:file_name = tolower(a:name) . '.vim'
-    let l:func_name = a:name
-  end
+function! s:RC_CorePart_Navigation_ConfigureWindowMoving()
+  " Easy way to move between tabs and windows.
+  map <C-J> <C-W>j<C-W>_
+  map <C-K> <C-W>k<C-W>_
+  map <C-L> <C-W>l<C-W>_
+  map <C-H> <C-W>h<C-W>_
 
-  exe 'source ' . a:paths['custom_dir'] . '/' . l:file_name
-  exe 'call RC_' . l:func_name . '(a:paths)'
+  " Disable arrows.
+  inoremap <Up>    <NOP>
+  inoremap <Down>  <NOP>
+  inoremap <Left>  <NOP>
+  inoremap <Right> <NOP>
+  noremap  <Up>    <NOP>
+  noremap  <Down>  <NOP>
+  noremap  <Left>  <NOP>
+  noremap  <Right> <NOP>
 endfunction
 
-" Call the entry point to begin configuring vim.
-call RC_Start()
+function! s:RC_CorePart_Navigation_ConfigureWindowSplitting()
+  " Puts new vsplit windows to the right of the current.
+  set splitright
+  " Puts new split windows to the bottom of the current.
+  set splitbelow
+endfunction
 
 
 " vim: set filetype=vim :

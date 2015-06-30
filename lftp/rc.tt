@@ -1,8 +1,8 @@
-# {{{ ##########################################################################
+################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    osx.yml                                                           #
-# - Summary: Variables for alem0lars OSX installations                         #
+# - Name:    lftp/rc.tt                                                        #
+# - Summary: Settings for lftp.                                                #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -30,40 +30,6 @@
 # limitations under the License.                                               #
 #                                                                              #
 ################################################################################
-#                                                                              #
-#=> INHERITS: nmlabs_osx                                                     <=#
-#                                                                              #
-# }}} ##########################################################################
 
 
-email:    'molari.alessandro@gmail.com'
-fullname: 'Alessandro Molari'
-
-github_username: 'alem0lars'
-
-vim:
-  backups_dir:        '~/.vim_bkps'
-  swap_dir:           '~/.vim_swaps'
-  views_dir:          '~/.vim_views'
-  undo_dir:           '~/.vim_undos'
-  entry_point:        '~/.vimrc'
-  gui_entry_point:    '~/.gvimrc'
-  custom_dir:         '~/.vim'
-  bundle_dir:         '~/.vim/bundle'
-  terminal_cmd:       'open /Applications/iTerm.app -n'
-  latex_viewer:       'open /Applications/Preview.app'
-  quick_look_command: 'qlmanage -p'
-  vimshell_tmp_dir:   '~/.vim_shell'
-
-colorscheme:
-  name: "jellybeans"
-
-editor_cmd: "nvim"
-
-atom:
-  project_home: "/Users/alem0lars/Develop"
-
-features:
-  # Apps.
-  - 'vim'
-  - 'kaleidoscope'
+set ssl:verify-certificate no

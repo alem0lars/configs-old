@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/vimrc.local.tt                                                #
-" - Summary: The main VIM configuration file.                                  #
+" - Name:    vim/plugins/hooks/signature.vim.tt                                #
+" - Summary: Hooks for the plugin `vim-signature`.                             #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,47 +32,38 @@
 " }}} ##########################################################################
 
 
-" The entry point.
-function! RC_Start()
-  let l:paths = {}
-  let l:paths['custom_dir'] = '<%= get_var! "vim.custom_dir" %>'
-  let l:paths['bundle_dir'] = '<%= get_var! "vim.bundle_dir" %>'
-  let l:paths['core_dir'] = join([l:paths['custom_dir'], 'core'], '/')
-  let l:paths['plugins_dir'] = join([l:paths['custom_dir'], 'plugins'], '/')
-  let l:paths['backups_dir'] = '<%= get_var! "vim.backups_dir" %>'
-  let l:paths['swap_dir'] = '<%= get_var! "vim.swap_dir" %>'
-  let l:paths['views_dir'] = '<%= get_var! "vim.views_dir" %>'
-  let l:paths['undo_dir'] = '<%= get_var! "vim.undo_dir" %>'
+function! RC_Plugins_Hooks_Signature_OnLoad(paths)
+  call s:RC_Plugins_Hooks_Signature_GitGutterSupport()
+endfunction
 
-  " Skip initialization for vim-tiny or vim-small.
-  if !1 | finish | endif
+function! s:RC_Plugins_Hooks_Signature_GitGutterSupport()
+  " Now everytime Signature wants to place a sign, it calls this function and
+  " thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
+  " The advantage of doing it this way is that this decouples Signature from
+  " git-gutter. Both can remain unaware of the other.
+  let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
+endfunction
 
-  " Disable compatibility with the old vi.
-  if &compatible
-    set nocompatible
+" This function returns the highlight group used by git-gutter depending on how
+" the line was edited (added/modified/deleted).
+function! SignatureGitGutter(lnum)
+  let gg_line_state = filter(
+        \ copy(gitgutter#diff#process_hunks(gitgutter#hunk#hunks())),
+        \ 'v:val[0] == a:lnum')
+  "echo gg_line_state
+
+  if len(gg_line_state) == 0
+    return 'Exception'
   endif
 
-  call RC_LoadFF(['plugins/load', 'Plugins_Load'], l:paths)
-
-  call RC_LoadFF(['core/configure', 'Core_Configure'], l:paths)
+  if gg_line_state[0][1] =~ 'added'
+    return 'GitGutterAdd'
+  elseif gg_line_state[0][1] =~ 'modified'
+    return 'GitGutterChange'
+  elseif gg_line_state[0][1] =~ 'removed'
+    return 'GitGutterDelete'
+  endif
 endfunction
-
-" Load a file and call it's main function.
-function! RC_LoadFF(name, paths)
-  if type(a:name) == type([])
-    let l:file_name = tolower(a:name[0]) . '.vim'
-    let l:func_name = a:name[1]
-  else
-    let l:file_name = tolower(a:name) . '.vim'
-    let l:func_name = a:name
-  end
-
-  exe 'source ' . a:paths['custom_dir'] . '/' . l:file_name
-  exe 'call RC_' . l:func_name . '(a:paths)'
-endfunction
-
-" Call the entry point to begin configuring vim.
-call RC_Start()
 
 
 " vim: set filetype=vim :

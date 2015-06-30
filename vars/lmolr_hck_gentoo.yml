@@ -45,9 +45,7 @@ gtk:
   key_theme: 'Emacs'
 
 colorscheme:
-  name:       'base16'
-  variant:    'monokai'
-  brightness: 'dark'
+  name: 'jellybeans'
 
 irc:
   nickname: 'LMolr'

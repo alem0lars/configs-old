@@ -1,4 +1,4 @@
-"###############################################################################
+" {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
 " - Name:    vim/vimrc.tt                                                      #
@@ -29,10 +29,11 @@
 " See the License for the specific language governing permissions and          #
 " limitations under the License.                                               #
 "                                                                              #
-"###############################################################################
+" }}} ##########################################################################
 
 
-source <%= get_var! 'vim.custom_dir' %>/vimrc.local
+" Load the entry point.
+exe 'source <%= get_var! "vim.custom_dir" %>/vimrc.local'
 
 
 " vim: set filetype=vim :

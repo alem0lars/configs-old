@@ -50,11 +50,7 @@ Xft.rgba:      rgb
 
 ! {{{ Colors
 <% if get_var 'colorscheme' %>
-  <% if get_var!('colorscheme.name') == 'base16' %>
-#include "<%= get_var! 'x11.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>/<%= get_var! 'colorscheme.name' %>-<%= get_var! 'colorscheme.variant' %>.<%= get_var! 'colorscheme.brightness' %>.256.xresources"
-  <% else %>
 #include "<%= get_var! 'x11.xresources.custom_dir' %>/colorschemes/<%= get_var! 'colorscheme.name' %>.xresources"
-  <% end %>
 <% end %>
 ! }}}
 

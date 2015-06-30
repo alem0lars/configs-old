@@ -1,14 +1,14 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/vimrc.local.tt                                                #
-" - Summary: The main VIM configuration file.                                  #
+" - Name:    vim/plugins/hooks/ruby.vim.tt                                     #
+" - Summary: Hooks for the `vim-ruby` plugin.                                  #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -32,47 +32,33 @@
 " }}} ##########################################################################
 
 
-" The entry point.
-function! RC_Start()
-  let l:paths = {}
-  let l:paths['custom_dir'] = '<%= get_var! "vim.custom_dir" %>'
-  let l:paths['bundle_dir'] = '<%= get_var! "vim.bundle_dir" %>'
-  let l:paths['core_dir'] = join([l:paths['custom_dir'], 'core'], '/')
-  let l:paths['plugins_dir'] = join([l:paths['custom_dir'], 'plugins'], '/')
-  let l:paths['backups_dir'] = '<%= get_var! "vim.backups_dir" %>'
-  let l:paths['swap_dir'] = '<%= get_var! "vim.swap_dir" %>'
-  let l:paths['views_dir'] = '<%= get_var! "vim.views_dir" %>'
-  let l:paths['undo_dir'] = '<%= get_var! "vim.undo_dir" %>'
+function! RC_Plugins_Hooks_Ruby_OnLoad()
+  " Parse the entire buffer to add a list of classes to the completion results.
+  let g:rubycomplete_classes_in_global = 1
 
-  " Skip initialization for vim-tiny or vim-small.
-  if !1 | finish | endif
+  " Load/evaluate code in order to provide completions.
+  " This may cause some code execution, which may be a concern.
+  let g:rubycomplete_buffer_loading = 1
 
-  " Disable compatibility with the old vi.
-  if &compatible
-    set nocompatible
-  endif
+  let g:rubycomplete_include_object = 1
+  let g:rubycomplete_include_objectspace = 1
 
-  call RC_LoadFF(['plugins/load', 'Plugins_Load'], l:paths)
+  " Parse the `Gemfile` if available, in case gems are being implicitly
+  " required.
+  let g:rubycomplete_load_gemfile = 1
 
-  call RC_LoadFF(['core/configure', 'Core_Configure'], l:paths)
+  " Use `Bundler.require` instead of parsing the `Gemfile`.
+  let g:rubycomplete_use_bundler = 1
+
+  " Detect rails.
+  let g:rubycomplete_rails = 1
+
+  call s:RC_Plugins_Hooks_Ruby_ConfigureOmnifunc()
 endfunction
 
-" Load a file and call it's main function.
-function! RC_LoadFF(name, paths)
-  if type(a:name) == type([])
-    let l:file_name = tolower(a:name[0]) . '.vim'
-    let l:func_name = a:name[1]
-  else
-    let l:file_name = tolower(a:name) . '.vim'
-    let l:func_name = a:name
-  end
-
-  exe 'source ' . a:paths['custom_dir'] . '/' . l:file_name
-  exe 'call RC_' . l:func_name . '(a:paths)'
+function! s:RC_Plugins_Hooks_Ruby_ConfigureOmnifunc()
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 endfunction
-
-" Call the entry point to begin configuring vim.
-call RC_Start()
 
 
 " vim: set filetype=vim :

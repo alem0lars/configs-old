@@ -42,10 +42,7 @@
     followSymlinks: true
     themes: [
       "atom-dark-ui"
-      "<%= get_var('colorscheme.name') == 'base16' ?
-            'base16-syntax' :
-            get_var!('colorscheme.name')
-       %>"
+      "<%= get_var! 'colorscheme.name' %>"
     ]
     projectHome: "<%= File.expand_path(get_var!('atom.project_home')) %>"
     destroyEmptyPanes: false
@@ -71,10 +68,6 @@
   "linter-coffeelint": {}
   "atom-ternjs":
     coffeeScript: true
-  <% if get_var('colorscheme.name') == 'base16' %>
-  "base16-syntax":
-    scheme: "<%= get_var!('colorscheme.variant').capitalize %>",
-    style:  "<%= get_var!('colorscheme.brightness').capitalize %>",
-  <% end %>
+
 
 # vim: set filetype=cson :

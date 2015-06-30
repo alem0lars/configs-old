@@ -32,15 +32,16 @@
 "###############################################################################
 
 
-" appearance {{{
+" {{{ Appearance.
 
 " Set the colorscheme.
-colorscheme amdarkness
+<% if get_var 'colorscheme' %>
+colorscheme <% get_var! 'colorscheme.name' %>.vimp
+<% end %>
 
 " }}}
 
-
-" options {{{
+" {{{ Options.
 
 " Show numbers on tabs.
 set tabnumbers=true
@@ -50,10 +51,9 @@ set toolbars=nonavigation
 
 " }}}
 
+" {{{ Hotkeys.
 
-" hotkeys {{{
-
-" make vertical navigation move of some rows instead of just one.
+" Make vertical navigation move of some rows instead of just one.
 noremap j 4j
 noremap k 4k
 

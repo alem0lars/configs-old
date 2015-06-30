@@ -60,15 +60,13 @@ gtk:
   key_theme: 'Vi'
 
 colorscheme:
-  name:       'base16'
-  variant:    'default'
-  brightness: 'dark'
+  name: "jellybeans"
 
 vim:
-  bkp_dir:          '~/.vim_bkps'
-  swaps_dir:        '~/.vim_swaps'
+  backups_dir:      '~/.vim_bkps'
+  swap_dir:         '~/.vim_swaps'
   views_dir:        '~/.vim_views'
-  undos_dir:        '~/.vim_undos'
+  undo_dir:         '~/.vim_undos'
   vimshell_tmp_dir: '~/.vim_shell'
   custom_dir:       '/etc/vim'
   bundle_dir:       '/etc/vim/bundle'
@@ -106,6 +104,7 @@ irc:
         password: 'lpass show --password "alem0lars @ cesena.irc.slack.com"'
 
 features:
+  - 'signature'
   - 'snort'
   - 'dracut'
   - 'systemd'
@@ -121,4 +120,4 @@ features:
   - 'systemd'
   - 'vim'
   - 'firefox'
-  - 'signature'
+  - 'lftp'

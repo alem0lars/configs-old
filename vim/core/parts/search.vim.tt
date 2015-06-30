@@ -1,14 +1,14 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/vimrc.local.tt                                                #
-" - Summary: The main VIM configuration file.                                  #
+" - Name:    vim/core/parts/search.vim.tt                                      #
+" - Summary: Settings related to the vim search functionality.                 #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -32,47 +32,27 @@
 " }}} ##########################################################################
 
 
-" The entry point.
-function! RC_Start()
-  let l:paths = {}
-  let l:paths['custom_dir'] = '<%= get_var! "vim.custom_dir" %>'
-  let l:paths['bundle_dir'] = '<%= get_var! "vim.bundle_dir" %>'
-  let l:paths['core_dir'] = join([l:paths['custom_dir'], 'core'], '/')
-  let l:paths['plugins_dir'] = join([l:paths['custom_dir'], 'plugins'], '/')
-  let l:paths['backups_dir'] = '<%= get_var! "vim.backups_dir" %>'
-  let l:paths['swap_dir'] = '<%= get_var! "vim.swap_dir" %>'
-  let l:paths['views_dir'] = '<%= get_var! "vim.views_dir" %>'
-  let l:paths['undo_dir'] = '<%= get_var! "vim.undo_dir" %>'
-
-  " Skip initialization for vim-tiny or vim-small.
-  if !1 | finish | endif
-
-  " Disable compatibility with the old vi.
-  if &compatible
-    set nocompatible
-  endif
-
-  call RC_LoadFF(['plugins/load', 'Plugins_Load'], l:paths)
-
-  call RC_LoadFF(['core/configure', 'Core_Configure'], l:paths)
+function! RC_CorePart_Search_Load(paths)
+  call s:RC_CorePart_Search_ConfigureRules()
+  call s:RC_CorePart_Search_ConfigureHotkeys()
 endfunction
 
-" Load a file and call it's main function.
-function! RC_LoadFF(name, paths)
-  if type(a:name) == type([])
-    let l:file_name = tolower(a:name[0]) . '.vim'
-    let l:func_name = a:name[1]
-  else
-    let l:file_name = tolower(a:name) . '.vim'
-    let l:func_name = a:name
-  end
+function! s:RC_CorePart_Search_ConfigureRules()
+  " With both 'ignorecase' and 'smartcase' turned on, a search is
+  " case-insensitive if you enter the search string in all lower case. However,
+  " if your search string has one or more characters in upper case, it will
+  " assume that you want a case-sensitive search.
+  set ignorecase
+  set smartcase
 
-  exe 'source ' . a:paths['custom_dir'] . '/' . l:file_name
-  exe 'call RC_' . l:func_name . '(a:paths)'
+  " See live results while typing the search string.
+  set incsearch
 endfunction
 
-" Call the entry point to begin configuring vim.
-call RC_Start()
+function! s:RC_CorePart_Search_ConfigureHotkeys()
+  " <Leader>/: clear previous search highlighting.
+  nmap <silent> <Leader>/ :nohlsearch<CR>
+endfunction
 
 
 " vim: set filetype=vim :

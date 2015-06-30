@@ -47,9 +47,6 @@ zstyle ':custom:load' zfunction 'zargs' 'zmv'
 
 # Set the custom modules to load (browse modules); the order matters.
 zstyle ':custom:load' mod \
-  <%- if get_var('colorscheme.name') == 'base16' -%>
-  'base16' \
-  <%- end -%>
   <%- if has_feature? 'ruby' -%>
   'ruby' \
   <%- end -%>
@@ -70,15 +67,6 @@ zstyle ':custom:load' mod \
 
 # }}}
 
-
-<%- if get_var('colorscheme.name') == 'base16' -%>
-# {{{ Module - Base16
-zstyle ':custom:module:base16' variant '<%= get_var! "colorscheme.variant" %>'
-zstyle ':custom:module:base16' brightness '<%= get_var! "colorscheme.brightness" %>'
-# }}}
-<%- end -%>
-
-
 # {{{ Module - Editor
 
 <%- if has_feature? :emacs -%>
@@ -94,13 +82,11 @@ zstyle ':custom:module:editor' dot-expansion 'yes'
 
 # }}}
 
-
 # {{{ Module - History substring search
 
 zstyle ':custom:module:history-substring-search' color 'yes'
 
 # }}}
-
 
 # {{{ Module - Syntax highlighting
 
@@ -112,7 +98,6 @@ zstyle ':custom:module:syntax-highlighting' highlighters \
   'root'
 
 # }}}
-
 
 # {{{ Module - Prompt
 
