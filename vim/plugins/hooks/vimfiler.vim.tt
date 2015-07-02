@@ -88,6 +88,8 @@ let g:vimfiler_max_directories_history = 64
 let g:vimfiler_quick_look_command = '<%= get_var! :quick_look_command %>'
 <% end %>
 
+" }}}
+
 " {{{ Configure icons.
 
 let g:vimfiler_tree_leaf_icon = ' '
@@ -107,7 +109,9 @@ nnoremap <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
 " <Leader>vff: Find and focus the current file in Vimfiler.
 nnoremap <Leader>vff :<C-u>VimFilerExplorer -find<CR>
 
-autocmd FileType vimfiler call s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
+autocmd FileType vimfiler call <SID>RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
+
+" }}}
 
 
 " vim: set filetype=vim :

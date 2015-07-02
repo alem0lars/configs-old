@@ -34,7 +34,7 @@
 
 " {{{ Internal functions.
 
-function! RC_Plugins_Hooks_NeoComplete_ClosePopup()
+function! s:RC_Plugins_Hooks_NeoComplete_ClosePopup()
   return neocomplete#close_popup() . "\<CR>"
 endfunction
 

@@ -88,7 +88,7 @@ let g:vimshell_enable_smart_case = 1
 nnoremap <Leader>sh :<C-u>VimShell<CR>
 nnoremap <F3> :<C-u>VimShellPop<CR>
 
-autocmd FileType vimshell call s:RC_Plugins_Hooks_Vimshell_ConfigureFTHotkeys()
+autocmd FileType vimshell call <SID>RC_Plugins_Hooks_Vimshell_ConfigureFTHotkeys()
 
 " }}}
 
