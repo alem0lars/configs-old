@@ -32,27 +32,26 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Search_Load(paths)
-  call s:RC_CorePart_Search_ConfigureRules()
-  call s:RC_CorePart_Search_ConfigureHotkeys()
-endfunction
+" {{{ Configure rules.
 
-function! s:RC_CorePart_Search_ConfigureRules()
-  " With both 'ignorecase' and 'smartcase' turned on, a search is
-  " case-insensitive if you enter the search string in all lower case. However,
-  " if your search string has one or more characters in upper case, it will
-  " assume that you want a case-sensitive search.
-  set ignorecase
-  set smartcase
+" With both 'ignorecase' and 'smartcase' turned on, a search is
+" case-insensitive if you enter the search string in all lower case. However,
+" if your search string has one or more characters in upper case, it will
+" assume that you want a case-sensitive search.
+set ignorecase
+set smartcase
 
-  " See live results while typing the search string.
-  set incsearch
-endfunction
+" See live results while typing the search string.
+set incsearch
 
-function! s:RC_CorePart_Search_ConfigureHotkeys()
-  " <Leader>/: clear previous search highlighting.
-  nmap <silent> <Leader>/ :nohlsearch<CR>
-endfunction
+" }}}
+
+" {{{ Configure hotkeys.
+
+" <Leader>/: clear previous search highlighting.
+nmap <silent> <Leader>/ :nohlsearch<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

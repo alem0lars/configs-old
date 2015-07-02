@@ -32,47 +32,26 @@
 " }}} ##########################################################################
 
 
-" The entry point.
-function! RC_Start()
-  let l:paths = {}
-  let l:paths['custom_dir'] = '<%= get_var! "vim.custom_dir" %>'
-  let l:paths['bundle_dir'] = '<%= get_var! "vim.bundle_dir" %>'
-  let l:paths['core_dir'] = join([l:paths['custom_dir'], 'core'], '/')
-  let l:paths['plugins_dir'] = join([l:paths['custom_dir'], 'plugins'], '/')
-  let l:paths['backups_dir'] = '<%= get_var! "vim.backups_dir" %>'
-  let l:paths['swap_dir'] = '<%= get_var! "vim.swap_dir" %>'
-  let l:paths['views_dir'] = '<%= get_var! "vim.views_dir" %>'
-  let l:paths['undo_dir'] = '<%= get_var! "vim.undo_dir" %>'
-
-  " Skip initialization for vim-tiny or vim-small.
-  if !1 | finish | endif
-
-  " Disable compatibility with the old vi.
-  if &compatible
-    set nocompatible
-  endif
-
-  call RC_LoadFF(['plugins/load', 'Plugins_Load'], l:paths)
-
-  call RC_LoadFF(['core/configure', 'Core_Configure'], l:paths)
-endfunction
+" {{{ Utility functions.
 
 " Load a file and call it's main function.
-function! RC_LoadFF(name, paths)
-  if type(a:name) == type([])
-    let l:file_name = tolower(a:name[0]) . '.vim'
-    let l:func_name = a:name[1]
-  else
-    let l:file_name = tolower(a:name) . '.vim'
-    let l:func_name = a:name
-  end
-
-  exe 'source ' . a:paths['custom_dir'] . '/' . l:file_name
-  exe 'call RC_' . l:func_name . '(a:paths)'
+function! RC_Source(file_name)
+  exe 'source <%= get_var! "vim.custom_dir" %>/' . tolower(a:file_name) . '.vim'
 endfunction
 
-" Call the entry point to begin configuring vim.
-call RC_Start()
+" }}}
+
+" Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
+" Disable compatibility with the old vi.
+if &compatible
+  set nocompatible
+endif
+
+call RC_Source('plugins/load')
+
+call RC_Source('core/configure')
 
 
 " vim: set filetype=vim :

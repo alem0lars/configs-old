@@ -32,76 +32,75 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Airline_OnLoad(paths)
-  call s:RC_ConfigureTheme(
-        \ '<%= get_var! "colorscheme.name" %>',
-        \ <%= has_feature?('powerline') ? 1 : 0 %>)
-  call s:RC_Plugins_Hooks_Airline_ConfigureTablineExtension()
-  call s:RC_Plugins_Hooks_Airline_ConfigureTagbarExtension()
-  call s:RC_Plugins_Hooks_Airline_ConfigureSyntasticExtension()
-endfunction
+" {{{ Configure theme.
 
-function! s:RC_Plugins_Hooks_Airline_ConfigureTheme(name, powerline)
-  let g:airline_theme = a:name
-  let g:airline_powerline_fonts = a:powerline
-endfunction
+let g:airline_theme = '<%= get_var! "colorscheme.name" %>'
+let g:airline_powerline_fonts = <%= has_feature?('powerline') ? 1 : 0 %>
 
-function! s:RC_Plugins_Hooks_Airline_ConfigureTablineExtension()
-  " Enable tabline.
-  let g:airline#extensions#tabline#enabled = 1
+" }}}
 
-  " Enable displaying buffers with a single tab.
-  let g:airline#extensions#tabline#show_buffers = 1
+" {{{ Configure tabline extension.
 
-  " Enable displaying tabs, regardless of number.
-  let g:airline#extensions#tabline#show_tabs = 1
+" Enable tabline.
+let g:airline#extensions#tabline#enabled = 1
 
-  " Show tab number.
-  let g:airline#extensions#tabline#tab_nr_type = 1
+" Enable displaying buffers with a single tab.
+let g:airline#extensions#tabline#show_buffers = 1
 
-  " Enable displaying tab number in tabs mode.
-  let g:airline#extensions#tabline#show_tab_nr = 1
+" Enable displaying tabs, regardless of number.
+let g:airline#extensions#tabline#show_tabs = 1
 
-  " Enable displaying tab type.
-  let g:airline#extensions#tabline#show_tab_type = 1
+" Show tab number.
+let g:airline#extensions#tabline#tab_nr_type = 1
 
-  " Use the tab index as the tab number.
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
+" Enable displaying tab number in tabs mode.
+let g:airline#extensions#tabline#show_tab_nr = 1
 
-  " <Leader>number: Select the tab of index equal to number.
-  nmap <Leader>1 <Plug>AirlineSelectTab1
-  nmap <Leader>2 <Plug>AirlineSelectTab2
-  nmap <Leader>3 <Plug>AirlineSelectTab3
-  nmap <Leader>4 <Plug>AirlineSelectTab4
-  nmap <Leader>5 <Plug>AirlineSelectTab5
-  nmap <Leader>6 <Plug>AirlineSelectTab6
-  nmap <Leader>7 <Plug>AirlineSelectTab7
-  nmap <Leader>8 <Plug>AirlineSelectTab8
-  nmap <Leader>9 <Plug>AirlineSelectTab9
+" Enable displaying tab type.
+let g:airline#extensions#tabline#show_tab_type = 1
 
-  " The `unique_tail` algorithm will display the tail of the filename, unless
-  " there is another file of the same name, in which it will display it along
-  " with the containing parent directory.
-  " The `unique_tail_improved` - another algorithm, that will smartly uniquify
-  " buffers names with similar filename, suppressing common parts of paths.
-  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" Use the tab index as the tab number.
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-  " Show the close button (with the provided symbol).
-  let g:airline#extensions#tabline#show_close_button = 1
-  let g:airline#extensions#tabline#close_symbol = '✗'
-endfunction
+" <Leader>number: Select the tab of index equal to number.
+nmap <Leader>1 <Plug>AirlineSelectTab1
+nmap <Leader>2 <Plug>AirlineSelectTab2
+nmap <Leader>3 <Plug>AirlineSelectTab3
+nmap <Leader>4 <Plug>AirlineSelectTab4
+nmap <Leader>5 <Plug>AirlineSelectTab5
+nmap <Leader>6 <Plug>AirlineSelectTab6
+nmap <Leader>7 <Plug>AirlineSelectTab7
+nmap <Leader>8 <Plug>AirlineSelectTab8
+nmap <Leader>9 <Plug>AirlineSelectTab9
 
-function! RC_Plugins_Hooks_Airline_ConfigureTagbarExtension()
-  " Enable airline tagbar extension.
-  let g:airline#extensions#tagbar#enabled = 1
+" The `unique_tail` algorithm will display the tail of the filename, unless
+" there is another file of the same name, in which it will display it along
+" with the containing parent directory.
+" The `unique_tail_improved` - another algorithm, that will smartly uniquify
+" buffers names with similar filename, suppressing common parts of paths.
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-  " Display complete signature.
-  let g:airline#extensions#tagbar#flags = 's'
-endfunction
+" Show the close button (with the provided symbol).
+let g:airline#extensions#tabline#show_close_button = 1
+let g:airline#extensions#tabline#close_symbol = '✗'
 
-function! RC_Plugins_Hooks_Airline_ConfigureSyntasticExtension()
-  let g:airline#extensions#syntastic#enabled = 1
-endfunction
+" }}}
+
+" {{{ Configure tagbar extension.
+
+" Enable airline tagbar extension.
+let g:airline#extensions#tagbar#enabled = 1
+
+" Display complete signature.
+let g:airline#extensions#tagbar#flags = 's'
+
+" }}}
+
+" {{{ Configure syntastic extension.
+
+let g:airline#extensions#syntastic#enabled = 1
+
+" }}}
 
 
 " vim: set filetype=vim :

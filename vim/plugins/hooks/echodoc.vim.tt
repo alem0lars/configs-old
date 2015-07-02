@@ -32,9 +32,11 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_EchoDoc_OnLoad(paths)
-  let g:echodoc_enable_at_startup = 1
-endfunction
+" {{{ Enable.
+
+let g:echodoc_enable_at_startup = 1
+
+" }}}
 
 
 " vim: set filetype=vim :

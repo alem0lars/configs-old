@@ -32,26 +32,32 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_ClangComplete_OnLoad(paths)
-  " Disable autocomplete using clang_complete because neocomplete will be used.
-  let g:clang_complete_auto = 0
+" {{{ Enable.
 
-  " Disable autoselect of the first element.
-  let g:clang_auto_select = 0
+" Disable autocomplete using clang_complete because neocomplete will be used.
+let g:clang_complete_auto = 0
 
-  " Instead of calling the clang/clang++ tool use libclang directly. This gives
-  " access to many more clang features. Furthermore it automatically caches all
-  " includes in memory.
-  " Updates after changes in the same file will therefore be a lot faster.
-  let g:clang_use_library = 1
+" Disable autoselect of the first element.
+let g:clang_auto_select = 0
 
-  if has('unix') && system('uname') == 'Darwin'
-    let s:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib'
-    if isdirectory(s:clang_library_path)
-      let g:clang_library_path = s:clang_library_path
-    endif
-  endif
-endfunction
+" }}}
+
+" {{{ Configure clang library.
+
+" Instead of calling the clang/clang++ tool use libclang directly. This gives
+" access to many more clang features. Furthermore it automatically caches all
+" includes in memory.
+" Updates after changes in the same file will therefore be a lot faster.
+let g:clang_use_library = 1
+
+<% if is_osx? %>
+let s:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+  let g:clang_library_path = s:clang_library_path
+endif
+<% end %>
+
+" }}}
 
 
 " vim: set filetype=vim :

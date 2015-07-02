@@ -32,23 +32,23 @@
 " }}} ##########################################################################
 
 
-function! RC_Core_Configure(paths)
-  let l:parts = [
-        \   'Appearance', 'Clipboard', 'Encoding', 'Fold', 'Indentation',
-        \   'Minibuffer', 'Misc', 'Mouse', 'Navigation', 'Persistence',
-        \   'Search',
-        \ ]
+" {{{ Internal functions.
 
-  for l:part in l:parts
-    call s:RC_CorePart_Load(l:part, a:paths)
-  endfor
+function! s:RC_CorePart_Source(name)
+  call RC_Source('core/parts/' . a:name)
 endfunction
 
-function! s:RC_CorePart_Load(name, paths)
-  call RC_LoadFF(
-        \ ['core/parts/' . a:name, 'CorePart_' . a:name . '_Load'],
-        \ a:paths)
-endfunction
+" }}}
+
+let s:core_parts = [
+      \   'Appearance', 'Clipboard', 'Encoding', 'Fold', 'Indentation',
+      \   'Minibuffer', 'Misc', 'Mouse', 'Navigation', 'Persistence',
+      \   'Search',
+      \ ]
+
+for s:core_part in s:core_parts
+  call s:RC_CorePart_Source(s:core_part)
+endfor
 
 
 " vim: set filetype=vim :

@@ -32,16 +32,22 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_ChooseWin_OnLoad(paths)
-  " Use overlay.
-  let g:choosewin_overlay_enable = 1
+" {{{ Enable and configure the overlay.
 
-  " Overlay font broke on mutibyte buffer?
-  let g:choosewin_overlay_clear_multibyte = 1
+" Use overlay.
+let g:choosewin_overlay_enable = 1
 
-  " <Leader>cw: Invoke choosewin.
-  nnoremap <Leader>cw :<C-u>ChooseWin<CR>
-endfunction
+" Overlay font broke on mutibyte buffer?
+let g:choosewin_overlay_clear_multibyte = 1
+
+" }}}
+
+" {{{ Configure hotkeys.
+
+" <Leader>cw: Invoke choosewin.
+nnoremap <Leader>cw :<C-u>ChooseWin<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

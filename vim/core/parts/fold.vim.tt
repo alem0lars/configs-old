@@ -32,14 +32,14 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Fold_Load(paths)
-  " Commands to open folds.
-  set foldopen=hor,block,insert,jump,mark,percent,quickfix,search,tag,undo
-  " Create folds by the current syntax rules.
-  set foldmethod=marker
-  " Maximum nesting of folds.
-  set foldnestmax=8
-endfunction
+" Commands to open folds.
+set foldopen=hor,block,insert,jump,mark,percent,quickfix,search,tag,undo
+
+" Create folds by the current syntax rules.
+set foldmethod=marker
+
+" Maximum nesting of folds.
+set foldnestmax=8
 
 
 " vim: set filetype=vim :

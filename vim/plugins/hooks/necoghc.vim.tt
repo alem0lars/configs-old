@@ -32,15 +32,17 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_NecoGHC_OnLoad(paths)
-  let g:necoghc_enable_detailed_browse = 1
+" {{{ Enable.
 
-  call s:RC_Plugins_Hooks_NecoGHC_ConfigureOmnifunc()
-endfunction
+let g:necoghc_enable_detailed_browse = 1
 
-function! s:RC_Plugins_Hooks_NecoGHC_ConfigureOmnifunc()
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-endfunction
+" }}}
+
+" {{{ Configure Omnifunc.
+
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+" }}}
 
 
 " vim: set filetype=vim :

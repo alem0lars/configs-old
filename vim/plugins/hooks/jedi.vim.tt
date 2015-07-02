@@ -32,27 +32,26 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Jedi_OnLoad(paths)
-  call s:RC_Plugins_Hooks_Jedi_Enable()
-  call s:RC_Plugins_Hooks_Jedi_ConfigureOmnifunc()
-endfunction
+" {{{ Enable.
 
-function! s:RC_Plugins_Hooks_Jedi_Enable()
-  " Disable the standalone completion (jedi is only used as backend for
-  " NeoComplete.
-  let g:jedi#completions_enabled = 0
-  let g:jedi#auto_vim_configuration = 0
+" Disable the standalone completion (jedi is only used as backend for
+" NeoComplete.
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
 
-  " Don't popup automatically the first completion element.
-  let g:jedi#popup_select_first = 0
-endfunction
+" Don't popup automatically the first completion element.
+let g:jedi#popup_select_first = 0
 
-function! s:RC_Plugins_Hooks_Jedi_ConfigureOmnifunc()
-  " Needed because we set `g:jedi#completions_enabled=0` to skip the
-  " direct usage of jedi-vim, but it's there where the plugin also
-  " registers the omnifunc.
-  autocmd FileType python setlocal omnifunc=jedi#completions
-endfunction
+" }}}
+
+" {{{ Configure Omnifunc.
+
+" Needed because we set `g:jedi#completions_enabled=0` to skip the
+" direct usage of jedi-vim, but it's there where the plugin also
+" registers the omnifunc.
+autocmd FileType python setlocal omnifunc=jedi#completions
+
+" }}}
 
 
 " vim: set filetype=vim :

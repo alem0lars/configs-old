@@ -32,58 +32,7 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Vimfiler_OnLoad()
-  call s:RC_Plugins_Hooks_Vimfiler_Enable()
-  call s:RC_Plugins_Hooks_Vimfiler_ConfigureOptions()
-  call s:RC_Plugins_Hooks_Vimfiler_ConfigureIcons()
-  call s:RC_Plugins_Hooks_Vimfiler_ConfigureHotkeys()
-endfunction
-
-function! s:RC_Plugins_Hooks_Vimfiler_Enable()
-  " Vimfiler conflicts with the default file manager netrw.vim: disable it.
-  let g:loaded_netrwPlugin = 1
-
-  " Use vimfiler as the default file explorer.
-  let g:vimfiler_as_default_explorer = 1
-endfunction
-
-function! s:RC_Plugins_Hooks_Vimfiler_ConfigureOptions()
-  call vimfiler#custom#profile('default', 'context', {
-    \  'safe': 0,
-    \  'explorer': 1,
-    \  'auto_cd': 1,
-    \  'auto_expand': 1,
-    \  'no_quit': 1,
-    \ })
-
-  let g:vimfiler_define_wrapper_commands = 1
-
-  " Max directories history.
-  let g:vimfiler_max_directories_history = 64
-
-  <% if get_var :quick_look_command %>
-  let g:vimfiler_quick_look_command = '<%= get_var! :quick_look_command %>'
-  <% end %>
-endfunction
-
-function! s:RC_Plugins_Hooks_Vimfiler_ConfigureIcons()
-  let g:vimfiler_tree_leaf_icon = ' '
-  let g:vimfiler_tree_opened_icon = '▾'
-  let g:vimfiler_tree_closed_icon = '▸'
-  let g:vimfiler_file_icon = ' '
-  let g:vimfiler_readonly_file_icon = '✗'
-  let g:vimfiler_marked_file_icon = '✓'
-endfunction
-
-function! s:RC_Plugins_Hooks_Vimfiler_ConfigureHotkeys()
-  " <C-e>: Toggle (open/close) Vimfiler explorer in a pane.
-  nnoremap <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
-
-  " <Leader>vff: Find and focus the current file in Vimfiler.
-  nnoremap <Leader>vff :<C-u>VimFilerExplorer -find<CR>
-
-  autocmd FileType vimfiler call s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
-endfunction
+" {{{ Internal functions.
 
 function! s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
   " <e>: Edit a file and change working directory to its parent.
@@ -107,6 +56,58 @@ function! s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
   " Open files by double-clicking on them.
   nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
 endfunction
+
+" }}}
+
+" {{{ Enable.
+
+" Vimfiler conflicts with the default file manager netrw.vim: disable it.
+let g:loaded_netrwPlugin = 1
+
+" Use vimfiler as the default file explorer.
+let g:vimfiler_as_default_explorer = 1
+
+" }}}
+
+" {{{ Configure profile & options.
+
+call vimfiler#custom#profile('default', 'context', {
+  \  'safe': 0,
+  \  'explorer': 1,
+  \  'auto_cd': 1,
+  \  'auto_expand': 1,
+  \  'no_quit': 1,
+  \ })
+
+let g:vimfiler_define_wrapper_commands = 1
+
+" Max directories history.
+let g:vimfiler_max_directories_history = 64
+
+<% if get_var :quick_look_command %>
+let g:vimfiler_quick_look_command = '<%= get_var! :quick_look_command %>'
+<% end %>
+
+" {{{ Configure icons.
+
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = ' '
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_marked_file_icon = '✓'
+
+" }}}
+
+" {{{ Configure hotkeys.
+
+" <C-e>: Toggle (open/close) Vimfiler explorer in a pane.
+nnoremap <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
+
+" <Leader>vff: Find and focus the current file in Vimfiler.
+nnoremap <Leader>vff :<C-u>VimFilerExplorer -find<CR>
+
+autocmd FileType vimfiler call s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
 
 
 " vim: set filetype=vim :

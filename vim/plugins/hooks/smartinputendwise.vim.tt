@@ -32,9 +32,11 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_SmartinputEndwise_OnLoad(paths)
-  call smartinput_endwise#define_default_rules()
-endfunction
+" {{{ Configure rules.
+
+call smartinput_endwise#define_default_rules()
+
+" }}}
 
 
 " vim: set filetype=vim :

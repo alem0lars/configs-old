@@ -32,11 +32,13 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_MultipleCursors_OnLoad(paths)
-  " Highlight the virtual cursors and their visual selections.
-  highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-  highlight link multiple_cursors_visual Visual
-endfunction
+" {{{ Appearance.
+
+" Highlight the virtual cursors and their visual selections.
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
+
+" }}}
 
 " {{{ Prevent conflicts with NeoComplete.
 

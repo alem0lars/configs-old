@@ -33,57 +33,58 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Misc_Load(paths)
-  " Automatically detect file types.
-  filetype plugin indent on
+" Automatically detect file types.
+filetype plugin indent on
 
-  " Turn on syntax highlighting.
-  syntax on
+" Turn on syntax highlighting.
+syntax on
 
-  " Allow unsaved background buffers and remember marks/undo for them.
-  set hidden
+" Allow unsaved background buffers and remember marks/undo for them.
+set hidden
 
-  " Set history size.
-  set history=8192
+" Set history size.
+set history=8192
 
-  " Set to auto read when a file is changed from the outside.
-  set autoread
+" Set to auto read when a file is changed from the outside.
+set autoread
 
-  " Display column numbers.
-  set number
+" Display column numbers.
+set number
 
-  " Always show the current position both in ruler and highlighting the line.
-  set ruler
+" Always show the current position both in ruler and highlighting the line.
+set ruler
 
-  call s:RC_CorePart_Misc_ConfigureLeader()
-  call s:RC_CorePart_Misc_ConfigureMatch()
-  call s:RC_CorePart_Misc_ConfigureModeline()
-  call s:RC_CorePart_Misc_ConfigurePaste()
-endfunction
+" {{{ Configure leader.
 
-function! s:RC_CorePart_Misc_ConfigureLeader()
-  " Set the leader as ',' instead of '\'.
-  let mapleader = ','
-endfunction
+" Set the leader as ',' instead of '\'.
+let mapleader = ','
 
-function! s:RC_CorePart_Misc_ConfigureMatch()
-  " Show matching parenthesis & brackets.
-  set showmatch
-  " Tenths of a second to show the matching paren.
-  set matchtime=1
-  " Add angular brackets to the list of characters that form pairs.
-  set matchpairs+=<:>
-endfunction
+" }}}
 
-function! s:RC_CorePart_Misc_ConfigureModeline()
-  set modeline
-  set modelines=5
-endfunction
+" {{{ Configure match.
 
-function! s:RC_CorePart_Misc_ConfigurePaste()
-  " <F12>: Enable the pastetoggle mode, which preserves formatting on paste.
-  set pastetoggle=<F12>
-endfunction
+" Show matching parenthesis & brackets.
+set showmatch
+" Tenths of a second to show the matching paren.
+set matchtime=1
+" Add angular brackets to the list of characters that form pairs.
+set matchpairs+=<:>
+
+" }}}
+
+" {{{ Configure modeline.
+
+set modeline
+set modelines=5
+
+" }}}
+
+" {{{ Configure hotkeys.
+
+" <F12>: Enable the pastetoggle mode, which preserves formatting on paste.
+set pastetoggle=<F12>
+
+" }}}
 
 
 " vim: set filetype=vim :

@@ -28,54 +28,55 @@
 " WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
 " See the License for the specific language governing permissions and          #
 " limitations under the License.                                               #
+"###############################################################################
+"                                                                              #
+" Prepare the environment for loading plugins, then load:                      #
+" - `Neobundle`: Used to manage plugins.                                       #
+" - `Vimproc`: Used for async operations.                                      #
+"              Btw neobundle uses it when loading other plugins.               #
+" - All of the plugins stored in `spec.vim`.                                   #
 "                                                                              #
 " }}} ##########################################################################
 
 
-" Prepare the environment for loading plugins, then load:
-" - `Neobundle`: Used to manage plugins.
-" - `Vimproc`: Used for async operations.
-"              Btw neobundle uses it when loading other plugins.
-" - All of the plugins stored in `plugins.toml`.
-function! RC_Plugins_Load(paths)
-  " Add neobundle to runtime path
-  " (when reloading it's already in the path so we don't need to add it again).
-  if has('vim_starting')
-    let &runtimepath.=','.escape(a:paths['bundle_dir'] . '/neobundle.vim', '\,')
-  endif
+" Add neobundle to runtime path
+" (when reloading it's already in the path so we don't need to add it again).
+if has('vim_starting')
+  let &runtimepath.=','.escape('<%= get_var! "vim.bundle_dir" %>/neobundle.vim', 
+             \ '\,')
+endif
 
-  call neobundle#begin(expand(a:paths['bundle_dir']))
+call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>'))
 
-  if neobundle#load_cache()
-    " Let neobundle manage neobundle.
-    NeoBundleFetch 'Shougo/neobundle.vim'
+if neobundle#load_cache()
+  " Let neobundle manage neobundle.
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-    " Load vimproc before loading the plugins, so neobundle can use vimproc
-    " to perform async operations.
+  " Load vimproc before loading the plugins, so neobundle can use vimproc
+  " to perform async operations.
 
-    NeoBundle 'Shougo/vimproc.vim', {
-          \ 'build' : {
-          \     'mac':   'make -f make_mac.mak',
-          \     'unix':  'make -f make_unix.mak'
-          \    }
-          \ }
+  NeoBundle 'Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'mac':   'make -f make_mac.mak',
+        \     'unix':  'make -f make_unix.mak'
+        \    }
+        \ }
 
-    " Specify the plugins.
-    call RC_LoadFF(['plugins/spec', 'Plugins_Spec_Define'], a:paths)
+  " Specify the plugins.
+  call RC_Source('plugins/spec')
 
-    " Save plugins configuration to the cache file (used in further executions,
-    " because `neobundle#has_cache()` will evaluate to `true` and the plugins
-    " configuration won't be reparsed but read from the cache file).
-    NeoBundleSaveCache
-  endif
+  " Save plugins configuration to the cache file (used in further executions,
+  " because `neobundle#has_cache()` will evaluate to `true` and the plugins
+  " configuration won't be reparsed but read from the cache file).
+  NeoBundleSaveCache
+endif
 
-  call RC_LoadFF(['plugins/hooks', 'Plugins_Hooks_Define'], a:paths)
+call RC_Source('plugins/hooks')
 
-  call neobundle#end()
+call neobundle#end()
 
-  " If there are uninstalled bundles found, this'll prompt you to install them.
-  NeoBundleCheck
-endfunction
+" If there are uninstalled bundles found, this'll prompt you to install them.
+NeoBundleCheck
 
 
 " vim: set filetype=vim :

@@ -32,27 +32,27 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Appearance_Load(paths)
-  call s:RC_CorePart_Appearance_ConfigureColorscheme()
-  call s:RC_CorePart_Appearance_ConfigureStatusLine()
-  call s:RC_CorePart_Appearance_ConfigureLongLines()
-endfunction
+" {{{ Configure statusline.
 
-function! s:RC_CorePart_Appearance_ConfigureStatusLine()
-  set laststatus=2
-endfunction
+set laststatus=2
 
-function! s:RC_CorePart_Appearance_ConfigureLongLines()
-  " Set the maximum line length.
-  set textwidth=80
+" }}}
 
-  " Highlight longer text.
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endfunction
+" {{{ Configure long lines.
 
-function! s:RC_CorePart_Appearance_ConfigureColorscheme()
-  set background=dark
-endfunction
+" Set the maximum line length.
+set textwidth=80
+
+" Highlight longer text.
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
+" }}}
+
+" {{{ Configure colorscheme.
+
+set background=dark
+
+" }}}
 
 
 " vim: set filetype=vim :

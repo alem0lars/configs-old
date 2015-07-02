@@ -121,3 +121,4 @@ features:
   - 'vim'
   - 'firefox'
   - 'lftp'
+  - 'poweline'

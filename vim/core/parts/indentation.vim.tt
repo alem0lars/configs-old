@@ -32,39 +32,39 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Indentation_Load(paths)
-  call s:RC_CorePart_Indentation_ConfigureRules()
-  call s:RC_CorePart_Indentation_ConfigureSizes()
-  call s:RC_CorePart_Indentation_ConfigureWhitespacesHighlight()
-endfunction
+" {{{ Configure rules.
 
-function! s:RC_CorePart_Indentation_ConfigureRules()
-  " Automatically expand tab into spaces.
-  set expandtab
-  " Copy the indentation from the previous line, when starting a new line.
-  set autoindent
-  " Ensure that tabs are only used for indentation, while spaces are used
-  " everywhere else. When you press <Tab> in insert mode, a <Tab> is inserted
-  " when indenting, and/or the correct number of spaces when aligning text.
-  set smarttab
-  " Prevents inserting two spaces after punctuation on a join between lines.
-  set nojoinspaces
-  " Rules to apply when using backspace.
-  set backspace=indent,eol,start
-endfunction
+" Automatically expand tab into spaces.
+set expandtab
+" Copy the indentation from the previous line, when starting a new line.
+set autoindent
+" Ensure that tabs are only used for indentation, while spaces are used
+" everywhere else. When you press <Tab> in insert mode, a <Tab> is inserted
+" when indenting, and/or the correct number of spaces when aligning text.
+set smarttab
+" Prevents inserting two spaces after punctuation on a join between lines.
+set nojoinspaces
+" Rules to apply when using backspace.
+set backspace=indent,eol,start
 
-function! s:RC_CorePart_Indentation_ConfigureSizes()
-  " Insert 2 spaces for tabs, indentation and back-indentation.
-  set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
-endfunction
+" }}}
 
-function! s:RC_CorePart_Indentation_ConfigureWhitespacesHighlight()
-  " Highlight special whitespaces.
-  set list
-  set listchars=tab:›\ ,trail:•
-endfunction
+" {{{ Configure sizes.
+
+" Insert 2 spaces for tabs, indentation and back-indentation.
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+" }}}
+
+" {{{ Configure whitespaces highlight.
+
+" Highlight special whitespaces.
+set list
+set listchars=tab:›\ ,trail:•
+
+" }}}
 
 
 " vim: set filetype=vim :

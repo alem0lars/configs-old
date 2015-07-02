@@ -32,18 +32,20 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_SCSSSyntax_OnLoad(paths)
-  " Add `'` as a SCSS keyword. This has the following main effects:
-  " - Correctly highlight function names starting with a keyword.
-  " - A word separated by dashes it's considered a single word.
-  augroup VimSCSSSyntax
-    autocmd!
+" {{{ Configure.
 
-    autocmd FileType scss setlocal iskeyword+=-
-  augroup end
+" Add `'` as a SCSS keyword. This has the following main effects:
+" - Correctly highlight function names starting with a keyword.
+" - A word separated by dashes it's considered a single word.
+augroup VimSCSSSyntax
+  autocmd!
 
-  autocmd FileType scss set iskeyword+=-
-endfunction
+  autocmd FileType scss setlocal iskeyword+=-
+augroup end
+
+autocmd FileType scss set iskeyword+=-
+
+" }}}
 
 
 " vim: set filetype=vim :

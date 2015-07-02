@@ -32,10 +32,12 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Emmet_OnLoad(paths)
-  let g:user_emmet_install_global = 0
-  autocmd FileType html,css EmmetInstall
-endfunction
+" {{{ Enable.
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" }}}
 
 
 " vim: set filetype=vim :

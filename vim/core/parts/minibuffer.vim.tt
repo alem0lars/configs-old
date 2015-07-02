@@ -32,15 +32,13 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Minibuffer_Load(paths)
-  " Enable bash-like completion.
-  set wildmenu
+" Enable bash-like completion.
+set wildmenu
 
-  " Wildmenu rules.
-  set wildmode=list:longest,full
+" Wildmenu rules.
+set wildmode=list:longest,full
 
-  set noshowmode
-endfunction
+set noshowmode
 
 
 " vim: set filetype=vim :

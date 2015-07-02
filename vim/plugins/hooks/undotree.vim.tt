@@ -32,9 +32,11 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_UndoTree_OnLoad()
-  nnoremap <F4> :<C-u>UndotreeToggle<CR>
-endfunction
+" {{{ Configure hotkeys.
+
+nnoremap <F4> :<C-u>UndotreeToggle<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

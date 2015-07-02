@@ -32,10 +32,12 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Bbye_OnLoad(paths)
-  " <Leader>q: Delete the buffer preserving the windows layout.
-  nnoremap <Leader>q :Bdelete<CR>
-endfunction
+" {{{ Configure hotkeys.
+
+" <Leader>q: Delete the buffer preserving the windows layout.
+nnoremap <Leader>q :Bdelete<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

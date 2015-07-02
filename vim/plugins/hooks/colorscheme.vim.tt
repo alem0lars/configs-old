@@ -32,9 +32,11 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugin_Colorscheme_OnLoad(paths)
-  colorscheme <%= get_var! 'colorscheme.name' %>
-endfunction
+" {{{ Select the colorscheme.
+
+colorscheme <%= get_var! 'colorscheme.name' %>
+
+" }}}
 
 
 " vim: set filetype=vim :

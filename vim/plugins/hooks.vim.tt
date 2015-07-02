@@ -32,53 +32,45 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Define(paths)
-  let l:plugins = {
-        \   'vim-airline': 'Airline',
-        \   'jellybeans.vim': 'Colorscheme',
-        \   'vim-smartinput-endwise': 'SmartinputEndwise',
-        \   'vim-bbye': 'Bbye',
-        \   'vim-choosewin': 'ChooseWin',
-        \   'clang_complete': 'ClangComplete',
-        \   'vim-css3-syntax': 'CSS3Syntax',
-        \   'echodoc.vim': 'EchoDoc',
-        \   'emmet-vim': 'Emmet',
-        \   'neco-ghc': 'NecoGHC',
-        \   'vim-indent-guides': 'IndentGuides',
-        \   'investigate.vim': 'Investigate',
-        \   'junkfile.vim': 'Junkfile',
-        \   'vim-multiple-cursors': 'MultipleCursors',
-        \   'scss-syntax.vim': 'SCSSSyntax',
-        \   'vimshell.vim': 'Vimshell',
-        \   'vimproc.vim': 'Vimproc',
-        \   'vimfiler.vim': 'Vimfiler',
-        \   'vim-easy-align': 'EasyAlign',
-        \   'undotree': 'UndoTree',
-        \   'tagbar': 'Tagbar',
-        \   'vim-signature': 'Signature',
-        \   'unite.vim': 'Unite',
-        \   'jedi-vim': 'Jedi',
-        \   'vim-ruby': 'Ruby',
-        \   'neocomplete': 'NeoComplete',
-        \   'neosnippet': 'NeoSnippet',
-        \   'tern_for_vim': 'Tern',
-        \ }
+let s:plugins = {
+      \   'vim-airline': 'Airline',
+      \   'jellybeans.vim': 'Colorscheme',
+      \   'vim-smartinput-endwise': 'SmartinputEndwise',
+      \   'vim-bbye': 'Bbye',
+      \   'vim-choosewin': 'ChooseWin',
+      \   'clang_complete': 'ClangComplete',
+      \   'vim-css3-syntax': 'CSS3Syntax',
+      \   'echodoc.vim': 'EchoDoc',
+      \   'emmet-vim': 'Emmet',
+      \   'neco-ghc': 'NecoGHC',
+      \   'vim-indent-guides': 'IndentGuides',
+      \   'investigate.vim': 'Investigate',
+      \   'junkfile.vim': 'Junkfile',
+      \   'vim-multiple-cursors': 'MultipleCursors',
+      \   'scss-syntax.vim': 'SCSSSyntax',
+      \   'vimshell.vim': 'Vimshell',
+      \   'vimproc.vim': 'Vimproc',
+      \   'vimfiler.vim': 'Vimfiler',
+      \   'vim-easy-align': 'EasyAlign',
+      \   'undotree': 'UndoTree',
+      \   'tagbar': 'Tagbar',
+      \   'vim-signature': 'Signature',
+      \   'unite.vim': 'Unite',
+      \   'jedi-vim': 'Jedi',
+      \   'vim-ruby': 'Ruby',
+      \   'neocomplete': 'NeoComplete',
+      \   'neosnippet': 'NeoSnippet',
+      \   'tern_for_vim': 'Tern',
+      \ }
 
-  for [l:plugin_name, l:hook_name] in items(l:plugins)
-    call s:RC_Plugins_Hook_Define(l:plugin_name, l:hook_name, a:paths)
-  endfor
-endfunction
-
-" Define a plugin hook, associating a plugin with an existing hook.
-function! s:RC_Plugins_Hook_Define(plugin_name, hook_name, paths)
-  if neobundle#tap(a:plugin_name)
-    let l:func_name = 'Plugins_Hooks_' . a:hook_name . '_OnLoad'
-    let l:file_name = 'plugins/hooks/' . a:hook_name
-    echo 'Plugin: ' . a:plugin_name . ' Hook: ' . a:hook_name
-    call RC_LoadFF([l:file_name, l:func_name], a:paths)
+for [s:plugin_name, s:hook_name] in items(s:plugins)
+  if neobundle#tap(s:plugin_name)
+    let neobundle#hooks.on_source =
+          \ '<%= get_var! "vim.custom_dir" %>/plugins/hooks/' .
+          \ tolower(s:hook_name) . '.vim'
     call neobundle#untap()
   endif
-endfunction
+endfor
 
 
 " vim: set filetype=vim :

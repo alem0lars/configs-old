@@ -32,11 +32,13 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Junkfile_OnLoad(paths)
-  " <Leader>js: Open UI for creating a new junkfile.
-  nnoremap <silent> <Leader>js :<C-u>Unite junkfile/new junkfile
-        \ -start-insert<CR>
-endfunction
+" {{{ Configure hotkeys.
+
+" <Leader>js: Open UI for creating a new junkfile.
+nnoremap <silent> <Leader>js :<C-u>Unite junkfile/new junkfile
+      \ -start-insert<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

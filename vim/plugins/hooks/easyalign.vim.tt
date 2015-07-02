@@ -32,13 +32,15 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_EasyAlign_OnLoad(paths)
-  " Start interactive EasyAlign in visual mode (e.g. vip<Enter>).
-  vmap <Enter> <Plug>(EasyAlign)
+" {{{ Configure hotkeys.
 
-  " Start interactive EasyAlign for a motion/text object (e.g. gaip).
-  nmap ga <Plug>(EasyAlign)
-endfunction
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>).
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip).
+nmap ga <Plug>(EasyAlign)
+
+" }}}
 
 
 " vim: set filetype=vim :

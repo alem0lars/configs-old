@@ -32,10 +32,12 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Vimproc_OnLoad()
-  " <!>: Use vimproc instead of the builtin command.
-  nnoremap ! :VimProcBang
-endfunction
+" {{{ Configure hotkeys.
+
+" <!>: Use vimproc instead of the builtin command.
+nnoremap ! :VimProcBang
+
+" }}}
 
 
 " vim: set filetype=vim :

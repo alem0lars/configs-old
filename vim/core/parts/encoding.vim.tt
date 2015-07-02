@@ -33,11 +33,9 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Encoding_Load(paths)
-  set encoding=utf-8
-  set termencoding=utf-8
-  set fileencoding=utf-8
-endfunction
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
 
 
 " vim: set filetype=vim :

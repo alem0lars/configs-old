@@ -32,14 +32,12 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Clipboard_Load(paths)
-  " Use clipboard register.
-  if has('unnamedplus')
-    set clipboard& clipboard+=unnamedplus
-  else
-    set clipboard& clipboard+=unnamed
-  endif
-endfunction
+" Use clipboard register.
+if has('unnamedplus')
+  set clipboard& clipboard+=unnamedplus
+else
+  set clipboard& clipboard+=unnamed
+endif
 
 
 " vim: set filetype=vim :

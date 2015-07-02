@@ -32,14 +32,20 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Investigate_OnLoad(paths)
-  if has('unix') && system('uname') == 'Darwin'
-    let g:investigate_use_dash = 1
-  endif
+" {{{ Configure documentation provider.
 
-  " <Leader>id: Show the documentation using investigate.
-  nnoremap <Leader>id :call investigate#Investigate()<CR>
-endfunction
+<% if is_osx? %>
+let g:investigate_use_dash = 1
+<% end %>
+
+" }}}
+
+" {{{ Configure hotkeys.
+
+" <Leader>id: Show the documentation using investigate.
+nnoremap <Leader>id :call investigate#Investigate()<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

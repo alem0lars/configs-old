@@ -33,51 +33,52 @@
 " }}} ##########################################################################
 
 
-function! RC_CorePart_Persistence_Load(paths)
-  call s:RC_CorePart_Persistence_ConfigureBackups(a:paths['backups_dir'])
-  call s:RC_CorePart_Persistence_ConfigureSwap(a:paths['swap_dir'])
-  call s:RC_CorePart_Persistence_ConfigureViews(a:paths['views_dir'])
-  call s:RC_CorePart_Persistence_ConfigureUndo(a:paths['undo_dir'])
-endfunction
+" {{{ Configure backups.
 
-function! s:RC_CorePart_Persistence_ConfigureBackups(backups_dir)
-  " Enable files backups.
-  set backup
+" Enable files backups.
+set backup
 
-  " Set the directory for saving files backups.
-  let &backupdir = a:backups_dir
-  silent execute '!mkdir -p ' . a:backups_dir
-endfunction
+" Set the directory for saving files backups.
+let &backupdir = '<%= get_var! "vim.backups_dir" %>'
+silent execute '!mkdir -p <%= get_var! "vim.backups_dir" %>'
 
-function! s:RC_CorePart_Persistence_ConfigureSwap(swap_dir)
-  " Set the directory for saving swap files.
-  let &directory = a:swap_dir
-  silent execute '!mkdir -p ' . a:swap_dir
-endfunction
+" }}}
 
-function! s:RC_CorePart_Persistence_ConfigureViews(views_dir)
-  " Set the directory for saving views state.
-  let &viewdir = a:views_dir
-  silent execute '!mkdir -p ' . a:views_dir
+" {{{ Configure swap.
 
-  " When entering and exiting from a buffer load the view state.
-  au BufWinLeave \* silent! mkview
-  au BufWinEnter \* silent! loadview
-endfunction
+" Set the directory for saving swap files.
+let &directory = '<%= get_var! "vim.swap_dir" %>'
+silent execute '!mkdir -p <%= get_var! "vim.swap_dir" %>'
 
-function! s:RC_CorePart_Persistence_ConfigureUndo(undo_dir)
-  " Set the directory for saving undos.
-  let &undodir = a:undo_dir
-  silent execute '!mkdir -p ' . a:undo_dir
+" }}}
 
-  " How many undos.
-  set undolevels=2048
+" {{{ Configure views.
 
-  " Number of lines to save for undo.
-  set undoreload=10240
+" Set the directory for saving views state.
+let &viewdir = '<%= get_var! "vim.views_dir" %>'
+silent execute '!mkdir -p <%= get_var! "vim.views_dir" %>'
 
-  set undofile
-endfunction
+" When entering and exiting from a buffer load the view state.
+au BufWinLeave \* silent! mkview
+au BufWinEnter \* silent! loadview
+
+" }}}
+
+" {{{ Configure undo.
+
+" Set the directory for saving undos.
+let &undodir = '<%= get_var! "vim.undo_dir" %>'
+silent execute '!mkdir -p <%= get_var! "vim.undo_dir" %>'
+
+" How many undos.
+set undolevels=2048
+
+" Number of lines to save for undo.
+set undoreload=10240
+
+set undofile
+
+" }}}
 
 
 " vim: set filetype=vim :

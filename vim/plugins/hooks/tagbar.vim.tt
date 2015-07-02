@@ -32,10 +32,12 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Tagbar_OnLoad(paths)
-  " <F5>: Toggle the tagbar.
-  nnoremap <F5> :<C-u>TagbarToggle<CR>
-endfunction
+" {{{ Configure hotkeys.
+
+" <F5>: Toggle the tagbar.
+nnoremap <F5> :<C-u>TagbarToggle<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

@@ -32,33 +32,39 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Ruby_OnLoad()
-  " Parse the entire buffer to add a list of classes to the completion results.
-  let g:rubycomplete_classes_in_global = 1
+" {{{ Configure complete rules.
 
-  " Load/evaluate code in order to provide completions.
-  " This may cause some code execution, which may be a concern.
-  let g:rubycomplete_buffer_loading = 1
+" Parse the entire buffer to add a list of classes to the completion results.
+let g:rubycomplete_classes_in_global = 1
 
-  let g:rubycomplete_include_object = 1
-  let g:rubycomplete_include_objectspace = 1
+" Load/evaluate code in order to provide completions.
+" This may cause some code execution, which may be a concern.
+let g:rubycomplete_buffer_loading = 1
 
-  " Parse the `Gemfile` if available, in case gems are being implicitly
-  " required.
-  let g:rubycomplete_load_gemfile = 1
+let g:rubycomplete_include_object = 1
+let g:rubycomplete_include_objectspace = 1
 
-  " Use `Bundler.require` instead of parsing the `Gemfile`.
-  let g:rubycomplete_use_bundler = 1
+" }}}
 
-  " Detect rails.
-  let g:rubycomplete_rails = 1
+" {{{ Ruby libs/frameworks specific support.
 
-  call s:RC_Plugins_Hooks_Ruby_ConfigureOmnifunc()
-endfunction
+" Parse the `Gemfile` if available, in case gems are being implicitly
+" required.
+let g:rubycomplete_load_gemfile = 1
 
-function! s:RC_Plugins_Hooks_Ruby_ConfigureOmnifunc()
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-endfunction
+" Use `Bundler.require` instead of parsing the `Gemfile`.
+let g:rubycomplete_use_bundler = 1
+
+" Detect rails.
+let g:rubycomplete_rails = 1
+
+" }}}
+
+" {{{ Configure Omnifunc.
+
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" }}}
 
 
 " vim: set filetype=vim :

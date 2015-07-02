@@ -32,16 +32,17 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_CSS3Syntax_OnLoad(paths)
-  " Add `'` as a CSS keyword. This has the following main effects:
-  " - Correctly highlight function names starting with a keyword.
-  " - A word separated by dashes it's considered a single word.
-  augroup VimCSS3Syntax
-    autocmd!
+" {{{ Configure.
 
-    autocmd FileType css setlocal iskeyword+=-
-  augroup end
-endfunction
+" Add `'` as a CSS keyword. This has the following main effects:
+" - Correctly highlight function names starting with a keyword.
+" - A word separated by dashes it's considered a single word.
+augroup VimCSS3Syntax
+  autocmd!
+  autocmd FileType css setlocal iskeyword+=-
+augroup end
+
+" }}}
 
 
 " vim: set filetype=vim :

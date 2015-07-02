@@ -32,14 +32,12 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Tern_OnLoad(paths)
-  call s:RC_Plugins_Hooks_Tern_ConfigureOmnifunc()
-endfunction
+" {{{ Configure Omnifunc.
 
-function! s:RC_Plugins_Hooks_Tern_ConfigureOmnifunc()
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-  autocmd FileType coffee setlocal omnifunc=tern#Complete
-endfunction
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType coffee setlocal omnifunc=tern#Complete
+
+" }}}
 
 
 " vim: set filetype=vim :

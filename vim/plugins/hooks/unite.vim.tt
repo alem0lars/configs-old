@@ -32,75 +32,66 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Unite_OnLoad()
-  " Use fuzzy matcher for filtering elements.
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" {{{ Configure matcher & grep command.
 
-  " Set the grep command used by unite (and its cli arguments).
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--line-numbers --nogroup --nocolor
-          \ --follow --hidden --ignore-case --skip-vcs-ignores'
-  endif
+" Use fuzzy matcher for filtering elements.
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-  call s:RC_Plugins_Hooks_Unite_ConfigureHotkeys()
-endfunction
+" Set the grep command used by unite (and its cli arguments).
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--line-numbers --nogroup --nocolor
+        \ --follow --hidden --ignore-case --skip-vcs-ignores'
+endif
 
-function! s:RC_Plugins_Hooks_Unite_ConfigureHotkeys()
-  " <Leader>unb: Buffer switching.
-  nnoremap <silent> <Leader>unb :<C-u>Unite -quick-match -buffer-name=buffers
-        \ buffer<CR>
+" }}}
 
-  " <Leader>ung: Start a grep search from the current directory.
-  nnoremap <silent> <Leader>ung :<C-u>Unite -buffer-name=grep grep:.<CR>
+" {{{ Configure hotkeys.
 
-  " <Leader>unj: Browse most recently used files.
-  nnoremap <silent> <Leader>unj :<C-u>Unite -buffer-name=files
-        \ -default-action=lcd neomru/file<CR>
-  " <Leader>unJ: Browse most recently used directories.
-  nnoremap <silent> <Leader>unJ :<C-u>Unite -buffer-name=files
-        \ -default-action=lcd neomru/directory<CR>
+" <Leader>unb: Buffer switching.
+nnoremap <silent> <Leader>unb :<C-u>Unite -quick-match -buffer-name=buffers
+      \ buffer<CR>
 
-  " <Leader>unk: Bookmark file (from current directory).
-  nnoremap <silent> <Leader>unk :<C-u>UniteWithCurrentDir -buffer-name=files
-        \ buffer bookmark file<CR>
-  " <Leader>unK: Bookmark file (from current buffer's directory).
-  nnoremap <silent> <Leader>unK :<C-u>UniteWithBufferDir -buffer-name=files
-        \ buffer bookmark file<CR>
+" <Leader>ung: Start a grep search from the current directory.
+nnoremap <silent> <Leader>ung :<C-u>Unite -buffer-name=grep grep:.<CR>
 
-  " <Leader>unm: Show the defined mappings.
-  nnoremap <silent> <Leader>unm :<C-u>Unite mapping<CR>
+" <Leader>unj: Browse most recently used files.
+nnoremap <silent> <Leader>unj :<C-u>Unite -buffer-name=files
+      \ -default-action=lcd neomru/file<CR>
+" <Leader>unJ: Browse most recently used directories.
+nnoremap <silent> <Leader>unJ :<C-u>Unite -buffer-name=files
+      \ -default-action=lcd neomru/directory<CR>
 
-  " <Leader>unn: Show the list of unite sources.
-  nnoremap <silent> <Leader>unn :<C-u>Unite source<CR>
+" <Leader>unk: Bookmark file (from current directory).
+nnoremap <silent> <Leader>unk :<C-u>UniteWithCurrentDir -buffer-name=files
+      \ buffer bookmark file<CR>
+" <Leader>unK: Bookmark file (from current buffer's directory).
+nnoremap <silent> <Leader>unK :<C-u>UniteWithBufferDir -buffer-name=files
+      \ buffer bookmark file<CR>
 
-  " <Leader>unr: Show registers state.
-  nnoremap <silent> <Leader>unr :<C-u>Unite -buffer-name=register register<CR>
+" <Leader>unm: Show the defined mappings.
+nnoremap <silent> <Leader>unm :<C-u>Unite mapping<CR>
 
-  " <Leader>uns: Perform file search, like control-p.
-  nnoremap <silent> <Leader>uns :<C-u>Unite -buffer-name=files -start-insert
-        \ file_rec/async:!<CR>
+" <Leader>unn: Show the list of unite sources.
+nnoremap <silent> <Leader>unn :<C-u>Unite source<CR>
 
-  " <Leader>uny: Open yank history.
-  let g:unite_source_history_yank_enable = 1
-  nnoremap <silent> <Leader>uny :<C-u>Unite -buffer-name=yank_history
-        \ history/yank<CR>
+" <Leader>unr: Show registers state.
+nnoremap <silent> <Leader>unr :<C-u>Unite -buffer-name=register register<CR>
 
-  " <Leader>unu: Resume a previous unite action.
-  nnoremap <silent> <Leader>unu :<C-u>Unite -buffer-name=resume resume<CR>
+" <Leader>uns: Perform file search, like control-p.
+nnoremap <silent> <Leader>uns :<C-u>Unite -buffer-name=files -start-insert
+      \ file_rec/async:!<CR>
 
-  " Custom mappings for the unite buffer.
-  autocmd FileType unite call s:RC_Plugins_Hooks_Unite_ConfigureFTHotkeys()
-endfunction
+" <Leader>uny: Open yank history.
+let g:unite_source_history_yank_enable = 1
+nnoremap <silent> <Leader>uny :<C-u>Unite -buffer-name=yank_history
+      \ history/yank<CR>
 
-" TODO: I need to add the unite-outline plugin.
-"nnoremap <silent> <Leader>uno  :<C-u>Unite outline<CR>
+" <Leader>unu: Resume a previous unite action.
+nnoremap <silent> <Leader>unu :<C-u>Unite -buffer-name=resume resume<CR>
 
-" TODO: I need tabpagebuffer plugin.
-" <Leader>unf: Everything for files: show/create new files, show tabs, etc..
-"nnoremap <silent> <Leader>unf :<C-u>Unite -buffer-name=files -no-split
-"        \ jump_point file_point buffer_tab
-"        \ file_rec:! file file/new<CR>
+" Custom mappings for the unite buffer.
+autocmd FileType unite call s:RC_Plugins_Hooks_Unite_ConfigureFTHotkeys()
 
 function! s:RC_Plugins_Hooks_Unite_ConfigureFTHotkeys()
   " <C->movement: navigate in the unite buffer
@@ -145,6 +136,17 @@ function! s:RC_Plugins_Hooks_Unite_ConfigureFTHotkeys()
   " Runs "split" action by <C-s>.
   " imap <silent><buffer><expr> <C-s>     unite#do_action('split')
 endfunction
+
+" TODO: I need to add the unite-outline plugin.
+"nnoremap <silent> <Leader>uno  :<C-u>Unite outline<CR>
+
+" TODO: I need tabpagebuffer plugin.
+" <Leader>unf: Everything for files: show/create new files, show tabs, etc..
+"nnoremap <silent> <Leader>unf :<C-u>Unite -buffer-name=files -no-split
+"        \ jump_point file_point buffer_tab
+"        \ file_rec:! file file/new<CR>
+
+" }}}
 
 
 " vim: set filetype=vim :

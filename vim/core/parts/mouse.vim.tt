@@ -32,12 +32,10 @@
 "###############################################################################
 
 
-function! RC_CorePart_Mouse_Load(paths)
-  if has('mouse')
-    " Enable mouse in all modes.
-    set mouse=a
-  endif
-endfunction
+if has('mouse')
+  " Enable mouse in all modes.
+  set mouse=a
+endif
 
 
 " vim: set filetype=vim :

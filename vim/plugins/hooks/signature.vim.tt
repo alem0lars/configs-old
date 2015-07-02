@@ -32,17 +32,7 @@
 " }}} ##########################################################################
 
 
-function! RC_Plugins_Hooks_Signature_OnLoad(paths)
-  call s:RC_Plugins_Hooks_Signature_GitGutterSupport()
-endfunction
-
-function! s:RC_Plugins_Hooks_Signature_GitGutterSupport()
-  " Now everytime Signature wants to place a sign, it calls this function and
-  " thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
-  " The advantage of doing it this way is that this decouples Signature from
-  " git-gutter. Both can remain unaware of the other.
-  let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
-endfunction
+" {{{ Internal functions.
 
 " This function returns the highlight group used by git-gutter depending on how
 " the line was edited (added/modified/deleted).
@@ -64,6 +54,18 @@ function! SignatureGitGutter(lnum)
     return 'GitGutterDelete'
   endif
 endfunction
+
+" }}}
+
+" {{{ Integration with GitGutter.
+
+" Now everytime Signature wants to place a sign, it calls this function and
+" thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
+" The advantage of doing it this way is that this decouples Signature from
+" git-gutter. Both can remain unaware of the other.
+let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
+
+" }}}
 
 
 " vim: set filetype=vim :
