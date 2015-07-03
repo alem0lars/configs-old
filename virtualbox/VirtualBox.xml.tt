@@ -3,8 +3,8 @@
 <!-- {{{ #######################################################################
                                                                                #
   File informations:                                                           #
-  - Name:    vimperator/vimperatorrc.tt                                        #
-  - Summary: The main vimperator configuration file.                           #
+  - Name:    virtualbox/VirtualBox.xml.tt                                      #
+  - Summary: The VirtualBox configuration file.                                #
   - Authors:                                                                   #
     - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
                                                                                #
