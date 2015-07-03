@@ -269,30 +269,35 @@ elems:
         sourceview         -> gtksourceview2
         versioncontrol     -> (optional) bzr, hg, git
 
-  - src:  'zathura/zathurarc'
-    dst:  '/etc/zathurarc'
+  - src: 'zathura/zathurarc'
+    dst: '/etc/zathurarc'
     only:
       features: ['zathura']
 
-  - src:  'alsa/alsasound'
-    dst:  '/etc/conf.d/alsasound'
+  - src: 'alsa/alsasound'
+    dst: '/etc/conf.d/alsasound'
     only:
       features: ['alsa']
 
-  - src:  'dracut/dracut.conf'
-    dst:  '/etc/dracut.conf'
+  - src: 'dracut/dracut.conf'
+    dst: '/etc/dracut.conf'
     only:
       features: ['dracut']
 
-  - src:  'slim/slim.conf'
-    dst:  '/etc/slim.conf'
+  - src: 'slim/slim.conf'
+    dst: '/etc/slim.conf'
     only:
       features: ['slim']
 
-  - src:  'mplayer/(.+)'
-    dst:  '/etc/mplayer/<1>'
+  - src: 'mplayer/(.+)'
+    dst: '/etc/mplayer/<1>'
     only:
       features: ['mplayer']
+
+  - src: 'virtualbox/(.+)'
+    dst: '~/.config/VirtualBox/<1>'
+    only:
+      features: [['linux', 'virtualbox']]
 
   # }}}
 

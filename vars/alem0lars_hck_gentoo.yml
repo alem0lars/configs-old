@@ -103,6 +103,9 @@ irc:
       - name: 'cesena'
         password: 'lpass show --password "alem0lars @ cesena.irc.slack.com"'
 
+virtualbox:
+  vm_dir: '/vm'
+
 features:
   - 'signature'
   - 'snort'
