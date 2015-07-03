@@ -1,14 +1,14 @@
-"###############################################################################
+" {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/cfg/commons/navigation.vim.tt                                 #
-" - Summary: Settings related to the navigation in vim windows.                #
+" - Name:    vim/plugins/hooks/bbye.vim.tt                                     #
+" - Summary: Hooks for the `bbye` plugin.                                      #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-" - Homepage:        https://github.com/alem0lars/configs                      #
-" - Getting started: see README.md in the project root folder                  #
+"   - Homepage:        https://github.com/alem0lars/configs                    #
+"   - Getting started: see README.md in the project root folder                #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -29,35 +29,13 @@
 " See the License for the specific language governing permissions and          #
 " limitations under the License.                                               #
 "                                                                              #
-"###############################################################################
+" }}} ##########################################################################
 
 
-" {{{ Configure window moving.
+" {{{ Configure hotkeys.
 
-" Easy way to move between tabs and windows.
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
-map <C-H> <C-W>h<C-W>_
-
-" Disable arrows.
-inoremap <Up>    <NOP>
-inoremap <Down>  <NOP>
-inoremap <Left>  <NOP>
-inoremap <Right> <NOP>
-noremap  <Up>    <NOP>
-noremap  <Down>  <NOP>
-noremap  <Left>  <NOP>
-noremap  <Right> <NOP>
-
-" }}}
-
-" {{{ Configure window splitting.
-
-" Puts new vsplit windows to the right of the current.
-set splitright
-" Puts new split windows to the bottom of the current.
-set splitbelow
+" <Leader>q: Delete the buffer preserving the windows layout.
+nnoremap <silent> <Leader>q :Bdelete<CR>
 
 " }}}
 

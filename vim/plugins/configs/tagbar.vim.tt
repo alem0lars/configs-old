@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/vimshell.vim.tt                                 #
-" - Summary: Hooks for the plugin `vimshell`.                                  #
+" - Name:    vim/plugins/hooks/tagbar.vim.tt                                   #
+" - Summary: Hooks for the plugin `tagbar`.                                    #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,70 +32,16 @@
 " }}} ##########################################################################
 
 
-" {{{ Internal functions.
+" {{{ Appearance.
 
-function! s:RC_Plugins_Hooks_Vimshell_ConfigureFTHotkeys()
-  nnoremap <silent><buffer> <C-j>
-        \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
-
-  " Autojump.
-  call vimshell#set_alias('j', ':Unite -buffer-name=files
-        \ -default-action=lcd -no-split -input=$$args directory_mru')
-endfunction
-
-" }}}
-
-" {{{ Configure prompt.
-
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt = '$ '
-
-" }}}
-
-" {{{ Configure terminal.
-
-let g:vimshell_use_terminal_command = '<%= get_var! "vim.terminal_cmd" %>'
-
-" }}}
-
-" {{{ Configure history & scrollback.
-
-let g:vimshell_temporary_directory = expand(
-      \ '<%= get_var! "vim.vimshell_tmp_dir" %>')
-
-" Maximum number of commands to keep in history.
-let g:vimshell_max_command_history = 1024
-
-" Read from the external history file.
-<% if has_feature? 'zsh' %>
-let g:vimshell_external_history_path = expand(
-      \ '<%= get_var! "zsh.history_file" %>')
-<% end %>
-
-" Maximum number of lines that can be scrolled back.
-let g:vimshell_scrollback_limit = 2048
-
-" }}}
-
-" {{{ Configure autocomplete.
-
-let g:vimshell_enable_smart_case = 1
+let g:tagbar_width = 24
 
 " }}}
 
 " {{{ Configure hotkeys.
 
-nnoremap <Leader>sh :<C-u>VimShell<CR>
-nnoremap <F3> :<C-u>VimShellPop<CR>
-
-autocmd FileType vimshell call <SID>RC_Plugins_Hooks_Vimshell_ConfigureFTHotkeys()
-
-" }}}
-
-" {{{ Configure NeoComplete dictionary.
-
-let g:neocomplete#sources#dictionary#dictionaries['vimshell'] =  expand(
-      \ '<%= get_var! "vim.vimshell_tmp_dir" %>')
+" <F5>: Toggle the tagbar.
+nnoremap <silent> <F5> :<C-u>TagbarToggle<CR>
 
 " }}}
 

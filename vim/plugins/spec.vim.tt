@@ -76,10 +76,15 @@ NeoBundle 'moll/vim-bbye'
 
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mbbill/undotree'
+
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 't9md/vim-choosewin'
+
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'airblade/vim-gitgutter'
+
+NeoBundle 't9md/vim-choosewin'
+NeoBundle 'wesQ3/vim-windowswap'
+NeoBundle 'gcmt/taboo.vim'
 
 " }}}
 
@@ -310,6 +315,16 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 NeoBundleLazy 'cespare/vim-toml', {
       \   'autoload': {
       \     'filetypes': ['toml'],
+      \   },
+      \ }
+
+" }}}
+
+" {{{ CSV.
+
+NeoBundleLazy 'chrisbra/csv.vim', {
+      \   'autoload': {
+      \     'filetypes': ['csv'],
       \   },
       \ }
 

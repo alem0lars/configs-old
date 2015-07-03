@@ -1,14 +1,14 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks.vim.tt                                          #
-" - Summary: Define hooks for vim plugins.                                     #
+" - Name:    vim/core/parts/navigation.vim.tt                                  #
+" - Summary: Settings related to the navigation in vim windows.                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -32,45 +32,53 @@
 " }}} ##########################################################################
 
 
-let s:plugins = {
-      \   'vim-airline': 'Airline',
-      \   'jellybeans.vim': 'Colorscheme',
-      \   'vim-smartinput-endwise': 'SmartinputEndwise',
-      \   'vim-bbye': 'Bbye',
-      \   'vim-choosewin': 'ChooseWin',
-      \   'clang_complete': 'ClangComplete',
-      \   'vim-css3-syntax': 'CSS3Syntax',
-      \   'echodoc.vim': 'EchoDoc',
-      \   'emmet-vim': 'Emmet',
-      \   'neco-ghc': 'NecoGHC',
-      \   'vim-indent-guides': 'IndentGuides',
-      \   'investigate.vim': 'Investigate',
-      \   'junkfile.vim': 'Junkfile',
-      \   'vim-multiple-cursors': 'MultipleCursors',
-      \   'scss-syntax.vim': 'SCSSSyntax',
-      \   'vimshell.vim': 'Vimshell',
-      \   'vimproc.vim': 'Vimproc',
-      \   'vimfiler.vim': 'Vimfiler',
-      \   'vim-easy-align': 'EasyAlign',
-      \   'undotree': 'UndoTree',
-      \   'tagbar': 'Tagbar',
-      \   'vim-signature': 'Signature',
-      \   'unite.vim': 'Unite',
-      \   'jedi-vim': 'Jedi',
-      \   'vim-ruby': 'Ruby',
-      \   'neocomplete': 'NeoComplete',
-      \   'neosnippet': 'NeoSnippet',
-      \   'tern_for_vim': 'Tern',
-      \ }
+" {{{ Configure window move.
 
-for [s:plugin_name, s:hook_name] in items(s:plugins)
-  if neobundle#tap(s:plugin_name)
-    let neobundle#hooks.on_source =
-          \ '<%= get_var! "vim.custom_dir" %>/plugins/hooks/' .
-          \ tolower(s:hook_name) . '.vim'
-    call neobundle#untap()
-  endif
-endfor
+" Easy way to move between windows.
+nnoremap <silent> <C-H> :wincmd h<CR>
+nnoremap <silent> <C-J> :wincmd j<CR>
+nnoremap <silent> <C-K> :wincmd k<CR>
+nnoremap <silent> <C-L> :wincmd l<CR>
+inoremap <silent> <C-H> :wincmd h<CR>
+inoremap <silent> <C-J> :wincmd j<CR>
+inoremap <silent> <C-K> :wincmd k<CR>
+inoremap <silent> <C-L> :wincmd l<CR>
+
+" Disable arrows.
+nnoremap <silent> <Up>    <NOP>
+nnoremap <silent> <Down>  <NOP>
+nnoremap <silent> <Left>  <NOP>
+nnoremap <silent> <Right> <NOP>
+inoremap <silent> <Up>    <NOP>
+inoremap <silent> <Down>  <NOP>
+inoremap <silent> <Left>  <NOP>
+inoremap <silent> <Right> <NOP>
+
+" }}}
+
+" {{{ Configure window resize.
+
+" Easy way to resize windows.
+nnoremap <silent> <C-W><C-h> 4<C-W>>
+nnoremap <silent> <C-W><C-j> 4<C-W>-
+nnoremap <silent> <C-W><C-k> 4<C-W>+
+nnoremap <silent> <C-W><C-l> 4<C-W><
+inoremap <silent> <C-W><C-h> 4<C-W>>
+inoremap <silent> <C-W><C-j> 4<C-W>-
+inoremap <silent> <C-W><C-k> 4<C-W>+
+inoremap <silent> <C-W><C-l> 4<C-W><
+
+" }}}
+
+" {{{ Configure window split.
+
+" Puts new vsplit windows to the right of the current.
+set splitright
+
+" Puts new split windows to the bottom of the current.
+set splitbelow
+
+" }}}
 
 
 " vim: set filetype=vim :

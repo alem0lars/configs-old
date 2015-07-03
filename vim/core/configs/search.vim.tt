@@ -44,12 +44,15 @@ set smartcase
 " See live results while typing the search string.
 set incsearch
 
+" Highlight search results.
+set hlsearch
+
 " }}}
 
 " {{{ Configure hotkeys.
 
 " <Leader>/: clear previous search highlighting.
-nmap <silent> <Leader>/ :nohlsearch<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
 " }}}
 

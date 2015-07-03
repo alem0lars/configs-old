@@ -1,14 +1,15 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/bbye.vim.tt                                     #
-" - Summary: Hooks for the `bbye` plugin.                                      #
+" - Name:    vim/cfg/commons/persistence.vim.tt                                #
+" - Summary: Settings related to the vim persistence, i.e. how vim should      #
+"            store backups, swap files, views state, undo history, etc..       #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
 " Project informations:                                                        #
-"   - Homepage:        https://github.com/alem0lars/configs                    #
-"   - Getting started: see README.md in the project root folder                #
+" - Homepage:        https://github.com/alem0lars/configs                      #
+" - Getting started: see README.md in the project root folder                  #
 "                                                                              #
 " License: Apache v2.0 (see below)                                             #
 "                                                                              #
@@ -32,10 +33,56 @@
 " }}} ##########################################################################
 
 
-" {{{ Configure hotkeys.
+" {{{ Configure backups.
 
-" <Leader>q: Delete the buffer preserving the windows layout.
-nnoremap <Leader>q :Bdelete<CR>
+" Enable files backups.
+set backup
+
+" Set the directory for saving files backups.
+set backupdir=<%= get_var! 'vim.backups_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.backups_dir" %>'
+
+" }}}
+
+" {{{ Configure swap.
+
+" Set the directory for saving swap files.
+set directory=<%= get_var! 'vim.swap_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.swap_dir" %>'
+
+" }}}
+
+" {{{ Configure views.
+
+" Set the directory for saving views state.
+set viewdir=<%= get_var! 'vim.views_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.views_dir" %>'
+
+" When entering and exiting from a buffer load the view state.
+au BufWinLeave \* silent! mkview
+au BufWinEnter \* silent! loadview
+
+" }}}
+
+" {{{ Configure undo.
+
+" Set the directory for saving undos.
+set undodir=<%= get_var! 'vim.undo_dir' %>
+silent execute '!mkdir -p <%= get_var! "vim.undo_dir" %>'
+
+" How many undos.
+set undolevels=2048
+
+" Number of lines to save for undo.
+set undoreload=10240
+
+set undofile
+
+" }}}
+
+" {{{ Session.
+
+set sessionoptions+=tabpages,globals
 
 " }}}
 

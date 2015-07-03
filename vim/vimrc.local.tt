@@ -34,9 +34,20 @@
 
 " {{{ Utility functions.
 
-" Load a file and call it's main function.
-function! RC_Source(file_name)
-  exe 'source <%= get_var! "vim.custom_dir" %>/' . tolower(a:file_name) . '.vim'
+" Source a file or directory inside the vim configuration folder.
+function! RC_Source(rel_path)
+  let l:path = '<%= get_var! "vim.custom_dir" %>/' . a:rel_path
+
+  if isdirectory(l:path)
+    for l:file_path in split(globpath(l:path, '*.vim'), '\n')
+      exe 'source ' . l:file_path
+    endfor
+  else
+    let l:file_path = l:path . '.vim'
+    if filereadable(l:file_path)
+      exe 'source ' . l:file_path
+    end
+  end
 endfunction
 
 " }}}
@@ -52,6 +63,8 @@ endif
 call RC_Source('plugins/load')
 
 call RC_Source('core/configure')
+
+call RC_Source('plugins/configure')
 
 
 " vim: set filetype=vim :

@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/tagbar.vim.tt                                   #
-" - Summary: Hooks for the plugin `tagbar`.                                    #
+" - Name:    vim/plugins/hooks/emmet.vim.tt                                    #
+" - Summary: Hooks for the plugin `emmet-vim`.                                 #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,10 +32,11 @@
 " }}} ##########################################################################
 
 
-" {{{ Configure hotkeys.
+" {{{ Enable.
 
-" <F5>: Toggle the tagbar.
-nnoremap <F5> :<C-u>TagbarToggle<CR>
+let g:user_emmet_install_global = 0
+
+autocmd FileType html,css EmmetInstall
 
 " }}}
 

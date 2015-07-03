@@ -36,7 +36,7 @@
 
 function! s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
   " <e>: Edit a file and change working directory to its parent.
-  nmap <buffer><expr> e vimfiler#smart_cursor_map(
+  nmap <silent><buffer><expr> e vimfiler#smart_cursor_map(
         \  "\<Plug>(vimfiler_cd_file)",
         \  "\<Plug>(vimfiler_edit_file)")
 
@@ -45,16 +45,28 @@ function! s:RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
   " <s>: Horizontal split with the file selected in Vimfiler.
   nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('split')
 
+  " To be consistent with window navigation hotkeys.
+  nnoremap <silent><buffer> <C-h> h
+  nnoremap <silent><buffer> <C-j> j
+  nnoremap <silent><buffer> <C-k> k
+  nnoremap <silent><buffer> <C-l> l
+
+  " <C-d> Switch to history directory.
+  nnoremap <silent><buffer><expr> <C-d> vimfiler_switch_to_history_directory
+
+  " <C-r>: Redraw.
+  nnoremap <silent><buffer><expr> <C-r> vimfiler_redraw_screen()
+
   " <p>: Use the quick-look command to preview the file.
   <% if get_var :quick_look_command %>
-  nmap <buffer> p <Plug>(vimfiler_quick_look)
+  nmap <silent><buffer> p <Plug>(vimfiler_quick_look)
   <% end %>
 
   " <V>: Preview the file (default was `v`).
-  nmap <buffer> V <Plug>(vimfiler_preview_file)
+  nmap <silent><buffer> V <Plug>(vimfiler_preview_file)
 
   " Open files by double-clicking on them.
-  nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+  nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
 endfunction
 
 " }}}
@@ -69,15 +81,7 @@ let g:vimfiler_as_default_explorer = 1
 
 " }}}
 
-" {{{ Configure profile & options.
-
-call vimfiler#custom#profile('default', 'context', {
-  \  'safe': 0,
-  \  'explorer': 1,
-  \  'auto_cd': 1,
-  \  'auto_expand': 1,
-  \  'no_quit': 1,
-  \ })
+" {{{ Configure options.
 
 let g:vimfiler_define_wrapper_commands = 1
 
@@ -101,15 +105,28 @@ let g:vimfiler_marked_file_icon = '✓'
 
 " }}}
 
+" {{{ Configure profile.
+
+call vimfiler#custom#profile('default', 'context', {
+  \  'safe': 0,
+  \  'explorer': 1,
+  \  'auto_cd': 1,
+  \  'auto_expand': 1,
+  \  'no_quit': 1,
+  \ })
+
+" }}}
+
 " {{{ Configure hotkeys.
 
 " <C-e>: Toggle (open/close) Vimfiler explorer in a pane.
-nnoremap <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
+nnoremap <silent> <C-e> :<C-u>VimFilerExplorer -buffer-name=explorer -toggle<CR>
 
 " <Leader>vff: Find and focus the current file in Vimfiler.
-nnoremap <Leader>vff :<C-u>VimFilerExplorer -find<CR>
+nnoremap <silent> <Leader>vff :<C-u>VimFilerExplorer -find<CR>
 
-autocmd FileType vimfiler call <SID>RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
+autocmd FileType vimfiler call
+      \ <SID>RC_Plugins_Hooks_Vimfiler_ConfigureFTHotkeys()
 
 " }}}
 
