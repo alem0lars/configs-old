@@ -36,7 +36,7 @@
 
 " Set the colorscheme.
 <% if get_var 'colorscheme' %>
-colorscheme <% get_var! 'colorscheme.name' %>.vimp
+colorscheme <%= get_var! 'colorscheme.name' %>.vimp
 <% end %>
 
 " }}}

@@ -41,4 +41,3 @@ hi Title                color: #5778c1;
 hi URL                  text-decoration: none; color: green; background: inherit;
 hi URL:hover            text-decoration: underline; cursor: pointer;
 hi LineNr               color: #afafaf; background: #242721;
-
