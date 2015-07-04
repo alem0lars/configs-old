@@ -115,7 +115,7 @@ set cmd:move-background-detach yes
 #  \s  the name of the client (lftp)
 #  \S  current slot name
 #  \u  the username of the user you are logged in as
-#  \U  the URL of the remote site (e.g., ftp://g437.ub.gu.se/home/james/src/lftp)
+#  \U  the URL of the remote site (e.g. ftp://g437.ub.gu.se/home/james/src/lftp)
 #  \v  the version of lftp (e.g., 2.0.3)
 #  \w  the current working directory at the remote site
 #  \W  the base name of the current working directory at the remote site
@@ -126,7 +126,7 @@ set cmd:move-background-detach yes
 #set embed a terminal control sequence
 #set into the prompt
 #  \]  end a sequence of non-printing characters
-set cmd:prompt "❰\h@\u❱ 【\S┃\@】 \w ▶ "
+set cmd:prompt "\[\e[0;37m\]【\[\e[0;35m\]\u\[\e[0;37m\]@\[\e[0;35m\]\h\[\e[0;37m\]】 \[\e[0;32m\]\w\[\e[0;37m\] ▶ \[\e[0m\]"
 
 # Number of jobs run in parallel in non-interactive mode. For example, this may
 # be useful for scripts with multiple `get` commands. Note that setting this to
@@ -571,9 +571,10 @@ set hftp:use-allprop yes
 # password as part of Authorization header.
 set hftp:use-authorization yes
 
-set hftp:use-head (boolean)
-# if set to off, lftp will try to use `GET' instead of `HEAD' for hftp protocol. While this is slower, it may
-# allow lftp to work with some proxies which don't understand or mishandle ``HEAD ftp://'' requests.
+# If set to off, lftp will try to use `GET' instead of `HEAD' for hftp protocol.
+# While this is slower, it may allow lftp to work with some proxies which don't
+# understand or mishandle `HEAD ftp://` requests.
+set hftp:use-head yes
 
 # If set to off, lftp will try to use `PUT' instead of `MKCOL' to create
 # directories with hftp protocol.
@@ -646,7 +647,7 @@ set mirror:no-empty-dirs no
 # Specifies order of file transfers. Valid values are: name, name-desc, size,
 # size-desc, date, date-desc. When the value is name or name-desc, then
 # mirror:order setting also affects the order or transfers.
-set mirror:sort-by "size, date-desc, name"
+set mirror:sort-by "size"
 
 # Specifies order of file transfers when sorting by name. E.g. setting this to
 # "*.sfv *.sum" makes mirror to transfer files matching *.sfv first, then ones
@@ -806,29 +807,6 @@ set ssl:verify-certificate no
 # values are + or - followed by SSL3.0, TLS1.0, TLS1.1 or TLS1.2, separated
 # by :.
 set ssl:priority "NORMAL:-SSL3.0:-TLS1.0:-TLS1.1:+TLS1.2"
-
-# Maximum number of peers for a torrent. Least used peers are removed to
-# maintain this limit.
-set torrent:max-peers 32
-
-# When true, lftp saves metadata of each torrent it works with to
-# ~/.local/share/lftp/torrent/md or ~/.lftp/torrent/md directory and loads it
-# from there if necessary.
-set torrent:save-metadata yes
-
-# Maximum seed time. After this period of time a complete torrent shuts down
-# independently of ratio. It can be set to infinity if needed.
-set torrent:seed-max-time 1m
-
-# Minimum number of peers when the torrent is complete. If there are less, new
-# peers are actively searched for.
-set torrent:seed-min-peers 0
-
-# Torrent stops when it's complete and ratio reached this number.
-set torrent:stop-on-ratio 0.3
-
-# When true, DHT is used.
-set torrent:use-dht yes
 
 # Suggested filenames provided by the server are used if user explicitly sets
 # this option to `on`. As this could be security risk, default is off.
