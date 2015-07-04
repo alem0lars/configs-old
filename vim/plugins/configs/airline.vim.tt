@@ -103,24 +103,18 @@ let g:airline#extensions#windowswap#enabled = 1
 
 " }}}
 
-" {{{ Configure taboo extension.
-
-let g:airline#extensions#taboo#enabled = 1
-
-" }}}
-
 " {{{ Configure hotkeys.
 
 " <Leader>number: Select the tab of index equal to number.
-nnoremap <silent> <Leader>1 <Plug>AirlineSelectTab1
-nnoremap <silent> <Leader>2 <Plug>AirlineSelectTab2
-nnoremap <silent> <Leader>3 <Plug>AirlineSelectTab3
-nnoremap <silent> <Leader>4 <Plug>AirlineSelectTab4
-nnoremap <silent> <Leader>5 <Plug>AirlineSelectTab5
-nnoremap <silent> <Leader>6 <Plug>AirlineSelectTab6
-nnoremap <silent> <Leader>7 <Plug>AirlineSelectTab7
-nnoremap <silent> <Leader>8 <Plug>AirlineSelectTab8
-nnoremap <silent> <Leader>9 <Plug>AirlineSelectTab9
+nmap <silent> <Leader>1 <Plug>AirlineSelectTab1
+nmap <silent> <Leader>2 <Plug>AirlineSelectTab2
+nmap <silent> <Leader>3 <Plug>AirlineSelectTab3
+nmap <silent> <Leader>4 <Plug>AirlineSelectTab4
+nmap <silent> <Leader>5 <Plug>AirlineSelectTab5
+nmap <silent> <Leader>6 <Plug>AirlineSelectTab6
+nmap <silent> <Leader>7 <Plug>AirlineSelectTab7
+nmap <silent> <Leader>8 <Plug>AirlineSelectTab8
+nmap <silent> <Leader>9 <Plug>AirlineSelectTab9
 
 " }}}
 

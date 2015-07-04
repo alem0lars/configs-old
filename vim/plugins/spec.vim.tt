@@ -84,7 +84,6 @@ NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundle 't9md/vim-choosewin'
 NeoBundle 'wesQ3/vim-windowswap'
-NeoBundle 'gcmt/taboo.vim'
 
 " }}}
 
