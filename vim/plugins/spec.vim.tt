@@ -184,6 +184,12 @@ NeoBundle 'dhruvasagar/vim-prosession', {
 
 " }}}
 
+" {{{ Commandline
+
+NeoBundle 'gelguy/Cmd2.vim'
+
+" }}}
+
 " {{{ Statusline.
 
 NeoBundle 'bling/vim-airline'
@@ -199,6 +205,14 @@ NeoBundle 'nanotech/jellybeans.vim'
 " {{{ Languages.
 
 " {{{ C, C++, Obj-c, Objcpp.
+
+NeoBundleLazy 'jeaye/color_coded', {
+      \   'build': {
+      \     'unix': 'cmake . && make && make install',
+      \   },
+      \   'autoload' : { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+      \   'build_commands' : ['cmake', 'make']
+      \ }
 
 NeoBundleLazy 'Rip-Rip/clang_complete', {
       \   'autoload': {
@@ -263,6 +277,22 @@ NeoBundleLazy 'ujihisa/neco-look', {
 NeoBundleLazy 'eagletmt/ghcmod-vim', {
       \   'autoload': {
       \     'filetypes': ['haskell'],
+      \   },
+      \ }
+
+NeoBundleLazy 'enomsg/vim-haskellConcealPlus', {
+      \   'autoload': {
+      \     'filetypes': ['haskell'],
+      \   },
+      \ }
+
+" }}}
+
+" {{{ Scala.
+
+NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
+      \   'autoload': {
+      \     'filetypes': ['scala'],
       \   },
       \ }
 
