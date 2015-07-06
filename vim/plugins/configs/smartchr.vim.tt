@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/necoghc.vim.tt                                  #
-" - Summary: Hooks for the plugin `neco-ghc`.                                  #
+" - Name:    vim/plugins/hooks/smartchr.vim.tt                                 #
+" - Summary: Hooks for the plugin `smartchr`.                                  #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,17 +32,44 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+inoremap <expr> , smartchr#one_of(', ', ',')
 
-let g:necoghc_enable_detailed_browse = 1
+" Smart =.
+inoremap <expr> =
+      \ search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%#', 'bcn')
+      \ ? '<bs>= '
+      \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
+      \ : smartchr#one_of(' = ', '=', ' == ')
 
-" }}}
+augroup SmartChrAutoCmd
+  " Substitute .. into -> .
+  autocmd FileType c,cpp inoremap <buffer> <expr> .
+        \ smartchr#loop('.', '->', '...')
+  autocmd FileType perl inoremap <buffer> <expr> .
+        \ smartchr#loop(' . ', '->', '.')
+  autocmd FileType perl inoremap <buffer> <expr> -
+        \ smartchr#loop('-', '->')
+  autocmd FileType vim inoremap <buffer> <expr> .
+        \ smartchr#loop('.', ' . ', '..', '...')
 
-" {{{ Configure Omnifunc.
+  autocmd FileType haskell,int-ghci
+        \  inoremap <buffer> <expr> + smartchr#loop('+', ' ++ ')
+        \| inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
+        \| inoremap <buffer> <expr> $ smartchr#loop(' $ ', '$')
+        \| inoremap <buffer> <expr> \ smartchr#loop('\ ', '\')
+        \| inoremap <buffer> <expr> : smartchr#loop(':', ' :: ', ' : ')
+        \| inoremap <buffer> <expr> . smartchr#loop('.', ' . ', '..')
 
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+  autocmd FileType scala
+        \  inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
+        \| inoremap <buffer> <expr> = smartchr#loop(' = ', '=', ' => ')
+        \| inoremap <buffer> <expr> : smartchr#loop(': ', ':', ' :: ')
+        \| inoremap <buffer> <expr> . smartchr#loop('.', ' => ')
 
-" }}}
+  autocmd FileType eruby
+        \  inoremap <buffer> <expr> > smartchr#loop('>', '%>')
+        \| inoremap <buffer> <expr> < smartchr#loop('<', '<%', '<%=')
+augroup END
 
 
 " vim: set filetype=vim :

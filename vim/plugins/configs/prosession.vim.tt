@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/necoghc.vim.tt                                  #
-" - Summary: Hooks for the plugin `neco-ghc`.                                  #
+" - Name:    vim/plugins/prosession.vim.tt                                     #
+" - Summary: Hooks for the plugin `prosession`.                                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -34,13 +34,8 @@
 
 " {{{ Options.
 
-let g:necoghc_enable_detailed_browse = 1
-
-" }}}
-
-" {{{ Configure Omnifunc.
-
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" Enable tmux window name updates as per current session.
+let g:prosession_tmux_title = 1
 
 " }}}
 

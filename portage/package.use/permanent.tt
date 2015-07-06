@@ -102,7 +102,12 @@ dev-util/radare2 debug
 # Needed by `app-office/libreoffice`.
 dev-db/postgresql kerberos
 
-app-text/asciidoc highlight 
+app-text/asciidoc highlight
+
+<% if has_feature? 'vim' %>
+app-editors/vim vim-pager
+<% end %>
+
 <% if has_feature? :urxvt %>
 x11-terms/rxvt-unicode -vanilla 256-color buffer-on-clear fading-colors wcwidth unicode3
 <% end %>

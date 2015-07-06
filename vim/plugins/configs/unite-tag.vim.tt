@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/necoghc.vim.tt                                  #
-" - Summary: Hooks for the plugin `neco-ghc`.                                  #
+" - Name:    vim/plugins/hooks/unite-tag.vim.tt                                #
+" - Summary: Hooks for the plugin `unite-tag`.                                 #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,15 +32,14 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Configure hotkeys.
 
-let g:necoghc_enable_detailed_browse = 1
+nnoremap <silent><expr> <Leader>untt &filetype == 'help' ? "g\<C-]>" :
+      \ ':\<C-u>UniteWithCursorWord -buffer-name=tag -immediately tag
+      \ tag/include\<CR>'
 
-" }}}
-
-" {{{ Configure Omnifunc.
-
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+nnoremap <silent><expr> <Leader>untp  &filetype == 'help' ?
+      \ ':\<C-u>pop\<CR>' : ':\<C-u>Unite jump\<CR>'
 
 " }}}
 

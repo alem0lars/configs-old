@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/necoghc.vim.tt                                  #
-" - Summary: Hooks for the plugin `neco-ghc`.                                  #
+" - Name:    vim/plugins/hooks/unite-session.vim.tt                            #
+" - Summary: Hooks for the plugin `unite-session`.                             #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,15 +32,11 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Configure hotkeys.
 
-let g:necoghc_enable_detailed_browse = 1
+nnoremap <silent> <Leader>unSn :<C-u>Unite session/new<CR>
 
-" }}}
-
-" {{{ Configure Omnifunc.
-
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+nnoremap <silent> <Leader>unSl :<C-u>Unite session<CR>
 
 " }}}
 

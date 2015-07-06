@@ -69,10 +69,20 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'moll/vim-bbye'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'chrisbra/NrrwRgn'
 
 " }}}
 
 " {{{ UI.
+
+NeoBundle 'Shougo/unite-outline', {
+      \   'depends': 'Shougo/unite.vim',
+      \ }
+NeoBundle 'tsukkee/unite-tag', {
+      \   'depends': 'Shougo/unite.vim',
+      \ }
 
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mbbill/undotree'
@@ -84,6 +94,14 @@ NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundle 't9md/vim-choosewin'
 NeoBundle 'wesQ3/vim-windowswap'
+
+" }}}
+
+" {{{ Build.
+
+NeoBundle 'Shougo/unite-build', {
+      \   'depends': ['Shougo/unite.vim', 'Shougo/vimproc.vim'],
+      \ }
 
 " }}}
 
@@ -109,7 +127,9 @@ NeoBundle 'Shougo/neosnippet.vim', {
 " {{{ Documentation.
 
 NeoBundle 'Keithbsmiley/investigate.vim'
-NeoBundle 'Shougo/unite-help'
+NeoBundle 'Shougo/unite-help', {
+      \   'depends': 'Shougo/unite.vim',
+      \ }
 NeoBundle 'Shougo/echodoc.vim'
 
 " }}}
@@ -148,6 +168,19 @@ NeoBundle 'scrooloose/syntastic', {
 " {{{ Project management.
 
 NeoBundle 'airblade/vim-rooter'
+
+" }}}
+
+" {{{ Session.
+
+NeoBundle 'Shougo/unite-session', {
+      \   'depends': 'Shougo/unite.vim',
+      \ }
+
+NeoBundle 'tpope/vim-obsession'
+NeoBundle 'dhruvasagar/vim-prosession', {
+      \   'depends': 'tpope/vim-obsession',
+      \ }
 
 " }}}
 

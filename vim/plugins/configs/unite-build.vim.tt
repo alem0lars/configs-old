@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/necoghc.vim.tt                                  #
-" - Summary: Hooks for the plugin `neco-ghc`.                                  #
+" - Name:    vim/plugins/hooks/unite-build.vim.tt                              #
+" - Summary: Hooks for the plugin `unite-build`.                               #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,15 +32,18 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Internal functions.
 
-let g:necoghc_enable_detailed_browse = 1
+function! s:RC_Plugins_Hooks_UniteBuild_Perform()
+  return ':\<C-u>Unite -buffer-name=build' . tabpagenr() .
+        \ ' -no-quit build\<CR>'
+endfunction
 
 " }}}
 
-" {{{ Configure Omnifunc.
+" {{{ Configure hotkeys.
 
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+nnoremap <silent> <Leader>unB :<SID>RC_Plugins_Hooks_UniteBuild_Perform()
 
 " }}}
 

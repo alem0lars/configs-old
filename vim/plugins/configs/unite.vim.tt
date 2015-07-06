@@ -32,6 +32,12 @@
 " }}} ##########################################################################
 
 
+" {{{ Enable.
+
+let g:unite_source_history_yank_enable = 1
+
+" }}}
+
 " {{{ Configure grep command.
 
 " Set the grep command used by unite (and its cli arguments).
@@ -124,8 +130,8 @@ nnoremap <silent> <Leader>unK :<C-u>UniteWithBufferDir -buffer-name=files
 " <Leader>unm: Show the defined mappings.
 nnoremap <silent> <Leader>unm :<C-u>Unite mapping<CR>
 
-" <Leader>unn: Show the list of unite sources.
-nnoremap <silent> <Leader>unn :<C-u>Unite source<CR>
+" <Leader>unl: Show the list of unite sources.
+nnoremap <silent> <Leader>unl :<C-u>Unite source<CR>
 
 " <Leader>unr: Show registers state.
 nnoremap <silent> <Leader>unr :<C-u>Unite -buffer-name=register register<CR>
@@ -135,18 +141,34 @@ nnoremap <silent> <Leader>uns :<C-u>Unite -buffer-name=files -start-insert
       \ file_rec/async:!<CR>
 
 " <Leader>uny: Open yank history.
-let g:unite_source_history_yank_enable = 1
 nnoremap <silent> <Leader>uny :<C-u>Unite -buffer-name=yank_history
       \ history/yank<CR>
 
 " <Leader>unu: Resume a previous unite action.
 nnoremap <silent> <Leader>unu :<C-u>Unite -buffer-name=resume resume<CR>
 
+" {{{ Search.
+
+nnoremap <silent> <Leader>un/
+      \ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert
+      \ line:forward:wrap<CR>
+
+nnoremap <silent> <Leader>un?
+      \ :<C-u>Unite -buffer-name=search%`bufnr('%')` -start-insert
+      \ line:backward<CR>
+
+nnoremap <silent> <Leader>un*
+      \ :<C-u>UniteWithCursorWord -buffer-name=search%`bufnr('%')`
+      \ line:forward:wrap<CR>
+
+nnoremap <silent> <Leader>unn
+        \ :<C-u>UniteResume search%`bufnr('%')`
+        \  -no-start-insert -force-redraw<CR>
+
+" }}}
+
 " Custom mappings for the unite buffer.
 autocmd FileType unite call <SID>RC_Plugins_Hooks_Unite_ConfigureFTHotkeys()
-
-" TODO: I need to add the unite-outline plugin.
-"nnoremap <silent> <Leader>uno  :<C-u>Unite outline<CR>
 
 " TODO: I need tabpagebuffer plugin.
 " <Leader>unf: Everything for files: show/create new files, show tabs, etc..

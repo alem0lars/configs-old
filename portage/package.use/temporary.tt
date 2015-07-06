@@ -58,6 +58,9 @@ dev-java/jsr305 -doc
 dev-java/hamcrest-core -doc
 dev-java/libreadline-java -doc
 
+# Needed by chromium.
+media-libs/libvpx postproc
+
 # }}}
 
 # {{{ Other.

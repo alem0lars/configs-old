@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/necoghc.vim.tt                                  #
-" - Summary: Hooks for the plugin `neco-ghc`.                                  #
+" - Name:    vim/plugins/hooks/unite-help.vim.tt                               #
+" - Summary: Hooks for the plugin `unite-help`.                                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,15 +32,13 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Configure hotkeys.
 
-let g:necoghc_enable_detailed_browse = 1
+" <Leader>unh: Execute help.
+nnoremap <silent> <Leader>unh :<C-u>Unite -buffer-name=help help<CR>
 
-" }}}
-
-" {{{ Configure Omnifunc.
-
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" <Leader>unH: Execute help by cursor keyword.
+nnoremap <silent> <Leader>unH :<C-u>UniteWithCursorWord help<CR>
 
 " }}}
 
