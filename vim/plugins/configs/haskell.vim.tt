@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/cmd2.vim.tt                                     #
-" - Summary: Hooks for the `cmd2` plugin.                                      #
+" - Name:    vim/plugins/hooks/haskell.vim.tt                                  #
+" - Summary: Hooks for the plugin `haskell`.                                   #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,42 +32,15 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Configure highlighting.
 
-let g:Cmd2_cmd_mappings = {
-      \ 'iw': {'command': 'iw', 'type': 'text', 'flags': 'Cpv'},
-      \ 'ap': {'command': 'ap', 'type': 'line', 'flags': 'pv'},
-      \ '^': {'command': '^', 'type': 'normal!', 'flags': 'r'},
-      \ 'w': {'command': 'Cmd2#functions#Cword',
-          \ 'type': 'function', 'flags': 'Cr'},
-      \ }
-
-let g:Cmd2_options = {
-      \ '_complete_ignorecase': 1,
-      \ '_complete_uniq_ignorecase': 0,
-      \ '_quicksearch_ignorecase': 1,
-      \ '_complete_start_pattern': '\<\(\k\+\(_\|\#\)\)\?',
-      \ '_complete_fuzzy': 1,
-      \ }
-
-" Character to type to start wildcard expansion in the command-line.
-set wildcharm=<Tab>
-
-" }}}
-
-" {{{ Configure hotkeys.
-
-" : or /: Enable Cmd2 automatically.
-nmap : :<F11>
-nmap / /<F11>
-
-" <F11>: Enable Cmd2 manually.
-cmap <F11> <Plug>(Cmd2Suggest)
-
-" <Tab>: Perform completion using Cmd2.
-cmap <expr> <Tab> Cmd2#ext#complete#InContext() ?
-      \ '\<Plug>(Cmd2Complete)' :
-      \ '\<Tab>'
+let g:haskell_enable_quantification = 1
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let g:haskell_enable_pattern_synonyms = 1
+let g:haskell_enable_typeroles = 1
+let g:haskell_enable_static_pointers = 1
+let g:echodoc_enable_at_startup = 1
 
 " }}}
 

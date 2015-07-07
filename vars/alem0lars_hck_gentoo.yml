@@ -75,6 +75,9 @@ vim:
   terminal_cmd:     'urxvtc -e'
   latex_viewer:     'zathura'
 
+eclipse:
+  base_dir: '<%= `find /opt -name "eclipse*" -type d`.chomp %>'
+
 taskwarrior:
   taskd:
     server:      'freecinc.com:53589'
@@ -125,3 +128,4 @@ features:
   - 'lftp'
   - 'powerline'
   - 'mega'
+  - 'eclipse'

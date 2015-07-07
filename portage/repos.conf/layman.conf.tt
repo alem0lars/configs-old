@@ -49,3 +49,15 @@ sync-uri = git://github.com/gentoo-haskell/gentoo-haskell.git
 auto-sync = Yes
 
 <% end %>
+
+<% if has_feature? 'java' %>
+
+[java]
+priority = 50
+location = /var/lib/layman/java
+layman-type = git
+sync-type = laymansync
+sync-uri = git://anongit.gentoo.org/proj/java.git
+auto-sync = Yes
+
+<% end %>

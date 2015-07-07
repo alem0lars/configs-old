@@ -170,12 +170,6 @@ nnoremap <silent> <Leader>unn
 " Custom mappings for the unite buffer.
 autocmd FileType unite call <SID>RC_Plugins_Hooks_Unite_ConfigureFTHotkeys()
 
-" TODO: I need tabpagebuffer plugin.
-" <Leader>unf: Everything for files: show/create new files, show tabs, etc..
-"nnoremap <silent> <Leader>unf :<C-u>Unite -buffer-name=files -no-split
-"        \ jump_point file_point buffer_tab
-"        \ file_rec:! file file/new<CR>
-
 " }}}
 
 

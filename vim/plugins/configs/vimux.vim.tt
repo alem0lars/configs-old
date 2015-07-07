@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/cmd2.vim.tt                                     #
-" - Summary: Hooks for the `cmd2` plugin.                                      #
+" - Name:    vim/plugins/hooks/vimux.vim.tt                                    #
+" - Summary: The configuration for the `vimux` plugin.                         #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,42 +32,45 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Appearance
 
-let g:Cmd2_cmd_mappings = {
-      \ 'iw': {'command': 'iw', 'type': 'text', 'flags': 'Cpv'},
-      \ 'ap': {'command': 'ap', 'type': 'line', 'flags': 'pv'},
-      \ '^': {'command': '^', 'type': 'normal!', 'flags': 'r'},
-      \ 'w': {'command': 'Cmd2#functions#Cword',
-          \ 'type': 'function', 'flags': 'Cr'},
-      \ }
-
-let g:Cmd2_options = {
-      \ '_complete_ignorecase': 1,
-      \ '_complete_uniq_ignorecase': 0,
-      \ '_quicksearch_ignorecase': 1,
-      \ '_complete_start_pattern': '\<\(\k\+\(_\|\#\)\)\?',
-      \ '_complete_fuzzy': 1,
-      \ }
-
-" Character to type to start wildcard expansion in the command-line.
-set wildcharm=<Tab>
+let g:VimuxHeight = '32'
 
 " }}}
 
 " {{{ Configure hotkeys.
 
-" : or /: Enable Cmd2 automatically.
-nmap : :<F11>
-nmap / /<F11>
+" <Leader>vmp: Prompt for a command to run.
+nnoremap <silent> <Leader>vmp :VimuxPromptCommand<CR>
 
-" <F11>: Enable Cmd2 manually.
-cmap <F11> <Plug>(Cmd2Suggest)
+" <Leader>vml: Run last command executed by VimuxRunCommand.
+nnoremap <silent> <Leader>vml :VimuxRunLastCommand<CR>
 
-" <Tab>: Perform completion using Cmd2.
-cmap <expr> <Tab> Cmd2#ext#complete#InContext() ?
-      \ '\<Plug>(Cmd2Complete)' :
-      \ '\<Tab>'
+" <Leader>vmi: Inspect runner pane map.
+nnoremap <silent> <Leader>vmi :VimuxInspectRunner<CR>
+
+" <Leader>vmq: Close vim tmux runner opened by VimuxRunCommand.
+nnoremap <silent> <Leader>vmq :VimuxCloseRunner<CR>
+
+" <Leader>vms: Interrupt any command running in the runner pane map.
+nnoremap <silent> <Leader>vms :VimuxInterruptRunner<CR>
+
+" <Leader>vmh: Clear the tmux history of the runner pane.
+nnoremap <silent> <Leader>vmh :VimuxClearRunnerHistory<CR>
+
+" <Leader>vmz: Zoom the tmux runner page.
+nnoremap <silent> <Leader>vmz :VimuxZoomRunner<CR>
+
+" {{{ Custom.
+"     All custom commands should start with `<Leader>vmc`, where `c`
+"     means 'custom' and append a letter which explains the particular command
+"     (usually it's the first letter of the command).
+
+" <Leader> Run the current file with SBT.
+nnoremap <silent> <Leader>vmcs :call VimuxRunCommand(
+      \ 'clear; sbt ' . bufname('%'))<CR>
+
+" }}}
 
 " }}}
 

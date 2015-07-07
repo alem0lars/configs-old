@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/cmd2.vim.tt                                     #
-" - Summary: Hooks for the `cmd2` plugin.                                      #
+" - Name:    vim/plugins/hooks/vroom.vim.tt                                    #
+" - Summary: Hooks for the plugin `vroom`.                                     #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -34,40 +34,11 @@
 
 " {{{ Options.
 
-let g:Cmd2_cmd_mappings = {
-      \ 'iw': {'command': 'iw', 'type': 'text', 'flags': 'Cpv'},
-      \ 'ap': {'command': 'ap', 'type': 'line', 'flags': 'pv'},
-      \ '^': {'command': '^', 'type': 'normal!', 'flags': 'r'},
-      \ 'w': {'command': 'Cmd2#functions#Cword',
-          \ 'type': 'function', 'flags': 'Cr'},
-      \ }
+" Use `vimux`.
+let g:vroom_use_vimux = 1
 
-let g:Cmd2_options = {
-      \ '_complete_ignorecase': 1,
-      \ '_complete_uniq_ignorecase': 0,
-      \ '_quicksearch_ignorecase': 1,
-      \ '_complete_start_pattern': '\<\(\k\+\(_\|\#\)\)\?',
-      \ '_complete_fuzzy': 1,
-      \ }
-
-" Character to type to start wildcard expansion in the command-line.
-set wildcharm=<Tab>
-
-" }}}
-
-" {{{ Configure hotkeys.
-
-" : or /: Enable Cmd2 automatically.
-nmap : :<F11>
-nmap / /<F11>
-
-" <F11>: Enable Cmd2 manually.
-cmap <F11> <Plug>(Cmd2Suggest)
-
-" <Tab>: Perform completion using Cmd2.
-cmap <expr> <Tab> Cmd2#ext#complete#InContext() ?
-      \ '\<Plug>(Cmd2Complete)' :
-      \ '\<Tab>'
+" Use `Vimshell` as fallback (since vimux has more priority).
+let g:vroom_use_vimshell = 1
 
 " }}}
 

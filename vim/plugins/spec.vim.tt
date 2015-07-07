@@ -44,7 +44,7 @@ NeoBundle 'Shougo/neomru.vim'
 " {{{ Vimshell.
 
 NeoBundle 'Shougo/vimshell.vim', {
-      \   'depends': 'Shougo/neocomplete',
+      \   'depends': 'Shougo/neocomplete.vim',
       \ }
 NeoBundle 'Shougo/neossh.vim'
 NeoBundle 'ujihisa/vimshell-ssh', {
@@ -83,6 +83,12 @@ NeoBundle 'Shougo/unite-outline', {
 NeoBundle 'tsukkee/unite-tag', {
       \   'depends': 'Shougo/unite.vim',
       \ }
+NeoBundle 'tacroe/unite-mark', {
+      \   'depends': 'Shougo/unite.vim',
+      \ }
+NeoBundle 'sgur/unite-qf', {
+      \   'depends': 'Shougo/unite.vim',
+      \ }
 
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mbbill/undotree'
@@ -94,6 +100,7 @@ NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundle 't9md/vim-choosewin'
 NeoBundle 'wesQ3/vim-windowswap'
+NeoBundle 'vim-scripts/ZoomWin'
 
 " }}}
 
@@ -188,11 +195,19 @@ NeoBundle 'dhruvasagar/vim-prosession', {
 
 NeoBundle 'gelguy/Cmd2.vim'
 
+NeoBundle 'bruno-/vim-husk'
+
 " }}}
 
 " {{{ Statusline.
 
 NeoBundle 'bling/vim-airline'
+
+" }}}
+
+" {{{ TMux.
+
+NeoBundle 'benmills/vimux'
 
 " }}}
 
@@ -244,17 +259,23 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
       \     'filetypes': ['ruby'],
       \   },
       \ }
-NeoBundleLazy 'skalnik/vim-vroom', {
-      \   'autoload': {
-      \     'filetypes': ['ruby'],
-      \   },
-      \ }
+
+" TODO: Find alternative which uses `vimux`.
 NeoBundleLazy 'tpope/vim-bundler', {
       \   'autoload': {
       \     'filetypes': ['ruby'],
       \   },
       \ }
+
+" TODO: Find alternative which uses `vimux`.
 NeoBundleLazy 'tpope/vim-rake', {
+      \   'autoload': {
+      \     'filetypes': ['ruby'],
+      \   },
+      \ }
+
+NeoBundleLazy 'skalnik/vim-vroom', {
+      \   'depends': ['benmills/vimux', 'Shougo/vimshell.vim'],
       \   'autoload': {
       \     'filetypes': ['ruby'],
       \   },
@@ -263,6 +284,12 @@ NeoBundleLazy 'tpope/vim-rake', {
 " }}}
 
 " {{{ Haskell.
+
+NeoBundleLazy 'raichoo/haskell-vim', {
+      \   'autoload': {
+      \     'filetypes': ['haskell'],
+      \   },
+      \ }
 
 NeoBundleLazy 'eagletmt/neco-ghc', {
       \   'autoload': {
@@ -290,11 +317,27 @@ NeoBundleLazy 'enomsg/vim-haskellConcealPlus', {
 
 " {{{ Scala.
 
+NeoBundleLazy 'darekwyatt/vim-scala', {
+      \   'autoload': {
+      \     'filetypes': ['scala'],
+      \   },
+      \ }
+
 NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
       \   'autoload': {
       \     'filetypes': ['scala'],
       \   },
       \ }
+
+" }}}
+
+" {{{ Eclipse-based.
+
+<% if has_feature? 'eclipse' %>
+NeoBundle 'starcraftman/vim-eclim', {
+      \   'depends': 'Shougo/neocomplete.vim',
+      \ }
+<% end %>
 
 " }}}
 
@@ -318,11 +361,13 @@ NeoBundleLazy 'mattn/emmet-vim', {
       \     ],
       \   },
       \ }
+
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
       \   'autoload': {
       \     'filetypes': ['css', 'scss', 'sass'],
       \   },
       \ }
+
 NeoBundleLazy 'cakebaker/scss-syntax.vim', {
       \   'autoload': {
       \     'filetypes': ['scss', 'sass'],
@@ -333,32 +378,36 @@ NeoBundleLazy 'cakebaker/scss-syntax.vim', {
 
 " {{{ Javascript.
 
-NeoBundleLazy 'pangloss/vim-javascript', {
+NeoBundleLazy 'othree/yajs.vim', {
       \   'autoload': {
       \     'filetypes': ['javascript'],
       \   },
       \ }
+
 NeoBundleLazy 'leshill/vim-json', {
       \   'autoload': {
       \     'filetypes': ['javascript', 'json'],
       \   },
       \ }
+
 NeoBundleLazy 'kchmck/vim-coffee-script', {
       \   'autoload': {
       \     'filetypes': ['coffee'],
       \   },
       \ }
+
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {
       \   'autoload': {
       \     'filetypes': ['javascript', 'coffee', 'ls', 'typescript'],
       \   },
       \ }
+
 NeoBundleLazy 'mxw/vim-jsx', {
-      \   'depends': 'pangloss/vim-javascript',
       \   'autoload': {
       \     'filetypes': ['javascript', 'jsx'],
       \   },
       \ }
+
 NeoBundleLazy 'marijnh/tern_for_vim', {
       \   'autoload': {
       \     'filetypes': ['javascript'],
