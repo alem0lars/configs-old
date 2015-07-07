@@ -173,6 +173,8 @@ dev-util/findbugs ~amd64
 dev-java/commons-collections ~amd64
 <% end %>
 
+dev-util/android-sdk-update-manager ~amd64
+
 # }}}
 
 # {{{ Needed by `Not yet stable` packages.

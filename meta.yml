@@ -440,12 +440,12 @@ elems:
     only:
       features: ['gentoo']
 
-  - src:  '(portage/package\.(?:keywords|use|license)/(?!(?:.+[\W_])?julia(?:[\W_].+)?$).*)$'
+  - src:  '(portage/package\.(?:keywords|use|license|unmask)/(?!(?:.+[\W_])?julia(?:[\W_].+)?$).*)$'
     dst:  '/etc/<1>'
     only:
       features: ['gentoo']
 
-  - src:  '(portage/package\.(?:keywords|use|license)/(?:.+[\W_])?julia(?:[\W_].+)?)$'
+  - src:  '(portage/package\.(?:keywords|use|license|unmask)/(?:.+[\W_])?julia(?:[\W_].+)?)$'
     dst:  '/etc/<1>'
     only:
       features: [['host_julia', 'gentoo']]
