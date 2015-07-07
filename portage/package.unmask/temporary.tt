@@ -33,4 +33,7 @@
 # }}} ##########################################################################
 
 
+dev-util/android-sdk-update-manager
+
+
 # vim: set filetype=gentoo-package-mask :
