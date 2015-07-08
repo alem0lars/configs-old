@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/junkfile.vim.tt                                 #
-" - Summary: Hooks for the plugin `junkfile`.                                  #
+" - Name:    vim/plugins/hooks/smartinput-endwise.vim.tt                       #
+" - Summary: Hooks for the plugin `smartinput-endwise`.                        #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,11 +32,9 @@
 " }}} ##########################################################################
 
 
-" {{{ Configure hotkeys.
+" {{{ Configure rules.
 
-" <Leader>js: Open UI for creating a new junkfile.
-nnoremap <silent> <Leader>js :<C-u>Unite junkfile/new junkfile
-      \ -start-insert<CR>
+call smartinput_endwise#define_default_rules()
 
 " }}}
 

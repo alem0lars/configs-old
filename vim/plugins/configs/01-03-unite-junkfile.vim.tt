@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/echodoc.vim.tt                                  #
-" - Summary: Hooks for the plugin `echodoc`.                                   #
+" - Name:    vim/plugins/hooks/unite-junkfile.vim.tt                           #
+" - Summary: Hooks for the plugin `junkfile`.                                  #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,9 +32,11 @@
 " }}} ##########################################################################
 
 
-" {{{ Enable.
+" {{{ Configure hotkeys.
 
-let g:echodoc_enable_at_startup = 1
+" <Leader>js: Open UI for creating a new junkfile.
+nnoremap <silent> <Leader>js :<C-u>Unite junkfile/new junkfile
+      \ -start-insert<CR>
 
 " }}}
 

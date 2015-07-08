@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/smartinputendwise.vim.tt                        #
-" - Summary: Hooks for the plugin `smartinput-endwise`.                        #
+" - Name:    vim/plugins/hooks/over.vim.tt                                     #
+" - Summary: Hooks for the plugin `vim-over`.                                  #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,9 +32,14 @@
 " }}} ##########################################################################
 
 
-" {{{ Configure rules.
+" {{{ Configure hotkeys.
 
-call smartinput_endwise#define_default_rules()
+" <C-l> assigned to <C-f>
+" <C-h> assigned to <C-b>
+let g:over_command_line_key_mappings = {
+    \   '\<C-l>': '\<C-f>',
+    \   '\<C-h>': '\<C-b>',
+    \ }
 
 " }}}
 

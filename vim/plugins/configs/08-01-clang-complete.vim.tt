@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/cmd2.vim.tt                                     #
-" - Summary: Hooks for the `cmd2` plugin.                                      #
+" - Name:    vim/plugins/hooks/clang-complete.vim.tt                           #
+" - Summary: The configuration for the `clang_complete` plugin.                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,42 +32,30 @@
 " }}} ##########################################################################
 
 
-" {{{ Options.
+" {{{ Enable.
 
-let g:Cmd2_cmd_mappings = {
-      \ 'iw': {'command': 'iw', 'type': 'text', 'flags': 'Cpv'},
-      \ 'ap': {'command': 'ap', 'type': 'line', 'flags': 'pv'},
-      \ '^': {'command': '^', 'type': 'normal!', 'flags': 'r'},
-      \ 'w': {'command': 'Cmd2#functions#Cword',
-          \ 'type': 'function', 'flags': 'Cr'},
-      \ }
+" Disable autocomplete using clang_complete because neocomplete will be used.
+let g:clang_complete_auto = 0
 
-let g:Cmd2_options = {
-      \ '_complete_ignorecase': 1,
-      \ '_complete_uniq_ignorecase': 0,
-      \ '_quicksearch_ignorecase': 1,
-      \ '_complete_start_pattern': '\<\(\k\+\(_\|\#\)\)\?',
-      \ '_complete_fuzzy': 1,
-      \ }
-
-" Character to type to start wildcard expansion in the command-line.
-set wildcharm=<Tab>
+" Disable autoselect of the first element.
+let g:clang_auto_select = 0
 
 " }}}
 
-" {{{ Configure hotkeys.
+" {{{ Configure clang library.
 
-" : or /: Enable Cmd2 automatically.
-nmap : :<F11>
-nmap / /<F11>
+" Instead of calling the clang/clang++ tool use libclang directly. This gives
+" access to many more clang features. Furthermore it automatically caches all
+" includes in memory.
+" Updates after changes in the same file will therefore be a lot faster.
+let g:clang_use_library = 1
 
-" <F11>: Enable Cmd2 manually.
-cmap <F11> <Plug>(Cmd2Suggest)
-
-" <Tab>: Perform completion using Cmd2.
-cmap <expr> <Tab> Cmd2#ext#complete#InContext() ?
-      \ '\<Plug>(Cmd2Complete)' :
-      \ '\<Tab>'
+<% if is_osx? %>
+let s:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+  let g:clang_library_path = s:clang_library_path
+endif
+<% end %>
 
 " }}}
 

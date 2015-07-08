@@ -40,7 +40,6 @@ let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
-let g:echodoc_enable_at_startup = 1
 
 " }}}
 

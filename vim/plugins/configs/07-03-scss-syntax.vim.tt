@@ -1,7 +1,7 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/scsssyntax.vim.tt                               #
+" - Name:    vim/plugins/hooks/scss-syntax.vim.tt                              #
 " - Summary: Hooks for the plugin `scss-syntax`.                               #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #

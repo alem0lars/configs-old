@@ -137,7 +137,6 @@ NeoBundle 'Keithbsmiley/investigate.vim'
 NeoBundle 'Shougo/unite-help', {
       \   'depends': 'Shougo/unite.vim',
       \ }
-NeoBundle 'Shougo/echodoc.vim'
 
 " }}}
 
@@ -193,9 +192,11 @@ NeoBundle 'dhruvasagar/vim-prosession', {
 
 " {{{ Commandline
 
-NeoBundle 'gelguy/Cmd2.vim'
+NeoBundle 'gelguy/Cmd2.vim', {
+      \   'depends': 'bling/vim-airline',
+      \ }
 
-NeoBundle 'bruno-/vim-husk'
+" NeoBundle 'bruno-/vim-husk'
 
 " }}}
 
@@ -334,6 +335,7 @@ NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
 " {{{ Eclipse-based.
 
 <% if has_feature? 'eclipse' %>
+
 NeoBundle 'starcraftman/vim-eclim', {
       \   'depends': 'Shougo/neocomplete.vim',
       \ }
