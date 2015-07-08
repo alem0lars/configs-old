@@ -318,12 +318,6 @@ NeoBundleLazy 'enomsg/vim-haskellConcealPlus', {
 
 " {{{ Scala.
 
-NeoBundleLazy 'darekwyatt/vim-scala', {
-      \   'autoload': {
-      \     'filetypes': ['scala'],
-      \   },
-      \ }
-
 NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
       \   'autoload': {
       \     'filetypes': ['scala'],
