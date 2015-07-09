@@ -62,7 +62,7 @@ export ZGEN_INIT="${ZSH_PLUGINS_DIR}/init.zsh"
 
 # {{{ Load zgen.
 
-source "${ZGEN_DIR}/zgen/zgen.zsh"
+source "${ZSH_PLUGINS_DIR}/zgen/zgen.zsh"
 
 # }}}
 
@@ -104,7 +104,6 @@ if ! zgen saved; then
   # {{{ Miscellaneous ZSH customizations.
 
   zgen load alem0lars/zsh-environment
-  zgen load alem0lars/zsh-history
   zgen load alem0lars/zsh-directory
 
   # }}}

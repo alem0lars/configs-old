@@ -36,7 +36,7 @@
 
 " Source a file or directory inside the vim configuration folder.
 function! RC_Source(rel_path)
-  let l:path = '<%= get_var! "vim.custom_dir" %>/' . a:rel_path
+  let l:path = expand('<%= get_var! "vim.custom_dir" %>/' . a:rel_path)
 
   if isdirectory(l:path)
     for l:file_path in split(globpath(l:path, '*.vim'), '\n')
@@ -50,6 +50,14 @@ function! RC_Source(rel_path)
   end
 endfunction
 
+function! RC_HasTestVimRC()
+  return filereadable(expand('~/.test-vimrc'))
+endfunction
+
+function! RC_SourceTestVimRC()
+  RC_Source('~/.test-vimrc')
+endfunction
+
 " }}}
 
 " Skip initialization for vim-tiny or vim-small.
@@ -60,11 +68,28 @@ if &compatible
   set nocompatible
 endif
 
-call RC_Source('plugins/load')
+if RC_HasTestVimRC()
 
-call RC_Source('core/configure')
+  call RC_SourceTestVimRC()
 
-call RC_Source('plugins/configure')
+  call RC_Source('plugins/load')
+
+  if exists('*RC_TestVimRC_Configure')
+    call RC_TestVimRC_Configure()
+  else
+    echomsg string('The testing vimrc is defined but no '
+          \ 'RC_TestVimRC_Configure() function is present.')
+  endif
+
+else
+
+  call RC_Source('plugins/load')
+
+  call RC_Source('core/configure')
+
+  call RC_Source('plugins/configure')
+
+endif
 
 
 " vim: set filetype=vim :

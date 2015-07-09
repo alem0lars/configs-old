@@ -42,7 +42,7 @@
 " Add neobundle to runtime path
 " (when reloading it's already in the path so we don't need to add it again).
 if has('vim_starting')
-  let &runtimepath.=','.escape('<%= get_var! "vim.bundle_dir" %>/neobundle.vim', 
+  let &runtimepath.=','.escape('<%= get_var! "vim.bundle_dir" %>/neobundle.vim',
              \ '\,')
 endif
 
@@ -62,8 +62,17 @@ if neobundle#load_cache()
         \    }
         \ }
 
-  " Specify the plugins.
-  call RC_Source('plugins/spec')
+  if RC_HasTestVimRC()
+    if exists('*RC_TestVimRC_Plugins_Spec')
+      call RC_TestVimRC_Plugins_Spec()
+    else
+      echomsg string('The testing vimrc is defined but no RC_Test_Spec() '
+            \ 'function is present.')
+    endif
+  else
+    " Specify the plugins.
+    call RC_Source('plugins/spec')
+  endif
 
   " Save plugins configuration to the cache file (used in further executions,
   " because `neobundle#has_cache()` will evaluate to `true` and the plugins
