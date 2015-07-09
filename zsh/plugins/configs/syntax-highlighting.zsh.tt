@@ -1,0 +1,4 @@
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern root)
+
+
+# vim: set filetype=zsh :

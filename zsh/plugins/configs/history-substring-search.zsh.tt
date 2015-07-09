@@ -1,0 +1,16 @@
+# {{{ Configure hotkeys.
+
+<% if has_feature? 'vim' %>
+# Bind P and N for insert mode
+bindkey -M viins '^P' history-substring-search-up
+bindkey -M viins '^N' history-substring-search-down
+
+# Bind k and j for command mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+<% end %>
+
+# }}}
+
+
+# vim: set filetype=zsh :

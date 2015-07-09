@@ -35,50 +35,126 @@
 ################################################################################
 
 
-# global configuration {{{
+# {{{ Internal functions.
+
+configure()
+{
+  if [[ -z "$1" ]]; then
+    echo "[ERROR] Calling function \`load_local_plugin\` without arguments."
+  else
+    source "${ZSH_PLUGINS_CONFIGS_DIR}/$1.zsh"
+  fi
+}
+
+# }}}
+
+# {{{ Global configuration.
 
 export ZSH_ROOT_DIR="<%= File.expand_path get_var!('zsh.custom_dir') %>"
-export ZSH_LIB_DIR="${ZSH_ROOT_DIR}/lib"
-export ZSH_MODS_DIR="${ZSH_ROOT_DIR}/mods"
-export ZSH_MODS_CFG_FILE="${ZSH_MODS_DIR}/cfg.zsh"
+
+export ZSH_PLUGINS_DIR="${ZSH_ROOT_DIR}/plugins"
+export ZSH_PLUGINS_CONFIGS_DIR="${ZSH_PLUGINS_DIR}/configs"
+
+# }}}
+
+# {{{ Load zgen.
+
+ZGEN_DIR="${ZSH_PLUGINS_DIR}/repos"
+ZGEN_INIT="${ZSH_PLUGINS_DIR}/init.zsh"
+source "${ZGEN_DIR}/zgen/zgen.zsh"
 
 # }}}
 
 
-# require all libraries {{{
+# Check if there's no init script.
+if ! zgen saved; then
 
-function {
-  setopt EXTENDED_GLOB
-  for lib_file in ${ZSH_LIB_DIR}/*.zsh; do
-    source "${lib_file}"
-  done
-}
+  # {{{ Load frameworks.
 
-# }}}
+  zgen robbyrussell/oh-my-zsh
 
+  # }}}
 
-# require all modules {{{
+  # {{{ Load plugins.
 
-# Load the modules configuration.
-if [[ -r ${ZSH_MODS_CFG_FILE} ]]; then
-  source ${ZSH_MODS_CFG_FILE}
+  # {{{ Vim.
+
+  <% if has_feature? 'vi-mode' %>
+  zgen load robbyrussell/oh-my-zsh plugins/vi-mode
+  configure vi-mode
+  <% end %>
+
+  # }}}
+
+  # {{{ Highlighting.
+
+  zgen load zsh-users/zsh-syntax-highlighting
+  configure syntax-highlighting
+
+  # }}}
+
+  # {{{ Search.
+
+  zgen load robbyrussell/oh-my-zsh plugins/history-substring-search
+  configure history-substring-search
+
+  # }}}
+
+  # {{{ Miscellaneous ZSH customizations.
+
+  zgen load alem0lars/zsh-environment
+  zgen load alem0lars/zsh-history
+  zgen load alem0lars/zsh-directory
+
+  # }}}
+
+  # {{{ Completion.
+
+  zgen load zsh-users/zsh-completions src
+
+  zgen load alem0lars/zsh-complete
+
+  zgen load tarruda/zsh-autosuggestions
+  configure autosuggestions
+
+  # }}}
+
+  # {{{ Additional functions and tools.
+
+  zgen load robbyrussell/oh-my-zsh plugins/dircycle
+
+  zgen load rimraf/k
+
+  # }}}
+
+  # {{{ External tools support.
+
+  zgen load robbyrussell/oh-my-zsh plugins/pyenv
+  zgen load robbyrussell/oh-my-zsh plugins/rbenv
+  zgen load robbyrussell/oh-my-zsh plugins/fasd
+
+  # }}}
+
+  # }}}
+
+  # {{{ Load theme.
+
+  zgen oh-my-zsh themes/pure
+
+  # }}}
+
+  # Save all to init script.
+  zgen save
 fi
 
-function {
-  # Load zsh modules.
-  zstyle -a ':custom:load' zmodule 'zmodules'
-  for zmodule ("$zmodules[@]") zmodload "zsh/${(z)zmodule}"
-  unset zmodule{s,}
+# {{{ Cleanup.
 
-  # Autoload zsh functions.
-  zstyle -a ':custom:load' zfunction 'zfunctions'
-  for zfunction ("$zfunctions[@]") autoload -Uz "$zfunction"
-  unset zfunction{s,}
+unset ZGEN_DIR
+unset ZGEN_INIT
 
-  # Load custom modules.
-  zstyle -a ':custom:load' mod 'mods'
-  load_mods ${ZSH_MODS_DIR} $mods
-  unset mods
-}
+unfunction configure
 
 # }}}
+
+
+# vim: set filetype=zsh :
