@@ -63,6 +63,13 @@ media-libs/libvpx postproc
 
 # }}}
 
+# {{{ Enable ABI x86_32.
+
+# Dependency of `dev-util/android-sdk-update-manager`.
+sys-libs/zlib abi_x86_32
+
+# }}}
+
 # {{{ Other.
 
 # Harfbuzz triggers circular dependencies errors.
