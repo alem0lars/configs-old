@@ -55,12 +55,13 @@ export ZSH_ROOT_DIR="<%= File.expand_path get_var!('zsh.custom_dir') %>"
 export ZSH_PLUGINS_DIR="${ZSH_ROOT_DIR}/plugins"
 export ZSH_PLUGINS_CONFIGS_DIR="${ZSH_PLUGINS_DIR}/configs"
 
+export ZGEN_DIR="${ZSH_PLUGINS_DIR}/repos"
+export ZGEN_INIT="${ZSH_PLUGINS_DIR}/init.zsh"
+
 # }}}
 
 # {{{ Load zgen.
 
-ZGEN_DIR="${ZSH_PLUGINS_DIR}/repos"
-ZGEN_INIT="${ZSH_PLUGINS_DIR}/init.zsh"
 source "${ZGEN_DIR}/zgen/zgen.zsh"
 
 # }}}
@@ -71,7 +72,7 @@ if ! zgen saved; then
 
   # {{{ Load frameworks.
 
-  zgen robbyrussell/oh-my-zsh
+  zgen oh-my-zsh
 
   # }}}
 
@@ -148,9 +149,6 @@ if ! zgen saved; then
 fi
 
 # {{{ Cleanup.
-
-unset ZGEN_DIR
-unset ZGEN_INIT
 
 unfunction configure
 

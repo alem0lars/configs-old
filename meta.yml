@@ -35,7 +35,7 @@
 commands:
   - type: 'git_sync'
     repo: 'https://github.com/tarjoilija/zgen'
-    dst:  '<%= get_var! "zsh.custom_dir" %>/zgen/zgen'
+    dst:  '<%= get_var! "zsh.custom_dir" %>/plugins/repos/zgen'
     only:
       features: ['zsh']
   - type: 'git_sync'
