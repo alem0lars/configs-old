@@ -164,5 +164,11 @@ games-util/steam-client-meta steamfonts
 www-client/chromium hidpi
 <% end %>
 
+# {{{ Enable ABI x86_32.
+
+sys-libs/zlib abi_x86_32
+
+# }}}
+
 
 # vim: set filetype=gentoo-package-keywords
