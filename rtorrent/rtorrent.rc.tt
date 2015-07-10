@@ -1,0 +1,123 @@
+# {{{ File header. #############################################################
+#                                                                              #
+# File informations:                                                           #
+# - Name:    rtorrent/rtorrent.rc.tt                                           #
+# - Summary: The rtorrent configuration.                                       #
+# - Authors:                                                                   #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#                                                                              #
+# Project informations:                                                        #
+# - Homepage:        https://github.com/alem0lars/configs                      #
+# - Getting started: see README.md in the project root folder                  #
+#                                                                              #
+# License: Apache v2.0 (see below), except:                                    #
+# - Debundle class and module, taken from                                      #
+#   https://github.com/janlelis/debundle.rb code and released with:            #
+#   - Copyright (c) Conrad Irwin <conrad.irwin@gmail.com>                      #
+#   - MIT License                                                              #
+#   and modified by alem0lars                                                  #
+#                                                                              #
+################################################################################
+#                                                                              #
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  #
+# license agreements.  See the NOTICE file distributed with this work for      #
+# additional information regarding copyright ownership. The ASF licenses this  #
+# file to you under the Apache License, Version 2.0 (the "License"); you may   #
+# not use this file except in compliance with the License.                     #
+# You may obtain a copy of the License at                                      #
+#                                                                              #
+#   http://www.apache.org/licenses/LICENSE-2.0                                 #
+#                                                                              #
+# Unless required by applicable law or agreed to in writing, software          #
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    #
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             #
+# See the License for the specific language governing permissions and          #
+# limitations under the License.                                               #
+#                                                                              #
+# }}} ##########################################################################
+
+
+<%# Variables declaration. %>
+<% upload_speed = Integer(get_var! 'torrent.upload_speed') %>
+
+
+# Maximum and minimum number of peers to connect to per torrent.
+min_peers = <%= upload_speed * 0.4 %>
+max_peers = <%= upload_speed * 1.3 %>
+
+# Same as above but for seeding completed torrents (-1 = same as downloading)
+min_peers_seed = <%= upload_speed * 0.1 %>
+max_peers_seed = <%= upload_speed * 0.4 %>
+
+# Maximum number of simultanious uploads per torrent.
+max_uploads = <%= 1 + (upload_speed / 6) %>
+
+# Global upload and download rate in KiB. "0" for unlimited.
+download_rate = <%= Integer(get_var! 'torrent.download_speed') %>
+upload_rate = <%= upload_speed %>
+
+# Default directory to save the downloaded torrents.
+directory = <%= get_var! 'downloads_dir' %>
+
+# Default session directory. Make sure you don't run multiple instance
+# of rtorrent using the same session directory. Perhaps using a
+# relative path?
+session = ~/.rtorrent_session
+
+# Watch a directory for new torrents, and stop those that have been
+# deleted.
+#schedule = watch_directory,5,5,load_start=./watch/*.torrent
+#schedule = untied_directory,5,5,stop_untied=
+
+# Close torrents when diskspace is low.
+#schedule = low_diskspace,5,60,close_low_diskspace=100M
+
+# The ip address reported to the tracker.
+#ip = 127.0.0.1
+#ip = rakshasa.no
+
+# The ip address the listening socket and outgoing connections is
+# bound to.
+#bind = 127.0.0.1
+#bind = rakshasa.no
+
+# Port range to use for listening.
+#port_range = 6890-6999
+
+# Start opening ports at a random position within the port range.
+#port_random = no
+
+# Check hash for finished torrents. Might be usefull until the bug is
+# fixed that causes lack of diskspace not to be properly reported.
+#check_hash = no
+
+# Set whether the client should try to connect to UDP trackers.
+#use_udp_trackers = yes
+
+# Alternative calls to bind and ip that should handle dynamic ip's.
+#schedule = ip_tick,0,1800,ip=rakshasa
+#schedule = bind_tick,0,1800,bind=rakshasa
+
+# Encryption options, set to none (default) or any combination of the following:
+# allow_incoming, try_outgoing, require, require_RC4, enable_retry, prefer_plaintext
+#
+# The example value allows incoming encrypted connections, starts unencrypted
+# outgoing connections but retries with encryption if they fail, preferring
+# plaintext to RC4 encryption after the encrypted handshake
+#
+encryption = allow_incoming,enable_retry,prefer_plaintext
+
+# Enable DHT support for trackerless torrents or when all trackers are down.
+# May be set to "disable" (completely disable DHT), "off" (do not start DHT),
+# "auto" (start and stop DHT as needed), or "on" (start DHT immediately).
+# The default is "off". For DHT to work, a session directory must be defined.
+#
+dht = on
+
+# UDP port to use for DHT.
+#
+dht_port = 6881
+
+# Enable peer exchange (for torrents not marked private)
+#
+peer_exchange = yes

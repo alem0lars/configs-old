@@ -44,6 +44,10 @@ twitter_username: 'alem0lars'
 
 github_username: 'alem0lars'
 
+torrent:
+  upload_speed: 8
+  download_speed: 448
+
 portage:
   abi_x86:
     - '64'
@@ -129,3 +133,4 @@ features:
   - 'powerline'
   - 'mega'
   - 'eclipse'
+  - 'rtorrent'

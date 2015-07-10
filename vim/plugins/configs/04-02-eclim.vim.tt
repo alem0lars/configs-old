@@ -34,6 +34,20 @@
 
 <% if has_feature? 'eclipse' %>
 
+" {{{ Fix runtimepath.
+
+" HACK: Fix runtime path for eclim because the author splitted the vim plugin
+"       into different folders. We need to manually add them to the runtimepath.
+for eclim_plugin in [
+      \ 'adt', 'cdt', 'dltk', 'dltkruby', 'groovy', 'jdt', 'pdt',
+      \ 'pydev', 'sdt', 'vimplugin', 'wst']
+  exe 'set runtimepath+=' .
+        \ expand('<%= get_var! "vim.bundle_dir" %>') .
+        \ '/eclim/org.eclim.' . eclim_plugin . '/vim/eclim'
+endfor
+
+" }}}
+
 " {{{ Configure complete.
 
 let g:EclimCompletionMethod='omnifunc'

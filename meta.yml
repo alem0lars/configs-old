@@ -132,6 +132,11 @@ elems:
 
   # {{{ Software specific.
 
+  - src: 'rtorrent/(rtorrent.rc)$'
+    dst: '~/.<1>'
+    only:
+      features: ['rtorrent']
+
   - src: 'lftp/(.+)$'
     dst: '~/.lftp/<1>'
     only:
