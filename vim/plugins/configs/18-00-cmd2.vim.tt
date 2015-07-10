@@ -55,6 +55,10 @@ let g:Cmd2_options = {
       \   'menu_separator_hl': 'airline_x',
       \ }
 
+if exists('g:Cmd2_default_options')
+  call Cmd2#init#Options(g:Cmd2_default_options)
+endif
+
 " Character to type to start wildcard expansion in the command-line.
 set wildcharm=<Tab>
 

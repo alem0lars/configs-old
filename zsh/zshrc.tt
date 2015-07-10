@@ -70,13 +70,13 @@ source "${ZSH_PLUGINS_DIR}/zgen/zgen.zsh"
 # Check if there's no init script.
 if ! zgen saved; then
 
-  # {{{ Load frameworks.
-
-  zgen oh-my-zsh
-
-  # }}}
-
   # {{{ Load plugins.
+
+  # {{{ Additinal shell functions.
+
+  zgen load Tarrasch/zsh-functional
+
+  # }}}}
 
   # {{{ Vim.
 
@@ -96,7 +96,7 @@ if ! zgen saved; then
 
   # {{{ Search.
 
-  zgen load robbyrussell/oh-my-zsh plugins/history-substring-search
+  zgen load zsh-users/zsh-history-substring-search
   configure history-substring-search
 
   # }}}
@@ -120,8 +120,6 @@ if ! zgen saved; then
   # }}}
 
   # {{{ Additional functions and tools.
-
-  zgen load robbyrussell/oh-my-zsh plugins/dircycle
 
   zgen load rimraf/k
 

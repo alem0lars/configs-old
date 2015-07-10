@@ -330,9 +330,17 @@ NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
 
 <% if has_feature? 'eclipse' %>
 
-NeoBundle 'starcraftman/vim-eclim', {
+NeoBundle 'ervandew/eclim', {
       \   'depends': 'Shougo/neocomplete.vim',
+      \   'rtp': 'org.eclim.core/vim',
       \ }
+" Fix runtime path because eclim splits the vim plugin into different folders.
+for eclim_plugin in [
+      \ 'adt', 'cdt', 'dltk', 'dltkruby', 'groovy', 'jdt', 'pdt',
+      \ 'pydev', 'sdt', 'vimplugin', 'wst']
+  exec 'set rtp+= ' . expand('<%= get_var! "vim.bundle_dir" %>') .
+        \ '/eclim/org.eclim' . eclim_plugin . '/vim/eclim'
+endfor
 <% end %>
 
 " }}}

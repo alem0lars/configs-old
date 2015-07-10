@@ -42,8 +42,9 @@
 " Add neobundle to runtime path
 " (when reloading it's already in the path so we don't need to add it again).
 if has('vim_starting')
-  let &runtimepath.=','.escape('<%= get_var! "vim.bundle_dir" %>/neobundle.vim',
-             \ '\,')
+  let &runtimepath.=','.escape(
+        \ expand('<%= get_var! "vim.bundle_dir" %>/neobundle.vim'),
+        \ '\,')
 endif
 
 call neobundle#begin(expand('<%= get_var! "vim.bundle_dir" %>'))

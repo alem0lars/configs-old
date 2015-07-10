@@ -51,11 +51,16 @@ function! RC_Source(rel_path)
 endfunction
 
 function! RC_HasTestVimRC()
-  return filereadable(expand('~/.test-vimrc'))
+  return filereadable(expand('~/.vimrc-test.vim'))
 endfunction
 
 function! RC_SourceTestVimRC()
-  RC_Source('~/.test-vimrc')
+  let l:file_path = expand('~/.vimrc-test.vim')
+  if RC_HasTestVimRC()
+    exe 'source ' . l:file_path
+  else
+    echomsg string('Trying to load ' . l:file_path . " but it's not available")
+  endif
 endfunction
 
 " }}}
@@ -77,7 +82,7 @@ if RC_HasTestVimRC()
   if exists('*RC_TestVimRC_Configure')
     call RC_TestVimRC_Configure()
   else
-    echomsg string('The testing vimrc is defined but no '
+    echomsg string('The testing vimrc is defined but no ' .
           \ 'RC_TestVimRC_Configure() function is present.')
   endif
 
