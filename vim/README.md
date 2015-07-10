@@ -23,3 +23,4 @@
 - `17-x`: Plugins related to the statusline.
 - `18-x`: Plugins related to the commandline.
 - `19-x`: Plugins providing access to documentation.
+- `20-x`: Neobundle and its extensions.

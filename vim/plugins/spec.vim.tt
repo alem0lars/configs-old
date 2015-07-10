@@ -339,7 +339,7 @@ for eclim_plugin in [
       \ 'adt', 'cdt', 'dltk', 'dltkruby', 'groovy', 'jdt', 'pdt',
       \ 'pydev', 'sdt', 'vimplugin', 'wst']
   exec 'set rtp+= ' . expand('<%= get_var! "vim.bundle_dir" %>') .
-        \ '/eclim/org.eclim' . eclim_plugin . '/vim/eclim'
+        \ '/eclim/org.eclim.' . eclim_plugin . '/vim/eclim'
 endfor
 <% end %>
 
