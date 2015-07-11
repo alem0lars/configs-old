@@ -42,15 +42,15 @@
 
 
 # Maximum and minimum number of peers to connect to per torrent.
-min_peers = <%= upload_speed * 0.4 %>
-max_peers = <%= upload_speed * 1.3 %>
+min_peers = <%= Integer(upload_speed * 0.4) %>
+max_peers = <%= Integer(upload_speed * 1.3) %>
 
 # Same as above but for seeding completed torrents (-1 = same as downloading)
-min_peers_seed = <%= upload_speed * 0.1 %>
-max_peers_seed = <%= upload_speed * 0.4 %>
+min_peers_seed = <%= Integer(upload_speed * 0.1) %>
+max_peers_seed = <%= Integer(upload_speed * 0.4) %>
 
 # Maximum number of simultanious uploads per torrent.
-max_uploads = <%= 1 + (upload_speed / 6) %>
+max_uploads = <%= Integer(1 + (upload_speed / 6)) %>
 
 # Global upload and download rate in KiB. "0" for unlimited.
 download_rate = <%= Integer(get_var! 'torrent.download_speed') %>
