@@ -1,4 +1,4 @@
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    tmux/tmux.conf.tt                                                 #
@@ -29,27 +29,33 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
 
-# options {{{
+# {{{ Charset.
 
 # Unicode support.
 setw -g utf8        on
 set  -g status-utf8 on
 
-# Use vi mode.
-set  -wg mode-keys   vi
-set  -g  status-keys vi
-setw -g  xterm-keys  on
+# }}}
 
-# Set terminal type.
-set -g default-terminal "screen-256color"
+# {{{ History.
 
 # Set maximum history size.
 set -g history-limit 10240
 
-set -sg escape-time 0
+# }}}
+
+# {{{ Windows.
+
+# Aggressively resize the chosen window.  This means that tmux will resize the
+# window to the size of the smallest session for which it is the current window,
+# rather than the smallest session to which it is attached. The window may
+# resize when the current window is changed on another sessions; this option is
+# good for full-screen programs which support SIGWINCH and poor for interactive
+# programs such as shells.
+setw -g aggressive-resize on
 
 # Start indexes from 1 instead of 0, for typing accessibility.
 set -g base-index      1
@@ -58,8 +64,9 @@ set -g pane-base-index 1
 # Directly expose pane titles.
 set -g set-titles on
 
-# Allows for faster key repetition.
-set -g repeat-time 1
+# }}}
+
+# {{{ Activity.
 
 # Monitor for activity in the window.
 # Windows with activity are highlighted in the status line.
@@ -67,164 +74,197 @@ setw -g monitor-activity on
 set  -g visual-activity  on
 
 # Urgency hints.
-set-option -g bell-action   any
-set-option -g bell-on-alert on
+set -g bell-action   any
+set -g bell-on-alert on
 
-# Only resize shared windows.
-setw -g aggressive-resize on
+# }}}
 
-# Mice infestation.
+# {{{ Terminal.
+
+# Set terminal type.
+set -g default-terminal "screen-256color"
+
+# }}}
+
+# {{{ Keyboard.
+
+# Set the time in milliseconds for which tmux waits after an escape is input to
+# determine if it is part of a function or meta key sequences.
+set -sg escape-time 256
+
+# Allow multiple commands to be entered without pressing the prefix-key again in
+# the specified time milliseconds.
+set -g repeat-time 256
+
+# }}}
+
+# {{{ Mouse.
+
 set -g mode-mouse          on
-set -g mouse-utf8          off
+set -g mouse-utf8          on
 set -g mouse-resize-pane   on
 set -g mouse-select-pane   on
 set -g mouse-select-window on
 
-<% if get_var 'tmux.theme_path' %>
-# Load the theme.
-theme=<%= get_var!('tmux.theme_path') %>
-if-shell "test -f $theme" "source $theme"
-<% end %>
+# }}}
+
+# {{{ Configure hotkeys.
+
+setw -g xterm-keys  on
+
+# {{{ Vi-mode.
+
+set -wg mode-keys   vi
+set -g  status-keys vi
 
 # }}}
 
+# {{{ Prefix.
 
-# misc hotkeys {{{
+# Change prefix from <C-b> to <C-a>.
+set -g prefix C-a
+unbind-key C-b
 
-# <Prefix><S-r>: force a reload of the config file.
-bind r source <%= get_var!('tmux.config_file_path') %>\; display "tmux configuration reloaded"
-
-# <Prefix><S-u>: next layout (since I stole space).
-bind U next-layout
-
-# <Prefix><S-d>: detach from the current session.
-bind D detach
+# Nested prefix.
+bind C-a send-prefix
+bind a   send-prefix
 
 # }}}
 
-
-# history hotkeys {{{
+# {{{ History.
 
 bind -n C-k clear-history
 
 # }}}
 
+# {{{ Reload.
 
-# prefix hotkeys {{{
-
-# Change prefix from <C-b> to <C-a>.
-unbind C-b
-set -g prefix C-a
-
-# Nested prefix.
-bind C-a send-prefix
-bind a send-prefix
+# <Prefix><S-r>: force a reload of the config file.
+bind r source <%= get_var!('tmux.config_file_path') %>\; display "Tmux configuration reloaded."
 
 # }}}
 
+# {{{ Copy & Paste.
 
-# sessions hotkeys {{{
+# [Normal mode]y or <Enter>: Copy the selected text.
+bind -t vi-copy 'y' copy-selection
+bind -t vi-copy 'enter' copy-selection
 
-# <Prefix><s>: choose a window from the windows tree.
-bind s choose-tree
+# }}}
 
-# <Prefix><S-s>: create a new session.
-bind S command-prompt -p "new session:" "new-session -A -s %%"
+# {{{ Layouts.
 
-# <Prefix><M-s>: kill the session (asking confirmation).
+# <Prefix><Space>: next layout.
+bind 'space' next-layout
+
+# }}}
+
+# {{{ Windows.
+
+# <Prefix>c: Create a new window.
+bind c new-window -c "#{pane_current_path}"
+
+# <Prefix>w: Choose a window.
+bind w choose-window
+# <Prefix>W: Choose a window from the all of the windows (also in other
+#            sessions).
+bind W choose-tree
+
+# <Prefix><Alt>w: Kill the window (asking confirmation).
+bind M-w confirm kill-window
+# <Prefix><Alt>W: Kill the window (without asking confirmation).
+bind M-W kill-window
+
+# }}}
+
+# {{{ Sessions.
+
+# <Prefix>C: Create a new session.
+bind C command-prompt -p "new session:" "new-session -A -s %%"
+
+# <Prefix>d: detach from the current session.
+bind d detach
+
+# <Prefix><Alt>s: Kill the session (asking confirmation).
 bind M-s confirm kill-session
-
-# <Prefix><M-S-s>: kill the session (withou asking confirmation).
+# <Prefix><Alt>S: Kill the session (without asking confirmation).
 bind M-S kill-session
 
 # }}}
 
+# {{{ Panes.
 
-# panes hotkeys {{{
+bind J swap-pane -D
+bind K swap-pane -U
+bind H swap-pane -U
+bind L swap-pane -D
 
-bind b \
-  bind -n j split-window -v -c "#{pane_current_path}" \\; \
-    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k \; \
-  bind -n k split-window -v -c "#{pane_current_path}"\\; swap-pane -U \\; \
-    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k \; \
-  bind -n h split-window -h -c "#{pane_current_path}"\\; swap-pane -U \\; \
-    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k \; \
-  bind -n l split-window -h -c "#{pane_current_path}" \\; \
-    unbind -n h \\; unbind -n l \\; unbind -n j \\; unbind -n k
+bind C-j resize-pane -D 10
+bind C-k resize-pane -U 10
+bind C-h resize-pane -L 10
+bind C-l resize-pane -R 10
+
+bind s split-window -v -p 33 -c "#{pane_current_path}"
+bind S split-window -v -p 33 -c "#{pane_current_path}"\; swap-pane -U
+bind v split-window -h -p 33 -c "#{pane_current_path}"
+bind V split-window -h -p 33 -c "#{pane_current_path}"\; swap-pane -U
+
+# hjkl pane traversal.
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Fallback for weird situations.
+bind Up select-pane -U
+bind Down select-pane -D
+bind Left select-pane -L
+bind Right select-pane -R
+
+# }}}
+
+# }}}
+
+# {{{ Colors.
+
+set -g status 'on'
+set -g status-utf8 'on'
+
+set -g status-bg 'colour233'
+set -g status-justify 'left'
+set -g status-left-length '100'
+set -g status-left-attr 'none'
+set -g status-right-length '100'
+set -g status-right-attr 'none'
+set -g status-attr 'none'
+
+setw -g window-status-fg 'colour240'
+setw -g window-status-attr 'none'
+setw -g window-status-activity-bg 'colour233'
+setw -g window-status-activity-attr 'none'
+setw -g window-status-activity-fg 'colour25'
+setw -g window-status-separator ''
+setw -g window-status-bg 'colour233'
+
+set -g pane-border-fg 'colour236'
+set -g pane-active-border-fg 'colour25'
+
+set -g message-bg 'colour236'
+set -g message-command-fg 'colour145'
+set -g message-fg 'colour145'
+set -g message-command-bg 'colour236'
+
+
+# }}}
+
+# {{{ Status.
+
+set -g status-left '#[fg=colour195,bg=colour25,bold] #S #[fg=colour25,bg=colour233,nobold,nounderscore,noitalics]'
+set -g status-right '#[fg=colour233,bg=colour233,nobold,nounderscore,noitalics]#[fg=colour240,bg=colour233] #(tmux-mem-cpu-load 2) '
+setw -g window-status-format '#[fg=colour233,bg=colour233,nobold,nounderscore,noitalics]#[default] #I:#W #[fg=colour233,bg=colour233,nobold,nounderscore,noitalics]'
+setw -g window-status-current-format '#[fg=colour233,bg=colour236,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour236] #I:#W #[fg=colour236,bg=colour233,nobold,nounderscore,noitalics]'
 
 # }}}
 
 
-# splitting hotkeys {{{
-
-bind j split-window -v -c "#{pane_current_path}"
-bind k split-window -v -c "#{pane_current_path}"\; swap-pane -U
-bind h split-window -h -c "#{pane_current_path}"\; swap-pane -U
-bind l split-window -h -c "#{pane_current_path}"
-
-# }}}
-
-
-# swapping hotkeys {{{
-
-bind -r J swap-pane -D
-bind -r K swap-pane -U
-bind -r H swap-pane -U
-bind -r L swap-pane -D
-
-# }}}
-
-
-# resizing hotkeys {{{
-
-bind -r C-j resize-pane -D 10
-bind -r C-k resize-pane -U 10
-bind -r C-h resize-pane -L 10
-bind -r C-l resize-pane -R 10
-
-# }}}
-
-
-# navigating hotkeys {{{
-
-# smart pane switching with awareness of vim splits
-bind -n C-j run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-j) || tmux select-pane -D"
-bind -n C-k run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-k) || tmux select-pane -U"
-bind -n C-h run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-h) || tmux select-pane -L"
-bind -n C-l run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys C-l) || tmux select-pane -R"
-bind -n C-\ run "(tmux display-message -p '#{pane_current_command} #{pane_title}' | grep -iqE '(^vim | - VIM$)' && tmux send-keys 'C-\\') || tmux select-pane -l"
-
-# fallback for weird situations
-bind -r Up select-pane -U
-bind -r Down select-pane -D
-bind -r Left select-pane -L
-bind -r Right select-pane -R
-
-# }}}
-
-
-# windows hotkeys {{{
-
-bind w choose-window
-bind W new-window -a
-bind M-w confirm kill-window
-bind M-W kill-window
-
-# match <prefix-n> (`next-window`)
-bind -r n next-window
-bind -r p previous-window
-bind -r d next-window
-bind -r u previous-window
-
-# }}}
-
-
-# copy&paste hotkeys {{{
-
-bind v copy-mode
-bind c copy-mode
-bind-key -t vi-copy y copy-pipe "xclip -i -selection clipboard"
-bind-key -t vi-copy enter copy-pipe "xclip -i -selection clipboard"
-bind-key -t vi-copy v begin-selection
-
-# }}}
+# vim: set filetype=tmux :

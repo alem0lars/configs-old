@@ -67,8 +67,8 @@ set wildcharm=<Tab>
 " {{{ Configure hotkeys.
 
 " : or /: Enable Cmd2 automatically.
-nmap : :<F11>
-nmap / /<F11>
+nmap <expr> : ':' . (&paste ? '' : "\<Plug>(Cmd2Suggest)")
+nmap <expr> / '/' . (&paste ? '' : "\<Plug>(Cmd2Suggest)")
 
 " <F11>: Enable Cmd2 manually.
 cmap <F11> <Plug>(Cmd2Suggest)
