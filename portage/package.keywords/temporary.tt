@@ -1,4 +1,4 @@
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    portage/package.keywords/temporary.tt                             #
@@ -39,7 +39,7 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
 
 # {{{ Dependencies of permanent packages.
@@ -144,6 +144,7 @@ net-analyzer/snort ~amd64
 sci-physics/root ~amd64
 net-analyzer/tsung ~amd64
 dev-util/eclipse-sdk-bin ~amd64
+dev-util/idea-ultimate ~amd64
 
 <% if has_feature? :mega %>
 net-misc/megatools ~amd64
