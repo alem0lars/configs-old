@@ -145,6 +145,7 @@ sci-physics/root ~amd64
 net-analyzer/tsung ~amd64
 dev-util/eclipse-sdk-bin ~amd64
 dev-util/idea-ultimate ~amd64
+media-gfx/plantuml ~amd64
 
 <% if has_feature? :mega %>
 net-misc/megatools ~amd64
