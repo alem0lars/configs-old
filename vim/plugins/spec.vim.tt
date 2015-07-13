@@ -336,6 +336,7 @@ NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
 NeoBundle 'ervandew/eclim', {
       \   'depends': 'Shougo/neocomplete.vim',
       \   'rtp': 'org.eclim.core/vim',
+      \   'rev': '2.4.1',
       \ }
 
 <% end %>
@@ -456,6 +457,18 @@ NeoBundleLazy 'chrisbra/csv.vim', {
       \     'filetypes': ['csv'],
       \   },
       \ }
+
+" }}}
+
+" {{{ PlantUML.
+
+NeoBundle 'aklt/plantuml-syntax'
+
+" }}}
+
+" {{{ GraphViz.
+
+NeoBundle 'wannesm/wmgraphviz.vim'
 
 " }}}
 

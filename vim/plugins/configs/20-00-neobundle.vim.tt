@@ -35,7 +35,7 @@
 " {{{ Options.
 
 " Timeout after 256 seconds.
-let g:neobundle#install_process_timeout=256
+let g:neobundle#install_process_timeout=512
 
 " }}}
 
