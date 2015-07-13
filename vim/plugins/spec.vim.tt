@@ -359,7 +359,7 @@ NeoBundle 'vim-pandoc/vim-pandoc-syntax', {
       \ }
 NeoBundle 'vim-pandoc/vim-pandoc-after', {
       \   'depends': [
-      \     'vim-pandoc/pandoc',
+      \     'vim-pandoc/vim-pandoc',
       \     'Shougo/neosnippet.vim',
       \     'Shougo/unite.vim',
       \     'chrisbra/NrrwRgn',
