@@ -1,4 +1,4 @@
-################################################################################
+# {{{ ##########################################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    taskwarrior/taskrc.tt                                             #
@@ -29,10 +29,10 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
 
-# appearance {{{
+# {{{ Appearance.
 
 # Set the color theme (if available).
 <% if File.file?('/usr/share/task/rc/dark-256.theme') %>
@@ -44,34 +44,34 @@ color = on
 
 # }}}
 
-
-# find {{{
+# {{{ Find.
 
 # Enable regex.
 regex = on
 
 # }}}
 
+# {{{ Editing.
 
-# editing {{{
-
-editor       = <%= get_env! :EDITOR %>
+editor       = <%= get_env! 'EDITOR' %>
 edit.verbose = on
 
 # }}}
 
+# {{{ Data.
 
-# data {{{
+data.location = ~/.task
+
+# }}}
+
+# {{{ Sync
 
 <% if get_var 'taskwarrior.taskd' %>
-# Sync settings.
 taskd.server=<%= get_var! 'taskwarrior.taskd.server' %>
 taskd.key=<%= File.join(get_env!(:HOME), '.task',  get_var!('taskwarrior.taskd.key_file').gsub('/', '\/')) %>
 taskd.certificate=<%= File.join(get_env!(:HOME), '.task', get_var!('taskwarrior.taskd.cert_file').gsub('/', '\/')) %>
 taskd.ca=<%= File.join(get_env!(:HOME), '.task', get_var!('taskwarrior.taskd.ca_file').gsub('/', '\/')) %>
 taskd.credentials=<%= `#{get_var! 'taskwarrior.taskd.credentials'}` %>
 <% end %>
-
-data.location = ~/.task
 
 # }}}

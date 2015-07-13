@@ -34,10 +34,11 @@
 
 " {{{ Unite.
 
+NeoBundle 'Shougo/neomru.vim'
+
 NeoBundle 'Shougo/unite.vim', {
       \   'depends': 'Shougo/neomru.vim',
       \ }
-NeoBundle 'Shougo/neomru.vim'
 
 " }}}
 
@@ -72,6 +73,7 @@ NeoBundle 'moll/vim-bbye'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'dhruvasagar/vim-table-mode'
 
 " }}}
 
@@ -104,6 +106,12 @@ NeoBundle 'vim-scripts/ZoomWin'
 
 " }}}
 
+" {{{ Highlight.
+
+NeoBundle 'Shougo/context_filetype.vim'
+
+" }}}
+
 " {{{ Build.
 
 NeoBundle 'Shougo/unite-build', {
@@ -121,6 +129,8 @@ NeoBundle 'Shougo/neocomplete.vim', {
 " }}}
 
 " {{{ Snippets.
+
+NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/neosnippet.vim', {
       \   'depends': [
@@ -154,12 +164,6 @@ NeoBundle 'Shougo/junkfile.vim'
 " {{{ VCS.
 
 NeoBundle 'tpope/vim-fugitive'
-
-" }}}
-
-" {{{ Highlight.
-
-NeoBundle 'Shougo/context_filetype.vim'
 
 " }}}
 
@@ -343,6 +347,24 @@ NeoBundleLazy 'lervag/vim-latex', {
       \   'autoload': {
       \     'filetypes': ['tex'],
       \   },
+      \ }
+
+" }}}
+
+" {{{ Pandoc-based.
+
+NeoBundle 'vim-pandoc/vim-pandoc'
+NeoBundle 'vim-pandoc/vim-pandoc-syntax', {
+      \   'depends': 'vim-pandoc/vim-pandoc',
+      \ }
+NeoBundle 'vim-pandoc/vim-pandoc-after', {
+      \   'depends': [
+      \     'vim-pandoc/pandoc',
+      \     'Shougo/neosnippet.vim',
+      \     'Shougo/unite.vim',
+      \     'chrisbra/NrrwRgn',
+      \     'dhruvasagar/vim-table-mode',
+      \   ],
       \ }
 
 " }}}

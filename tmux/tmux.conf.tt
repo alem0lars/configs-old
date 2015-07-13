@@ -147,8 +147,8 @@ bind r source <%= get_var!('tmux.config_file_path') %>\; display "Tmux configura
 # {{{ Copy & Paste.
 
 # [Normal mode]y or <Enter>: Copy the selected text.
-bind -t vi-copy 'y' copy-selection
-bind -t vi-copy 'enter' copy-selection
+bind -t vi-copy 'y' copy-pipe "xclip -i -selection clipboard"
+bind -t vi-copy 'enter' copy-pipe "xclip -i -selection clipboard"
 
 # }}}
 
