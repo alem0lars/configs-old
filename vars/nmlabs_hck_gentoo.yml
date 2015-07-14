@@ -81,6 +81,7 @@ portage:
     # Hardware.
     - 'wifi'
     - 'lm_sensors'
+    - 'usb'
     # Printing.
     - 'cups'
     # Web.
