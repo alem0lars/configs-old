@@ -34,8 +34,8 @@
 
 " {{{ Configure hotkeys.
 
-" <!>: Use vimproc instead of the builtin command.
-nnoremap ! :VimProcBang
+" <Leader>!: Use vimproc instead of the builtin command.
+nnoremap <Leader>! :VimProcBang
 
 " }}}
 

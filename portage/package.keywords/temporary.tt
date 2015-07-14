@@ -143,9 +143,10 @@ media-video/handbrake ~amd64
 net-analyzer/snort ~amd64
 sci-physics/root ~amd64
 net-analyzer/tsung ~amd64
+media-gfx/plantuml ~amd64
 dev-util/eclipse-sdk-bin ~amd64
 dev-util/idea-ultimate ~amd64
-media-gfx/plantuml ~amd64
+dev-util/protege ~amd64
 
 <% if has_feature? :mega %>
 net-misc/megatools ~amd64

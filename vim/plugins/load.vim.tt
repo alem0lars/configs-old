@@ -75,10 +75,12 @@ if neobundle#load_cache()
     call RC_Source('plugins/spec')
   endif
 
-  " Save plugins configuration to the cache file (used in further executions,
-  " because `neobundle#has_cache()` will evaluate to `true` and the plugins
-  " configuration won't be reparsed but read from the cache file).
-  NeoBundleSaveCache
+  if filewritable(expand('<%= get_var! "vim.bundle_dir" %>')) == 2
+    " Save plugins configuration to the cache file (used in further executions,
+    " because `neobundle#has_cache()` will evaluate to `true` and the plugins
+    " configuration won't be reparsed but read from the cache file).
+    NeoBundleSaveCache
+  endif
 endif
 
 call neobundle#end()
