@@ -132,7 +132,7 @@ elems:
 
   # {{{ Software specific.
 
-  - src: 'radare/(radarerc)$'
+  - src: 'radare/(radare2rc)$'
     dst: '~/.<1>'
     only:
       features: ['radare']

@@ -1,8 +1,8 @@
 # {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    zim/accelmap.tt                                                   #
-# - Summary: The gtk accelmap for ZIM.                                         #
+# - Name:    radare/radare2rc.tt                                               #
+# - Summary: The Radare2 configuration.                                        #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #   - Luca Molari <molari.luca@gmail.com> (LMolr)                              #
