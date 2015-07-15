@@ -132,6 +132,11 @@ elems:
 
   # {{{ Software specific.
 
+  - src: 'radare/(radarerc)$'
+    dst: '~/.<1>'
+    only:
+      features: ['radare']
+
   - src: 'rtorrent/(rtorrent.rc)$'
     dst: '~/.<1>'
     only:
