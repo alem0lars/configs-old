@@ -1,0 +1,115 @@
+# {{{ ASM.
+
+# Display the bytes of each instruction.
+e asm.bytes=true
+
+# Separate hex bytes with a whitespace.
+e asm.bytespace=true
+
+# Show comment flags associated to branch reference.
+e asm.cmtflgrefs=true
+
+# Show comments at right of disassembly if they fit in screen.
+e asm.cmtright=true
+
+# Show comments in disassembly view.
+e asm.comments=true
+
+# Show function boundary lines.
+e asm.fcnlines=true
+
+# Show flags.
+e asm.flags=true
+
+# Show functions in disassembly.
+e asm.functions=true
+
+# If enabled show ascii-art lines at disassembly.
+e asm.lines=true
+
+# Enable call lines.
+e asm.linescall=true
+
+# Number of columns for program flow arrows.
+e asm.lineswidth=8
+
+# Shows pseudocode in disassembly. Eg `mov eax, str.ok = > eax = str.ok`.
+e asm.pseudo=true
+
+# Show stack pointer at disassembly.
+e asm.stackptr=true
+
+# Select assembly syntax.
+e asm.syntax=att
+
+# Show execution traces for each opcode.
+e asm.trace=true
+
+# Substitute variables in disassembly.
+e asm.varsub=true
+
+# Show xrefs in disassembly.
+e asm.xrefs=true
+
+# }}}
+
+# {{{ CFG.
+
+# Date format.
+e cfg.datefmt="%y.%m.%d %H:%M:%S"
+
+# Select default editor program.
+e cfg.editor=<%= get_env! 'EDITOR' %>
+
+# If enabled show tips at start.
+e cfg.fortunes=true
+
+# }}}
+
+# {{{ CMD.
+
+# Display stack and register values on top of disasembly view (visual mode).
+e cmd.stack=true
+
+# }}}
+
+# {{{ IO.
+
+# Load and use buffer cache if enabled.
+e io.buffer=true
+
+# Enable cache for io changes.
+e io.cache=true
+
+# }}}
+
+# {{{ SCR.
+
+# Enable colors.
+e scr.color=true
+
+# Colorize in numbers/registers in opcodes.
+e scr.colorops=true
+
+# Start in interractive mode.
+e scr.interactive=true
+
+# Select pager program (used if output doesn't fit on window).
+e scr.pager=<%= get_env! 'PAGER' %>
+
+# Enable colors when using pipes if true.
+e scr.pipecolor=true
+
+# Use RGB colors.
+e scr.rgbcolor=true
+
+# Manage color palette (0: ansi 16, 1: 256, 2: 16M).
+e scr.truecolor=2
+
+# Use UTF-8 to show cool arrows that do not look like crap.
+e scr.utf8=true
+
+# Enable the use of mouse wheel in visual mode.
+e scr.wheel=true
+
+# }}}

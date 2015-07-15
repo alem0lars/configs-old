@@ -32,12 +32,31 @@
 ################################################################################
 
 
-set font "<%= get_var! 'fonts.main.name' %> <%= get_var! 'fonts.main.size' %>"
+# {{{ Appearance.
 
-set adjust-open width
+# Show commandline, statusbar, horizontal and vertical scrollview.
+set guioptions cshv
+
+set font "<%= get_var! 'fonts.main.name' %> <%= get_var! 'fonts.main.size' %>"
 
 set window-title-basename true
 
+# }}}
+
+# {{{ Reading view.
+
+set adjust-open width
+
+# }}}
+
+# {{{ Search.
+
 set incremental-search true
 
+# }}}
+
+# {{{ LaTeX integration.
+
 set synctex true
+
+# }}}
