@@ -14,7 +14,7 @@
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
-################################################################################
+# ############################################################################ #
 #                                                                              #
 # Licensed to the Apache Software Foundation (ASF) under one more contributor  #
 # license agreements.  See the NOTICE file distributed with this work for      #
@@ -91,9 +91,6 @@ e asm.xrefs=true
 
 # {{{ CFG.
 
-# Date format.
-e cfg.datefmt="%y.%m.%d %H:%M:%S"
-
 # Select default editor program.
 e cfg.editor=<%= get_env! 'EDITOR' %>
 
@@ -106,16 +103,6 @@ e cfg.fortunes=true
 
 # Display stack and register values on top of disasembly view (visual mode).
 e cmd.stack=true
-
-# }}}
-
-# {{{ IO.
-
-# Load and use buffer cache if enabled.
-e io.buffer=true
-
-# Enable cache for io changes.
-e io.cache=true
 
 # }}}
 
