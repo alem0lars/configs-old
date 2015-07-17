@@ -216,6 +216,12 @@ NeoBundle 'benmills/vimux'
 
 " }}}
 
+" {{{ Test.
+
+NeoBundle 'janko-m/vim-test'
+
+" }}}
+
 " {{{ Theme.
 
 NeoBundle 'nanotech/jellybeans.vim'
@@ -274,13 +280,6 @@ NeoBundleLazy 'tpope/vim-bundler', {
 
 " TODO: Find alternative which uses `vimux`.
 NeoBundleLazy 'tpope/vim-rake', {
-      \   'autoload': {
-      \     'filetypes': ['ruby'],
-      \   },
-      \ }
-
-NeoBundleLazy 'skalnik/vim-vroom', {
-      \   'depends': ['benmills/vimux', 'Shougo/vimshell.vim'],
       \   'autoload': {
       \     'filetypes': ['ruby'],
       \   },
@@ -469,6 +468,13 @@ NeoBundle 'aklt/plantuml-syntax'
 " {{{ GraphViz.
 
 NeoBundle 'wannesm/wmgraphviz.vim'
+
+" }}}
+
+" {{{ Semantic Web.
+
+NeoBundle 'niklasl/vim-rdf'
+NeoBundle 'Omer/vim-sparql'
 
 " }}}
 

@@ -144,9 +144,13 @@ net-analyzer/snort ~amd64
 sci-physics/root ~amd64
 net-analyzer/tsung ~amd64
 media-gfx/plantuml ~amd64
+dev-python/ptpython ~amd64
+dev-python/virtualenv ~amd64
+dev-python/virtualenvwrapper ~amd64
 dev-util/eclipse-sdk-bin ~amd64
 dev-util/idea-ultimate ~amd64
 dev-util/protege ~amd64
+dev-util/heroku-client ~amd64
 
 <% if has_feature? :mega %>
 net-misc/megatools ~amd64
@@ -192,6 +196,11 @@ net-libs/daq ~amd64
 
 # Needed by `sci-physics/root`.
 app-doc/root-docs ~amd64
+
+# Needed by `dev-python/ptpython`
+=dev-python/wcwidth-0.1.4 ~amd64
+=dev-python/jedi-0.9.0 ~amd64
+=dev-python/prompt_toolkit-0.42 ~amd64
 
 # }}}
 

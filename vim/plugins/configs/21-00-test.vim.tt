@@ -1,8 +1,8 @@
 " {{{ ##########################################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/vroom.vim.tt                                    #
-" - Summary: Hooks for the plugin `vroom`.                                     #
+" - Name:    vim/plugins/hooks/test.vim.tt                                     #
+" - Summary: Hooks for the plugin `vim-test`.                                  #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -34,11 +34,17 @@
 
 " {{{ Options.
 
-" Use `vimux`.
-let g:vroom_use_vimux = 1
+let test#strategy='vimux'
 
-" Use `Vimshell` as fallback (since vimux has more priority).
-let g:vroom_use_vimshell = 1
+" }}}
+
+" {{{ Configure hotkeys.
+
+nnoremap <silent> <Leader>tn :TestNearest<CR>
+nnoremap <silent> <Leader>tf :TestFile<CR>
+nnoremap <silent> <Leader>ts :TestSuite<CR>
+nnoremap <silent> <Leader>tl :TestLast<CR>
+nnoremap <silent> <Leader>tv :TestVisit<CR>
 
 " }}}
 
