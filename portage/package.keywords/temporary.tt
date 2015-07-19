@@ -126,6 +126,7 @@ media-libs/libvpx ~amd64
 
 # {{{ Not yet stable.
 
+app-misc/vit ~amd64
 app-shells/fasd ~amd64
 dev-db/sqlmap ~amd64
 dev-util/shellcheck ~amd64
