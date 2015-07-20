@@ -194,7 +194,7 @@ NeoBundle 'dhruvasagar/vim-prosession', {
 
 " }}}
 
-" {{{ Commandline
+" {{{ Commandline.
 
 NeoBundle 'gelguy/Cmd2.vim', {
       \   'depends': 'bling/vim-airline',
@@ -233,14 +233,14 @@ NeoBundle 'nanotech/jellybeans.vim'
 " {{{ C, C++, Obj-c, Objcpp.
 
 NeoBundle 'jeaye/color_coded', {
-      \   'build_commands' : ['cmake', 'make']
       \   'build': {
       \     'unix': 'cmake . && make && make install',
+      \     'linux': 'cmake . && make && make install',
+      \     'mac': 'cmake . && make && make install',
       \   },
       \ }
 
 NeoBundle 'Rip-Rip/clang_complete', {
-      \   'build_commands' : ['make']
       \   'build': {
       \     'unix': 'make install',
       \     'linux': 'make install',
@@ -345,7 +345,6 @@ NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'mxw/vim-jsx'
 
 NeoBundle 'marijnh/tern_for_vim', {
-      \   'build_commands' : ['npm'],
       \   'build': {
       \     'unix': 'npm install',
       \     'linux': 'npm install',

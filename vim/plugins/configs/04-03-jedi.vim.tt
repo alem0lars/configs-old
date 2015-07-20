@@ -46,6 +46,15 @@ let g:jedi#popup_select_first = 0
 
 " }}}
 
+" {{{ Configure function call signatures.
+
+" Jedi displays function call signatures in insert mode in real-time,
+" highlighting the current argument. The call signatures will be displayed in
+" Vim's command line aligned with the function call.
+let g:jedi#show_call_signatures = '2'
+
+" }}}
+
 " {{{ Configure Omnifunc.
 
 " Needed because we set `g:jedi#completions_enabled=0` to skip the

@@ -38,16 +38,18 @@
 function! RC_Source(rel_path)
   let l:path = expand('<%= get_var! "vim.custom_dir" %>/' . a:rel_path)
 
-  if isdirectory(l:path)
-    for l:file_path in split(globpath(l:path, '*.vim'), '\n')
-      exe 'source ' . l:file_path
-    endfor
-  else
-    let l:file_path = l:path . '.vim'
-    if filereadable(l:file_path)
-      exe 'source ' . l:file_path
+  if l:path !~# '.*\.disabled$'
+    if isdirectory(l:path)
+      for l:file_path in split(globpath(l:path, '*.vim'), '\n')
+        exe 'source ' . l:file_path
+      endfor
+    else
+      let l:file_path = l:path . '.vim'
+      if filereadable(l:file_path)
+        exe 'source ' . l:file_path
+      end
     end
-  end
+  endif
 endfunction
 
 function! RC_HasTestVimRC()
