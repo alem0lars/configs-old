@@ -103,7 +103,7 @@ net-wireless/gnuradio atsc channels dtv fec grc log pager performance-counters t
 
 app-text/asciidoc highlight
 
-app-text/translate-shell pager fribidi rtl
+app-text/translate-shell pager fribidi rtl tts
 
 # Needed by `app-office/libreoffice`.
 dev-db/postgresql kerberos
