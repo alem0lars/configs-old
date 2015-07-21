@@ -158,6 +158,7 @@ dev-util/eclipse-sdk-bin ~amd64
 dev-util/idea-ultimate ~amd64
 dev-util/protege ~amd64
 dev-util/heroku-client ~amd64
+app-text/translate-shell ~amd64
 
 <% if has_feature? :mega %>
 net-misc/megatools ~amd64
