@@ -1,4 +1,4 @@
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    portage/package.use/permanent.tt                                  #
@@ -29,7 +29,7 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
 
 */* html
@@ -99,10 +99,12 @@ virtual/ffmpeg vaapi
 
 dev-util/radare2 debug
 
-# Needed by `app-office/libreoffice`.
-dev-db/postgresql kerberos
+net-wireless/gnuradio atsc channels dtv fec grc log pager performance-counters trellis uhd vocoder wavelet zeromq
 
 app-text/asciidoc highlight
+
+# Needed by `app-office/libreoffice`.
+dev-db/postgresql kerberos
 
 <% if has_feature? 'vim' %>
 app-editors/vim vim-pager

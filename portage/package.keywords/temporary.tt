@@ -145,6 +145,8 @@ net-analyzer/snort ~amd64
 sci-physics/root ~amd64
 net-analyzer/tsung ~amd64
 media-gfx/plantuml ~amd64
+dev-util/android-sdk-update-manager ~amd64
+net-wireless/gnuradio ~amd64
 dev-python/ptpython ~amd64
 dev-python/virtualenv ~amd64
 dev-python/virtualenvwrapper ~amd64
@@ -180,8 +182,6 @@ dev-util/findbugs ~amd64
 # Remove as soon as a newer version is available.
 dev-java/commons-collections ~amd64
 <% end %>
-
-dev-util/android-sdk-update-manager ~amd64
 
 # }}}
 
