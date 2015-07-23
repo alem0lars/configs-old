@@ -74,3 +74,8 @@ conky:
   net_devs:
     - *conky_wifi_dev
     - *conky_eth_dev
+
+features:
+  - 'xmonad'
+  - 'trayer'
+  - 'conky'

@@ -213,8 +213,6 @@ features:
   - 'gentoo'
   - 'g-sorcery'
   - 'slim'
-  - 'xmonad'
-  - 'trayer'
   - 'autocutsel'
   - 'urxvt'
   - 'zathura'
