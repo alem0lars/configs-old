@@ -162,13 +162,16 @@ dev-util/idea-ultimate ~amd64
 dev-util/protege ~amd64
 dev-util/heroku-client ~amd64
 app-text/translate-shell ~amd64
-x11-wm/bspwm ~amd64
 
-<% if has_feature? :mega %>
+<% if has_feature 'bspwm' %>
+x11-wm/bspwm ~amd64
+<% end %>
+
+<% if has_feature? 'mega' %>
 net-misc/megatools ~amd64
 <% end %>
 
-<% if has_feature? :ruby %>
+<% if has_feature? 'ruby' %>
 dev-ruby/thor ~amd64
 <% end %>
 
