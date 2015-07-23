@@ -152,6 +152,11 @@ elems:
     only:
       features: ['snort']
 
+  - src: 'awesomewm/(.+)$'
+    dst: '~/.config/awesome/<1>'
+    only:
+      features: ['awesomewm']
+
   - src: 'xmonad/xmonad.hs'
     dst: '~/.xmonad/xmonad.hs'
     only:
@@ -398,6 +403,11 @@ elems:
     dst: '/etc/X11/<1>'
     only:
       features: ['touchpad']
+
+  - src: 'x11/sessions/(awesome)$'
+    dst: '/etc/X11/Sessions/<1>'
+    only:
+      features: [['x11', 'awesomewm']]
 
   - src: 'x11/sessions/(xmonad)$'
     dst: '/etc/X11/Sessions/<1>'

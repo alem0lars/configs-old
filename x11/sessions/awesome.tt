@@ -3,10 +3,10 @@
 # {{{ ##########################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    x11/sessions/xmonad.tt                                            #
-# - Summary: The Xmonad session file.                                          #
+# - Name:    x11/sessions/awesome.tt                                           #
+# - Summary: The Awesome session file.                                         #
 # - Authors:                                                                   #
-#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem1lars)              #
 #                                                                              #
 # Project informations:                                                        #
 #   - Homepage:        https://github.com/alem0lars/configs                    #
@@ -64,48 +64,19 @@ xset r rate 300 30
 echo -e "${fg[blue]}setting custom keys${reset_color}"
 setxkbmap -option ctrl:nocaps
 
-if [[ -f ~/.fehbg ]]; then
-  echo -e "${fg[blue]}applying default background${reset_color}"
-  source ~/.fehbg
-fi
-
-<% if has_feature? :urxvt %>
+<% if has_feature? 'urxvt' %>
 echo -e "${fg[blue]}starting urxvtd${reset_color}"
 urxvtd -o -f
 <% end %>
 
-<% if has_feature? :pulseaudio %>
+<% if has_feature? 'pulseaudio' %>
 echo -e "${fg[blue]}starting pulseaudio${reset_color}"
 start-pulseaudio-x11 &
 <% end %>
 
-<% if has_feature? :autocutsel %>
+<% if has_feature? 'autocutsel' %>
 echo -e "${fg[blue]}starting autocutsel${reset_color}"
 autocutsel -fork
-<% end %>
-
-<% if has_feature? :trayer %>
-echo -e "${fg[blue]}starting trayer${reset_color}"
-killall trayer-srg > /dev/null
-nohup trayer-srg --edge top --align right \
-                 --width  12 --widthtype  percent \
-                 --height <%= size = Integer(Integer(get_var!('fonts.main.size')) * 1.2); has_feature?('hidpi') ? size * 2 : size %> \
-                 --heighttype pixel --SetDockType true --SetPartialStrut true \
-                 --expand true --alpha 0 --transparent true --tint 0x1c1c1c \
-                 > /dev/null &
-<% end %>
-
-<% if has_feature? :networkmanager %>
-echo -e "${fg[blue]}starting nm-applet${reset_color}"
-killall nm-applet > /dev/null
-nm-applet &
-<% end %>
-
-<% if has_feature? :conky %>
-echo -e "${fg[blue]}starting conky${reset_color}"
-killall conky > /dev/null
-conky -c /etc/conky/conky_1.conf -d > /dev/null
-conky -c /etc/conky/conky_2.conf -d > /dev/null
 <% end %>
 
 if [[ -f ~/.screenlayout/default.sh ]]; then
@@ -131,8 +102,8 @@ if [ -x /usr/bin/ssh-agent ]; then
   eval "$(/usr/bin/ssh-agent -s)"
 fi
 
-echo -e "${fg[blue]}starting xmonad${reset_color}"
-xmonad
+echo -e "${fg[blue]}starting Awesome${reset_color}"
+/usr/bin/awesome
 
 
 # vim: set filetype=zsh :
