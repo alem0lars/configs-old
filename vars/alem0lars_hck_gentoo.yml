@@ -85,9 +85,9 @@ eclipse:
 taskwarrior:
   taskd:
     server:      'freecinc.com:53589'
-    key_file:    'freecinc_e2cca0ca.key.pem'
-    cert_file:   'freecinc_e2cca0ca.cert.pem'
-    ca_file:     'freecinc_e2cca0ca.ca.pem'
+    key_file:    'freecinc_542a44f4.key.pem'
+    cert_file:   'freecinc_542a44f4.cert.pem'
+    ca_file:     'freecinc_542a44f4.ca.pem'
     credentials: 'lpass show --password "alem0lars @ freecinc"'
 
 mutt:

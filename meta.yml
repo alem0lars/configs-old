@@ -137,6 +137,11 @@ elems:
 
   # {{{ Software specific.
 
+  - src: 'gimp/(.+)$'
+    dst: '~/.gimp-<%= get_var! "gimp.version" %>'
+    only:
+      features: ['gimp']
+
   - src: 'radare/(radare2rc)$'
     dst: '~/.<1>'
     only:

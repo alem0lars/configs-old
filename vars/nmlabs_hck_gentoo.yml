@@ -51,6 +51,9 @@ x11:
 xmonad:
   terminal_cmd: 'openterm'
 
+gimp:
+  version: '<%= emerge -p media-gfx/gimp --columns | grep -e "\[ebuild" | tr -s " " | cut -d" " -f5 | tr -d "[" | cut -d"." -f 1-2 %>'
+
 portage:
   use_flags: # {{{
     # Removed flags.
@@ -220,3 +223,4 @@ features:
   - 'x11'
   - 'copyq'
   - 'radare'
+  - 'gimp'
