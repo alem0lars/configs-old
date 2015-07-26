@@ -41,7 +41,7 @@ end
 
 -- {{{ Theme.
 
-beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/jellybeans/theme.lua")
 
 -- }}}
 
