@@ -171,6 +171,3 @@ if [ -x /usr/bin/ssh-agent ]; then
 fi
 
 exec /usr/bin/awesome
-
-
-# vim: set filetype=zsh :

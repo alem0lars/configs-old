@@ -11,7 +11,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
--- {{{ Error handling
+
+-- {{{ Error handling.
+
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -34,25 +36,17 @@ do
         in_error = false
     end)
 end
+
 -- }}}
 
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+-- {{{ Theme.
 
--- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
+beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+-- }}}
 
--- Table of layouts to cover with awful.layout.inc, order matters.
+-- {{{ Layouts.
+
 local layouts =
 {
     awful.layout.suit.floating,
@@ -68,23 +62,36 @@ local layouts =
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
+
 -- }}}
 
 -- {{{ Wallpaper
+
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
 end
+
 -- }}}
 
+-- This is used later as the default terminal and editor to run.
+terminal = "openterm"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
+
+-- Set modkey (Mod4 is the super key).
+modkey = "Mod4"
+
 -- {{{ Tags
+
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
+
 -- }}}
 
 -- {{{ Menu
@@ -443,3 +450,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- vim: set filetype=lua :

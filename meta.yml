@@ -43,6 +43,11 @@ commands:
     dst:  '<%= get_var! "vim.bundle_dir" %>/neobundle.vim'
     only:
       features: ['vim']
+  - type: 'git_sync'
+    repo: 'https://github.com/xanmanning/jellybeans.git'
+    dst:  '~/.config/awesome/themes/jellybeans'
+    only:
+      features: ['awesomewm']
 
 elems:
 
