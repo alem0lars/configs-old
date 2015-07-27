@@ -162,7 +162,7 @@ dev-util/idea-ultimate ~amd64
 dev-util/protege ~amd64
 dev-util/heroku-client ~amd64
 app-text/translate-shell ~amd64
-net-misc/jdownloader-bin ~amd64
+media-sound/spotify ~amd64
 
 <% if has_feature? 'bspwm' %>
 x11-wm/bspwm ~amd64
