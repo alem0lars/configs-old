@@ -138,7 +138,7 @@ elems:
   # {{{ Software specific.
 
   - src: 'gimp/(.+)$'
-    dst: '~/.gimp-<%= get_var! "gimp.version" %>'
+    dst: '~/.gimp-<%= get_var! "gimp.version" %>/<1>'
     only:
       features: ['gimp']
 
