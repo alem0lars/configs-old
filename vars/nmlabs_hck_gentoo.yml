@@ -52,7 +52,7 @@ xmonad:
   terminal_cmd: 'openterm'
 
 gimp:
-  version: '<%= `emerge -p media-gfx/gimp --columns | grep -e "\\[ebuild" | tr -s " " | cut -d" " -f5 | tr -d "[" | cut -d"." -f 1-2` %>'
+  version: '<%= `emerge -p media-gfx/gimp --columns | grep -e "\\[ebuild" | tr -s " " | cut -d" " -f5 | tr -d "[" | cut -d"." -f 1-2`.strip %>'
 
 portage:
   use_flags: # {{{
