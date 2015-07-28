@@ -40,12 +40,10 @@ hostname: 'julia'
 
 kernel_config: 'julia_hck_gentoo'
 
-touchpad:
-  driver: 'mtrack'
-
 portage:
   input_devices:
     - 'evdev'
+    - 'wacom'
   video_cards:
     - 'intel'
     - 'i965'
@@ -73,7 +71,7 @@ conky:
 features:
   - 'macbook'
   - 'host_julia'
-  - 'touchpad'
+  - 'wacom'
   - 'downscale'
 
 

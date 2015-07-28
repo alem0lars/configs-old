@@ -409,10 +409,15 @@ elems:
     only:
       features: ['x11']
 
-  - src: 'x11/(xorg.conf.d/00-touchpad.conf)$'
+  - src: 'x11/(xorg\.conf\.d/[0-9]+-apple\.conf)$'
     dst: '/etc/X11/<1>'
     only:
-      features: ['touchpad']
+      features: ['macbook']
+
+  - src: 'x11/(xorg\.conf\.d/[0-9]+-wacom\.conf)$'
+    dst: '/etc/X11/<1>'
+    only:
+      features: ['wacom']
 
   - src: 'x11/sessions/(awesome)$'
     dst: '/etc/X11/Sessions/<1>'
