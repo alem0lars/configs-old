@@ -58,6 +58,8 @@ portage:
     - 'sse4'
     - 'sse4_1'
     - 'sse4_2'
+    # External devices.
+    - 'rtlsdr'
 
 parallelism: 8
 
