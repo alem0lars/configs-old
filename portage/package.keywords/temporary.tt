@@ -164,6 +164,7 @@ dev-util/heroku-client ~amd64
 app-text/translate-shell ~amd64
 media-sound/spotify ~amd64
 net-wireless/rtl-sdr ~amd64
+net-wireless/gr-osmosdr ~amd64
 
 <% if has_feature? 'bspwm' %>
 x11-wm/bspwm ~amd64
