@@ -41,9 +41,6 @@ hostname: 'terzon'
 kernel_config: 'terzon_hck_gentoo'
 
 portage:
-  abi_x86:
-    - '64'
-    - '32'
   input_devices:
     - 'synaptics'
     - 'evdev'
@@ -63,6 +60,8 @@ portage:
     - 'sse4'
     - 'sse4_1'
     - 'sse4_2'
+    # External devices.
+    - 'rtlsdr'
 
 parallelism: 8
 
@@ -76,6 +75,7 @@ conky:
     - *conky_eth_dev
 
 features:
-  - 'xmonad'
-  - 'trayer'
-  - 'conky'
+  - 'wacom'
+
+
+# vim: set filetype=yaml :
