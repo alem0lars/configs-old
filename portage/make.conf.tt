@@ -97,6 +97,12 @@ PYTHON_SINGLE_TARGET="python3_3"
 
 # }}}
 
+# {{{ Ruby.
+
+RUBY_TARGETS="ruby19 ruby21"
+
+# }}}
+
 # {{{ Use flags.
 
 USE="${USE} <%= get_var!('portage.use_flags').join(' ') %>"
