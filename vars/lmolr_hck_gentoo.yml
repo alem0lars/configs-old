@@ -41,26 +41,40 @@ fullname: 'Luca Molari'
 
 github_username: 'LMolr'
 
+portage:
+  abi_x86:
+   - '64'
+
 gtk:
-  key_theme: 'Emacs'
+  key_theme: 'Vi'
 
 colorscheme:
   name: 'jellybeans'
 
-irc:
-  nickname: 'LMolr'
-  servers:
-    firrre:
-      password: '`lpass show --password "LMolr_firrre"`'
+vim:
+  backups_dir:      '~/.vim_bkps'
+  swap_dir:         '~/.vim_swaps'
+  views_dir:        '~/.vim_views'
+  undo_dir:         '~/.vim_undos'
+  vimshell_tmp_dir: '~/.vim_shell'
+  custom_dir:       '/etc/vim'
+  bundle_dir:       '/etc/vim/bundle'
+  entry_point:      '/etc/vim/vimrc'
+  gui_entry_point:  '/etc/vim/gvimrc'
+  terminal_cmd:     'urxvtc -e'
+  latex_viewer:     'zathura'
 
 atom:
   project_home: '/shared/develop/projects'
 
 features:
   - 'grub'
-  - 'btrfs'
   - 'atom'
-  - 'conky'
+  - 'gtk_vim'
+  - 'vim'
   - 'feh'
   - 'networkmanager'
   - 'steam'
+  - 'powerline'
+  - 'systemd'
+  - 'awesomewm'
