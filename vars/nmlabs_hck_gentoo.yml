@@ -126,7 +126,6 @@ portage:
     # Languages.
     - 'perl'
     - 'lua'
-    - 'fortran'
     - 'vala'
     - 'javascript'
     - 'ocaml'

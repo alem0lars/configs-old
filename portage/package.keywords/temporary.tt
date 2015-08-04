@@ -166,6 +166,7 @@ media-sound/spotify ~amd64
 net-wireless/rtl-sdr ~amd64
 net-wireless/gr-osmosdr ~amd64
 app-misc/tmuxp ~amd64
+media-gfx/pngquant ~amd64
 
 <% if has_feature? 'bspwm' %>
 x11-wm/bspwm ~amd64
