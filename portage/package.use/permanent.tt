@@ -34,6 +34,9 @@
 
 */* html
 
+# Cross compiling.
+cross-*/* nopie nossp -hardened -pic -sanitize
+
 app-crypt/gnupg tools
 
 app-misc/geoclue -modemmanager

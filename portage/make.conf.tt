@@ -99,7 +99,7 @@ PYTHON_SINGLE_TARGET="python3_3"
 
 # {{{ Ruby.
 
-RUBY_TARGETS="ruby19 ruby21"
+RUBY_TARGETS="ruby19 ruby20 ruby21"
 
 # }}}
 

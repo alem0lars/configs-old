@@ -61,16 +61,18 @@ dev-util/capstone ~amd64
 =media-libs/mesa-10.3.0 ~amd64
 =dev-libs/nss-3.19-r1 ~amd64
 
-# Needed by `app-emulation/vagrant`.
-=dev-ruby/net-ssh-2.9.0 ~amd64
-=dev-ruby/net-scp-1.2.1 ~amd64
-=dev-ruby/childprocess-0.5.5 ~amd64
-=dev-ruby/log4r-1.1.10-r1 ~amd64
-=dev-ruby/i18n-0.6.11 ~amd64
-
 # Needed by `net-wireless/gnuradio`.
 =net-wireless/uhd-3.8.2 ~amd64
 =net-libs/cppzmq-0_pre150606 ~amd64
+
+# Needed by `dev-ruby/net-ssh`
+=virtual/ruby-ssl-7 ~amd64
+
+# Needed by `dev-python/ptpython`
+=dev-python/prompt_toolkit-0.45 ~amd64
+
+# Needed by `dev-ruby/bundler`
+=app-text/ronn-0.7.3-r3 ~amd64
 
 <% if has_feature? :scala %>
 # Needed by `dev-lang/scala`.
@@ -89,30 +91,6 @@ dev-util/capstone ~amd64
 
 # Needed by `dev-python/sympy.
 =dev-python/mpmath-0.19 ~amd64
-<% end %>
-
-<% if has_feature? :ruby %>
-# Needed by `dev-ruby/rubocop`.
-=dev-ruby/ast-2.0.0 ~amd64
-=dev-ruby/parser-2.2.0_pre8 ~amd64
-=dev-ruby/powerpack-0.0.9 ~amd64
-
-# Needed by `dev-ruby/pry`.
-=dev-ruby/slop-3.6.0 ~amd64
-=dev-ruby/method_source-0.8.2-r3 ~amd64
-
-# Needed by `dev-ruby/sass`.
-=dev-ruby/rb-inotify-0.9.5-r1 ~amd64
-=dev-ruby/celluloid-0.16.0 ~amd64
-=dev-ruby/listen-2.7.5 ~amd64
-=dev-ruby/timers-4.0.1 ~amd64
-=dev-ruby/hitimes-1.2.2 ~amd64
-
-# Needed by `dev-ruby/haml`.
-=dev-ruby/tilt-2.0.1 ~amd64
-=dev-ruby/builder-3.2.2 ~amd64
-=dev-ruby/haml-4.0.5 ~amd64
-=dev-ruby/maruku-0.7.2-r1 ~amd64
 <% end %>
 
 <% if has_feature? :zathura %>
