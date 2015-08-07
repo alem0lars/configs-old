@@ -35,7 +35,7 @@
 */* html
 
 # Cross compiling.
-cross-*/* nopie nossp -hardened -pic -sanitize
+cross-*/* nopie nossp -hardened -pic -sanitize -fortran
 
 app-crypt/gnupg tools
 
