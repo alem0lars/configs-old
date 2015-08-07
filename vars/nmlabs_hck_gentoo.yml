@@ -124,6 +124,7 @@ portage:
     - 'truetype'
     - 'corefonts'
     # Languages.
+    - 'fortran'
     - 'perl'
     - 'lua'
     - 'vala'
