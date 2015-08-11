@@ -7,6 +7,10 @@ www-plugins/google-talkplugin Google-TOS
 
 media-libs/fdk-aac FraunhoferFDK
 
-<% if has_feature? :java %>
+<% if has_feature? 'java' %>
 dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
+<% end %>
+
+<% if has_feature 'teamviewer' %>
+net-misc/teamviewer TeamViewer
 <% end %>
