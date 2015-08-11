@@ -426,11 +426,13 @@ elems:
 
   - src: 'x11/sessions/(awesome)$'
     dst: '/etc/X11/Sessions/<1>'
+    perms: '755'
     only:
       features: [['x11', 'awesomewm']]
 
   - src: 'x11/sessions/(xmonad)$'
     dst: '/etc/X11/Sessions/<1>'
+    perms: '755'
     only:
       features: [['x11', 'xmonad']]
 
