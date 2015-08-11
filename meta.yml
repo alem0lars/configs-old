@@ -294,6 +294,11 @@ elems:
     only:
       features: ['slim']
 
+  - src: 'lightdm/(.*)'
+    dst: '/etc/lightdm/<1>'
+    only:
+      features: ['lightdm']
+
   - src: 'mplayer/(.+)'
     dst: '/etc/mplayer/<1>'
     only:

@@ -215,7 +215,7 @@ portage:
 features:
   - 'gentoo'
   - 'g-sorcery'
-  - 'slim'
+  - 'lightdm'
   - 'autocutsel'
   - 'urxvt'
   - 'zathura'
