@@ -294,7 +294,13 @@ elems:
     only:
       features: ['slim']
 
-  - src: 'lightdm/(.*)'
+  - src: 'lightdm/Xsession$'
+    dst: '/etc/lightdm/Xsession'
+    perms: '755'
+    only:
+      features: ['lightdm']
+
+  - src:  '^lightdm/((?!.*Xsession$).*)$'
     dst: '/etc/lightdm/<1>'
     only:
       features: ['lightdm']
