@@ -102,6 +102,7 @@ media-libs/flac abi_x86_32
 media-sound/jack-audio-connection-kit abi_x86_32
 media-libs/xvid abi_x86_32
 dev-libs/libgpg abi_x86_32
+dev-libs/libgpg-error abi_x86_32
 media-libs/tiff abi_x86_32
 x11-libs/libXdmcp abi_x86_32
 x11-libs/libXinerama abi_x86_32
