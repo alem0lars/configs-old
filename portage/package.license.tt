@@ -11,6 +11,6 @@ media-libs/fdk-aac FraunhoferFDK
 dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
 <% end %>
 
-<% if has_feature 'teamviewer' %>
+<% if has_feature? 'teamviewer' %>
 net-misc/teamviewer TeamViewer
 <% end %>
