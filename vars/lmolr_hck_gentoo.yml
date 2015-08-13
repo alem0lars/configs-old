@@ -73,8 +73,6 @@ features:
   - 'gtk_vim'
   - 'vim'
   - 'feh'
-  - 'networkmanager'
-  - 'steam'
   - 'powerline'
   - 'systemd'
   - 'awesomewm'
