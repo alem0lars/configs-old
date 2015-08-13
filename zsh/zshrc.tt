@@ -89,6 +89,7 @@ zle-line-init() { # Enable autosuggestions automatically.
     zle autosuggest-start
 }
 zle -N zle-line-init
+AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
 
 # }}}
 
