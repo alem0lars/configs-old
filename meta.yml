@@ -206,10 +206,6 @@ elems:
     dst:  '<%= get_var! "zsh.zlogout_path" %>'
     only:
       features: ['zsh']
-  - src:  '^zsh/((?!.*(?:zshrc|zshenv|zlogin|zlogout)$).*)$'
-    dst:  '<%= get_var! "zsh.custom_dir" %>/<1>'
-    only:
-      features: ['zsh']
 
   - src:  '^vim/vimrc$'
     dst:  '<%= get_var! "vim.entry_point" %>'

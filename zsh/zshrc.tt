@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 #
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    zsh/zshrc.tt                                                      #
@@ -32,21 +32,8 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
-
-# {{{ Internal functions.
-
-configure()
-{
-  if [[ -z "$1" ]]; then
-    echo "[ERROR] Calling function \`load_local_plugin\` without arguments."
-  else
-    source "${ZSH_PLUGINS_CONFIGS_DIR}/$1.zsh"
-  fi
-}
-
-# }}}
 
 # {{{ Global configuration.
 
@@ -60,94 +47,79 @@ export ZGEN_INIT="${ZSH_PLUGINS_DIR}/init.zsh"
 
 # }}}
 
-# {{{ Load zgen.
+# {{{ Zstyles for plugins.
+
+# alem0lars/zsh-editor.
+zstyle ':editor' dot-expansion 'yes'
+zstyle ':editor' key-bindings '<%= has_feature?("vim") ? "vi" : "emacs" %>'
+
+# }}}
+
+# {{{ Load ZGen.
 
 source "${ZSH_PLUGINS_DIR}/zgen/zgen.zsh"
 
 # }}}
 
+# {{{ Post-configuration for plugins.
+
+# Configure zsh-syntax-highlighting.
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern root)
+
+# Configure zsh-history-substring-search.
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS='i'
+if [[ -n "${key_info}" ]]; then
+  # Emacs
+  bindkey -M emacs "$key_info[Control]P" history-substring-search-up
+  bindkey -M emacs "$key_info[Control]N" history-substring-search-down
+  # Vi
+  bindkey -M vicmd "k" history-substring-search-up
+  bindkey -M vicmd "j" history-substring-search-down
+  # Emacs and Vi
+  for keymap in 'emacs' 'viins'; do
+    bindkey -M "$keymap" "$key_info[Up]" history-substring-search-up
+    bindkey -M "$keymap" "$key_info[Down]" history-substring-search-down
+  done
+fi
+
+# Configure zsh-autosuggestions.
+zle-line-init() { # Enable autosuggestions automatically.
+    zle autosuggest-start
+}
+zle -N zle-line-init
+
+# }}}
+
+# {{{ Plugins declaration.
 
 # Check if there's no init script.
 if ! zgen saved; then
 
-  # {{{ Load plugins.
+  zgen load Tarrasch/zsh-functional # Functional-style functions.
+  zgen load mafredri/zsh-async # Async functions.
 
-  # {{{ Additinal shell functions.
+  zgen load alem0lars/zsh-environment # Basic ZSH environment.
+  zgen load alem0lars/zsh-editor # Input-line editing capabilities.
+  zgen load alem0lars/zsh-history # History options.
+  zgen load alem0lars/zsh-directory # Directory options.
 
-  zgen load Tarrasch/zsh-functional
+  zgen load zsh-users/zsh-syntax-highlighting # Highlight words.
+  zgen load zsh-users/zsh-history-substring-search # Search in substrings.
 
-  # }}}}
+  zgen load zsh-users/zsh-completions # Additional completion definitions.
+  zgen load alem0lars/zsh-complete # Completion behaviour.
+  zgen load tarruda/zsh-autosuggestions # Automatic inline completion.
 
-  # {{{ Vim.
+  zgen load rimraf/k # Tool alternative to `ls`.
+  zgen load alem0lars/zsh-external-tools # Support for external tools.
 
-  <% if has_feature? 'vi-mode' %>
-  zgen load robbyrussell/oh-my-zsh plugins/vi-mode
-  configure vi-mode
-  <% end %>
-
-  # }}}
-
-  # {{{ Highlighting.
-
-  zgen load zsh-users/zsh-syntax-highlighting
-  configure syntax-highlighting
-
-  # }}}
-
-  # {{{ Search.
-
-  zgen load zsh-users/zsh-history-substring-search
-  configure history-substring-search
-
-  # }}}
-
-  # {{{ Miscellaneous ZSH customizations.
-
-  zgen load alem0lars/zsh-environment
-  zgen load alem0lars/zsh-directory
-
-  # }}}
-
-  # {{{ Completion.
-
-  zgen load zsh-users/zsh-completions src
-
-  zgen load alem0lars/zsh-complete
-
-  zgen load tarruda/zsh-autosuggestions
-  configure autosuggestions
-
-  # }}}
-
-  # {{{ Additional functions and tools.
-
-  zgen load rimraf/k
-
-  # }}}
-
-  # {{{ External tools support.
-
-  zgen load robbyrussell/oh-my-zsh plugins/pyenv
-  zgen load robbyrussell/oh-my-zsh plugins/rbenv
-  zgen load robbyrussell/oh-my-zsh plugins/fasd
-
-  # }}}
-
-  # }}}
-
-  # {{{ Load theme.
-
-  zgen oh-my-zsh themes/pure
-
-  # }}}
+  zgen load sindresorhus/pure # Load theme.
 
   # Save all to init script.
   zgen save
 fi
-
-# {{{ Cleanup.
-
-unfunction configure
 
 # }}}
 

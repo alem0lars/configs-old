@@ -68,8 +68,7 @@ let g:vimshell_max_command_history = 1024
 
 " Read from the external history file.
 <% if has_feature? 'zsh' %>
-let g:vimshell_external_history_path = expand(
-      \ '<%= get_var! "zsh.history_file" %>')
+let g:vimshell_external_history_path = expand('~/.zhistory')
 <% end %>
 
 " Maximum number of lines that can be scrolled back.
