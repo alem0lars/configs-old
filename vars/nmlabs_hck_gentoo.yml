@@ -45,11 +45,14 @@ gtk:
 urxvt:
   url_launcher: '/usr/bin/firefox'
 
+copyq:
+  editor: 'openterm --cmd ""'
+
 x11:
   xsession: "xmonad"
 
 xmonad:
-  terminal_cmd: 'openterm'
+  terminal_cmd: 'openterm --cmd \"vim %1\"'
 
 gimp:
   version: '<%= `emerge -p media-gfx/gimp --columns | grep -e "\\[ebuild" | tr -s " " | cut -d" " -f5 | tr -d "[" | cut -d"." -f 1-2`.strip %>'

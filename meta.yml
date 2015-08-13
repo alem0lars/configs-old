@@ -182,6 +182,11 @@ elems:
     only:
       features: ['parcellite']
 
+  - src: 'copyq/(.+)'
+    dst: '~/.config/copyq/<1>'
+    only:
+      features: ['copyq']
+
   - src:  'tmux/tmux.conf'
     dst:  '<%= get_var! "tmux.config_file_path" %>'
     only:
