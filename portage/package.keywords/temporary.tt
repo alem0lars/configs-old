@@ -44,6 +44,9 @@
 
 # {{{ Dependencies of permanent packages.
 
+# Needed by `dev-java/ant`.
+dev-java/slf4j-nop ~amd64
+
 # Needed by `x11-wm/bspwm`.
 x11-misc/sxhkd ~amd64
 

@@ -1,4 +1,4 @@
-# {{{ ##########################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    qt/trolltech.conf                                                 #
@@ -39,7 +39,7 @@ Palette\inactive=@Invalid()
 Palette\disabled=@Invalid()
 fontPath=@Invalid()
 embedFonts=true
-style=
+style=GTK+
 doubleClickInterval=400
 cursorFlashTime=1000
 wheelScrollLines=3
