@@ -54,6 +54,7 @@ x11-misc/copyq ~amd64
 x11-drivers/xf86-input-wacom ~amd64
 x11-misc/lightdm* ~amd64
 net-misc/teamviewer ~amd64
+sci-electronics/eagle ~amd64
 
 # Web browsers should always be at the latest version for better
 # web standards and technologies support.
