@@ -113,6 +113,10 @@ irc:
 virtualbox:
   vm_dir: '/vm'
 
+eagle:
+  projects_dir: "/archive/development/projects"
+  editor_cmd: "openterm --cmd 'vim %F'"
+
 features:
   - 'signature'
   - 'snort'
@@ -135,3 +139,4 @@ features:
   - 'taskwarrior'
   - 'awesomewm'
   - 'teamviewer'
+  - 'eagle'
