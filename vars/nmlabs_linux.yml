@@ -39,14 +39,14 @@
 
 # {{{ Favourite directories.
 
-bkp_dir:       '/shared/bkp'
+bkp_dir:       '/archive/backup'
 tmp_dir:       '~/tmp'
-notes_dir:     '/shared/notes'
-docs_dir:      '/shared/docs'
-graphics_dir:  '/shared/graphics'
-audio_dir:     '/shared/audio'
-video_dir:     '/shared/video'
-develop_dir:   '/shared/develop'
+notes_dir:     '/archive/documents/notes'
+docs_dir:      '/archive/documents'
+graphics_dir:  '/archive/graphics'
+audio_dir:     '/archive/audio'
+video_dir:     '/archive/video'
+develop_dir:   '/archive/development'
 downloads_dir: '~/downloads'
 
 # }}}
