@@ -227,145 +227,28 @@ ssl_fingerprint = ""
 ssl_priorities = "NORMAL"
 ssl_verify = on
 
-<% if get_var 'irc.servers.freenode' %>
+<% get_var!('irc.servers').each do |server| %>
 
 [server]
-freenode.addresses = "chat.freenode.net/6667"
-freenode.proxy
-freenode.ipv6
-freenode.ssl
-freenode.ssl_cert
-freenode.ssl_priorities
-freenode.ssl_dhkey_size
-freenode.ssl_fingerprint
-freenode.ssl_verify
-freenode.password
-freenode.capabilities
-freenode.sasl_mechanism
-freenode.sasl_username
-freenode.sasl_password
-freenode.sasl_timeout
-freenode.autoconnect
-freenode.autoreconnect
-freenode.autoreconnect_delay
-freenode.nicks
-freenode.username
-freenode.realname
-freenode.local_hostname
-freenode.command
-freenode.command_delay
-freenode.autojoin
-freenode.autorejoin
-freenode.autorejoin_delay
-freenode.connection_timeout
-freenode.anti_flood_prio_high
-freenode.anti_flood_prio_low
-freenode.away_check
-freenode.away_check_max_nicks
-freenode.default_msg_kick
-freenode.default_msg_part
-freenode.default_msg_quit
-freenode.notify
 
-<% end %>
-
-<% if get_var 'irc.servers.firrre' %>
-
-[server]
-firrre.addresses   = "furnace.firrre.com/9090"
-firrre.proxy
-firrre.ipv6
-firrre.ssl         = on
-firrre.ssl_cert
-firrre.ssl_priorities
-firrre.ssl_dhkey_size
-firrre.ssl_fingerprint = "a85328ff23c32bf9ebca8f2511b727dc3b6980f9"
-firrre.ssl_verify
-firrre.password    = "<%= `#{get_var!('irc.servers.firrre.password')}`.chomp %>"
-firrre.capabilities
-firrre.sasl_mechanism
-firrre.sasl_username
-firrre.sasl_password
-firrre.sasl_timeout
-firrre.autoconnect = on
-firrre.autoreconnect
-firrre.autoreconnect_delay
-firrre.nicks
-firrre.username
-firrre.realname
-firrre.local_hostname
-firrre.command
-firrre.command_delay
-firrre.autojoin
-firrre.autorejoin
-firrre.autorejoin_delay
-firrre.connection_timeout
-firrre.anti_flood_prio_high
-firrre.anti_flood_prio_low
-firrre.away_check
-firrre.away_check_max_nicks
-firrre.default_msg_kick
-firrre.default_msg_part
-firrre.default_msg_quit
-firrre.notify
-<% end %>
-
-<% if get_var 'irc.servers.smashthestack' %>
-
-[server]
-smashthestack.addresses   = "irc.smashthestack.org/6667"
-smashthestack.proxy
-smashthestack.ipv6
-smashthestack.ssl
-smashthestack.ssl_cert
-smashthestack.ssl_priorities
-smashthestack.ssl_dhkey_size
-smashthestack.ssl_fingerprint
-smashthestack.ssl_verify
-smashthestack.password
-smashthestack.capabilities
-smashthestack.sasl_mechanism
-smashthestack.sasl_username
-smashthestack.sasl_password
-smashthestack.sasl_timeout
-smashthestack.autoconnect = on
-smashthestack.autoreconnect
-smashthestack.autoreconnect_delay
-smashthestack.nicks
-smashthestack.username
-smashthestack.realname
-smashthestack.local_hostname
-smashthestack.command = "/msg nickserv identify <%= `#{get_var!('irc.servers.smashthestack.password')}`.chomp %>"
-smashthestack.command_delay
-smashthestack.autojoin = "#social,#io"
-smashthestack.autorejoin
-smashthestack.autorejoin_delay
-smashthestack.connection_timeout
-smashthestack.anti_flood_prio_high
-smashthestack.anti_flood_prio_low
-smashthestack.away_check
-smashthestack.away_check_max_nicks
-smashthestack.default_msg_kick
-smashthestack.default_msg_part
-smashthestack.default_msg_quit
-smashthestack.notify
-
-<% end %>
-
-<% if get_var 'irc.servers.slack' %>
-  <% get_var!('irc.servers.slack').each do |server| %>
-
-[server]
-<%= server['name'] %>.addresses = "<%= server['name'] %>.irc.slack.com/6697"
+<%= server['name'] %>.addresses = "<%= server['address'] %>"
 <%= server['name'] %>.proxy
 <%= server['name'] %>.ipv6
+<% if server['ssl'] %>
 <%= server['name'] %>.ssl = on
+<% else %>
+<%= server['name'] %>.ssl
+<% end %>
 <%= server['name'] %>.ssl_cert
 <%= server['name'] %>.ssl_priorities
 <%= server['name'] %>.ssl_dhkey_size
 <%= server['name'] %>.ssl_fingerprint
 <%= server['name'] %>.ssl_verify
+<% if server['password'] %>
 <%= server['name'] %>.password = "<%= `#{server['password']}`.chomp %>"
+<% else %>
+<%= server['name'] %>.password
+<% end %>
 <%= server['name'] %>.capabilities
 <%= server['name'] %>.sasl_mechanism
 <%= server['name'] %>.sasl_username
@@ -393,7 +276,6 @@ smashthestack.notify
 <%= server['name'] %>.default_msg_quit
 <%= server['name'] %>.notify
 
-  <% end %>
 <% end %>
 
 # vim: set filetype=conf :

@@ -100,15 +100,22 @@ smtp_server: 'smtp.gmail.com'
 irc:
   nickname: 'alem0lars'
   servers:
-    firrre:
-      password: 'lpass show --password "alem0lars @ firrre.com"'
-    smashthestack:
-      password: 'lpass show --password "alem0lars @ irc.smashthestack.org"'
-    slack:
-      - name: 'nextreamlabs'
-        password: 'lpass show --password "alem0lars @ nextreamlabs.irc.slack.com"'
-      - name: 'cesena'
-        password: 'lpass show --password "alem0lars @ cesena.irc.slack.com"'
+    - name:     'freenode'
+      address:  'Gemini.panicbnc.net/1338'
+      password: 'echo alem0lars/freenode:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
+      ssl: true
+    - name:     'smashthestack'
+      address:  'Gemini.panicbnc.net/1338'
+      password: 'echo alem0lars/smashthestack:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
+      ssl: true
+    - name:     'cesena'
+      address:  'cesena.irc.slack.com/6697'
+      password: 'lpass show --password "alem0lars @ cesena.irc.slack.com"'
+      ssl: true
+    - name:     'nextreamlabs'
+      address:  'nextreamlabs.irc.slack.com/6697'
+      password: 'lpass show --password "alem0lars @ nextreamlabs.irc.slack.com"'
+      ssl: true
 
 virtualbox:
   vm_dir: '/vm'
