@@ -97,12 +97,46 @@ email_host:  'gmail.com'
 imap_server: 'imap.gmail.com'
 smtp_server: 'smtp.gmail.com'
 
+netbeans:
+  modules:
+    - 'apisupport'
+    - 'java'
+    - 'javafx'
+    - 'profiler'
+    - 'websvccommon'
+    - 'cnd'
+    - 'dlight'
+    - 'enterprise'
+    - 'ergonomics'
+    - 'extide'
+    - 'groovy'
+    - 'javacard'
+    - 'mobility'
+    - 'php'
+    - 'webcommon'
+
 irc:
   nickname: 'alem0lars'
   servers:
     - name:     'freenode'
       address:  'Gemini.panicbnc.net/1338'
       password: 'echo alem0lars/freenode:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
+      ssl: true
+    - name:     'ircnet'
+      address:  'Gemini.panicbnc.net/1338'
+      password: 'echo alem0lars/ircnet:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
+      ssl: true
+    - name:     'undernet'
+      address:  'Gemini.panicbnc.net/1338'
+      password: 'echo alem0lars/undernet:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
+      ssl: true
+    - name:     'efnet'
+      address:  'Gemini.panicbnc.net/1338'
+      password: 'echo alem0lars/efnet:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
+      ssl: true
+    - name:     'espernet'
+      address:  'Gemini.panicbnc.net/1338'
+      password: 'echo alem0lars/espernet:$(lpass show --password "alem0lars @ gemini.panicbnc.net")'
       ssl: true
     - name:     'smashthestack'
       address:  'Gemini.panicbnc.net/1338'

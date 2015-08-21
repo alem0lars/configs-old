@@ -103,6 +103,12 @@ RUBY_TARGETS="ruby19 ruby20 ruby21"
 
 # }}}
 
+# {{{ Netbeans
+<% if get_var 'netbeans' %>
+NETBEANS_MODULES="<%= get_var!('netbeans.modules').join(' ') %>"
+<% end %>
+# }}}
+
 # {{{ Use flags.
 
 USE="${USE} <%= get_var!('portage.use_flags').join(' ') %>"
