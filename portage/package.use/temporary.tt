@@ -61,6 +61,8 @@ dev-java/libreadline-java -doc
 # Needed by chromium.
 media-libs/libvpx postproc
 
+dev-java/gnu-classpath -doc
+
 # }}}
 
 # {{{ Enable ABI x86_32.
