@@ -51,7 +51,6 @@ VIDEO_CARDS="<%= get_var!('portage.video_cards').join(' ') %>"
 
 CFLAGS="-O2 -pipe -march=native"
 CXXFLAGS="${CFLAGS}"
-DMDFLAGS="${CFLAGS}"
 GDCFLAGS="${CFLAGS}"
 LDCFLAGS="${CFLAGS}"
 
