@@ -49,6 +49,11 @@ app-text/poppler utils
 
 dev-cpp/glog gflags
 
+<% if has_feature? 'dlang' %>
+dev-lang/dmd tools
+dev-util/dlang-tools ddemangle dman detab rdmd dustmite dmd-2_067
+<% end %>
+
 dev-libs/boost tools
 dev-libs/elfutils utils
 dev-libs/glib utils

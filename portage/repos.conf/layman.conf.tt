@@ -25,9 +25,9 @@ auto-sync = Yes
 [pentoo]
 priority = 50
 location = /var/lib/layman/pentoo
-layman-type = svn
+layman-type = git
 sync-type = laymansync
-sync-uri = https://pentoo.googlecode.com/svn/portage/trunk/
+sync-uri = git://github.com/pentoo/pentoo-overlay.git
 auto-sync = Yes
 
 [apo]
@@ -58,6 +58,18 @@ location = /var/lib/layman/java
 layman-type = git
 sync-type = laymansync
 sync-uri = git://anongit.gentoo.org/proj/java.git
+auto-sync = Yes
+
+<% end %>
+
+<% if has_feature? 'dlang' %>
+
+[dlang]
+priority = 50
+location = /var/lib/layman/dlang
+layman-type = git
+sync-type = laymansync
+sync-uri = https://github.com/gentoo/dlang.git
 auto-sync = Yes
 
 <% end %>
