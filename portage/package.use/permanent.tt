@@ -52,6 +52,7 @@ dev-cpp/glog gflags
 <% if has_feature? 'dlang' %>
 dev-lang/dmd tools
 dev-util/dlang-tools ddemangle dman detab rdmd dustmite dmd-2_067
+dev-util/dub dmd-2_067
 <% end %>
 
 dev-libs/boost tools

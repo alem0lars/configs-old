@@ -162,6 +162,10 @@ copyq &
 parcellite &
 <% end %>
 
+<% if get_var 'screen.autoblank' %>
+setterm -blank <%= get_var 'screen.autoblank' %>
+<% end %>
+
 if [ -x /usr/bin/gpg-agent ]; then
   eval "$(/usr/bin/gpg-agent --daemon)"
 fi
