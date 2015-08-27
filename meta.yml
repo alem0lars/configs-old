@@ -137,6 +137,11 @@ elems:
 
   # {{{ Software specific.
 
+  - src: 'nzbget/nzbget.conf$'
+    dst: '~/.nzbget'
+    only:
+      features: ['nzbget']
+
   - src: 'gimp/(.+)$'
     dst: '~/.gimp-<%= get_var! "gimp.version" %>/<1>'
     only:

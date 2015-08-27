@@ -66,6 +66,14 @@ gtk:
 colorscheme:
   name: "jellybeans"
 
+nzbget:
+  servers:
+    - name:     'xsnews'
+      hostname: 'news.xsnews.com'
+      port:     119
+      username: 'alem0lars'
+      password: 'lpass show --password "alem0lars @ xsnews.nl"'
+
 vim:
   backups_dir:      '~/.vim_bkps'
   swap_dir:         '~/.vim_swaps'
@@ -182,3 +190,4 @@ features:
   - 'teamviewer'
   - 'eagle'
   - 'dlang'
+  - 'nzbget'
