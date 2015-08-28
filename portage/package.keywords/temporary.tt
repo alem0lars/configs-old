@@ -197,6 +197,8 @@ net-libs/daq ~amd64
 
 # Needed by `sci-physics/root`.
 app-doc/root-docs ~amd64
+dev-lang/ocaml ~amd64
+dev-ml/ocaml-ctypes ~amd64
 
 # Needed by `dev-python/ptpython`.
 =dev-python/wcwidth-0.1.4 ~amd64
