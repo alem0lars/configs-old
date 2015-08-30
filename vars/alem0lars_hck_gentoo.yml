@@ -60,6 +60,9 @@ portage:
 dracut:
   root: 'LABEL=main'
 
+x11:
+  backlight: 40
+
 gtk:
   key_theme: 'Vi'
 

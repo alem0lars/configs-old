@@ -517,10 +517,15 @@ elems:
 
   # }}}
 
-  - src: 'linux/gentoo/(modules-load.d/virtualbox.conf)$'
+  - src: 'linux/gentoo/(modules-load\.d/virtualbox\.conf)$'
     dst: '/etc/<1>'
     only:
       features: [['gentoo', 'virtualbox', 'systemd']]
+
+  - src: 'linux/udev/rules/([0-9]+-xhc_sleep\.rules)$'
+    dst: '/etc/udev/rules.d/<1>'
+    only:
+      features: [['linux', 'macbook']]
 
   # }}}
 

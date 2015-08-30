@@ -162,8 +162,12 @@ copyq &
 parcellite &
 <% end %>
 
-<% if get_var 'screen.autoblank' %>
-setterm -blank <%= get_var 'screen.autoblank' %>
+<% if get_var 'screen.autoblankdisabled' %>
+sh -c 'setterm -blank 0 -powersave off -powerdown 0 < /dev/console > /dev/console 2>&1'
+<% end %>
+
+<% if get_var 'x11.backlight' %>
+xbacklight -set <%= get_var! 'x11.backlight' %>
 <% end %>
 
 if [ -x /usr/bin/gpg-agent ]; then
