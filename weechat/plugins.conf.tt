@@ -36,14 +36,17 @@
 
 fifo.fifo = "on"
 
-lua.check_license = "off"
+lua.check_license    = "off"
+perl.check_license   = "off"
+python.check_license = "off"
+ruby.check_license   = "off"
+tcl.check_license    = "off"
 
-perl.check_license          = "off"
 perl.highmon.alignment      = "channel"
 perl.highmon.away_only      = "off"
 perl.highmon.bar_scrolldown = "off"
 perl.highmon.color_buf      = "on"
-perl.highmon.first_run      = "true"
+perl.highmon.first_run      = "false"
 perl.highmon.hotlist_show   = "off"
 perl.highmon.logging        = "off"
 perl.highmon.merge_private  = "off"
@@ -52,11 +55,6 @@ perl.highmon.nick_suffix    = ">"
 perl.highmon.output         = "buffer"
 perl.highmon.short_names    = "off"
 
-python.check_license = "off"
-
-ruby.check_license = "off"
-
-tcl.check_license       = "off"
 tcl.rnotify.port        = "local"
 tcl.rnotify.privmessage = "all"
 

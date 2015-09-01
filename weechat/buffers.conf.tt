@@ -89,9 +89,9 @@ detach_displayed_buffers     = on
 detach_free_content          = off
 detach_query                 = off
 
-hide_merged_buffers = none
+hide_merged_buffers = server
 
-hotlist_counter = off
+hotlist_counter = on
 
 immune_detach_buffers = ""
 
@@ -110,7 +110,7 @@ name_size_max    = 0
 
 number_char = "."
 
-prefix           = off
+prefix           = on
 prefix_bufname   = ""
 prefix_empty     = on
 prefix_for_query = ""
