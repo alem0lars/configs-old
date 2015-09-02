@@ -35,7 +35,12 @@
 #                                                                              #
 ################################################################################
 
+
 # {{{ Prevent build failure.
+
+# Needed by `x11-misc/copyq`
+dev-libs/libpcre pcre16
+x11-libs/libxcb xkb
 
 # It isn't yet compatible with python 3.
 app-text/asciidoc python_single_target_python2_7
@@ -57,11 +62,10 @@ dev-java/ant-core -doc
 dev-java/jsr305 -doc
 dev-java/hamcrest-core -doc
 dev-java/libreadline-java -doc
+dev-java/gnu-classpath -doc
 
 # Needed by chromium.
 media-libs/libvpx postproc
-
-dev-java/gnu-classpath -doc
 
 # }}}
 
@@ -242,5 +246,6 @@ virtual/libudev abi_x86_32
 app-emulation/virtualbox-modules -pax_kernel
 
 # }}}
+
 
 # vim: set filetype=gentoo-package-keywords :

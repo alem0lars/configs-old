@@ -100,6 +100,7 @@ sys-libs/zlib minizip
 
 x11-base/xorg-server kdrive
 
+x11-libs/libxcb xkb
 x11-libs/libdrm libkms
 
 www-client/firefox pgo
