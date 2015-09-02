@@ -1,9 +1,8 @@
-# {{{ ##########################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    meta.yml                                                          #
-# - Summary: The configuration metadata, describing the contents and how they  #
-#            should be handled.                                                #
+# - Name:    meta-system.yml                                                   #
+# - Summary: The system-level configuration metadata.                          #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
@@ -43,68 +42,10 @@ commands:
     dst:  '<%= get_var! "vim.bundle_dir" %>/neobundle.vim'
     only:
       features: ['vim']
-  - type: 'git_sync'
-    repo: 'https://github.com/xanmanning/jellybeans.git'
-    dst:  '~/.config/awesome/themes/jellybeans'
-    only:
-      features: ['awesomewm']
 
 elems:
 
-  # {{{ Commons.
-
-  - src: 'git/gitconfig'
-    dst: '~/.gitconfig'
-
-  - src: 'svn/config'
-    dst: '~/.subversion/config'
-
-  # }}}
-
-  # {{{ Language specific.
-
-  - src:  'cabal/config'
-    dst:  '~/.cabal/config'
-    only:
-      features: ['haskell']
-
-  - src:  'ruby/(rbenv-default-gems)$'
-    dst:  '~/.rbenv-default-gems'
-    only:
-      features: ['rbenv']
-
-  - src:  'ruby/irbrc'
-    dst:  '~/.irbrc'
-    only:
-      features: ['ruby']
-    notes: |
-      The following features will be enabled if their requirements are met:
-        irb extensions    -> gem 'irbtools' & 'irbtools-more'
-        clipboard support -> xclip
-
-  - src:  'python/(ipython.+)'
-    dst:  '~/.ipython/profile_default/<1>'
-    only:
-      features: ['python']
-
-  # }}}
-
   # {{{ CLI centric.
-
-  - src:  'signature/full'
-    dst:  '~/.signature'
-    only:
-      features: ['signature']
-
-  - src:  'taskwarrior/taskrc'
-    dst:  '~/.taskrc'
-    only:
-      features: ['taskwarrior']
-
-  - src: 'cmus/(.+)'
-    dst: '~/.cmus/<1>'
-    only:
-      features: ['cmus']
 
   - src:  'mutt/global_muttrc'
     dst:  '/etc/mutt/Muttrc'
@@ -114,83 +55,20 @@ elems:
     dst:  '/etc/mutt/theme'
     only:
       features: ['mutt']
-  - src:  'mutt/user_muttrc'
-    dst:  '~/.muttrc'
-    only:
-      features: ['mutt']
-    notes: |
-      Depending on user's configuration, additional programs maybe required.
-      For example, if passwords are retrieved using 'lpass', then the
-      lastpass command-line interface is required.
-
-  - src:  'turses/(.+)'
-    dst:  '~/.turses/<1>'
-    only:
-      features: ['turses']
-
-  - src:  'weechat/(.+)'
-    dst:  '~/.weechat/<1>'
-    only:
-      features: ['weechat']
 
   # }}}
 
   # {{{ Software specific.
-
-  - src: 'nzbget/nzbget.conf$'
-    dst: '~/.nzbget'
-    only:
-      features: ['nzbget']
-
-  - src: 'gimp/(.+)$'
-    dst: '~/.gimp-<%= get_var! "gimp.version" %>/<1>'
-    only:
-      features: ['gimp']
-
-  - src: 'radare/(radare2rc)$'
-    dst: '~/.<1>'
-    only:
-      features: ['radare']
-
-  - src: 'rtorrent/(rtorrent.rc)$'
-    dst: '~/.<1>'
-    only:
-      features: ['rtorrent']
-
-  - src: 'lftp/(.+)$'
-    dst: '~/.lftp/<1>'
-    only:
-      features: ['lftp']
 
   - src: '(snort/.+)$'
     dst: '/etc/<1>'
     only:
       features: ['snort']
 
-  - src: 'awesomewm/(.+)$'
-    dst: '~/.config/awesome/<1>'
-    only:
-      features: ['awesomewm']
-
-  - src: 'xmonad/xmonad.hs'
-    dst: '~/.xmonad/xmonad.hs'
-    only:
-      features: ['xmonad']
-
   - src: 'conky/(.+)'
     dst: '/etc/conky/<1>'
     only:
       features: ['conky']
-
-  - src: 'parcellite/(.+)'
-    dst: '~/.config/parcellite/<1>'
-    only:
-      features: ['parcellite']
-
-  - src: 'copyq/(.+)'
-    dst: '~/.config/copyq/<1>'
-    only:
-      features: ['copyq']
 
   - src:  'tmux/tmux.conf'
     dst:  '<%= get_var! "tmux.config_file_path" %>'
@@ -236,49 +114,10 @@ elems:
     only:
       features: ['vim']
 
-  - src: 'atom/(.+)'
-    dst: '<%= ENV["HOME"] %>/.atom/<1>'
-    only:
-      features: ['atom']
-
   - src:  'grub/default_config'
     dst:  '/etc/default/grub'
     only:
       features: ['grub']
-
-  # {{{ Vimperator.
-
-  - src:  'vimperator/(vimperatorrc)$'
-    dst:  '~/.<1>'
-    only:
-      features: [['firefox', 'vim']]
-
-  - src:  '(vimperator/plugin/.+)$'
-    dst:  '~/.<1>'
-    only:
-      features: [['firefox', 'vim']]
-
-  - src:  '(vimperator/colors/.+)'
-    dst:  '~/.<1>.vimp'
-    only:
-      features: [['firefox', 'vim']]
-
-  # }}}
-
-  - src: 'zim/(.+)'
-    dst: '~/.config/zim/<1>'
-    only:
-      features: ['zim']
-    notes: |
-      The enabled plugins have the following dependencies:
-        diagram_editor     -> graphviz
-        equation_editor    -> latex, dvipng
-        gnu_r_ploteditor   -> gnu r
-        gnuplot_ploteditor -> gnuplot
-        screenshot         -> scrot
-        linkmap            -> graphviz
-        sourceview         -> gtksourceview2
-        versioncontrol     -> (optional) bzr, hg, git
 
   - src: 'zathura/zathurarc'
     dst: '/etc/zathurarc'
@@ -316,11 +155,6 @@ elems:
     only:
       features: ['mplayer']
 
-  - src: 'virtualbox/(.+)'
-    dst: '~/.config/VirtualBox/<1>'
-    only:
-      features: [['linux', 'virtualbox']]
-
   # }}}
 
   # {{{ Boot loaders.
@@ -339,11 +173,6 @@ elems:
 
   # {{{ GTK.
 
-  - src:  'gtk/bookmarks'
-    dst:  '~/.gtk-bookmarks'
-    only:
-      features: ['gtk']
-
   - src:  'gtk/gtk2rc'
     dst:  '/etc/gtk-2.0/gtkrc'
     only:
@@ -361,22 +190,7 @@ elems:
 
   # }}}
 
-  # {{{ Qt.
-
-  - src:  'qt/trolltech.conf'
-    dst:  '~/.config/Trolltech.conf'
-    only:
-      features: ['qt']
-
-  # }}}
-
   # {{{ GNU/Linux.
-
-  - src: 'linux/(dircolors)/<%= get_var! "colorscheme.name" %>$'
-    dst: '~/.<1>'
-    only:
-      features: ['linux']
-      vars:     ['colorscheme.name']
 
   - src: 'linux/kernel_configs/<%= get_var! "kernel_config" %>.config$'
     dst: '/usr/src/linux/.config'
