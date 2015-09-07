@@ -76,7 +76,7 @@ PORT_LOGDIR="/var/log/portage"
 
 # {{{ Emerge.
 
-FEATURES="splitdebug parallel-fetch metadata-transfer ${FEATURES}"
+FEATURES="splitdebug parallel-fetch metadata-transfer installsources ${FEATURES}"
 FEATURES="-userfetch -userpriv ${FEATURES}"
 
 PORTAGE_NICENESS=16
