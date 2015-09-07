@@ -114,6 +114,7 @@ media-libs/libvpx ~amd64
 
 # {{{ Not yet stable.
 
+app-misc/tmsu ~amd64
 app-misc/vit ~amd64
 app-shells/fasd ~amd64
 dev-db/sqlmap ~amd64
@@ -187,6 +188,10 @@ dev-java/commons-collections ~amd64
 # }}}
 
 # {{{ Needed by `Not yet stable` packages.
+
+# Needed by `app-misc/tmsu`
+dev-lang/go-bootstrap ~amd64
+dev-lang/go ~amd64
 
 # Needed by `app-backup/obnam`
 dev-python/cliapp ~amd64
