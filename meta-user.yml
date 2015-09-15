@@ -118,8 +118,13 @@ elems:
 
   # {{{ Software specific.
 
-  - src: 'nzbget/nzbget.conf$'
-    dst: '~/.nzbget'
+  - src: 'eagle/(eaglerc)$'
+    dst: '~/.<1>'
+    only:
+      features: ['eagle']
+
+  - src: 'nzbget/(nzbget).conf$'
+    dst: '~/.<1>'
     only:
       features: ['nzbget']
 
