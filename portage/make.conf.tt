@@ -1,4 +1,4 @@
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    portage/make.conf.tt                                              #
@@ -29,7 +29,7 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
 
 # {{{ Host informations.
@@ -49,10 +49,8 @@ VIDEO_CARDS="<%= get_var!('portage.video_cards').join(' ') %>"
 
 # {{{ Compilers.
 
-CFLAGS="-O2 -pipe -march=native"
+CFLAGS="-O2 -pipe -march=native -ggdb3"
 CXXFLAGS="${CFLAGS}"
-GDCFLAGS="${CFLAGS}"
-LDCFLAGS="${CFLAGS}"
 
 MAKEOPTS="-j<%= get_var! 'parallelism' %> -l<%= get_var! 'parallelism' %>"
 
