@@ -61,10 +61,6 @@ sci-electronics/eagle ~amd64
 www-client/firefox ~amd64
 www-client/chromium ~amd64
 
-<% if has_feature? 'dlang' %>
-dev-lang/dmd ~amd64
-<% end %>
-
 <% if has_feature? 'awesomewm' %>
 x11-wm/awesome ~amd64
 <% end %>

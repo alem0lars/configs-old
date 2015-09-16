@@ -1,4 +1,4 @@
-################################################################################
+# {{{ File header. #############################################################
 #                                                                              #
 # File informations:                                                           #
 # - Name:    portage/package.keywords/commons.tt                               #
@@ -33,10 +33,13 @@
 # See the License for the specific language governing permissions and          #
 # limitations under the License.                                               #
 #                                                                              #
-################################################################################
+# }}} ##########################################################################
 
 
 # {{{ Prevent build failure.
+
+# Needed by `app-emulation/qemu`.
+media-libs/mesa gles2
 
 # Needed by `x11-misc/copyq`
 dev-libs/libpcre pcre16
@@ -167,6 +170,7 @@ app-arch/bzip2 abi_x86_32
 media-libs/opencore-amr abi_x86_32
 media-libs/gstreamer abi_x86_32
 x11-libs/gtk+ abi_x86_32
+media-libs/libepoxy abi_x86_32
 x11-libs/libICE abi_x86_32
 media-libs/glu abi_x86_32
 net-print/cups abi_x86_32
