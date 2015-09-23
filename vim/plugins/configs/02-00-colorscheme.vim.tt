@@ -1,8 +1,8 @@
-" {{{ ##########################################################################
+" {{{ File header. #############################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/hooks/colorscheme.vim.tt                              #
-" - Summary: Hooks for the plugin defining the colorscheme.                    #
+" - Name:    vim/plugins/configs/02-00-colorscheme.vim.tt                      #
+" - Summary: Colorscheme and themes definition.                                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -35,6 +35,18 @@
 " {{{ Select the colorscheme.
 
 colorscheme <%= get_var! 'colorscheme.name' %>
+
+" }}}
+
+" {{{ Configure themes.
+
+let g:thematic#themes  =  {
+      \   'main' : {},
+      \   'pres' : {
+      \     'font-size': <%= get_var!('fonts.pres.size') %>,
+      \   }
+      \ }
+let g:thematic#theme_name = 'main'
 
 " }}}
 

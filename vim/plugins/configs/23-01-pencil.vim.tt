@@ -1,8 +1,8 @@
 " {{{ File header. #############################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/configs/emmet.vim.tt                                  #
-" - Summary: Configuration for the plugin `emmet-vim`.                         #
+" - Name:    vim/plugins/configs/23-01-pencil.vim.tt                          #
+" - Summary: Pencil initialization and configuration.                         #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,11 +32,25 @@
 " }}} ##########################################################################
 
 
-" {{{ Enable.
+" {{{ Initialization.
 
-let g:user_emmet_install_global = 0
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType textile call pencil#init()
+  autocmd FileType text call pencil#init()
+augroup END
 
-autocmd FileType html,css EmmetInstall
+" }}}
+
+" {{{ Configuration.
+
+let g:pencil#autoformat = 1
+let g:pencil#textwidth = 80
+let g:pencil#joinspaces = 0
+let g:pencil#cursorwrap = 1
+let g:pencil#conceallevel = 3
+let g:pencil#concealcursor = 'c'
 
 " }}}
 

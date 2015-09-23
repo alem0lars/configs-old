@@ -24,3 +24,5 @@
 - `18-x`: Plugins related to the commandline.
 - `19-x`: Plugins providing access to documentation.
 - `20-x`: Neobundle and its extensions.
+* `22-x`: Text objects extensions.
+* `23-x`: Extensions to enhance prose-text writing.

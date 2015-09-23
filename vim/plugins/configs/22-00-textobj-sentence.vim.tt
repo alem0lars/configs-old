@@ -1,8 +1,8 @@
 " {{{ File header. #############################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/configs/emmet.vim.tt                                  #
-" - Summary: Configuration for the plugin `emmet-vim`.                         #
+" - Name:    vim/plugins/configs/22-00-textobj-sentence.vim.tt                 #
+" - Summary: Configuration related to the sentence text object.                #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,13 +32,12 @@
 " }}} ##########################################################################
 
 
-" {{{ Enable.
-
-let g:user_emmet_install_global = 0
-
-autocmd FileType html,css EmmetInstall
-
-" }}}
+augroup textobj_sentence
+  autocmd!
+  autocmd FileType markdown call textobj#sentence#init()
+  autocmd FileType textile call textobj#sentence#init()
+  autocmd FileType text call textobj#sentence#init()
+augroup END
 
 
 " vim: set filetype=vim :

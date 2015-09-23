@@ -1,8 +1,8 @@
 " {{{ File header. #############################################################
 "                                                                              #
 " File informations:                                                           #
-" - Name:    vim/plugins/configs/emmet.vim.tt                                  #
-" - Summary: Configuration for the plugin `emmet-vim`.                         #
+" - Name:    vim/plugins/configs/23-00-lexical.vim.tt                          #
+" - Summary: Lexical initialization and configuration.                         #
 " - Authors:                                                                   #
 "   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 "                                                                              #
@@ -32,11 +32,22 @@
 " }}} ##########################################################################
 
 
-" {{{ Enable.
+" {{{ Initialization.
 
-let g:user_emmet_install_global = 0
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init()
+augroup END
 
-autocmd FileType html,css EmmetInstall
+" }}}
+
+" {{{ Configuration.
+
+<% if get_var('vim.spell_langs') %>
+let g:lexical#spelllang = [<%= get_var!('vim.spell_langs').map {|l| "'#{l}'"}.join(',') %>,]
+<% end %>
 
 " }}}
 
