@@ -1,4 +1,4 @@
-" {{{ ##########################################################################
+" {{{ File header. #############################################################
 "                                                                              #
 " File informations:                                                           #
 " - Name:    vim/plugins/hooks/smartchr.vim.tt                                 #
@@ -32,13 +32,12 @@
 " }}} ##########################################################################
 
 
-" Smart =.
-inoremap <expr> = smartchr#loop('=', ' = ', '==' ' == ', '===', ' === ')
+inoremap <expr> = smartchr#loop('=', ' = ', '==', ' == ', '===', ' === ')
 
 augroup SmartChrAutoCmd
 
-  autocmd FileType c,cpp inoremap <buffer> <expr> .
-        \ smartchr#loop('.', '->', '...')
+  autocmd FileType c,cpp
+        \ inoremap <buffer> <expr> . smartchr#loop('.', '->', '...')
 
   autocmd FileType perl
         \  inoremap <buffer> <expr> . smartchr#loop(' . ', '->', '.')
