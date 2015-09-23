@@ -32,6 +32,12 @@
 # }}} ##########################################################################
 
 
+# {{{ Variables.
+
+TMUX_VERSION_MINOR="`tmux -V | cut -d '.' -f 2 | sed 's|[^0-9]||g'`"
+
+# }}}
+
 # {{{ Charset.
 
 # Unicode support.
@@ -162,13 +168,18 @@ bind 'space' next-layout
 # {{{ Windows.
 
 # <Prefix>c: Create a new window.
-bind c new-window -c "#{pane_current_path}"
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'bind c new-window -c "#{pane_current_path}"' \
+  'bind c new-window'
 
 # <Prefix>w: Choose a window.
 bind w choose-window
+
 # <Prefix>W: Choose a window from the all of the windows (also in other
 #            sessions).
-bind W choose-tree
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'bind W choose-tree' \
+  'bind W choose-session'
 
 # <Prefix><Alt>w: Kill the window (asking confirmation).
 bind M-w confirm kill-window
@@ -204,10 +215,25 @@ bind C-k resize-pane -U 10
 bind C-h resize-pane -L 10
 bind C-l resize-pane -R 10
 
-bind s split-window -v -p 33 -c "#{pane_current_path}"
-bind S split-window -v -p 33 -c "#{pane_current_path}"\; swap-pane -U
-bind v split-window -h -p 33 -c "#{pane_current_path}"
-bind V split-window -h -p 33 -c "#{pane_current_path}"\; swap-pane -U
+# s: Split window horizontally creating a new lower pane.
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'bind s split-window -v -p 33 -c "#{pane_current_path}"' \
+  'bind s split-window -v -p 33'
+
+# S: Split window horizontally creating a new upper pane.
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'bind S split-window -v -p 33 -c "#{pane_current_path}"\; swap-pane -U' \
+  'bind S split-window -v -p 33\; swap-pane -U'
+
+# v: Split window vertically creating a new right pane.
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'bind v split-window -h -p 33 -c "#{pane_current_path}"' \
+  'bind v split-window -h -p 33'
+
+# V: Split window vertically creating a new left pane.
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'bind V split-window -h -p 33 -c "#{pane_current_path}"\; swap-pane -U' \
+  'bind V split-window -h -p 33\; swap-pane -U'
 
 # hjkl pane traversal.
 bind h select-pane -L
@@ -243,7 +269,8 @@ setw -g window-status-attr 'none'
 setw -g window-status-activity-bg 'colour233'
 setw -g window-status-activity-attr 'none'
 setw -g window-status-activity-fg 'colour25'
-setw -g window-status-separator ''
+if-shell "[[ $TMUX_VERSION_MINOR -ge 7 ]]" \
+  'setw -g window-status-separator ""'
 setw -g window-status-bg 'colour233'
 
 set -g pane-border-fg 'colour236'
@@ -253,7 +280,6 @@ set -g message-bg 'colour236'
 set -g message-command-fg 'colour145'
 set -g message-fg 'colour145'
 set -g message-command-bg 'colour236'
-
 
 # }}}
 
