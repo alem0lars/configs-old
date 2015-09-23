@@ -89,6 +89,9 @@ vim:
   gui_entry_point:  '/etc/vim/gvimrc'
   terminal_cmd:     'urxvtc -e'
   latex_viewer:     'zathura'
+  spell_langs:
+    - 'en_us'
+    - 'it_it'
 
 eclipse:
   base_dir: '<%= `find /opt -name "eclipse*" -type d`.chomp %>'

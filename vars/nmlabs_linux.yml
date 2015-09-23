@@ -65,6 +65,8 @@ fonts:
     name: 'DejaVu Sans Mono for Powerline'
     size: 11
     small_size: 9
+  pres:
+    size: 18
 
 x11:
   xresources:
