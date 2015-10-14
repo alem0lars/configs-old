@@ -52,8 +52,6 @@ portage:
   abi_x86:
     - '64'
   use_flags:
-    # Audio.
-    - 'jack'
     # Databases.
     - 'postgres'
 

@@ -88,9 +88,9 @@ EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --load=<%= get_var! 'parallelism' %>
 
 # {{{ Python.
 
-PYTHON_TARGETS="python3_3 python2_7"
-USE_PYTHON="3.3 2.7"
-PYTHON_SINGLE_TARGET="python3_3"
+PYTHON_TARGETS="python3_4 python2_7"
+USE_PYTHON="3.4 2.7"
+PYTHON_SINGLE_TARGET="python3_4"
 
 # }}}
 

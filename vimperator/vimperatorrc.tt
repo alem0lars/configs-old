@@ -46,16 +46,25 @@ colorscheme <%= get_var! 'colorscheme.name' %>.vimp
 " Show numbers on tabs.
 set tabnumbers=true
 
-" Remove the navigation toolbar.
-set toolbars=nonavigation
+" Follow the hint selected on <Return>.
+set followhints=1
+
+" What characters to use for labeling hints.
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+" Number of ex-commands and search patterns to store in the history.
+set history=2048
+
+" Keep tabs and addons toolbars. Hide the rest.
+set toolbars=addons,tabs,nobookmarks,nomenu,nonavigation
 
 " }}}
 
 " {{{ Hotkeys.
 
 " Make vertical navigation move of some rows instead of just one.
-noremap j 4j
-noremap k 4k
+noremap j 6j
+noremap k 6k
 
 " }}}
 

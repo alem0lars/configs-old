@@ -32,6 +32,8 @@
 # }}} ##########################################################################
 
 
+*/* device-mapper lvm crypt cryptsetup
+
 */* html
 
 # Cross compiling.

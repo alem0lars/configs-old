@@ -152,6 +152,8 @@ media-gfx/pngquant ~amd64
 app-forensics/scalpel ~amd64
 sci-electronics/mplabx ~amd64
 app-backup/obnam ~amd64
+app-forensics/radamsa ~amd64
+dev-lang/owl-lisp ~amd64
 
 <% if has_feature? 'bspwm' %>
 x11-wm/bspwm ~amd64

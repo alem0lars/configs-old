@@ -1,15 +1,14 @@
-# {{{ File header. #############################################################
+################################################################################
 #                                                                              #
 # File informations:                                                           #
-# - Name:    vars/nmlabs_linux.yml                                             #
-# - Summary: The variables which are common to every linux system of           #
-#            nextreamlabs.                                                     #
+# - Name:    vars/kitty_hck_gentoo.yml                                         #
+# - Summary: Holds the variables for alem0lars gentoo-based systems            #
 # - Authors:                                                                   #
 #   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              #
 #                                                                              #
 # Project informations:                                                        #
-#   - Homepage:        https://github.com/alem0lars/configs                    #
-#   - Getting started: see README.md in the project root folder                #
+# - Homepage:        https://github.com/alem0lars/configs                      #
+# - Getting started: see README.md in the project root folder                  #
 #                                                                              #
 # License: Apache v2.0 (see below)                                             #
 #                                                                              #
@@ -32,70 +31,41 @@
 #                                                                              #
 ################################################################################
 #                                                                              #
-#=> INHERITS: generic                                                        <=#
+#=> INHERITS: alem0lars_hck_gentoo                                           <=#
 #                                                                              #
-# }}} ##########################################################################
+################################################################################
 
 
-# {{{ Favourite directories.
+hostname: 'kate'
 
-bkp_dir:       '/data/backup'
-tmp_dir:       '~/tmp'
-notes_dir:     '/data/documents/notes'
-docs_dir:      '/data/documents'
-graphics_dir:  '/data/graphics'
-audio_dir:     '/data/audio'
-video_dir:     '/data/video'
-develop_dir:   '/data/development'
-downloads_dir: '~/downloads'
+kernel_config: 'kate_hck_gentoo'
 
-# }}}
+portage:
+  input_devices:
+    - 'synaptics'
+    - 'evdev'
+    - 'wacom'
+  video_cards:
+    - 'i965'
+    - 'nvidia'
+    - 'intel'
+  use_flags:
+    # Architecture / Instruction set.
+    - 'mmx'
+    - 'mmxext'
+    - 'sse'
+    - 'sse2'
+    - 'sse3'
+    - 'ssse3'
+    - 'sse4'
+    - 'sse4_1'
+    - 'sse4_2'
 
-# {{{ Details directories.
-
-notes_templates_dir:    '/data/documents/notes/templates'
-notes_def_notebook_dir: '/data/documents/notes/notebook'
-
-# }}}
-
-locale: 'en_US.UTF-8'
-
-fonts:
-  main:
-    name: 'DejaVu Sans Mono for Powerline'
-    size: 11
-    small_size: 9
-  pres:
-    size: 18
-
-x11:
-  xresources:
-    custom_dir:  '/etc/X11/xinit/Xresources.d'
-
-tmux:
-  config_file_path: '/etc/tmux.conf'
-
-zsh:
-  zshrc_path:   '/etc/zsh/zshrc'
-  zshenv_path:  '/etc/zsh/zshenv'
-  zlogin_path:  '/etc/zsh/zlogin'
-  zlogout_path: '/etc/zsh/zlogout'
-  custom_dir:   '/etc/zsh'
+parallelism: 8
 
 features:
-  - 'linux'
-  - 'gtk'
-  - 'qt'
-  - 'alsa'
-  - 'pulseaudio'
-  - 'zsh'
-  - 'tmux'
-  - 'haskell'
-  - 'ruby'
-  - 'python'
-  - 'perl'
-  - 'latex'
-  - 'java'
-  - 'scala'
-  - 'erlang'
-  - 'elixir'
+  - 'host_kate'
+  - 'wacom'
+
+
+# vim: set filetype=yaml :

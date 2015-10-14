@@ -65,6 +65,7 @@ portage:
     # Removed flags.
     - '-gnome'
     - '-kde4'
+    - '-bindist'
     # Optimization.
     - 'jit'
     - 'nptl'
