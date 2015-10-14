@@ -91,6 +91,9 @@ vim:
     - 'en_us'
     - 'it_it'
 
+vimperator:
+  default_search_engine: 'startpage'
+
 eclipse:
   base_dir: '<%= `find /opt -name "eclipse*" -type d`.chomp %>'
 
