@@ -66,6 +66,7 @@ parallelism: 8
 features:
   - 'host_kate'
   - 'wacom'
+  - 'multimonitor'
 
 
 # vim: set filetype=yaml :

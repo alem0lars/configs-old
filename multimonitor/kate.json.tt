@@ -1,0 +1,11 @@
+{
+  "home": {
+    "eDP1": {
+      "role": "internal"
+    },
+    "DP2-1": {
+      "role": "external",
+      "position": "left"
+    }
+  }
+}

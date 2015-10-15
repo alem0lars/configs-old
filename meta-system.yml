@@ -192,7 +192,12 @@ elems:
 
   # {{{ GNU/Linux.
 
-  - src: 'linux/kernel_configs/<%= get_var! "kernel_config" %>.config$'
+  - src: 'multimonitor/<%= get_var!("hostname") %>\.json$'
+    dst: '/etc/multimonitor.json'
+    only:
+      features: ['multimonitor']
+
+  - src: 'linux/kernel_configs/<%= get_var! "kernel_config" %>\.config$'
     dst: '/usr/src/linux/.config'
     only:
       features: ['linux']
