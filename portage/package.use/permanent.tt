@@ -164,7 +164,7 @@ dev-lang/ghc llvm
 
 <% if has_feature? :python %>
 dev-python/matplotlib -doc
-dev-python/ipython matplotlib mongodb octave nbconvert -doc
+dev-python/ipython matplotlib mongodb nbconvert -doc
 dev-python/PyQt4 help
 <% end %>
 

@@ -32,7 +32,7 @@
 ################################################################################
 
 
-net-wireless/broadcom-sta
+net-wireless/broadcom-sta ~amd64
 
 
 # vim: set filetype=gentoo-package-keywords :
