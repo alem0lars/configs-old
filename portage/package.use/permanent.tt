@@ -57,6 +57,10 @@ dev-util/dlang-tools ddemangle dman detab rdmd dustmite dmd-2_067
 dev-util/dub dmd-2_067
 <% end %>
 
+<% if has_feature? 'systemd' %>
+sys-apps/systemd gnuefi
+<% end %>
+
 dev-libs/boost tools
 dev-libs/elfutils utils
 dev-libs/glib utils
@@ -134,10 +138,6 @@ mail-client/mutt gpg sidebar smime smtp pop ntp mbox imap gpg
 
 <% if has_feature? :networkmanager %>
 net-misc/networkmanager -dhclient -modemmanager -nss dhclient
-<% end %>
-
-<% if has_feature? :systemd %>
-sys-apps/systemd gudev
 <% end %>
 
 <% if has_feature? :gtk %>

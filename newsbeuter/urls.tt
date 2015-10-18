@@ -1,0 +1,3 @@
+<% get_var!('news.urls').each do |url| %>
+  <%= url['url'] %> <%= info['tags'].join(' ') %>
+<% end %>

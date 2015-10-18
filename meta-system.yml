@@ -60,10 +60,10 @@ elems:
 
   # {{{ Software specific.
 
-  - src: '(snort/.+)$'
-    dst: '/etc/<1>'
+  - src: 'deluge/(deluged)'
+    dst: '/etc/conf.d/<1>'
     only:
-      features: ['snort']
+      features: ['deluge']
 
   - src: 'conky/(.+)'
     dst: '/etc/conky/<1>'

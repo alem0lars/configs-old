@@ -60,22 +60,35 @@ media-video/libav pic
 
 dev-vcs/subversion -dso -doc
 
-# Prevent build failures because their javadoc contain errors.
+# Prevent build failures because documentation contain errors.
 dev-java/ant-core -doc
 dev-java/jsr305 -doc
 dev-java/hamcrest-core -doc
 dev-java/libreadline-java -doc
 dev-java/gnu-classpath -doc
+dev-java/swing-layout -doc
+dev-java/beansbinding -doc
+dev-java/javahelp -doc
+media-libs/libcaca -doc
+dev-python/statsmodels -doc
 
-# Needed by chromium.
+# Needed by `www-client/chromium`.
 media-libs/libvpx postproc
+media-video/ffmpeg opus vpx
 
 # }}}
 
 # {{{ Enable ABI x86_32.
 
+# Needed by `games-util/steam-meta`.
+x11-misc/virtualgl abi_x86_32
+
 # Dependency of `dev-util/android-sdk-update-manager`.
 sys-libs/zlib abi_x86_32
+
+# Needed by `media-video/ffmpeg`.
+media-libs/opus abi_x86_32
+media-libs/libvpx abi_x86_32
 
 <% if has_feature? 'teamviewer' %>
 # Needed by `net-misc/teamviewer`.
@@ -248,6 +261,10 @@ virtual/libudev abi_x86_32
 
 # IDK the reason. Can we remove it?
 app-emulation/virtualbox-modules -pax_kernel
+
+# Needed by teamviewer.
+dev-libs/elfutils static-libs
+dev-libs/c-blosc hdf5
 
 # }}}
 

@@ -73,3 +73,15 @@ sync-uri = https://github.com/gentoo/dlang.git
 auto-sync = Yes
 
 <% end %>
+
+<% if has_feature? 'steam' %>
+
+[steam-overlay]
+priority = 50
+location = /var/lib/layman/steam-overlay
+layman-type = git
+sync-type = laymansync
+sync-uri = git://github.com/anyc/steam-overlay.git
+auto-sync = Yes
+
+<% end %>

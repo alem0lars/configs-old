@@ -48,13 +48,6 @@ torrent:
   upload_speed: 8
   download_speed: 448
 
-portage:
-  abi_x86:
-    - '64'
-  use_flags:
-    # Databases.
-    - 'postgres'
-
 dracut:
   root: 'LABEL=main'
 
@@ -173,9 +166,430 @@ eagle:
   projects_dir: "/archive/development/projects"
   editor_cmd: "openterm --cmd 'vim %F'"
 
+news: # {{{
+  urls:
+    - url: 'http://socialengineer.podbean.com/feed'
+      tags:
+        - 'podcasts'
+    - url: 'http://feeds.feedburner.com/inquiring-minds'
+      tags:
+        - 'podcasts'
+    - url: 'http://www.exploit-monday.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://blogs.conus.info/rss.xml'
+      tags:
+        - 'security'
+    - url: 'http://www.devttys0.com/feed'
+      tags:
+        - 'security'
+    - url: 'http://blog.coresecurity.com/feed'
+      tags:
+        - 'security'
+    - url: 'http://dustri.org/b/atom.xml'
+      tags:
+        - 'security'
+    - url: 'http://www.thespanner.co.uk/feed'
+      tags:
+        - 'security'
+    - url: 'http://www.tuxmealux.net/feed'
+      tags:
+        - 'security'
+    - url: 'http://c-skills.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://lcamtuf.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'https://blog.nelhage.com/atom.xml'
+      tags:
+        - 'security'
+    - url: 'https://blog.korelogic.com/blog/index.rss'
+      tags:
+        - 'security'
+    - url: 'http://labs.bromium.com/feed'
+      tags:
+        - 'security'
+    - url: 'http://blog.stalkr.net/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://www.fireeye.com/blog/feed'
+      tags:
+        - 'security'
+    - url: 'http://www.outflux.net/blog/feed'
+      tags:
+        - 'security'
+    - url: 'http://rcecafe.net/?feed=rss2'
+      tags:
+        - 'security'
+    - url: 'http://feeds.feedburner.com/Room362com'
+      tags:
+        - 'security'
+    - url: 'http://berendjanwever.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://radare.today/rss'
+      tags:
+        - 'security'
+    - url: 'http://www.evilsocket.net/feed'
+      tags:
+        - 'security'
+    - url: 'http://feeds.feedburner.com/TimeToBleed'
+      tags:
+        - 'security'
+    - url: 'http://blog.rewolf.pl/blog/?feed=rss2'
+      tags:
+        - 'security'
+    - url: 'http://www.daemonology.net/blog/index.rss'
+      tags:
+        - 'security'
+    - url: 'http://gynvael.coldwind.pl/rss_en.php'
+      tags:
+        - 'security'
+    - url: 'http://bits-please.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://j00ru.vexillium.org/?feed=rss2'
+      tags:
+        - 'security'
+    - url: 'http://census-labs.com/feeds/rss/blog'
+      tags:
+        - 'security'
+    - url: 'http://labs.mwrinfosecurity.com/advisories.rss'
+      tags:
+        - 'security'
+    - url: 'http://blog.azimuthsecurity.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://randomthoughts.greyhats.it/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://blog.ioactive.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://blog.mandiant.com/feed'
+      tags:
+        - 'security'
+    - url: 'http://feeds.feedburner.com/MartinMcKeaysNetworkSecurityBlog'
+      tags:
+        - 'security'
+    - url: 'http://www.skullsecurity.org/blog/feed'
+      tags:
+        - 'security'
+    - url: 'http://dontstuffbeansupyournose.com/feed'
+      tags:
+        - 'security'
+    - url: 'http://www.msreverseengineering.com/blog?format=RSS'
+      tags:
+        - 'security'
+    - url: 'http://googleprojectzero.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'https://www.corelan.be/index.php/feed'
+      tags:
+        - 'security'
+    - url: 'http://dreamsofastone.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://blog.opensecurityresearch.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://www.social-engineer.org/blog/feed'
+      tags:
+        - 'security'
+    - url: 'http://gynvael.coldwind.pl/rss_pl.php'
+      tags:
+        - 'security'
+    - url: 'http://feeds.feedburner.com/FE_research'
+      tags:
+        - 'security'
+    - url: 'http://blog.pi3.com.pl/?feed=rss2'
+      tags:
+        - 'security'
+    - url: 'http://xlogicx.net/?feed=rss2'
+      tags:
+        - 'security'
+    - url: 'http://int3.cc/blogs/news.atom'
+      tags:
+        - 'security'
+    - url: 'http://www.harmonysecurity.com/blog/atom.xml'
+      tags:
+        - 'security'
+    - url: 'http://blog.cr4.sh/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'https://www.codeandsec.com/rss.xml'
+      tags:
+        - 'security'
+    - url: 'http://shadow-file.blogspot.com/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://feeds.feedburner.com/GustavoDuarte'
+      tags:
+        - 'security'
+    - url: 'http://www.debasish.in/feeds/posts/default'
+      tags:
+        - 'security'
+    - url: 'http://lesswrong.com/.rss'
+      tags:
+        - 'science'
+    - url: 'http://what-if.xkcd.com/feed.atom'
+      tags:
+        - 'science'
+    - url: 'http://blog.brainfacts.org/feed'
+      tags:
+        - 'science'
+    - url: 'http://feeds.feedburner.com/TestedAll'
+      tags:
+        - 'science'
+    - url: 'http://www.ncbi.nlm.nih.gov/pubmedhealth/blog/feed'
+      tags:
+        - 'science'
+    - url: 'http://feeds.feedburner.com/IeeeSpectrumFullText'
+      tags:
+        - 'science'
+    - url: 'http://feeds.feedburner.com/NeuroscienceCommunity'
+      tags:
+        - 'science'
+    - url: 'http://www.plos.org/cms/blog/feed'
+      tags:
+        - 'science'
+    - url: 'http://www.plosbiology.org/article/feed'
+      tags:
+        - 'science'
+    - url: 'http://www.physorg.com/rss-feed'
+      tags:
+        - 'science'
+    - url: 'http://googleresearch.blogspot.com/atom.xml'
+      tags:
+        - 'science'
+    - url: 'http://phylogenomics.blogspot.com/feeds/posts/default'
+      tags:
+        - 'science'
+    - url: 'http://www.brainfacts.org/rss/articles'
+      tags:
+        - 'science'
+    - url: 'http://www.rachelyoga.com/feed'
+      tags:
+        - 'yoga'
+    - url: 'http://blogs.yogajournal.com/feed'
+      tags:
+        - 'yoga'
+    - url: 'http://dailycupofyoga.wordpress.com/feed'
+      tags:
+        - 'yoga'
+    - url: 'http://yogijbrown.com/feed'
+      tags:
+        - 'yoga'
+    - url: 'https://www.doyogawithme.com/blog/feed'
+      tags:
+        - 'yoga'
+    - url: 'http://whfoods.org/rss/rss.xml'
+      tags:
+        - 'health'
+    - url: 'http://feeds.feedburner.com/scotthyoung/HAHx'
+      tags:
+        - 'learn'
+    - url: 'http://www.aaronsw.com/2002/feeds/pgessays.rss'
+      tags:
+        - 'learn'
+    - url: 'http://www.fluentin3months.com/feed'
+      tags:
+        - 'learn'
+    - url: 'http://alien.slackbook.org/blog/feed'
+      tags:
+        - 'slackware'
+    - url: 'http://www.naturalentamente.it/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.laviamacrobiotica.it/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://unocookbook.tumblr.com/rss'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.leitv.it/100-green-kitchen/ricette/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.sugarless.it/?feed=rss2'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.zenkitchen.it/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://mipiacemifabene.blogspot.com/feeds/posts/default'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://ohsheglows.com/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://feeds.feedburner.com/mr-loto/Dwln'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://bello-buono-d.blogautore.repubblica.it/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://feeds.feedburner.com/MinimalistBaker'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.crudostyle.com/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://veganizziamoconbimby.com/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.terraemadre.com/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://cucinaselvatica.wordpress.com/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://www.veganmania.it/wordpress/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://gourmandelle.com/feed'
+      tags:
+        - 'food'
+        - 'vegan'
+    - url: 'http://lukemuehlhauser.com/feed'
+      tags:
+        - 'ai'
+    - url: 'http://planet.gentoo.org/rss20.xml'
+      tags:
+        - 'linux'
+        - 'gentoo'
+    - url: 'http://gentooexperimental.org/~patrick/weblog/rss.xml'
+      tags:
+        - 'linux'
+        - 'gentoo'
+    - url: 'http://www.adafruit.com/blog/feed'
+      tags:
+        - 'diy'
+    - url: 'http://dangerousprototypes.com/feed'
+      tags:
+        - 'diy'
+    - url: 'http://www.grandideastudio.com/feed/atom'
+      tags:
+        - 'diy'
+    - url: 'http://www.hackaday.com/rss.xml'
+      tags:
+        - 'diy'
+    - url: 'http://theancientwisdomproject.com/feed'
+      tags:
+        - 'productivity'
+    - url: 'http://feeds.feedburner.com/StudyHacks'
+      tags:
+        - 'productivity'
+    - url: 'http://xkcd.com/rss.xml'
+      tags:
+        - 'comics'
+    - url: 'http://www.genspace.org/blog/feed'
+      tags:
+        - 'bio'
+        - 'hacking'
+    - url: 'http://travisgoodspeed.blogspot.com/feeds/posts/default'
+      tags:
+        - 'hardware'
+        - 'hacking'
+    - url: 'http://bioshacking.blogspot.com/feeds/posts/default'
+      tags:
+        - 'hardware'
+        - 'hacking'
+    - url: 'http://greatscottgadgets.com/sdr/feed.xml'
+      tags:
+        - 'hardware'
+        - 'hacking'
+    - url: 'http://www.bunniestudios.com/blog/?feed=rss2'
+      tags:
+        - 'hardware'
+        - 'hacking'
+    - url: 'http://feeds.feedburner.com/EmbeddedInAcademia'
+      tags:
+        - 'programming'
+    - url: 'http://www.cs.uni.edu/~wallingf/blog/index.xml'
+      tags:
+        - 'programming'
+    - url: 'http://begriffs.com/atom.xml'
+      tags:
+        - 'programming'
+    - url: 'https://code.facebook.com/posts/rss'
+      tags:
+        - 'programming'
+    - url: 'http://www.codersnotes.com/rss'
+      tags:
+        - 'programming'
+    - url: 'http://existentialtype.wordpress.com/feed'
+      tags:
+        - 'programming'
+    - url: 'http://esr.ibiblio.org/?feed=rss2'
+      tags:
+        - 'programming'
+    - url: 'https://hackhands.com/feed'
+      tags:
+        - 'programming'
+    - url: 'http://randomascii.wordpress.com/feed'
+      tags:
+        - 'programming'
+    - url: 'http://nickdesaulniers.github.io/atom.xml'
+      tags:
+        - 'programming'
+    - url: 'http://scattered-thoughts.net/atom.xml'
+      tags:
+        - 'programming'
+    - url: 'http://functionaltalks.org/feed.xml'
+      tags:
+        - 'programming'
+    - url: 'http://0xax.blogspot.com/feeds/posts/default'
+      tags:
+        - 'programming'
+    - url: 'http://lambda-the-ultimate.org/rss.xml'
+      tags:
+        - 'programming'
+    - url: 'http://derekwyatt.org/feed.xml'
+      tags:
+        - 'programming'
+    - url: 'http://eli.thegreenplace.net/feed'
+      tags:
+        - 'programming'
+    - url: 'http://www.underhanded-c.org/_feed_rss2'
+      tags:
+        - 'programming'
+    - url: 'http://blog.reverberate.org/feeds/posts/default'
+      tags:
+        - 'programming'
+    - url: 'http://geoff.greer.fm/feed.atom'
+      tags:
+        - 'programming'
+    - url: 'https://www.usenix.org/upcoming-conferences-feed'
+      tags:
+        - 'conferences'
+# }}}
+
+portage:
+  abi_x86:
+    - '64'
+  use_flags:
+    # Databases.
+    - 'postgres'
+
 features:
   - 'signature'
-  - 'snort'
   - 'dracut'
   - 'systemd'
   - 'cmus'
@@ -198,3 +612,6 @@ features:
   - 'eagle'
   - 'dlang'
   - 'nzbget'
+  - 'steam'
+  - 'deluge'
+  - 'newsbeuter'

@@ -44,6 +44,10 @@
 
 # {{{ Dependencies of permanent packages.
 
+# Needed by `dev-python/google-api-python-client`
+dev-python/oauth2client ~amd64
+dev-python/httplib2 ~amd64
+
 # Needed by `dev-java/ant`.
 dev-java/slf4j-nop ~amd64
 
@@ -110,6 +114,9 @@ dev-libs/girara ~amd64
 # Needed by `www-client/chromium`.
 media-libs/libvpx ~amd64
 
+# Needed by `media-gfx/gimp`.
+media-video/ffmpeg ~amd64
+
 # }}}
 
 # {{{ Not yet stable.
@@ -126,11 +133,10 @@ sci-electronics/ghdl ~amd64
 net-misc/httpie ~amd64
 app-admin/lnav ~amd64
 www-servers/pshs ~amd64
-sys-apps/cv ~amd64
+sys-apps/progress ~amd64
 x11-plugins/imgur-integration ~amd64
 app-crypt/hashcat-bin ~amd64
 media-video/handbrake ~amd64
-net-analyzer/snort ~amd64
 sci-physics/root ~amd64
 net-analyzer/tsung ~amd64
 media-gfx/plantuml ~amd64
@@ -187,13 +193,31 @@ dev-java/commons-collections ~amd64
 
 # }}}
 
+# {{{ Other.
+
+# Command `bootctl` needs `>=sys-apps/systemd-220` but atm it's unstable.
+sys-apps/systemd ~amd64
+
+# `>=libgudev-130` because prior versions trigger `sys-apps/systemd` with
+# `gudev` use flag which is unavailable with `>=sys-apps/systemd-220`.
+virtual/libgudev ~amd64
+dev-libs/libgudev ~amd64
+
+# Needed by `gnuefi` use flag in `sys-apps/systemd`
+sys-boot/gnu-efi ~amd64
+
+# }}}
+
 # {{{ Needed by `Not yet stable` packages.
 
-# Needed by `app-misc/tmsu`
+# Needed by `sys-apps/systemd`.
+sys-apps/hwids ~amd64
+
+# Needed by `app-misc/tmsu`.
 dev-lang/go-bootstrap ~amd64
 dev-lang/go ~amd64
 
-# Needed by `app-backup/obnam`
+# Needed by `app-backup/obnam`.
 dev-python/cliapp ~amd64
 dev-python/larch ~amd64
 
@@ -201,9 +225,6 @@ dev-python/larch ~amd64
 dev-java/jformatstring ~amd64
 dev-java/jcip-annotations ~amd64
 dev-java/bcel ~amd64
-
-# Needed by `net-analyzer/snort`.
-net-libs/daq ~amd64
 
 # Needed by `sci-physics/root`.
 app-doc/root-docs ~amd64

@@ -1,0 +1,12 @@
+# Set Deluge user and group.
+DELUGED_USER="deluge:nogroup"
+
+# Set Deluge daemon options.
+DELUGED_OPTS="-p 58846"
+
+# Set to "true" if you want to start an interface for remote connections.
+# Set to "false" if you want to use deluged only from localhost.
+DELUGEUI_START="false"
+
+# This variable is only used if DELUGEUI_START is set to "true".
+DELUGEUI_OPTS=""
