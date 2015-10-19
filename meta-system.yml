@@ -63,7 +63,9 @@ elems:
   - src: 'deluge/(deluged)'
     dst: '/etc/conf.d/<1>'
     only:
-      features: ['deluge']
+      features:
+        - 'deluge'
+        - 'systemd'
 
   - src: 'conky/(.+)'
     dst: '/etc/conky/<1>'

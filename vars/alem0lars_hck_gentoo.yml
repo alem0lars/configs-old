@@ -166,6 +166,9 @@ eagle:
   projects_dir: "/archive/development/projects"
   editor_cmd: "openterm --cmd 'vim %F'"
 
+deluge:
+  port: '58846'
+
 news: # {{{
   urls:
     - url: 'http://socialengineer.podbean.com/feed'
@@ -599,7 +602,6 @@ features:
   - 'gtk_vim'
   - 'feh'
   - 'virtualbox'
-  - 'systemd'
   - 'vim'
   - 'firefox'
   - 'lftp'
