@@ -123,6 +123,11 @@ media-video/ffmpeg ~amd64
 
 app-misc/tmsu ~amd64
 app-misc/vit ~amd64
+dev-vcs/git-big-picture ~amd64
+dev-vcs/gitstats ~amd64
+dev-vcs/git-crypt ~amd64
+dev-vcs/git-mantle ~amd64
+dev-vcs/git-imerge ~amd64
 app-shells/fasd ~amd64
 dev-db/sqlmap ~amd64
 dev-util/complexity ~amd64

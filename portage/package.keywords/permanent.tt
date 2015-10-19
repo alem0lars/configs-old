@@ -36,7 +36,6 @@
 app-backup/burp ~amd64
 app-admin/lastpass-cli ~amd64
 app-admin/eselect-metasploit ~amd64
-app-emulation/vagrant ~amd64
 app-forensics/afl ~amd64
 app-text/pandoc ~amd64
 app-portage/g-sorcery ~amd64
