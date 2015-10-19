@@ -1,5 +1,11 @@
 <% if has_feature?('systemd') %>
 
+DELUGED_PORT="<%= get_var!('deluge.port') %>"
+
+DELUGED_OPTIONS=""
+
+<% else %>
+
 # Set Deluge user and group.
 DELUGED_USER="deluge:deluge"
 
@@ -12,11 +18,5 @@ DELUGEUI_START="false"
 
 # This variable is only used if DELUGEUI_START is set to "true".
 DELUGEUI_OPTS=""
-
-<% else %>
-
-DELUGED_PORT="<%= get_var!('deluge.port') %>"
-
-DELUGED_OPTIONS=""
 
 <% end %>
