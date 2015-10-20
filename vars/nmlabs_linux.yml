@@ -40,14 +40,14 @@
 # {{{ Favourite directories.
 
 bkp_dir:       '/data/backup'
-tmp_dir:       '~/tmp'
+tmp_dir:       '/data/tmp'
 notes_dir:     '/data/documents/notes'
 docs_dir:      '/data/documents'
 graphics_dir:  '/data/graphics'
 audio_dir:     '/data/audio'
 video_dir:     '/data/video'
-develop_dir:   '/data/development'
-downloads_dir: '~/downloads'
+develop_dir:   '/data/develop'
+downloads_dir: '/data/downloads'
 
 # }}}
 
