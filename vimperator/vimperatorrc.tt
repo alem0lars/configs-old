@@ -59,7 +59,7 @@ set history=2048
 set toolbars=addons,tabs,nobookmarks,nomenu,nonavigation
 
 <% if get_var('vimperator.default_search_engine') %>
-set defsearch=<%= get_var!('vimperator.default_search_engine')
+set defsearch=<%= get_var!('vimperator.default_search_engine') %>
 <% end %>
 
 " }}}
