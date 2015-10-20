@@ -158,6 +158,9 @@ irc:
       address:  'nextreamlabs.irc.slack.com/6697'
       password: 'lpass show --password "alem0lars @ nextreamlabs.irc.slack.com"'
       ssl: true
+    - name:     'twitch'
+      address:  'irc.twitch.tv/6667'
+      password: 'echo oauth:$(lpass show --password "alem0lars @ irc.twitch.tv")'
 
 virtualbox:
   vm_dir: '/vm'
