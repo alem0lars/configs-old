@@ -34,28 +34,29 @@
 #                                                                              #
 # }}} ##########################################################################
 
-
-# {{{ Global configuration.
+# {{{ global configuration
 
 export ZSH_ROOT_DIR="<%= File.expand_path get_var!('zsh.custom_dir') %>"
 
 export ZSH_PLUGINS_DIR="${ZSH_ROOT_DIR}/plugins"
 export ZSH_PLUGINS_CONFIGS_DIR="${ZSH_PLUGINS_DIR}/configs"
+export ZSH_CACHE_DIR="~/.zcache"
+[[ ! -d ${ZSH_CACHE_DIR} ]] && mkdir -p "${ZSH_CACHE_DIR}"
 
 export ZGEN_DIR="${ZSH_PLUGINS_DIR}/repos"
 export ZGEN_INIT="${ZSH_PLUGINS_DIR}/init.zsh"
 
 # }}}
 
-# {{{ Zstyles for plugins.
+# {{{ zstyles for plugins
 
-# alem0lars/zsh-editor.
+# alem0lars/zsh-editor
 zstyle ':editor' dot-expansion 'yes'
 zstyle ':editor' key-bindings '<%= has_feature?("vim") ? "vi" : "emacs" %>'
 
 # }}}
 
-# {{{ Load ZGen.
+# {{{ load zgen
 
 source "${ZSH_PLUGINS_DIR}/zgen/zgen.zsh"
 
@@ -86,7 +87,6 @@ fi
 
 # }}}
 
-
 # {{{ Plugins declaration.
 
 # Check if there's no init script.
@@ -116,6 +116,5 @@ if ! zgen saved; then
 fi
 
 # }}}
-
 
 # vim: set filetype=zsh :

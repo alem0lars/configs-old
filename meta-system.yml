@@ -301,6 +301,11 @@ elems:
 
   # {{{ Gentoo - Portage.
 
+  - src:  'sandbox/(.+)$'
+    dst: '/etc/sandbox.d/<1>'
+    only:
+      features: ['gentoo']
+
   - src:  '(portage/(?:modules|make\.conf|repos\.conf/.+|package\.license))$'
     dst:  '/etc/<1>'
     only:

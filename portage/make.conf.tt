@@ -84,9 +84,8 @@ EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --quiet-build=y --verbose"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs=<%= get_var! 'parallelism' %>"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --load=<%= get_var! 'parallelism' %>"
 
-# }}}
-
-# {{{ Elog.
+# Minimum size of existing file for RESUMECOMMAND to be called.
+PORTAGE_FETCH_RESUME_MIN_SIZE="192K"
 
 PORTAGE_ELOG_CLASSES="warn error info log qa"
 PORTAGE_ELOG_SYSTEM="save"
