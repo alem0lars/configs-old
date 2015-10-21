@@ -124,6 +124,7 @@ media-video/ffmpeg ~amd64
 
 # {{{ Not yet stable.
 
+app-portage/euscan ~amd64
 app-misc/tmsu ~amd64
 app-misc/vit ~amd64
 dev-vcs/git-big-picture ~amd64
