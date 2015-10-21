@@ -62,7 +62,7 @@ locale: 'en_US.UTF-8'
 
 fonts:
   main:
-    name: 'DejaVu Sans Mono for Powerline'
+    name: 'PragmataPro'
     size: 11
     small_size: 9
   pres:
