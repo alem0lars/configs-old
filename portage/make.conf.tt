@@ -86,6 +86,13 @@ EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --load=<%= get_var! 'parallelism' %>
 
 # }}}
 
+# {{{ Elog.
+
+PORTAGE_ELOG_CLASSES="warn error log"
+PORTAGE_ELOG_SYSTEM="save"
+
+# }}}
+
 # {{{ Python.
 
 PYTHON_TARGETS="python3_4 python2_7"
