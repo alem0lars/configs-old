@@ -40,7 +40,7 @@ export ZSH_ROOT_DIR="<%= File.expand_path get_var!('zsh.custom_dir') %>"
 
 export ZSH_PLUGINS_DIR="${ZSH_ROOT_DIR}/plugins"
 export ZSH_PLUGINS_CONFIGS_DIR="${ZSH_PLUGINS_DIR}/configs"
-export ZSH_CACHE_DIR="~/.zcache"
+export ZSH_CACHE_DIR="${HOME}/.zcache"
 [[ ! -d ${ZSH_CACHE_DIR} ]] && mkdir -p "${ZSH_CACHE_DIR}"
 
 export ZGEN_DIR="${ZSH_PLUGINS_DIR}/repos"
