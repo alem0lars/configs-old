@@ -44,7 +44,10 @@
 
 # {{{ Dependencies of permanent packages.
 
-# Needed by `dev-python/google-api-python-client`
+# Needed by `app-portage/elogv`.
+dev-python/pyliblzma ~amd64
+
+# Needed by `dev-python/google-api-python-client`.
 dev-python/oauth2client ~amd64
 dev-python/httplib2 ~amd64
 
