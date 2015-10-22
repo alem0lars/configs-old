@@ -222,6 +222,12 @@ sys-boot/gnu-efi ~amd64
 
 # {{{ Needed by `Not yet stable` packages.
 
+# Needed by `dev-lang/julia`
+sci-libs/openlibm ~amd64
+dev-libs/openspecfun ~amd64
+sci-libs/spqr ~amd64
+dev-libs/double-conversion ~amd64
+
 # Needed by `sys-apps/systemd`.
 sys-apps/hwids ~amd64
 
