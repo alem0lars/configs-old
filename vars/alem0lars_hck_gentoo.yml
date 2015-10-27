@@ -234,7 +234,7 @@ news: # {{{
     - url: 'http://berendjanwever.blogspot.com/feeds/posts/default'
       tags:
         - 'security'
-    - url: 'http://radare.today/rss'
+    - url: 'http://radare.today/index.xml'
       tags:
         - 'security'
     - url: 'http://www.evilsocket.net/feed'
