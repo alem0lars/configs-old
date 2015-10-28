@@ -30,6 +30,14 @@ sync-type = laymansync
 sync-uri = git://github.com/pentoo/pentoo-overlay.git
 auto-sync = Yes
 
+[science]
+priority = 50
+location = /var/lib/layman/science
+layman-type = git
+sync-type = laymansync
+sync-uri = git://anongit.gentoo.org/proj/sci.git
+auto-sync = Yes
+
 [apo]
 priority = 50
 location = /var/lib/layman/apo
