@@ -52,9 +52,8 @@ app-text/poppler utils
 dev-cpp/glog gflags
 
 <% if has_feature? 'dlang' %>
-dev-lang/dmd tools
-dev-util/dlang-tools ddemangle dman detab rdmd dustmite dmd-2_067
-dev-util/dub dmd-2_067
+dev-lang/dmd dmd-2_069 tools
+dev-util/dlang-tools dmd-2_069 ddemangle dman detab rdmd dustmite
 <% end %>
 
 <% if has_feature? 'systemd' %>
@@ -68,6 +67,9 @@ dev-libs/gmp pgo
 
 dev-vcs/git gpg
 dev-vcs/mercurial gpg
+
+dev-qt/qtgui gtkstyle
+dev-qt/qtwidgets gtkstyle
 
 gnome-base/libglade tools
 gnome-base/librsvg tools

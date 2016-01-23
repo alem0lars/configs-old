@@ -33,7 +33,9 @@
 ################################################################################
 
 
-app-backup/burp ~amd64
+sci-electronics/quartus-prime-lite ~amd64
+app-backup/attic ~amd64
+net-print/hplip ~amd64
 app-admin/lastpass-cli ~amd64
 app-admin/eselect-metasploit ~amd64
 app-forensics/afl ~amd64
@@ -48,13 +50,14 @@ media-sound/ardour ~amd64
 net-analyzer/nikto ~amd64
 net-analyzer/metasploit ~amd64
 net-misc/youtube-dl ~amd64
-sys-devel/llvm ~amd64
-sys-devel/clang ~amd64
 x11-misc/copyq ~amd64
 x11-drivers/xf86-input-wacom ~amd64
 x11-misc/lightdm* ~amd64
 net-misc/teamviewer ~amd64
 sci-electronics/eagle ~amd64
+
+# Always use the last firmware ucode available.
+sys-kernel/linux-firmware ~amd64
 
 # Web browsers should always be at the latest version for better
 # web standards and technologies support.

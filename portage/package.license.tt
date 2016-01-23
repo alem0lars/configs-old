@@ -7,6 +7,8 @@ www-plugins/google-talkplugin Google-TOS
 
 media-libs/fdk-aac FraunhoferFDK
 
+sci-electronics/quartus-prime-lite Quartus-prime-megacore
+
 <% if has_feature? 'java' %>
 dev-java/oracle-jdk-bin Oracle-BCLA-JavaSE
 <% end %>

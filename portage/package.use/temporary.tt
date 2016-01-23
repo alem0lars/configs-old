@@ -35,7 +35,6 @@
 #                                                                              #
 # }}} ##########################################################################
 
-
 # {{{ Prevent build failure.
 
 # Needed by `app-emulation/qemu`.
@@ -71,6 +70,9 @@ dev-java/beansbinding -doc
 dev-java/javahelp -doc
 media-libs/libcaca -doc
 dev-python/statsmodels -doc
+dev-python/nbformat -doc
+dev-python/sympy -doc
+sci-physics/root -doc
 
 # Needed by `www-client/chromium`.
 media-libs/libvpx postproc
@@ -265,6 +267,8 @@ app-emulation/virtualbox-modules -pax_kernel
 # Needed by teamviewer.
 dev-libs/elfutils static-libs
 dev-libs/c-blosc hdf5
+
+www-client/firefox -wifi # WiFi currently triggers networkmanager dependency :(
 
 # }}}
 
