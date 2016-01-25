@@ -174,7 +174,6 @@ dev-util/android-sdk-update-manager ~amd64
 net-wireless/gnuradio ~amd64
 dev-python/ptpython ~amd64
 dev-util/eclipse-sdk-bin ~amd64
-dev-util/idea-ultimate ~amd64
 dev-util/protege ~amd64
 dev-util/heroku-client ~amd64
 app-text/translate-shell ~amd64
@@ -271,9 +270,6 @@ dev-ml/ocaml-ctypes ~amd64
 dev-python/wcwidth ~amd64
 dev-python/jedi ~amd64
 dev-python/prompt_toolkit ~amd64
-
-# Needed by `dev-util/idea-ultimate`.
-=media-libs/libpng-1.6.18 ~amd64
 
 # Needed by `app-misc/tmuxp`.
 dev-python/kaptan ~amd64
