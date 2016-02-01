@@ -238,7 +238,7 @@ sys-boot/gnu-efi ~amd64
 # {{{ Needed by `Not yet stable` packages.
 
 # Needed by `media-sound/beets`.
-dev-python/python-musicbrainz ~amd64
+dev-python/python-musicbrainz-ngs ~amd64
 dev-python/jellyfish ~amd64
 dev-python/munkres ~amd64
 dev-python/audioread ~amd64
