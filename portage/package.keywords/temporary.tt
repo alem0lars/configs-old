@@ -145,6 +145,7 @@ games-board/cockatrice ~amd64
 dev-lang/julia **
 media-fonts/pragmatapro ~amd64
 media-sound/beets ~amd64
+media-sound/cmusfm ~amd64
 app-portage/euscan ~amd64
 app-misc/tmsu ~amd64
 app-misc/vit ~amd64
