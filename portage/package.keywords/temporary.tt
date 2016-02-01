@@ -144,6 +144,7 @@ app-emulation/vagrant ~amd64
 games-board/cockatrice ~amd64
 dev-lang/julia **
 media-fonts/pragmatapro ~amd64
+media-sound/beets ~amd64
 app-portage/euscan ~amd64
 app-misc/tmsu ~amd64
 app-misc/vit ~amd64
@@ -235,6 +236,14 @@ sys-boot/gnu-efi ~amd64
 # }}}
 
 # {{{ Needed by `Not yet stable` packages.
+
+# Needed by `media-sound/beets`.
+dev-python/python-musicbrainz ~amd64
+dev-python/jellyfish ~amd64
+dev-python/munkres ~amd64
+dev-python/audioread ~amd64
+dev-python/pyechonest ~amd64
+dev-python/pyacoustid ~amd64
 
 # Needed by `app-emulation/virtualbox`.
 virtual/ruby-ffi ~amd64
