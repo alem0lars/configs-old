@@ -41,6 +41,8 @@
 #                                                                              #
 # }}} ##########################################################################
 
+app-admin/ansible ~amd64 # We need 2.0
+
 x11-drivers/nvidia-drivers ~amd64
 
 # {{{ Dependencies of permanent packages.
